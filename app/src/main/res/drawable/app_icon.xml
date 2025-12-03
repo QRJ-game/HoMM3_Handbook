@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 
+        Используем твою картинку как ФОН. 
+        Это заставит Android растянуть её на всю площадь иконки (круг или квадрат).
+        Картинка будет немного обрезана по краям (эффект "zoom"), это нормально для Android.
+    -->
+    <background android:drawable="@drawable/icon_image" />
+    
+    <!-- Передний план делаем пустым/прозрачным -->
+    <foreground android:drawable="@android:color/transparent" />
+</adaptive-icon>

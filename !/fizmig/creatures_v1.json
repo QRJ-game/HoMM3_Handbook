@@ -1,0 +1,902 @@
+[
+  {
+    "id": "pikeman", "name": "Копейщик", "town": "Замок", "level": 1, "isUpgraded": false,
+    "minDamage": 1, "maxDamage": 3, "attack": 4, "defense": 5, "health": 10, "speed": 4, "growth": 14, "goldCost": 60, "resourceCost": null,
+    "abilities": "Иммунитет к кавалерийскому разгону", "aiValue": 80, "imageRes": "creature_pikeman"
+  },
+  {
+    "id": "halberdier", "name": "Алебардщик", "town": "Замок", "level": 1, "isUpgraded": true,
+    "minDamage": 2, "maxDamage": 3, "attack": 6, "defense": 5, "health": 10, "speed": 5, "growth": 14, "goldCost": 75, "resourceCost": null,
+    "abilities": "Иммунитет к кавалерийскому разгону", "aiValue": 115, "imageRes": "creature_halberdier"
+  },
+  {
+    "id": "archer", "name": "Арбалетчик", "town": "Замок", "level": 2, "isUpgraded": false,
+    "minDamage": 2, "maxDamage": 3, "attack": 6, "defense": 3, "health": 10, "speed": 4, "growth": 9, "goldCost": 100, "resourceCost": null,
+    "abilities": "Стрелок", "aiValue": 126, "imageRes": "creature_archer"
+  },
+  {
+    "id": "marksman", "name": "Искусный арбалетчик", "town": "Замок", "level": 2, "isUpgraded": true,
+    "minDamage": 2, "maxDamage": 3, "attack": 6, "defense": 3, "health": 10, "speed": 6, "growth": 9, "goldCost": 150, "resourceCost": null,
+    "abilities": "Стрелок, Двойной выстрел", "aiValue": 184, "imageRes": "creature_marksman"
+  },
+  {
+    "id": "griffin", "name": "Грифон", "town": "Замок", "level": 3, "isUpgraded": false,
+    "minDamage": 3, "maxDamage": 6, "attack": 8, "defense": 8, "health": 25, "speed": 6, "growth": 7, "goldCost": 200, "resourceCost": null,
+    "abilities": "Летает, Две ответные атаки", "aiValue": 351, "imageRes": "creature_griffin"
+  },
+  {
+    "id": "royal_griffin", "name": "Королевский грифон", "town": "Замок", "level": 3, "isUpgraded": true,
+    "minDamage": 3, "maxDamage": 6, "attack": 9, "defense": 9, "health": 25, "speed": 9, "growth": 7, "goldCost": 240, "resourceCost": null,
+    "abilities": "Летает, Бесконечный отпор", "aiValue": 448, "imageRes": "creature_royal_griffin"
+  },
+  {
+    "id": "swordsman", "name": "Мечник", "town": "Замок", "level": 4, "isUpgraded": false,
+    "minDamage": 6, "maxDamage": 9, "attack": 10, "defense": 12, "health": 35, "speed": 5, "growth": 4, "goldCost": 300, "resourceCost": null,
+    "abilities": "-", "aiValue": 445, "imageRes": "creature_swordsman"
+  },
+  {
+    "id": "crusader", "name": "Крестоносец", "town": "Замок", "level": 4, "isUpgraded": true,
+    "minDamage": 7, "maxDamage": 10, "attack": 12, "defense": 12, "health": 35, "speed": 6, "growth": 4, "goldCost": 400, "resourceCost": null,
+    "abilities": "Двойной удар", "aiValue": 558, "imageRes": "creature_crusader"
+  },
+  {
+    "id": "monk", "name": "Монах", "town": "Замок", "level": 5, "isUpgraded": false,
+    "minDamage": 10, "maxDamage": 12, "attack": 12, "defense": 7, "health": 30, "speed": 5, "growth": 3, "goldCost": 400, "resourceCost": null,
+    "abilities": "Стрелок", "aiValue": 485, "imageRes": "creature_monk"
+  },
+  {
+    "id": "zealot", "name": "Фанатик", "town": "Замок", "level": 5, "isUpgraded": true,
+    "minDamage": 10, "maxDamage": 12, "attack": 12, "defense": 10, "health": 30, "speed": 7, "growth": 3, "goldCost": 450, "resourceCost": null,
+    "abilities": "Стрелок, Нет штрафа в рукопашной", "aiValue": 750, "imageRes": "creature_zealot"
+  },
+  {
+    "id": "cavalier", "name": "Кавалерист", "town": "Замок", "level": 6, "isUpgraded": false,
+    "minDamage": 15, "maxDamage": 25, "attack": 15, "defense": 15, "health": 100, "speed": 7, "growth": 2, "goldCost": 1000, "resourceCost": null,
+    "abilities": "Кавалерийский разгон", "aiValue": 1946, "imageRes": "creature_cavalier"
+  },
+  {
+    "id": "champion", "name": "Чемпион", "town": "Замок", "level": 6, "isUpgraded": true,
+    "minDamage": 20, "maxDamage": 25, "attack": 16, "defense": 16, "health": 100, "speed": 9, "growth": 2, "goldCost": 1200, "resourceCost": null,
+    "abilities": "Кавалерийский разгон", "aiValue": 2100, "imageRes": "creature_champion"
+  },
+  {
+    "id": "angel", "name": "Ангел", "town": "Замок", "level": 7, "isUpgraded": false,
+    "minDamage": 50, "maxDamage": 50, "attack": 20, "defense": 20, "health": 200, "speed": 12, "growth": 1, "goldCost": 3000, "resourceCost": "1 Самоцвет",
+    "abilities": "Летает, +1 к боевому духу", "aiValue": 5019, "imageRes": "creature_angel"
+  },
+  {
+    "id": "archangel", "name": "Архангел", "town": "Замок", "level": 7, "isUpgraded": true,
+    "minDamage": 50, "maxDamage": 50, "attack": 30, "defense": 30, "health": 250, "speed": 18, "growth": 1, "goldCost": 5000, "resourceCost": "3 Самоцвета",
+    "abilities": "Летает, Воскрешает союзников, +1 к боевому духу", "aiValue": 8776, "imageRes": "creature_archangel"
+  },
+  {
+    "id": "centaur", "name": "Кентавр", "town": "Оплот", "level": 1, "isUpgraded": false,
+    "minDamage": 2, "maxDamage": 3, "attack": 5, "defense": 3, "health": 8, "speed": 6, "growth": 14, "goldCost": 70, "resourceCost": null,
+    "abilities": "-", "aiValue": 100, "imageRes": "creature_centaur"
+  },
+  {
+    "id": "centaur_captain", "name": "Капитан кентавров", "town": "Оплот", "level": 1, "isUpgraded": true,
+    "minDamage": 2, "maxDamage": 3, "attack": 6, "defense": 3, "health": 10, "speed": 8, "growth": 14, "goldCost": 90, "resourceCost": null,
+    "abilities": "-", "aiValue": 138, "imageRes": "creature_centaur_captain"
+  },
+  {
+    "id": "dwarf", "name": "Гном", "town": "Оплот", "level": 2, "isUpgraded": false,
+    "minDamage": 2, "maxDamage": 4, "attack": 6, "defense": 7, "health": 20, "speed": 3, "growth": 8, "goldCost": 120, "resourceCost": null,
+    "abilities": "Сопротивление магии 20%", "aiValue": 138, "imageRes": "creature_dwarf"
+  },
+  {
+    "id": "battle_dwarf", "name": "Боевой гном", "town": "Оплот", "level": 2, "isUpgraded": true,
+    "minDamage": 2, "maxDamage": 4, "attack": 7, "defense": 7, "health": 20, "speed": 5, "growth": 8, "goldCost": 150, "resourceCost": null,
+    "abilities": "Сопротивление магии 40%", "aiValue": 209, "imageRes": "creature_battle_dwarf"
+  },
+  {
+    "id": "wood_elf", "name": "Эльф", "town": "Оплот", "level": 3, "isUpgraded": false,
+    "minDamage": 3, "maxDamage": 5, "attack": 9, "defense": 5, "health": 15, "speed": 6, "growth": 7, "goldCost": 200, "resourceCost": null,
+    "abilities": "Стрелок", "aiValue": 234, "imageRes": "creature_wood_elf"
+  },
+  {
+    "id": "grand_elf", "name": "Высший эльф", "town": "Оплот", "level": 3, "isUpgraded": true,
+    "minDamage": 3, "maxDamage": 5, "attack": 9, "defense": 5, "health": 15, "speed": 7, "growth": 7, "goldCost": 225, "resourceCost": null,
+    "abilities": "Стрелок, Двойной выстрел", "aiValue": 331, "imageRes": "creature_grand_elf"
+  },
+  {
+    "id": "pegasus", "name": "Пегас", "town": "Оплот", "level": 4, "isUpgraded": false,
+    "minDamage": 5, "maxDamage": 9, "attack": 9, "defense": 8, "health": 30, "speed": 8, "growth": 5, "goldCost": 250, "resourceCost": null,
+    "abilities": "Летает, Удорожает магию врага", "aiValue": 518, "imageRes": "creature_pegasus"
+  },
+  {
+    "id": "silver_pegasus", "name": "Серебряный пегас", "town": "Оплот", "level": 4, "isUpgraded": true,
+    "minDamage": 5, "maxDamage": 9, "attack": 9, "defense": 10, "health": 30, "speed": 12, "growth": 5, "goldCost": 275, "resourceCost": null,
+    "abilities": "Летает, Удорожает магию врага", "aiValue": 532, "imageRes": "creature_silver_pegasus"
+  },
+  {
+    "id": "dendroid_guard", "name": "Дендроид-страж", "town": "Оплот", "level": 5, "isUpgraded": false,
+    "minDamage": 10, "maxDamage": 14, "attack": 9, "defense": 12, "health": 55, "speed": 3, "growth": 3, "goldCost": 350, "resourceCost": null,
+    "abilities": "Опутывание корнями", "aiValue": 517, "imageRes": "creature_dendroid_guard"
+  },
+  {
+    "id": "dendroid_soldier", "name": "Дендроид-солдат", "town": "Оплот", "level": 5, "isUpgraded": true,
+    "minDamage": 10, "maxDamage": 14, "attack": 9, "defense": 12, "health": 65, "speed": 4, "growth": 3, "goldCost": 425, "resourceCost": null,
+    "abilities": "Опутывание корнями", "aiValue": 803, "imageRes": "creature_dendroid_soldier"
+  },
+  {
+    "id": "unicorn", "name": "Единорог", "town": "Оплот", "level": 6, "isUpgraded": false,
+    "minDamage": 18, "maxDamage": 22, "attack": 15, "defense": 14, "health": 90, "speed": 7, "growth": 2, "goldCost": 850, "resourceCost": null,
+    "abilities": "Ослепление, Аура сопротивления магии", "aiValue": 1806, "imageRes": "creature_unicorn"
+  },
+  {
+    "id": "war_unicorn", "name": "Боевой единорог", "town": "Оплот", "level": 6, "isUpgraded": true,
+    "minDamage": 18, "maxDamage": 22, "attack": 15, "defense": 14, "health": 110, "speed": 9, "growth": 2, "goldCost": 950, "resourceCost": null,
+    "abilities": "Ослепление, Аура сопротивления магии", "aiValue": 2030, "imageRes": "creature_war_unicorn"
+  },
+  {
+    "id": "green_dragon", "name": "Зеленый дракон", "town": "Оплот", "level": 7, "isUpgraded": false,
+    "minDamage": 40, "maxDamage": 50, "attack": 18, "defense": 18, "health": 180, "speed": 10, "growth": 1, "goldCost": 2400, "resourceCost": "1 Кристалл",
+    "abilities": "Летает, Иммунитет к магии 1-3 ур., Дыхание дракона", "aiValue": 4872, "imageRes": "creature_green_dragon"
+  },
+  {
+    "id": "gold_dragon", "name": "Золотой дракон", "town": "Оплот", "level": 7, "isUpgraded": true,
+    "minDamage": 40, "maxDamage": 50, "attack": 27, "defense": 27, "health": 250, "speed": 16, "growth": 1, "goldCost": 4000, "resourceCost": "2 Кристалла",
+    "abilities": "Летает, Иммунитет к магии 1-4 ур., Дыхание дракона", "aiValue": 8613, "imageRes": "creature_gold_dragon"
+  },
+  {
+    "id": "gremlin", "name": "Гремлин", "town": "Башня", "level": 1, "isUpgraded": false,
+    "minDamage": 1, "maxDamage": 2, "attack": 3, "defense": 3, "health": 4, "speed": 4, "growth": 16, "goldCost": 30, "resourceCost": null,
+    "abilities": "-", "aiValue": 44, "imageRes": "creature_gremlin"
+  },
+  {
+    "id": "master_gremlin", "name": "Мастер-гремлин", "town": "Башня", "level": 1, "isUpgraded": true,
+    "minDamage": 1, "maxDamage": 2, "attack": 4, "defense": 4, "health": 4, "speed": 5, "growth": 16, "goldCost": 40, "resourceCost": null,
+    "abilities": "Стрелок", "aiValue": 66, "imageRes": "creature_master_gremlin"
+  },
+  {
+    "id": "stone_gargoyle", "name": "Каменная горгулья", "town": "Башня", "level": 2, "isUpgraded": false,
+    "minDamage": 2, "maxDamage": 3, "attack": 6, "defense": 6, "health": 16, "speed": 6, "growth": 9, "goldCost": 130, "resourceCost": null,
+    "abilities": "Летает", "aiValue": 165, "imageRes": "creature_stone_gargoyle"
+  },
+  {
+    "id": "obsidian_gargoyle", "name": "Обсидиановая горгулья", "town": "Башня", "level": 2, "isUpgraded": true,
+    "minDamage": 2, "maxDamage": 3, "attack": 7, "defense": 7, "health": 16, "speed": 9, "growth": 9, "goldCost": 160, "resourceCost": null,
+    "abilities": "Летает", "aiValue": 201, "imageRes": "creature_obsidian_gargoyle"
+  },
+  {
+    "id": "stone_golem", "name": "Каменный голем", "town": "Башня", "level": 3, "isUpgraded": false,
+    "minDamage": 4, "maxDamage": 5, "attack": 7, "defense": 10, "health": 30, "speed": 3, "growth": 6, "goldCost": 150, "resourceCost": null,
+    "abilities": "Механизм, -50% урона от заклинаний", "aiValue": 250, "imageRes": "creature_stone_golem"
+  },
+  {
+    "id": "iron_golem", "name": "Железный голем", "town": "Башня", "level": 3, "isUpgraded": true,
+    "minDamage": 4, "maxDamage": 5, "attack": 9, "defense": 10, "health": 35, "speed": 5, "growth": 6, "goldCost": 200, "resourceCost": null,
+    "abilities": "Механизм, -75% урона от заклинаний", "aiValue": 412, "imageRes": "creature_iron_golem"
+  },
+  {
+    "id": "mage", "name": "Маг", "town": "Башня", "level": 4, "isUpgraded": false,
+    "minDamage": 7, "maxDamage": 9, "attack": 11, "defense": 8, "health": 25, "speed": 5, "growth": 4, "goldCost": 350, "resourceCost": null,
+    "abilities": "Стрелок, Без штрафа в рукопашной, -2 маны заклинаниям", "aiValue": 570, "imageRes": "creature_mage"
+  },
+  {
+    "id": "arch_mage", "name": "Архимаг", "town": "Башня", "level": 4, "isUpgraded": true,
+    "minDamage": 7, "maxDamage": 9, "attack": 12, "defense": 9, "health": 30, "speed": 7, "growth": 4, "goldCost": 450, "resourceCost": null,
+    "abilities": "Стрелок, Без штрафа в рукопашной, -2 маны заклинаниям", "aiValue": 680, "imageRes": "creature_arch_mage"
+  },
+  {
+    "id": "genie", "name": "Джинн", "town": "Башня", "level": 5, "isUpgraded": false,
+    "minDamage": 13, "maxDamage": 16, "attack": 12, "defense": 12, "health": 40, "speed": 7, "growth": 3, "goldCost": 550, "resourceCost": null,
+    "abilities": "Летает, Ненависть к ифритам", "aiValue": 884, "imageRes": "creature_genie"
+  },
+  {
+    "id": "master_genie", "name": "Мастер-джинн", "town": "Башня", "level": 5, "isUpgraded": true,
+    "minDamage": 13, "maxDamage": 16, "attack": 12, "defense": 12, "health": 40, "speed": 11, "growth": 3, "goldCost": 600, "resourceCost": null,
+    "abilities": "Летает, Ненависть к ифритам, Заклинания", "aiValue": 942, "imageRes": "creature_master_genie"
+  },
+  {
+    "id": "naga", "name": "Нага", "town": "Башня", "level": 6, "isUpgraded": false,
+    "minDamage": 20, "maxDamage": 20, "attack": 16, "defense": 13, "health": 110, "speed": 5, "growth": 2, "goldCost": 1100, "resourceCost": null,
+    "abilities": "Безответная атака", "aiValue": 2016, "imageRes": "creature_naga"
+  },
+  {
+    "id": "naga_queen", "name": "Королева наг", "town": "Башня", "level": 6, "isUpgraded": true,
+    "minDamage": 30, "maxDamage": 30, "attack": 16, "defense": 13, "health": 110, "speed": 7, "growth": 2, "goldCost": 1600, "resourceCost": null,
+    "abilities": "Безответная атака", "aiValue": 2840, "imageRes": "creature_naga_queen"
+  },
+  {
+    "id": "giant", "name": "Гигант", "town": "Башня", "level": 7, "isUpgraded": false,
+    "minDamage": 40, "maxDamage": 60, "attack": 19, "defense": 16, "health": 150, "speed": 7, "growth": 1, "goldCost": 2000, "resourceCost": "1 Самоцвет",
+    "abilities": "Иммунитет к разуму", "aiValue": 3718, "imageRes": "creature_giant"
+  },
+  {
+    "id": "titan", "name": "Титан", "town": "Башня", "level": 7, "isUpgraded": true,
+    "minDamage": 40, "maxDamage": 60, "attack": 24, "defense": 24, "health": 300, "speed": 11, "growth": 1, "goldCost": 5000, "resourceCost": "2 Самоцвета",
+    "abilities": "Стрелок, Нет штрафа в рукопашной, Иммунитет к разуму, Ненавидит Ч.Драконов", "aiValue": 7500, "imageRes": "creature_titan"
+  },
+  {
+    "id": "imp", "name": "Бес", "town": "Инферно", "level": 1, "isUpgraded": false,
+    "minDamage": 1, "maxDamage": 2, "attack": 2, "defense": 3, "health": 4, "speed": 5, "growth": 15, "goldCost": 50, "resourceCost": null,
+    "abilities": "-", "aiValue": 50, "imageRes": "creature_imp"
+  },
+  {
+    "id": "familiar", "name": "Чёрт", "town": "Инферно", "level": 1, "isUpgraded": true,
+    "minDamage": 1, "maxDamage": 2, "attack": 4, "defense": 4, "health": 4, "speed": 7, "growth": 15, "goldCost": 60, "resourceCost": null,
+    "abilities": "Крадет ману", "aiValue": 60, "imageRes": "creature_familiar"
+  },
+  {
+    "id": "gog", "name": "Гог", "town": "Инферно", "level": 2, "isUpgraded": false,
+    "minDamage": 2, "maxDamage": 4, "attack": 6, "defense": 4, "health": 13, "speed": 4, "growth": 8, "goldCost": 125, "resourceCost": null,
+    "abilities": "Стрелок", "aiValue": 159, "imageRes": "creature_gog"
+  },
+  {
+    "id": "magog", "name": "Магог", "town": "Инферно", "level": 2, "isUpgraded": true,
+    "minDamage": 2, "maxDamage": 4, "attack": 7, "defense": 4, "health": 13, "speed": 6, "growth": 8, "goldCost": 175, "resourceCost": null,
+    "abilities": "Стрелок, Удар по площади", "aiValue": 240, "imageRes": "creature_magog"
+  },
+  {
+    "id": "hell_hound", "name": "Адская гончая", "town": "Инферно", "level": 3, "isUpgraded": false,
+    "minDamage": 2, "maxDamage": 7, "attack": 10, "defense": 6, "health": 25, "speed": 7, "growth": 5, "goldCost": 200, "resourceCost": null,
+    "abilities": "-", "aiValue": 357, "imageRes": "creature_hell_hound"
+  },
+  {
+    "id": "cerberus", "name": "Цербер", "town": "Инферно", "level": 3, "isUpgraded": true,
+    "minDamage": 2, "maxDamage": 7, "attack": 10, "defense": 8, "health": 25, "speed": 8, "growth": 5, "goldCost": 250, "resourceCost": null,
+    "abilities": "Безответная атака трех целей", "aiValue": 392, "imageRes": "creature_cerberus"
+  },
+  {
+    "id": "demon", "name": "Демон", "town": "Инферно", "level": 4, "isUpgraded": false,
+    "minDamage": 7, "maxDamage": 9, "attack": 10, "defense": 10, "health": 35, "speed": 5, "growth": 4, "goldCost": 250, "resourceCost": null,
+    "abilities": "-", "aiValue": 445, "imageRes": "creature_demon"
+  },
+  {
+    "id": "horned_demon", "name": "Рогатый демон", "town": "Инферно", "level": 4, "isUpgraded": true,
+    "minDamage": 7, "maxDamage": 9, "attack": 10, "defense": 10, "health": 40, "speed": 6, "growth": 4, "goldCost": 270, "resourceCost": null,
+    "abilities": "-", "aiValue": 480, "imageRes": "creature_horned_demon"
+  },
+  {
+    "id": "pit_fiend", "name": "Отродье", "town": "Инферно", "level": 5, "isUpgraded": false,
+    "minDamage": 13, "maxDamage": 17, "attack": 13, "defense": 13, "health": 45, "speed": 6, "growth": 3, "goldCost": 500, "resourceCost": null,
+    "abilities": "-", "aiValue": 765, "imageRes": "creature_pit_fiend"
+  },
+  {
+    "id": "pit_lord", "name": "Владыка бездны", "town": "Инферно", "level": 5, "isUpgraded": true,
+    "minDamage": 13, "maxDamage": 17, "attack": 13, "defense": 13, "health": 45, "speed": 7, "growth": 3, "goldCost": 700, "resourceCost": null,
+    "abilities": "Поднимает демонов из трупов", "aiValue": 1224, "imageRes": "creature_pit_lord"
+  },
+  {
+    "id": "efreet", "name": "Ифрит", "town": "Инферно", "level": 6, "isUpgraded": false,
+    "minDamage": 16, "maxDamage": 24, "attack": 16, "defense": 12, "health": 90, "speed": 9, "growth": 2, "goldCost": 900, "resourceCost": null,
+    "abilities": "Летает, Иммунитет к огню, Ненависть к джиннам", "aiValue": 1670, "imageRes": "creature_efreet"
+  },
+  {
+    "id": "efreet_sultan", "name": "Ифрит-султан", "town": "Инферно", "level": 6, "isUpgraded": true,
+    "minDamage": 16, "maxDamage": 24, "attack": 16, "defense": 14, "health": 90, "speed": 13, "growth": 2, "goldCost": 1100, "resourceCost": null,
+    "abilities": "Летает, Огненный щит, Иммунитет к огню", "aiValue": 1848, "imageRes": "creature_efreet_sultan"
+  },
+  {
+    "id": "devil", "name": "Дьявол", "town": "Инферно", "level": 7, "isUpgraded": false,
+    "minDamage": 30, "maxDamage": 40, "attack": 19, "defense": 21, "health": 160, "speed": 11, "growth": 1, "goldCost": 2700, "resourceCost": "1 Ртуть",
+    "abilities": "Телепортация, Безответная атака, -1 удаче врага", "aiValue": 5101, "imageRes": "creature_devil"
+  },
+  {
+    "id": "arch_devil", "name": "Архидьявол", "town": "Инферно", "level": 7, "isUpgraded": true,
+    "minDamage": 30, "maxDamage": 40, "attack": 26, "defense": 28, "health": 200, "speed": 17, "growth": 1, "goldCost": 4500, "resourceCost": "2 Ртути",
+    "abilities": "Телепортация, Безответная атака, -1 удаче врага", "aiValue": 7115, "imageRes": "creature_arch_devil"
+  },
+  {
+    "id": "skeleton", "name": "Скелет", "town": "Некрополис", "level": 1, "isUpgraded": false,
+    "minDamage": 1, "maxDamage": 3, "attack": 5, "defense": 4, "health": 6, "speed": 4, "growth": 12, "goldCost": 60, "resourceCost": null,
+    "abilities": "Нежить", "aiValue": 60, "imageRes": "creature_skeleton"
+  },
+  {
+    "id": "skeleton_warrior", "name": "Скелет-воин", "town": "Некрополис", "level": 1, "isUpgraded": true,
+    "minDamage": 1, "maxDamage": 3, "attack": 6, "defense": 6, "health": 6, "speed": 5, "growth": 12, "goldCost": 70, "resourceCost": null,
+    "abilities": "Нежить", "aiValue": 85, "imageRes": "creature_skeleton_warrior"
+  },
+  {
+    "id": "walking_dead", "name": "Живой мертвец", "town": "Некрополис", "level": 2, "isUpgraded": false,
+    "minDamage": 2, "maxDamage": 3, "attack": 5, "defense": 5, "health": 15, "speed": 3, "growth": 8, "goldCost": 100, "resourceCost": null,
+    "abilities": "Нежить", "aiValue": 98, "imageRes": "creature_walking_dead"
+  },
+  {
+    "id": "zombie", "name": "Зомби", "town": "Некрополис", "level": 2, "isUpgraded": true,
+    "minDamage": 2, "maxDamage": 3, "attack": 5, "defense": 5, "health": 20, "speed": 4, "growth": 8, "goldCost": 125, "resourceCost": null,
+    "abilities": "Нежить, Болезнь", "aiValue": 128, "imageRes": "creature_zombie"
+  },
+  {
+    "id": "wight", "name": "Страж", "town": "Некрополис", "level": 3, "isUpgraded": false,
+    "minDamage": 3, "maxDamage": 5, "attack": 7, "defense": 7, "health": 18, "speed": 5, "growth": 7, "goldCost": 200, "resourceCost": null,
+    "abilities": "Нежить, Летает, Регенерация", "aiValue": 252, "imageRes": "creature_wight"
+  },
+  {
+    "id": "wraith", "name": "Призрак", "town": "Некрополис", "level": 3, "isUpgraded": true,
+    "minDamage": 3, "maxDamage": 5, "attack": 7, "defense": 7, "health": 18, "speed": 7, "growth": 7, "goldCost": 230, "resourceCost": null,
+    "abilities": "Нежить, Летает, Регенерация, Крадет ману", "aiValue": 315, "imageRes": "creature_wraith"
+  },
+  {
+    "id": "vampire", "name": "Вампир", "town": "Некрополис", "level": 4, "isUpgraded": false,
+    "minDamage": 5, "maxDamage": 8, "attack": 10, "defense": 9, "health": 30, "speed": 6, "growth": 4, "goldCost": 360, "resourceCost": null,
+    "abilities": "Нежить, Летает, Безответная атака", "aiValue": 555, "imageRes": "creature_vampire"
+  },
+  {
+    "id": "vampire_lord", "name": "Лорд вампиров", "town": "Некрополис", "level": 4, "isUpgraded": true,
+    "minDamage": 5, "maxDamage": 8, "attack": 10, "defense": 10, "health": 40, "speed": 9, "growth": 4, "goldCost": 500, "resourceCost": null,
+    "abilities": "Нежить, Летает, Безответная атака, Высасывает жизнь", "aiValue": 783, "imageRes": "creature_vampire_lord"
+  },
+  {
+    "id": "lich", "name": "Лич", "town": "Некрополис", "level": 5, "isUpgraded": false,
+    "minDamage": 11, "maxDamage": 13, "attack": 13, "defense": 10, "health": 30, "speed": 6, "growth": 3, "goldCost": 550, "resourceCost": null,
+    "abilities": "Нежить, Стрелок, Облако смерти", "aiValue": 848, "imageRes": "creature_lich"
+  },
+  {
+    "id": "power_lich", "name": "Могущественный лич", "town": "Некрополис", "level": 5, "isUpgraded": true,
+    "minDamage": 11, "maxDamage": 15, "attack": 13, "defense": 10, "health": 40, "speed": 7, "growth": 3, "goldCost": 600, "resourceCost": null,
+    "abilities": "Нежить, Стрелок, Облако смерти", "aiValue": 1079, "imageRes": "creature_power_lich"
+  },
+  {
+    "id": "black_knight", "name": "Рыцарь ужаса", "town": "Некрополис", "level": 6, "isUpgraded": false,
+    "minDamage": 15, "maxDamage": 30, "attack": 16, "defense": 16, "health": 120, "speed": 7, "growth": 2, "goldCost": 1200, "resourceCost": null,
+    "abilities": "Нежить, Проклятие", "aiValue": 2087, "imageRes": "creature_black_knight"
+  },
+  {
+    "id": "dread_knight", "name": "Рыцарь смерти", "town": "Некрополис", "level": 6, "isUpgraded": true,
+    "minDamage": 15, "maxDamage": 30, "attack": 18, "defense": 18, "health": 120, "speed": 9, "growth": 2, "goldCost": 1500, "resourceCost": null,
+    "abilities": "Нежить, Проклятие, Смертельный удар", "aiValue": 2382, "imageRes": "creature_dread_knight"
+  },
+  {
+    "id": "bone_dragon", "name": "Костяной дракон", "town": "Некрополис", "level": 7, "isUpgraded": false,
+    "minDamage": 25, "maxDamage": 50, "attack": 17, "defense": 15, "health": 150, "speed": 9, "growth": 1, "goldCost": 1800, "resourceCost": null,
+    "abilities": "Нежить, Летает, -1 к боевому духу врага", "aiValue": 3388, "imageRes": "creature_bone_dragon"
+  },
+  {
+    "id": "ghost_dragon", "name": "Призрачный дракон", "town": "Некрополис", "level": 7, "isUpgraded": true,
+    "minDamage": 25, "maxDamage": 50, "attack": 19, "defense": 17, "health": 200, "speed": 14, "growth": 1, "goldCost": 3000, "resourceCost": "1 Ртуть",
+    "abilities": "Нежить, Летает, Старение, -1 к боевому духу врага", "aiValue": 4696, "imageRes": "creature_ghost_dragon"
+  },
+  {
+    "id": "troglodyte", "name": "Троглодит", "town": "Темница", "level": 1, "isUpgraded": false,
+    "minDamage": 1, "maxDamage": 3, "attack": 4, "defense": 3, "health": 5, "speed": 4, "growth": 14, "goldCost": 50, "resourceCost": null,
+    "abilities": "Иммунитет к ослеплению", "aiValue": 59, "imageRes": "creature_troglodyte"
+  },
+  {
+    "id": "infernal_troglodyte", "name": "Адский троглодит", "town": "Темница", "level": 1, "isUpgraded": true,
+    "minDamage": 1, "maxDamage": 3, "attack": 5, "defense": 4, "health": 6, "speed": 5, "growth": 14, "goldCost": 65, "resourceCost": null,
+    "abilities": "Иммунитет к ослеплению", "aiValue": 84, "imageRes": "creature_infernal_troglodyte"
+  },
+  {
+    "id": "harpy", "name": "Гарпия", "town": "Темница", "level": 2, "isUpgraded": false,
+    "minDamage": 1, "maxDamage": 4, "attack": 6, "defense": 5, "health": 14, "speed": 6, "growth": 8, "goldCost": 130, "resourceCost": null,
+    "abilities": "Летает, Возврат", "aiValue": 154, "imageRes": "creature_harpy"
+  },
+  {
+    "id": "harpy_hag", "name": "Гарпия-ведьма", "town": "Темница", "level": 2, "isUpgraded": true,
+    "minDamage": 1, "maxDamage": 4, "attack": 6, "defense": 6, "health": 14, "speed": 9, "growth": 8, "goldCost": 170, "resourceCost": null,
+    "abilities": "Летает, Возврат, Безответная атака", "aiValue": 238, "imageRes": "creature_harpy_hag"
+  },
+  {
+    "id": "beholder", "name": "Злобоглаз", "town": "Темница", "level": 3, "isUpgraded": false,
+    "minDamage": 3, "maxDamage": 5, "attack": 9, "defense": 7, "health": 22, "speed": 5, "growth": 7, "goldCost": 250, "resourceCost": null,
+    "abilities": "Стрелок, Нет штрафа в рукопашной", "aiValue": 336, "imageRes": "creature_beholder"
+  },
+  {
+    "id": "evil_eye", "name": "Злой глаз", "town": "Темница", "level": 3, "isUpgraded": true,
+    "minDamage": 3, "maxDamage": 5, "attack": 10, "defense": 8, "health": 22, "speed": 7, "growth": 7, "goldCost": 280, "resourceCost": null,
+    "abilities": "Стрелок, Нет штрафа в рукопашной", "aiValue": 367, "imageRes": "creature_evil_eye"
+  },
+  {
+    "id": "medusa", "name": "Медуза", "town": "Темница", "level": 4, "isUpgraded": false,
+    "minDamage": 6, "maxDamage": 8, "attack": 9, "defense": 9, "health": 25, "speed": 5, "growth": 4, "goldCost": 300, "resourceCost": null,
+    "abilities": "Стрелок, Нет штрафа в рукопашной, Окаменение", "aiValue": 517, "imageRes": "creature_medusa"
+  },
+  {
+    "id": "medusa_queen", "name": "Королева медуз", "town": "Темница", "level": 4, "isUpgraded": true,
+    "minDamage": 6, "maxDamage": 8, "attack": 10, "defense": 10, "health": 30, "speed": 6, "growth": 4, "goldCost": 330, "resourceCost": null,
+    "abilities": "Стрелок, Нет штрафа в рукопашной, Окаменение", "aiValue": 577, "imageRes": "creature_medusa_queen"
+  },
+  {
+    "id": "minotaur", "name": "Минотавр", "town": "Темница", "level": 5, "isUpgraded": false,
+    "minDamage": 12, "maxDamage": 20, "attack": 14, "defense": 12, "health": 50, "speed": 6, "growth": 3, "goldCost": 500, "resourceCost": null,
+    "abilities": "Боевой дух всегда положителен", "aiValue": 835, "imageRes": "creature_minotaur"
+  },
+  {
+    "id": "minotaur_king", "name": "Король минотавров", "town": "Темница", "level": 5, "isUpgraded": true,
+    "minDamage": 12, "maxDamage": 20, "attack": 15, "defense": 15, "health": 50, "speed": 8, "growth": 3, "goldCost": 575, "resourceCost": null,
+    "abilities": "Боевой дух всегда положителен", "aiValue": 1068, "imageRes": "creature_minotaur_king"
+  },
+  {
+    "id": "manticore", "name": "Мантикора", "town": "Темница", "level": 6, "isUpgraded": false,
+    "minDamage": 14, "maxDamage": 20, "attack": 15, "defense": 13, "health": 80, "speed": 7, "growth": 2, "goldCost": 850, "resourceCost": null,
+    "abilities": "Летает", "aiValue": 1547, "imageRes": "creature_manticore"
+  },
+  {
+    "id": "scorpicore", "name": "Скортикора", "town": "Темница", "level": 6, "isUpgraded": true,
+    "minDamage": 14, "maxDamage": 20, "attack": 16, "defense": 14, "health": 80, "speed": 11, "growth": 2, "goldCost": 1050, "resourceCost": null,
+    "abilities": "Летает, Паралич", "aiValue": 1589, "imageRes": "creature_scorpicore"
+  },
+  {
+    "id": "red_dragon", "name": "Красный дракон", "town": "Темница", "level": 7, "isUpgraded": false,
+    "minDamage": 40, "maxDamage": 50, "attack": 19, "defense": 19, "health": 180, "speed": 11, "growth": 1, "goldCost": 2500, "resourceCost": "1 Сера",
+    "abilities": "Летает, Иммунитет к магии 1-3 ур., Дыхание дракона", "aiValue": 4702, "imageRes": "creature_red_dragon"
+  },
+  {
+    "id": "black_dragon", "name": "Черный дракон", "town": "Темница", "level": 7, "isUpgraded": true,
+    "minDamage": 40, "maxDamage": 50, "attack": 25, "defense": 25, "health": 300, "speed": 15, "growth": 1, "goldCost": 4000, "resourceCost": "2 Серы",
+    "abilities": "Летает, Полный иммунитет к магии, Дыхание дракона", "aiValue": 8721, "imageRes": "creature_black_dragon"
+  },
+  {
+    "id": "goblin", "name": "Гоблин", "town": "Цитадель", "level": 1, "isUpgraded": false,
+    "minDamage": 1, "maxDamage": 2, "attack": 4, "defense": 2, "health": 5, "speed": 5, "growth": 15, "goldCost": 40, "resourceCost": null,
+    "abilities": "-", "aiValue": 60, "imageRes": "creature_goblin"
+  },
+  {
+    "id": "hobgoblin", "name": "Хобгоблин", "town": "Цитадель", "level": 1, "isUpgraded": true,
+    "minDamage": 1, "maxDamage": 2, "attack": 5, "defense": 3, "health": 5, "speed": 7, "growth": 15, "goldCost": 50, "resourceCost": null,
+    "abilities": "-", "aiValue": 78, "imageRes": "creature_hobgoblin"
+  },
+  {
+    "id": "wolf_rider", "name": "Наездник на волке", "town": "Цитадель", "level": 2, "isUpgraded": false,
+    "minDamage": 2, "maxDamage": 4, "attack": 7, "defense": 5, "health": 10, "speed": 6, "growth": 9, "goldCost": 100, "resourceCost": null,
+    "abilities": "-", "aiValue": 130, "imageRes": "creature_wolf_rider"
+  },
+  {
+    "id": "wolf_raider", "name": "Налетчик", "town": "Цитадель", "level": 2, "isUpgraded": true,
+    "minDamage": 3, "maxDamage": 4, "attack": 8, "defense": 5, "health": 10, "speed": 8, "growth": 9, "goldCost": 140, "resourceCost": null,
+    "abilities": "Двойной удар", "aiValue": 203, "imageRes": "creature_wolf_raider"
+  },
+  {
+    "id": "orc", "name": "Орк", "town": "Цитадель", "level": 3, "isUpgraded": false,
+    "minDamage": 2, "maxDamage": 5, "attack": 8, "defense": 4, "health": 15, "speed": 4, "growth": 7, "goldCost": 150, "resourceCost": null,
+    "abilities": "Стрелок", "aiValue": 192, "imageRes": "creature_orc"
+  },
+  {
+    "id": "orc_chieftain", "name": "Вождь орков", "town": "Цитадель", "level": 3, "isUpgraded": true,
+    "minDamage": 2, "maxDamage": 5, "attack": 9, "defense": 4, "health": 20, "speed": 5, "growth": 7, "goldCost": 165, "resourceCost": null,
+    "abilities": "Стрелок", "aiValue": 240, "imageRes": "creature_orc_chieftain"
+  },
+  {
+    "id": "ogre", "name": "Огр", "town": "Цитадель", "level": 4, "isUpgraded": false,
+    "minDamage": 6, "maxDamage": 12, "attack": 13, "defense": 7, "health": 40, "speed": 4, "growth": 4, "goldCost": 300, "resourceCost": null,
+    "abilities": "-", "aiValue": 416, "imageRes": "creature_ogre"
+  },
+  {
+    "id": "ogre_mage", "name": "Огр-маг", "town": "Цитадель", "level": 4, "isUpgraded": true,
+    "minDamage": 6, "maxDamage": 12, "attack": 13, "defense": 7, "health": 60, "speed": 5, "growth": 4, "goldCost": 400, "resourceCost": null,
+    "abilities": "Накладывает Кровожадность", "aiValue": 672, "imageRes": "creature_ogre_mage"
+  },
+  {
+    "id": "roc", "name": "Птица Рух", "town": "Цитадель", "level": 5, "isUpgraded": false,
+    "minDamage": 11, "maxDamage": 15, "attack": 13, "defense": 11, "health": 60, "speed": 7, "growth": 3, "goldCost": 600, "resourceCost": null,
+    "abilities": "Летает", "aiValue": 1027, "imageRes": "creature_roc"
+  },
+  {
+    "id": "thunderbird", "name": "Птица Грома", "town": "Цитадель", "level": 5, "isUpgraded": true,
+    "minDamage": 11, "maxDamage": 15, "attack": 13, "defense": 11, "health": 60, "speed": 11, "growth": 3, "goldCost": 700, "resourceCost": null,
+    "abilities": "Летает, Удар молнии", "aiValue": 1106, "imageRes": "creature_thunderbird"
+  },
+  {
+    "id": "cyclops", "name": "Циклоп", "town": "Цитадель", "level": 6, "isUpgraded": false,
+    "minDamage": 16, "maxDamage": 20, "attack": 15, "defense": 12, "health": 70, "speed": 6, "growth": 2, "goldCost": 750, "resourceCost": null,
+    "abilities": "Стрелок, Атакует стены", "aiValue": 1266, "imageRes": "creature_cyclops"
+  },
+  {
+    "id": "cyclops_king", "name": "Король циклопов", "town": "Цитадель", "level": 6, "isUpgraded": true,
+    "minDamage": 16, "maxDamage": 20, "attack": 17, "defense": 13, "health": 70, "speed": 8, "growth": 2, "goldCost": 1100, "resourceCost": null,
+    "abilities": "Стрелок, Атакует стены", "aiValue": 1443, "imageRes": "creature_cyclops_king"
+  },
+  {
+    "id": "behemoth", "name": "Чудище", "town": "Цитадель", "level": 7, "isUpgraded": false,
+    "minDamage": 30, "maxDamage": 50, "attack": 17, "defense": 17, "health": 160, "speed": 6, "growth": 1, "goldCost": 1500, "resourceCost": null,
+    "abilities": "Игнорирует 40% защиты", "aiValue": 3162, "imageRes": "creature_behemoth"
+  },
+  {
+    "id": "ancient_behemoth", "name": "Древнее чудище", "town": "Цитадель", "level": 7, "isUpgraded": true,
+    "minDamage": 30, "maxDamage": 50, "attack": 19, "defense": 19, "health": 300, "speed": 9, "growth": 1, "goldCost": 3000, "resourceCost": "1 Кристалл",
+    "abilities": "Игнорирует 80% защиты", "aiValue": 6168, "imageRes": "creature_ancient_behemoth"
+  },
+  {
+    "id": "gnoll", "name": "Гнолл", "town": "Крепость", "level": 1, "isUpgraded": false,
+    "minDamage": 2, "maxDamage": 3, "attack": 3, "defense": 5, "health": 6, "speed": 4, "growth": 12, "goldCost": 50, "resourceCost": null,
+    "abilities": "-", "aiValue": 56, "imageRes": "creature_gnoll"
+  },
+  {
+    "id": "gnoll_marauder", "name": "Гнолл-мародер", "town": "Крепость", "level": 1, "isUpgraded": true,
+    "minDamage": 2, "maxDamage": 3, "attack": 4, "defense": 6, "health": 6, "speed": 5, "growth": 12, "goldCost": 70, "resourceCost": null,
+    "abilities": "-", "aiValue": 90, "imageRes": "creature_gnoll_marauder"
+  },
+  {
+    "id": "lizardman", "name": "Ящер", "town": "Крепость", "level": 2, "isUpgraded": false,
+    "minDamage": 2, "maxDamage": 3, "attack": 5, "defense": 6, "health": 14, "speed": 4, "growth": 9, "goldCost": 110, "resourceCost": null,
+    "abilities": "Стрелок", "aiValue": 126, "imageRes": "creature_lizardman"
+  },
+  {
+    "id": "lizard_warrior", "name": "Ящер-воин", "town": "Крепость", "level": 2, "isUpgraded": true,
+    "minDamage": 2, "maxDamage": 5, "attack": 6, "defense": 8, "health": 15, "speed": 5, "growth": 9, "goldCost": 140, "resourceCost": null,
+    "abilities": "Стрелок", "aiValue": 156, "imageRes": "creature_lizard_warrior"
+  },
+  {
+    "id": "serpent_fly", "name": "Змий", "town": "Крепость", "level": 3, "isUpgraded": false,
+    "minDamage": 2, "maxDamage": 5, "attack": 7, "defense": 9, "health": 20, "speed": 9, "growth": 8, "goldCost": 220, "resourceCost": null,
+    "abilities": "Летает, Снимает полезные заклинания", "aiValue": 268, "imageRes": "creature_serpent_fly"
+  },
+  {
+    "id": "dragon_fly", "name": "Стрекоза", "town": "Крепость", "level": 3, "isUpgraded": true,
+    "minDamage": 2, "maxDamage": 5, "attack": 8, "defense": 10, "health": 20, "speed": 13, "growth": 8, "goldCost": 240, "resourceCost": null,
+    "abilities": "Летает, Снимает полезные заклинания, Накладывает Слабость", "aiValue": 312, "imageRes": "creature_dragon_fly"
+  },
+  {
+    "id": "basilisk", "name": "Василиск", "town": "Крепость", "level": 4, "isUpgraded": false,
+    "minDamage": 6, "maxDamage": 10, "attack": 11, "defense": 11, "health": 35, "speed": 5, "growth": 4, "goldCost": 325, "resourceCost": null,
+    "abilities": "Окаменение", "aiValue": 552, "imageRes": "creature_basilisk"
+  },
+  {
+    "id": "greater_basilisk", "name": "Великий василиск", "town": "Крепость", "level": 4, "isUpgraded": true,
+    "minDamage": 6, "maxDamage": 10, "attack": 12, "defense": 12, "health": 40, "speed": 7, "growth": 4, "goldCost": 400, "resourceCost": null,
+    "abilities": "Окаменение", "aiValue": 714, "imageRes": "creature_greater_basilisk"
+  },
+  {
+    "id": "gorgon", "name": "Горгона", "town": "Крепость", "level": 5, "isUpgraded": false,
+    "minDamage": 10, "maxDamage": 14, "attack": 10, "defense": 14, "health": 70, "speed": 5, "growth": 3, "goldCost": 525, "resourceCost": null,
+    "abilities": "-", "aiValue": 890, "imageRes": "creature_gorgon"
+  },
+  {
+    "id": "mighty_gorgon", "name": "Могучая горгона", "town": "Крепость", "level": 5, "isUpgraded": true,
+    "minDamage": 10, "maxDamage": 14, "attack": 11, "defense": 16, "health": 70, "speed": 6, "growth": 3, "goldCost": 600, "resourceCost": null,
+    "abilities": "Смертельный взгляд", "aiValue": 1028, "imageRes": "creature_mighty_gorgon"
+  },
+  {
+    "id": "wyvern", "name": "Виверна", "town": "Крепость", "level": 6, "isUpgraded": false,
+    "minDamage": 14, "maxDamage": 18, "attack": 14, "defense": 14, "health": 70, "speed": 7, "growth": 2, "goldCost": 800, "resourceCost": null,
+    "abilities": "Летает", "aiValue": 1350, "imageRes": "creature_wyvern"
+  },
+  {
+    "id": "wyvern_monarch", "name": "Виверна-монарх", "town": "Крепость", "level": 6, "isUpgraded": true,
+    "minDamage": 14, "maxDamage": 18, "attack": 14, "defense": 14, "health": 70, "speed": 11, "growth": 2, "goldCost": 1100, "resourceCost": null,
+    "abilities": "Летает, Отравление", "aiValue": 1518, "imageRes": "creature_wyvern_monarch"
+  },
+  {
+    "id": "hydra", "name": "Гидра", "town": "Крепость", "level": 7, "isUpgraded": false,
+    "minDamage": 25, "maxDamage": 45, "attack": 16, "defense": 18, "health": 175, "speed": 5, "growth": 1, "goldCost": 2200, "resourceCost": null,
+    "abilities": "Безответная атака всех врагов вокруг", "aiValue": 4120, "imageRes": "creature_hydra"
+  },
+  {
+    "id": "chaos_hydra", "name": "Гидра хаоса", "town": "Крепость", "level": 7, "isUpgraded": true,
+    "minDamage": 25, "maxDamage": 45, "attack": 18, "defense": 20, "health": 250, "speed": 7, "growth": 1, "goldCost": 3500, "resourceCost": "1 Сера",
+    "abilities": "Безответная атака всех врагов вокруг", "aiValue": 5931, "imageRes": "creature_chaos_hydra"
+  },
+  {
+    "id": "pixie", "name": "Пикси", "town": "Сопряжение", "level": 1, "isUpgraded": false,
+    "minDamage": 1, "maxDamage": 2, "attack": 2, "defense": 2, "health": 3, "speed": 7, "growth": 20, "goldCost": 25, "resourceCost": null,
+    "abilities": "Летает, Безответная атака", "aiValue": 55, "imageRes": "creature_pixie"
+  },
+  {
+    "id": "sprite", "name": "Фея", "town": "Сопряжение", "level": 1, "isUpgraded": true,
+    "minDamage": 1, "maxDamage": 3, "attack": 2, "defense": 2, "health": 3, "speed": 9, "growth": 20, "goldCost": 30, "resourceCost": null,
+    "abilities": "Летает, Безответная атака", "aiValue": 95, "imageRes": "creature_sprite"
+  },
+  {
+    "id": "air_elemental", "name": "Воздушный элементаль", "town": "Сопряжение", "level": 2, "isUpgraded": false,
+    "minDamage": 4, "maxDamage": 8, "attack": 9, "defense": 9, "health": 25, "speed": 7, "growth": 6, "goldCost": 250, "resourceCost": null,
+    "abilities": "Элементаль, Иммунитет к Метеоритному дождю", "aiValue": 356, "imageRes": "creature_air_elemental"
+  },
+  {
+    "id": "storm_elemental", "name": "Элементаль шторма", "town": "Сопряжение", "level": 2, "isUpgraded": true,
+    "minDamage": 4, "maxDamage": 8, "attack": 9, "defense": 9, "health": 25, "speed": 8, "growth": 6, "goldCost": 275, "resourceCost": null,
+    "abilities": "Элементаль, Стрелок, Заклинания", "aiValue": 486, "imageRes": "creature_storm_elemental"
+  },
+  {
+    "id": "water_elemental", "name": "Водный элементаль", "town": "Сопряжение", "level": 3, "isUpgraded": false,
+    "minDamage": 6, "maxDamage": 10, "attack": 8, "defense": 10, "health": 30, "speed": 5, "growth": 6, "goldCost": 300, "resourceCost": null,
+    "abilities": "Элементаль, Иммунитет к Льдяной молнии", "aiValue": 315, "imageRes": "creature_water_elemental"
+  },
+  {
+    "id": "ice_elemental", "name": "Элементаль льда", "town": "Сопряжение", "level": 3, "isUpgraded": true,
+    "minDamage": 6, "maxDamage": 10, "attack": 8, "defense": 10, "health": 30, "speed": 6, "growth": 6, "goldCost": 375, "resourceCost": null,
+    "abilities": "Элементаль, Стрелок, Заклинания", "aiValue": 380, "imageRes": "creature_ice_elemental"
+  },
+  {
+    "id": "fire_elemental", "name": "Огненный элементаль", "town": "Сопряжение", "level": 4, "isUpgraded": false,
+    "minDamage": 4, "maxDamage": 6, "attack": 10, "defense": 8, "health": 35, "speed": 6, "growth": 5, "goldCost": 350, "resourceCost": null,
+    "abilities": "Элементаль, Иммунитет к огню", "aiValue": 345, "imageRes": "creature_fire_elemental"
+  },
+  {
+    "id": "energy_elemental", "name": "Элементаль энергии", "town": "Сопряжение", "level": 4, "isUpgraded": true,
+    "minDamage": 4, "maxDamage": 6, "attack": 12, "defense": 8, "health": 35, "speed": 8, "growth": 5, "goldCost": 400, "resourceCost": null,
+    "abilities": "Элементаль, Летает, Иммунитет к огню, Заклинания", "aiValue": 470, "imageRes": "creature_energy_elemental"
+  },
+  {
+    "id": "earth_elemental", "name": "Земляной элементаль", "town": "Сопряжение", "level": 5, "isUpgraded": false,
+    "minDamage": 4, "maxDamage": 8, "attack": 10, "defense": 10, "health": 40, "speed": 4, "growth": 4, "goldCost": 400, "resourceCost": null,
+    "abilities": "Элементаль, Иммунитет к молнии", "aiValue": 330, "imageRes": "creature_earth_elemental"
+  },
+  {
+    "id": "magma_elemental", "name": "Элементаль магмы", "town": "Сопряжение", "level": 5, "isUpgraded": true,
+    "minDamage": 6, "maxDamage": 10, "attack": 11, "defense": 11, "health": 40, "speed": 6, "growth": 4, "goldCost": 500, "resourceCost": null,
+    "abilities": "Элементаль, Иммунитет к молнии, Заклинания", "aiValue": 490, "imageRes": "creature_magma_elemental"
+  },
+  {
+    "id": "psychic_elemental", "name": "Психический элементаль", "town": "Сопряжение", "level": 6, "isUpgraded": false,
+    "minDamage": 10, "maxDamage": 20, "attack": 15, "defense": 13, "health": 75, "speed": 7, "growth": 2, "goldCost": 750, "resourceCost": null,
+    "abilities": "Элементаль, Безответная атака всех вокруг, Иммунитет к разуму", "aiValue": 1669, "imageRes": "creature_psychic_elemental"
+  },
+  {
+    "id": "magic_elemental", "name": "Элементаль магии", "town": "Сопряжение", "level": 6, "isUpgraded": true,
+    "minDamage": 15, "maxDamage": 25, "attack": 15, "defense": 13, "health": 80, "speed": 9, "growth": 2, "goldCost": 800, "resourceCost": null,
+    "abilities": "Элементаль, Безответная атака всех вокруг, Полный иммунитет к магии", "aiValue": 2012, "imageRes": "creature_magic_elemental"
+  },
+  {
+    "id": "firebird", "name": "Огненная птица", "town": "Сопряжение", "level": 7, "isUpgraded": false,
+    "minDamage": 30, "maxDamage": 40, "attack": 18, "defense": 18, "health": 150, "speed": 15, "growth": 1, "goldCost": 1500, "resourceCost": null,
+    "abilities": "Летает, Дыхание дракона, Иммунитет к огню", "aiValue": 4336, "imageRes": "creature_firebird"
+  },
+  {
+    "id": "phoenix", "name": "Феникс", "town": "Сопряжение", "level": 7, "isUpgraded": true,
+    "minDamage": 30, "maxDamage": 40, "attack": 21, "defense": 18, "health": 200, "speed": 21, "growth": 1, "goldCost": 2000, "resourceCost": "1 Ртуть",
+    "abilities": "Летает, Дыхание дракона, Иммунитет к огню, Возрождение", "aiValue": 6721, "imageRes": "creature_phoenix"
+  },
+  {
+    "id": "nymph", "name": "Нимфа", "town": "Причал", "level": 1, "isUpgraded": false,
+    "minDamage": 1, "maxDamage": 2, "attack": 5, "defense": 2, "health": 4, "speed": 6, "growth": 16, "goldCost": 35, "resourceCost": null,
+    "abilities": "Телепортация, Иммунитет к магии льда", "aiValue": 57, "imageRes": "creature_nymph"
+  },
+  {
+    "id": "oceanid", "name": "Океанида", "town": "Причал", "level": 1, "isUpgraded": true,
+    "minDamage": 1, "maxDamage": 3, "attack": 6, "defense": 2, "health": 4, "speed": 8, "growth": 16, "goldCost": 45, "resourceCost": null,
+    "abilities": "Телепортация, Иммунитет к льду", "aiValue": 75, "imageRes": "creature_oceanid"
+  },
+  {
+    "id": "crew_mate", "name": "Матрос", "town": "Причал", "level": 2, "isUpgraded": false,
+    "minDamage": 2, "maxDamage": 4, "attack": 7, "defense": 4, "health": 15, "speed": 5, "growth": 9, "goldCost": 110, "resourceCost": null,
+    "abilities": "-", "aiValue": 155, "imageRes": "creature_crew_mate"
+  },
+  {
+    "id": "seaman", "name": "Моряк", "town": "Причал", "level": 2, "isUpgraded": true,
+    "minDamage": 3, "maxDamage": 4, "attack": 8, "defense": 6, "health": 15, "speed": 6, "growth": 9, "goldCost": 140, "resourceCost": null,
+    "abilities": "-", "aiValue": 174, "imageRes": "creature_seaman"
+  },
+  {
+    "id": "pirate", "name": "Пират", "town": "Причал", "level": 3, "isUpgraded": false,
+    "minDamage": 3, "maxDamage": 7, "attack": 8, "defense": 6, "health": 15, "speed": 6, "growth": 7, "goldCost": 225, "resourceCost": null,
+    "abilities": "Стрелок, Нет штрафа в рукопашной", "aiValue": 312, "imageRes": "creature_pirate"
+  },
+  {
+    "id": "corsair", "name": "Корсар", "town": "Причал", "level": 3, "isUpgraded": true,
+    "minDamage": 3, "maxDamage": 7, "attack": 10, "defense": 8, "health": 15, "speed": 7, "growth": 7, "goldCost": 275, "resourceCost": null,
+    "abilities": "Стрелок, Нет штрафа в рукопашной", "aiValue": 407, "imageRes": "creature_corsair"
+  },
+  {
+    "id": "sea_dog", "name": "Морской волк", "town": "Причал", "level": 3, "isUpgraded": true,
+    "minDamage": 3, "maxDamage": 7, "attack": 12, "defense": 11, "health": 15, "speed": 8, "growth": 7, "goldCost": 375, "resourceCost": null,
+    "abilities": "Стрелок, Нет штрафа, Точный выстрел (убивает)", "aiValue": 602, "imageRes": "creature_sea_dog"
+  },
+  {
+    "id": "stormbird", "name": "Штормовая птица", "town": "Причал", "level": 4, "isUpgraded": false,
+    "minDamage": 6, "maxDamage": 9, "attack": 10, "defense": 8, "health": 30, "speed": 9, "growth": 4, "goldCost": 275, "resourceCost": null,
+    "abilities": "Летает", "aiValue": 502, "imageRes": "creature_stormbird"
+  },
+  {
+    "id": "ayssid", "name": "Ассид", "town": "Причал", "level": 4, "isUpgraded": true,
+    "minDamage": 6, "maxDamage": 10, "attack": 11, "defense": 8, "health": 30, "speed": 11, "growth": 4, "goldCost": 325, "resourceCost": null,
+    "abilities": "Летает, Двойной удар", "aiValue": 645, "imageRes": "creature_ayssid"
+  },
+  {
+    "id": "sea_witch", "name": "Морская жрица", "town": "Причал", "level": 5, "isUpgraded": false,
+    "minDamage": 10, "maxDamage": 14, "attack": 12, "defense": 7, "health": 35, "speed": 6, "growth": 3, "goldCost": 515, "resourceCost": null,
+    "abilities": "Стрелок, Накладывает Слабость/Разрушающий луч", "aiValue": 790, "imageRes": "creature_sea_witch"
+  },
+  {
+    "id": "sorceress", "name": "Заклинательница", "town": "Причал", "level": 5, "isUpgraded": true,
+    "minDamage": 10, "maxDamage": 16, "attack": 12, "defense": 9, "health": 35, "speed": 7, "growth": 3, "goldCost": 565, "resourceCost": null,
+    "abilities": "Стрелок, Накладывает Слабость/Разрушающий луч", "aiValue": 852, "imageRes": "creature_sorceress"
+  },
+  {
+    "id": "nix", "name": "Никс", "town": "Причал", "level": 6, "isUpgraded": false,
+    "minDamage": 18, "maxDamage": 22, "attack": 13, "defense": 16, "health": 80, "speed": 6, "growth": 2, "goldCost": 1000, "resourceCost": null,
+    "abilities": "Игнорирует 30% атаки врага", "aiValue": 1415, "imageRes": "creature_nix"
+  },
+  {
+    "id": "nix_warrior", "name": "Никс-воин", "town": "Причал", "level": 6, "isUpgraded": true,
+    "minDamage": 18, "maxDamage": 22, "attack": 14, "defense": 17, "health": 90, "speed": 7, "growth": 2, "goldCost": 1300, "resourceCost": null,
+    "abilities": "Игнорирует 60% атаки врага", "aiValue": 1742, "imageRes": "creature_nix_warrior"
+  },
+  {
+    "id": "sea_serpent", "name": "Морской змей", "town": "Причал", "level": 7, "isUpgraded": false,
+    "minDamage": 30, "maxDamage": 55, "attack": 22, "defense": 16, "health": 180, "speed": 9, "growth": 1, "goldCost": 2200, "resourceCost": "1 Сера",
+    "abilities": "Яд, Месть (отражение урона)", "aiValue": 3953, "imageRes": "creature_sea_serpent"
+  },
+  {
+    "id": "haspid", "name": "Аспид", "town": "Причал", "level": 7, "isUpgraded": true,
+    "minDamage": 30, "maxDamage": 55, "attack": 29, "defense": 20, "health": 300, "speed": 12, "growth": 1, "goldCost": 4000, "resourceCost": "2 Серы",
+    "abilities": "Яд, Месть", "aiValue": 7220, "imageRes": "creature_haspid"
+  },
+  {
+    "id": "halfling", "name": "Полурослик", "town": "Фабрика", "level": 1, "isUpgraded": false,
+    "minDamage": 1, "maxDamage": 3, "attack": 4, "defense": 2, "health": 4, "speed": 5, "growth": 15, "goldCost": 40, "resourceCost": null,
+    "abilities": "Стрелок, Удача всегда положительна", "aiValue": 65, "imageRes": "creature_halfling"
+  },
+  {
+    "id": "halfling_grenadier", "name": "Полурослик-гренадер", "town": "Фабрика", "level": 1, "isUpgraded": true,
+    "minDamage": 2, "maxDamage": 3, "attack": 5, "defense": 2, "health": 4, "speed": 6, "growth": 15, "goldCost": 65, "resourceCost": null,
+    "abilities": "Стрелок, Удача всегда положительна, Игнорирует 20 % защиты цели при стрельбе", "aiValue": 95, "imageRes": "creature_halfling_grenadier"
+  },
+  {
+    "id": "mechanic", "name": "Механик", "town": "Фабрика", "level": 2, "isUpgraded": false,
+    "minDamage": 2, "maxDamage": 4, "attack": 6, "defense": 5, "health": 14, "speed": 5, "growth": 9, "goldCost": 120, "resourceCost": null,
+    "abilities": "Чинит механизмы", "aiValue": 142, "imageRes": "creature_mechanic"
+  },
+  {
+    "id": "engineer", "name": "Инженер", "town": "Фабрика", "level": 2, "isUpgraded": true,
+    "minDamage": 2, "maxDamage": 4, "attack": 6, "defense": 5, "health": 14, "speed": 6, "growth": 9, "goldCost": 160, "resourceCost": null,
+    "abilities": "Чинит механизмы, Огненное дыхание", "aiValue": 224, "imageRes": "creature_engineer"
+  },
+  {
+    "id": "armadillo", "name": "Броненосец", "town": "Фабрика", "level": 3, "isUpgraded": false,
+    "minDamage": 3, "maxDamage": 5, "attack": 7, "defense": 10, "health": 25, "speed": 5, "growth": 6, "goldCost": 200, "resourceCost": null,
+    "abilities": "Механизм, Сворачивание (защита)", "aiValue": 298, "imageRes": "creature_armadillo"
+  },
+  {
+    "id": "bellwether_armadillo", "name": "Вожак броненосцев", "town": "Фабрика", "level": 3, "isUpgraded": true,
+    "minDamage": 3, "maxDamage": 5, "attack": 7, "defense": 11, "health": 25, "speed": 7, "growth": 6, "goldCost": 240, "resourceCost": null,
+    "abilities": "Механизм, Сворачивание", "aiValue": 328, "imageRes": "creature_bellwether_armadillo"
+  },
+  {
+    "id": "automaton", "name": "Автоматон", "town": "Фабрика", "level": 4, "isUpgraded": false,
+    "minDamage": 7, "maxDamage": 7, "attack": 9, "defense": 9, "health": 30, "speed": 6, "growth": 5, "goldCost": 300, "resourceCost": null,
+    "abilities": "Механизм, Безответная атака", "aiValue": 458, "imageRes": "creature_automaton"
+  },
+  {
+    "id": "sentinel_automaton", "name": "Автоматон-страж", "town": "Фабрика", "level": 4, "isUpgraded": true,
+    "minDamage": 7, "maxDamage": 7, "attack": 9, "defense": 9, "health": 30, "speed": 9, "growth": 5, "goldCost": 370, "resourceCost": null,
+    "abilities": "Механизм, Безответная атака, Взрывается", "aiValue": 559, "imageRes": "creature_sentinel_automaton"
+  },
+  {
+    "id": "sandworm", "name": "Песчаный червь", "town": "Фабрика", "level": 5, "isUpgraded": false,
+    "minDamage": 10, "maxDamage": 14, "attack": 13, "defense": 11, "health": 50, "speed": 7, "growth": 3, "goldCost": 550, "resourceCost": null,
+    "abilities": "Перемещается под землей", "aiValue": 774, "imageRes": "creature_sandworm"
+  },
+  {
+    "id": "olgoi_khorkhoi", "name": "Олгой-хорхой", "town": "Фабрика", "level": 5, "isUpgraded": true,
+    "minDamage": 11, "maxDamage": 15, "attack": 14, "defense": 12, "health": 60, "speed": 9, "growth": 3, "goldCost": 700, "resourceCost": null,
+    "abilities": "Перемещается под землей, Пожирает трупы", "aiValue": 1024, "imageRes": "creature_olgoi_khorkhoi"
+  },
+  {
+    "id": "gunslinger", "name": "Стрелок", "town": "Фабрика", "level": 6, "isUpgraded": false,
+    "minDamage": 14, "maxDamage": 24, "attack": 17, "defense": 12, "health": 45, "speed": 7, "growth": 2, "goldCost": 800, "resourceCost": null,
+    "abilities": "Стрелок, Упреждающий выстрел", "aiValue": 1386, "imageRes": "creature_gunslinger"
+  },
+  {
+    "id": "bounty_hunter", "name": "Охотник за головами", "town": "Фабрика", "level": 6, "isUpgraded": true,
+    "minDamage": 14, "maxDamage": 24, "attack": 18, "defense": 14, "health": 45, "speed": 8, "growth": 2, "goldCost": 1100, "resourceCost": null,
+    "abilities": "Стрелок, Упреждающий выстрел, Нет штрафа", "aiValue": 1581, "imageRes": "creature_bounty_hunter"
+  },
+  {
+    "id": "couatl", "name": "Коатль", "town": "Фабрика", "level": 7, "isUpgraded": false,
+    "minDamage": 25, "maxDamage": 45, "attack": 17, "defense": 17, "health": 160, "speed": 11, "growth": 1, "goldCost": 2000, "resourceCost": "1 Кристалл",
+    "abilities": "Полёт, Неуязвимость (1 ход)", "aiValue": 3500, "imageRes": "creature_couatl"
+  },
+  {
+    "id": "crimson_couatl", "name": "Багровый коатль", "town": "Фабрика", "level": 7, "isUpgraded": true,
+    "minDamage": 30, "maxDamage": 55, "attack": 23, "defense": 23, "health": 220, "speed": 16, "growth": 1, "goldCost": 3500, "resourceCost": "2 Кристалла",
+    "abilities": "Полёт, Неуязвимость", "aiValue": 6100, "imageRes": "creature_crimson_couatl"
+  },
+  {
+    "id": "dreadnought", "name": "Дредноут", "town": "Фабрика", "level": 7, "isUpgraded": false,
+    "minDamage": 40, "maxDamage": 50, "attack": 22, "defense": 22, "health": 200, "speed": 6, "growth": 1, "goldCost": 3000, "resourceCost": "1 Сера",
+    "abilities": "Механизм, Тепловой луч", "aiValue": 4500, "imageRes": "creature_dreadnought"
+  },
+  {
+    "id": "juggernaut", "name": "Джаггернаут", "town": "Фабрика", "level": 7, "isUpgraded": true,
+    "minDamage": 40, "maxDamage": 50, "attack": 27, "defense": 27, "health": 300, "speed": 7, "growth": 1, "goldCost": 5000, "resourceCost": "2 Серы",
+    "abilities": "Механизм, Тепловой луч", "aiValue": 8000, "imageRes": "creature_juggernaut"
+  },
+  {
+    "id": "peasant", "name": "Крестьянин", "town": "Нейтралы", "level": 1, "isUpgraded": false,
+    "minDamage": 1, "maxDamage": 1, "attack": 1, "defense": 1, "health": 1, "speed": 3, "growth": 25, "goldCost": 10, "resourceCost": null,
+    "abilities": "Налог (+1 золото/день)", "aiValue": 15, "imageRes": "creature_peasant"
+  },
+  {
+    "id": "boar", "name": "Кабан", "town": "Нейтралы", "level": 2, "isUpgraded": false,
+    "minDamage": 2, "maxDamage": 3, "attack": 6, "defense": 5, "health": 15, "speed": 6, "growth": 8, "goldCost": 150, "resourceCost": null,
+    "abilities": "-", "aiValue": 145, "imageRes": "creature_boar"
+  },
+  {
+    "id": "mummy", "name": "Мумия", "town": "Нейтралы", "level": 3, "isUpgraded": false,
+    "minDamage": 3, "maxDamage": 5, "attack": 7, "defense": 7, "health": 30, "speed": 5, "growth": 7, "goldCost": 300, "resourceCost": null,
+    "abilities": "Нежить, Проклятие", "aiValue": 270, "imageRes": "creature_mummy"
+  },
+  {
+    "id": "nomad", "name": "Кочевник", "town": "Нейтралы", "level": 2, "isUpgraded": false,
+    "minDamage": 2, "maxDamage": 6, "attack": 9, "defense": 8, "health": 30, "speed": 7, "growth": 7, "goldCost": 200, "resourceCost": null,
+    "abilities": "Песчаный камуфляж", "aiValue": 345, "imageRes": "creature_nomad"
+  },
+  {
+    "id": "rogue", "name": "Вор", "town": "Нейтралы", "level": 2, "isUpgraded": false,
+    "minDamage": 2, "maxDamage": 4, "attack": 8, "defense": 3, "health": 10, "speed": 6, "growth": 8, "goldCost": 100, "resourceCost": null,
+    "abilities": "Шпионаж", "aiValue": 135, "imageRes": "creature_rogue"
+  },
+  {
+    "id": "sharpshooter", "name": "Снайпер", "town": "Нейтралы", "level": 4, "isUpgraded": false,
+    "minDamage": 8, "maxDamage": 10, "attack": 12, "defense": 10, "health": 15, "speed": 9, "growth": 4, "goldCost": 400, "resourceCost": null,
+    "abilities": "Стрелок, Нет штрафа на расстояние", "aiValue": 585, "imageRes": "creature_sharpshooter"
+  },
+  {
+    "id": "troll", "name": "Тролль", "town": "Нейтралы", "level": 5, "isUpgraded": false,
+    "minDamage": 10, "maxDamage": 15, "attack": 14, "defense": 7, "health": 40, "speed": 7, "growth": 3, "goldCost": 500, "resourceCost": null,
+    "abilities": "Регенерация", "aiValue": 1024, "imageRes": "creature_troll"
+  },
+  {
+    "id": "gold_golem", "name": "Золотой голем", "town": "Нейтралы", "level": 5, "isUpgraded": false,
+    "minDamage": 8, "maxDamage": 10, "attack": 11, "defense": 12, "health": 50, "speed": 5, "growth": 3, "goldCost": 500, "resourceCost": null,
+    "abilities": "Механизм, -85% урона магии", "aiValue": 600, "imageRes": "creature_gold_golem"
+  },
+  {
+    "id": "diamond_golem", "name": "Алмазный голем", "town": "Нейтралы", "level": 6, "isUpgraded": false,
+    "minDamage": 10, "maxDamage": 14, "attack": 13, "defense": 12, "health": 60, "speed": 5, "growth": 2, "goldCost": 750, "resourceCost": null,
+    "abilities": "Механизм, -95% урона магии", "aiValue": 775, "imageRes": "creature_diamond_golem"
+  },
+  {
+    "id": "enchanter", "name": "Чародей", "town": "Нейтралы", "level": 6, "isUpgraded": false,
+    "minDamage": 14, "maxDamage": 14, "attack": 17, "defense": 12, "health": 30, "speed": 9, "growth": 2, "goldCost": 750, "resourceCost": null,
+    "abilities": "Стрелок, Заклинания", "aiValue": 1210, "imageRes": "creature_enchanter"
+  },
+  {
+    "id": "steel_golem", "name": "Стальной голем", "town": "Нейтралы", "level": 4, "isUpgraded": false,
+    "minDamage": 6, "maxDamage": 8, "attack": 10, "defense": 11, "health": 45, "speed": 6, "growth": 4, "goldCost": 400, "resourceCost": null,
+    "abilities": "Механизм, -80% урона от магии, Безответная атака", "aiValue": 597, "imageRes": "creature_steel_golem"
+  },
+  {
+    "id": "fangarm", "name": "Фангарм", "town": "Нейтралы", "level": 5, "isUpgraded": false,
+    "minDamage": 8, "maxDamage": 12, "attack": 12, "defense": 12, "health": 50, "speed": 6, "growth": 3, "goldCost": 600, "resourceCost": null,
+    "abilities": "Летает, Безответная атака, Гипноз", "aiValue": 929, "imageRes": "creature_fangarm"
+  },
+  {
+    "id": "leprechaun", "name": "Лепрекон", "town": "Нейтралы", "level": 2, "isUpgraded": false,
+    "minDamage": 1, "maxDamage": 2, "attack": 8, "defense": 5, "health": 15, "speed": 5, "growth": 9, "goldCost": 100, "resourceCost": null,
+    "abilities": "Колдует Удачу", "aiValue": 208, "imageRes": "creature_leprechaun"
+  },
+  {
+    "id": "satyr", "name": "Сатир", "town": "Нейтралы", "level": 4, "isUpgraded": false,
+    "minDamage": 6, "maxDamage": 10, "attack": 10, "defense": 11, "health": 35, "speed": 7, "growth": 4, "goldCost": 300, "resourceCost": null,
+    "abilities": "Колдует Радость", "aiValue": 518, "imageRes": "creature_satyr"
+  },
+  {
+    "id": "faerie_dragon", "name": "Сказочный дракон", "town": "Нейтралы", "level": 7, "isUpgraded": false,
+    "minDamage": 20, "maxDamage": 30, "attack": 20, "defense": 20, "health": 500, "speed": 15, "growth": 1, "goldCost": 10000, "resourceCost": "8 Самоцветов",
+    "abilities": "Летает, Случайная магия", "aiValue": 19580, "imageRes": "creature_faerie_dragon"
+  },
+  {
+    "id": "rust_dragon", "name": "Ржавый дракон", "town": "Нейтралы", "level": 7, "isUpgraded": false,
+    "minDamage": 50, "maxDamage": 50, "attack": 30, "defense": 30, "health": 750, "speed": 17, "growth": 1, "goldCost": 15000, "resourceCost": "14 Серы",
+    "abilities": "Летает, Кислотное дыхание", "aiValue": 26433, "imageRes": "creature_rust_dragon"
+  },
+  {
+    "id": "crystal_dragon", "name": "Кристальный дракон", "town": "Нейтралы", "level": 7, "isUpgraded": false,
+    "minDamage": 60, "maxDamage": 75, "attack": 40, "defense": 40, "health": 800, "speed": 16, "growth": 1, "goldCost": 20000, "resourceCost": "10 Кристаллов",
+    "abilities": "Генерация кристаллов", "aiValue": 39338, "imageRes": "creature_crystal_dragon"
+  },
+  {
+    "id": "azure_dragon", "name": "Лазурный дракон", "town": "Нейтралы", "level": 10, "isUpgraded": false,
+    "minDamage": 70, "maxDamage": 80, "attack": 50, "defense": 50, "health": 1000, "speed": 19, "growth": 1, "goldCost": 30000, "resourceCost": "20 Ртути",
+    "abilities": "Летает, Страх, Дыхание дракона", "aiValue": 78845, "imageRes": "creature_azure_dragon"
+  },
+  {
+    "id": "ballista", "name": "Баллиста", "town": "Боевые машины", "level": 1, "isUpgraded": false,
+    "minDamage": 2, "maxDamage": 3, "attack": 10, "defense": 10, "health": 250, "speed": 0, "growth": 0, "goldCost": 2500, "resourceCost": null,
+    "abilities": "Стреляет", "aiValue": 0, "imageRes": "creature_ballista"
+  },
+  {
+    "id": "catapult", "name": "Катапульта", "town": "Боевые машины", "level": 1, "isUpgraded": false,
+    "minDamage": 10, "maxDamage": 50, "attack": 10, "defense": 10, "health": 1000, "speed": 0, "growth": 0, "goldCost": 0, "resourceCost": null,
+    "abilities": "Разрушает стены", "aiValue": 0, "imageRes": "creature_catapult"
+  },
+  {
+    "id": "first_aid_tent", "name": "Палатка первой помощи", "town": "Боевые машины", "level": 1, "isUpgraded": false,
+    "minDamage": 0, "maxDamage": 0, "attack": 0, "defense": 0, "health": 75, "speed": 0, "growth": 0, "goldCost": 750, "resourceCost": null,
+    "abilities": "Лечит войска", "aiValue": 0, "imageRes": "creature_first_aid_tent"
+  },
+  {
+    "id": "ammo_cart", "name": "Тележка с боеприпасами", "town": "Боевые машины", "level": 1, "isUpgraded": false,
+    "minDamage": 0, "maxDamage": 0, "attack": 0, "defense": 0, "health": 100, "speed": 0, "growth": 0, "goldCost": 1000, "resourceCost": null,
+    "abilities": "Бесконечные стрелы", "aiValue": 0, "imageRes": "creature_ammo_cart"
+  },
+  {
+    "id": "cannon", "name": "Пушка", "town": "Боевые машины", "level": 1, "isUpgraded": false,
+    "minDamage": 4, "maxDamage": 7, "attack": 20, "defense": 10, "health": 250, "speed": 0, "growth": 0, "goldCost": 4000, "resourceCost": null,
+    "abilities": "Стреляет, Атакует стены", "aiValue": 0, "imageRes": "creature_cannon"
+  }
+]
