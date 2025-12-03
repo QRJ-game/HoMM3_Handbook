@@ -20,6 +20,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.homm3reference.data.Creature
 import com.example.homm3reference.ui.common.*
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
+import androidx.compose.runtime.remember
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.border
+import androidx.compose.ui.draw.clip
+import androidx.compose.foundation.Image
 
 @Composable
 fun CreatureListScreen(
@@ -81,7 +88,7 @@ fun CreatureListScreen(
                         }
 
                         if (level != levels.last()) {
-                            HorizontalDivider(color = Color.Gray, thickness = 1.dp, modifier = Modifier.padding(vertical = 8.dp))
+                            HorizontalDivider(color = Color.White, thickness = 1.dp, modifier = Modifier.padding(vertical = 2.dp))
                         }
                     }
                 }
@@ -92,23 +99,50 @@ fun CreatureListScreen(
 
 @Composable
 fun CreatureCard(creature: Creature, onClick: (Creature) -> Unit) {
+    val context = LocalContext.current
+    val resId = remember(creature.imageRes) {
+        context.resources.getIdentifier(creature.imageRes, "drawable", context.packageName)
+    }
     Card(
-        modifier = Modifier.fillMaxWidth().height(200.dp).clickable { onClick(creature) },
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(170.dp)
+            .clickable { onClick(creature) },
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
     ) {
         Column(
-            modifier = Modifier.fillMaxSize().padding(8.dp),
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(8.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            HeroImage(
-                imageName = creature.imageRes,
-                width = 100.dp,
-                height = 130.dp,
-                contentScale = ContentScale.Fit
-            )
-            Spacer(modifier = Modifier.height(8.dp))
+
+            Box(
+                modifier = Modifier
+                    .width(100.dp)
+                    .height(130.dp)
+                    .clip(RoundedCornerShape(8.dp)) // Скругляем углы рамки
+                    //.background(Color.Gray) // Фон, если картинка прозрачная или отсутствует
+                    .border(2.dp, Color(0xFFD4AF37), RoundedCornerShape(8.dp)), // Золотая рамка
+                contentAlignment = Alignment.BottomCenter // Выравниваем по низу, чтобы offset поднимал вверх
+            ) {
+                if (resId != 0) {
+                    Image(
+                        painter = painterResource(id = resId),
+                        contentDescription = null,
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .offset(y = (-10).dp), // <--- СМЕЩЕНИЕ КАРТИНКИ ВВЕРХ НА 15dp
+                        contentScale = ContentScale.Fit
+                    )
+                }
+            }
+
+
+
+            Spacer(modifier = Modifier.height(4.dp))
             Text(
                 text = creature.name,
                 fontSize = 14.sp,
@@ -120,6 +154,7 @@ fun CreatureCard(creature: Creature, onClick: (Creature) -> Unit) {
         }
     }
 }
+
 
 @Composable
 fun CreatureDetailScreen(creature: Creature, onBack: () -> Unit) {
@@ -147,7 +182,7 @@ fun CreatureDetailScreen(creature: Creature, onBack: () -> Unit) {
                 }
             }
 
-            HorizontalDivider(modifier = Modifier.padding(vertical = 16.dp), color = Color.Gray)
+            HorizontalDivider(modifier = Modifier.padding(vertical = 16.dp), color = Color.White)
 
             val damageString = if (creature.minDamage == creature.maxDamage) {
                 "${creature.minDamage}"
@@ -162,8 +197,7 @@ fun CreatureDetailScreen(creature: Creature, onBack: () -> Unit) {
                 StatItem("Здоровье", "❤️", creature.health.toString())
                 StatItem("Скорость", "🦶", creature.speed.toString())
             }
-
-            Spacer(modifier = Modifier.height(16.dp))
+            HorizontalDivider(modifier = Modifier.padding(vertical = 16.dp), color = Color.White)
             InfoRow("Цена", "${creature.goldCost} золота" + (if (creature.resourceCost != null) " + ${creature.resourceCost}" else ""))
             InfoRow("Прирост", "${creature.growth}")
             InfoRow("AI Value", "${creature.aiValue}")

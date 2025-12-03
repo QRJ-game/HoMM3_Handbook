@@ -6,7 +6,6 @@ import com.example.homm3reference.data.CreatureDao
 import com.example.homm3reference.data.Hero
 import com.example.homm3reference.data.HeroDao
 import com.example.homm3reference.data.SecondarySkill
-import com.example.homm3reference.data.SecondarySkillsRepo
 import com.example.homm3reference.ui.common.TownSelectionScreen
 import com.example.homm3reference.ui.creatures.CreatureDetailScreen
 import com.example.homm3reference.ui.creatures.CreatureListScreen
@@ -176,7 +175,7 @@ fun AppRoot(
         Screen.SkillsList -> {
             BackHandler { currentScreen = Screen.MainMenu }
             SecondarySkillsListScreen(
-                skills = SecondarySkillsRepo.skills,
+                skills = com.example.homm3reference.data.GameData.secondarySkills,
                 onBack = { currentScreen = Screen.MainMenu },
                 onSkillSelected = { skill ->
                     selectedSkill = skill

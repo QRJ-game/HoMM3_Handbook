@@ -1,6 +1,8 @@
 package com.example.homm3reference.data
 
-object ArmyMapper {
+import kotlin.text.get
+
+object JSON_Mapper {
     fun parseArmy(armyString: String): List<Pair<String, String>> {
         val result = mutableListOf<Pair<String, String>>()
         if (armyString.isBlank()) return result
@@ -119,5 +121,51 @@ object ArmyMapper {
         "баллиста" to "creature_ballista",
         "палатка" to "creature_first_aid_tent",
         "пушка" to "creature_cannon",
+    )
+
+    fun getSkillIcons(skillsString: String): List<String> {
+        return skillsString.split(",") // Разделяем по запятой
+            .map { it.trim() } // Убираем пробелы
+            .map { rawName ->
+                // Убираем уровни навыков в скобках, например "Мудрость(продвинутый)" -> "Мудрость"
+                rawName.substringBefore("(").trim()
+            }
+            .mapNotNull { skillName ->
+                skillImageMap[skillName] // Ищем в карте
+            }
+    }
+    private val skillImageMap = mapOf(
+        "Артиллерия" to "secondary_artillery",
+        "Баллистика" to "secondary_ballistics",
+        "Волшебство" to "secondary_sorcery",
+        "Грамотность" to "secondary_scholar",
+        "Дипломатия" to "secondary_diplomacy",
+        "Доспехи" to "secondary_armorer",
+        "Интеллект" to "secondary_intelligence",
+        "Лидерство" to "secondary_leadership",
+        "Логистика" to "secondary_logistics",
+        "Магия Воды" to "secondary_water_magic",
+        "Магия Воздуха" to "secondary_air_magic",
+        "Магия Земли" to "secondary_earth_magic",
+        "Магия Огня" to "secondary_fire_magic",
+        "Мистицизм" to "secondary_mysticism",
+        "Мудрость" to "secondary_wisdom",
+        "Навигация" to "secondary_navigation",
+        "Нападение" to "secondary_offense",
+        "Некромантия" to "secondary_necromancy",
+        "Обучаемость" to "secondary_learning",
+        "Обучение" to "secondary_learning",
+        "Орлиный глаз" to "secondary_eagle_eye",
+        "Первая помощь" to "secondary_first_aid",
+        "Поиск пути" to "secondary_pathfinding",
+        "Поиск Пути" to "secondary_pathfinding",
+        "Поместья" to "secondary_estates",
+        "Поместье" to "secondary_estates",
+        "Помехи" to "secondary_interference",
+        "Разведка" to "secondary_scouting",
+        "Сопротивление" to "secondary_resistance",
+        "Стрельба" to "secondary_archery",
+        "Тактика" to "secondary_tactics",
+        "Удача" to "secondary_luck"
     )
 }

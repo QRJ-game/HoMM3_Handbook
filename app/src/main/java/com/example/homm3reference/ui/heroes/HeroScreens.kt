@@ -22,8 +22,9 @@ import androidx.compose.ui.unit.sp
 import androidx.core.graphics.toColorInt // <-- Импорт для KTX Color
 import com.example.homm3reference.data.Creature
 import com.example.homm3reference.data.Hero
-import com.example.homm3reference.data.HeroBaseStats
 import com.example.homm3reference.ui.common.*
+import com.example.homm3reference.data.JSON_Mapper
+
 
 @Composable
 fun ClassSelectionScreen(
@@ -116,11 +117,11 @@ fun HeroListScreen(
                     HeroCard(hero, onHeroSelected)
                 }
                 if (groupedHeroes.first.isNotEmpty() && groupedHeroes.second.isNotEmpty()) {
-                    item { HorizontalDivider(color = Color.Gray, thickness = 1.dp, modifier = Modifier.padding(vertical = 8.dp)) }
+                    item { HorizontalDivider(color = Color.White, thickness = 1.dp, modifier = Modifier.padding(vertical = 8.dp)) }
                 }
                 groupedHeroes.second.entries.forEachIndexed { index, entry ->
                     if (index > 0) {
-                        item { HorizontalDivider(color = Color.Gray, thickness = 1.dp, modifier = Modifier.padding(vertical = 8.dp)) }
+                        item { HorizontalDivider(color = Color.White, thickness = 1.dp, modifier = Modifier.padding(vertical = 8.dp)) }
                     }
                     items(entry.value) { hero ->
                         HeroCard(hero, onHeroSelected)
@@ -133,7 +134,6 @@ fun HeroListScreen(
 
 @Composable
 fun HeroCard(hero: Hero, onHeroSelected: (Hero) -> Unit) {
-    // ИСПРАВЛЕНО: использование toColorInt() и переименование 'e' в '_'
     val cardColor = if (!hero.backgroundColor.isNullOrEmpty()) {
         try {
             Color(hero.backgroundColor.toColorInt())
@@ -150,7 +150,7 @@ fun HeroCard(hero: Hero, onHeroSelected: (Hero) -> Unit) {
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
     ) {
         Row(modifier = Modifier.padding(12.dp), verticalAlignment = Alignment.CenterVertically) {
-            HeroImage(imageName = hero.imageRes, width = 64.dp, height = 64.dp)
+            HeroImage(imageName = hero.imageRes, width = 58.dp, height = 64.dp)
             Spacer(modifier = Modifier.width(16.dp))
             Text(text = hero.name, fontSize = 18.sp, fontWeight = FontWeight.Bold, color = Color.White)
         }
@@ -159,7 +159,7 @@ fun HeroCard(hero: Hero, onHeroSelected: (Hero) -> Unit) {
 
 @Composable
 fun HeroDetailScreen(hero: Hero, creatures: List<Creature>, onBack: () -> Unit) {
-    val stats = remember(hero.heroClass) { HeroBaseStats.getStats(hero.heroClass) }
+    val stats = remember(hero.heroClass) { com.example.homm3reference.data.GameData.getStatsForClass(hero.heroClass) }
     var selectedCreature by remember { mutableStateOf<Creature?>(null) }
 
     AppBackground {
@@ -177,23 +177,24 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>, onBack: () -> Unit) 
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     HeroImage(
                         imageName = hero.imageRes,
-                        width = 100.dp,
-                        height = 100.dp,
-                        borderWidth = 3.dp
+                        width = 116.dp,
+                        height = 128.dp,
+                        borderWidth = 2.dp
                     )
                     Spacer(modifier = Modifier.width(16.dp))
                     Column {
                         OutlinedText(
                             text = hero.name,
                             fontSize = 32.sp,
-                            strokeWidth = 6f
+                            strokeWidth = 6f,
+                            textColor =  Color(0xFFD4AF37)
                         )
                         Text(text = hero.town, fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color.White)
-                        Text(text = hero.heroClass, fontSize = 18.sp, fontWeight = FontWeight.Medium, color = Color.White.copy(alpha = 0.8f))
+                        Text(text = hero.heroClass, fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color.White.copy(alpha = 0.9f))
                     }
                 }
 
-                HorizontalDivider(modifier = Modifier.padding(vertical = 16.dp), color = Color.Gray)
+                HorizontalDivider(modifier = Modifier.padding(vertical = 10.dp), color = Color.White)
 
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
                     StatItem("Атака", "⚔️", stats.attack.toString())
@@ -202,33 +203,33 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>, onBack: () -> Unit) 
                     StatItem("Знания", "📖", stats.knowledge.toString())
                 }
 
-                HorizontalDivider(modifier = Modifier.padding(vertical = 16.dp), color = Color.Gray)
+                HorizontalDivider(color = Color.White)
 
                 InfoRow("Специализация", hero.specialty)
                 // Внутри HeroDetailScreen, вместо старого InfoRow("Навыки"...)
 
-                Text("Навыки:", color = Color.Gray, fontSize = 16.sp)
-                Row(modifier = Modifier.padding(vertical = 4.dp)) {
-                    val icons = remember(hero.skills) { getSkillIcons(hero.skills) }
+                Text("Навыки", color = Color(0xFFD4AF37), fontSize = 16.sp, fontWeight = FontWeight.Bold,)
+                Row(modifier = Modifier.padding(vertical = 6.dp)) {
+                    val icons = remember(hero.skills) { JSON_Mapper.getSkillIcons(hero.skills) }
 
                     // Если удалось найти иконки
                     if (icons.isNotEmpty()) {
                         icons.forEach { iconName ->
                             HeroImage(
                                 imageName = iconName,
-                                width = 40.dp,
-                                height = 40.dp,
-                                modifier = Modifier.padding(end = 8.dp)
+                                width = 82.dp,
+                                height = 93.dp,
+                                modifier = Modifier.padding(end = 6.dp)
                             )
                         }
                     }
                     // Выводим текст навыков рядом или под иконками (по желанию, здесь оставим текст)
                 }
-                Text(text = hero.skills, color = Color.White, fontSize = 18.sp, modifier = Modifier.padding(bottom = 8.dp))
+                Text(text = hero.skills, color = Color.White, fontSize = 16.sp, modifier = Modifier.padding(bottom = 10.dp),fontWeight = FontWeight.Medium)
                 InfoRow("Заклинание", hero.spell ?: "Нет")
 
-                Spacer(modifier = Modifier.height(16.dp))
-                Text("Стартовая армия:", color = Color(0xFFD4AF37), fontWeight = FontWeight.Black, fontSize = 18.sp)
+                Spacer(modifier = Modifier.height(10.dp))
+                Text("Стартовая армия", color = Color(0xFFD4AF37), fontWeight = FontWeight.Black, fontSize = 16.sp)
 
                 ArmyVisuals(armyString = hero.army, onCreatureClick = { clickedImageRes ->
                     selectedCreature = creatures.find { it.imageRes == clickedImageRes }
@@ -308,50 +309,50 @@ fun CreaturePopup(creature: Creature, onDismiss: () -> Unit) {
 // --- Вставьте это в самый низ файла HeroScreens.kt ---
 
 // Вспомогательная карта соответствия названий и ресурсов
-private val skillImageMap = mapOf(
-    "Артиллерия" to "secondary_artillery",
-    "Баллистика" to "secondary_ballistics",
-    "Волшебство" to "secondary_sorcery",
-    "Грамотность" to "secondary_scholar",
-    "Дипломатия" to "secondary_diplomacy",
-    "Доспехи" to "secondary_armorer",
-    "Интеллект" to "secondary_intelligence",
-    "Лидерство" to "secondary_leadership",
-    "Логистика" to "secondary_logistics",
-    "Магия Воды" to "secondary_water_magic",
-    "Магия Воздуха" to "secondary_air_magic",
-    "Магия Земли" to "secondary_earth_magic",
-    "Магия Огня" to "secondary_fire_magic",
-    "Мистицизм" to "secondary_mysticism",
-    "Мудрость" to "secondary_wisdom",
-    "Навигация" to "secondary_navigation",
-    "Нападение" to "secondary_offense",
-    "Некромантия" to "secondary_necromancy",
-    "Обучаемость" to "secondary_learning",
-    "Обучение" to "secondary_learning",
-    "Орлиный глаз" to "secondary_eagle_eye",
-    "Первая помощь" to "secondary_first_aid",
-    "Поиск пути" to "secondary_pathfinding",
-    "Поиск Пути" to "secondary_pathfinding",
-    "Поместья" to "secondary_estates",
-    "Поместье" to "secondary_estates",
-    "Помехи" to "secondary_interference",
-    "Разведка" to "secondary_scouting",
-    "Сопротивление" to "secondary_resistance",
-    "Стрельба" to "secondary_archery",
-    "Тактика" to "secondary_tactics",
-    "Удача" to "secondary_luck"
-)
+//private val skillImageMap = mapOf(
+//    "Артиллерия" to "secondary_artillery",
+//    "Баллистика" to "secondary_ballistics",
+//    "Волшебство" to "secondary_sorcery",
+//    "Грамотность" to "secondary_scholar",
+//    "Дипломатия" to "secondary_diplomacy",
+//    "Доспехи" to "secondary_armorer",
+//    "Интеллект" to "secondary_intelligence",
+//    "Лидерство" to "secondary_leadership",
+//    "Логистика" to "secondary_logistics",
+//    "Магия Воды" to "secondary_water_magic",
+//    "Магия Воздуха" to "secondary_air_magic",
+//    "Магия Земли" to "secondary_earth_magic",
+//    "Магия Огня" to "secondary_fire_magic",
+//    "Мистицизм" to "secondary_mysticism",
+//    "Мудрость" to "secondary_wisdom",
+//    "Навигация" to "secondary_navigation",
+//    "Нападение" to "secondary_offense",
+//    "Некромантия" to "secondary_necromancy",
+//    "Обучаемость" to "secondary_learning",
+//    "Обучение" to "secondary_learning",
+//    "Орлиный глаз" to "secondary_eagle_eye",
+//    "Первая помощь" to "secondary_first_aid",
+//    "Поиск пути" to "secondary_pathfinding",
+//    "Поиск Пути" to "secondary_pathfinding",
+//    "Поместья" to "secondary_estates",
+//    "Поместье" to "secondary_estates",
+//    "Помехи" to "secondary_interference",
+//    "Разведка" to "secondary_scouting",
+//    "Сопротивление" to "secondary_resistance",
+//    "Стрельба" to "secondary_archery",
+//    "Тактика" to "secondary_tactics",
+//    "Удача" to "secondary_luck"
+//)
 
 // Функция парсинга
-fun getSkillIcons(skillsString: String): List<String> {
-    return skillsString.split(",") // Разделяем по запятой
-        .map { it.trim() } // Убираем пробелы
-        .map { rawName ->
-            // Убираем уровни навыков в скобках, например "Мудрость(продвинутый)" -> "Мудрость"
-            rawName.substringBefore("(").trim()
-        }
-        .mapNotNull { skillName ->
-            skillImageMap[skillName] // Ищем в карте
-        }
-}
+//fun getSkillIcons(skillsString: String): List<String> {
+//    return skillsString.split(",") // Разделяем по запятой
+//        .map { it.trim() } // Убираем пробелы
+//        .map { rawName ->
+//            // Убираем уровни навыков в скобках, например "Мудрость(продвинутый)" -> "Мудрость"
+//            rawName.substringBefore("(").trim()
+//        }
+//        .mapNotNull { skillName ->
+//            skillImageMap[skillName] // Ищем в карте
+//        }
+//}

@@ -29,7 +29,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.homm3reference.data.ArmyMapper
+import com.example.homm3reference.data.JSON_Mapper
 
 /**
  * Общий компонент фона приложения.
@@ -162,10 +162,10 @@ fun TownCard(townName: String, onClick: () -> Unit) {
 fun HeroImage(
     imageName: String,
     modifier: Modifier = Modifier, // <--- Добавили этот параметр
-    width: Dp = 64.dp,
+    width: Dp = 58.dp,
     height: Dp = 64.dp,
     contentScale: ContentScale = ContentScale.Crop,
-    borderWidth: Dp = 1.dp,
+    borderWidth: Dp = 2.dp,
     borderColor: Color = Color(0xFFD4AF37)
 ) {
     val context = LocalContext.current
@@ -209,9 +209,9 @@ fun StatItem(label: String, icon: String, value: String) {
         )
         Text(
             text = label,
-            fontSize = 14.sp,
+            fontSize = 16.sp,
             fontWeight = FontWeight.Bold,
-            color = Color.White.copy(alpha = 0.8f)
+            color = Color.White.copy(alpha = 0.9f)
         )
     }
 }
@@ -236,13 +236,16 @@ fun InfoRow(label: String, value: String) {
 
 @Composable
 fun ArmyVisuals(armyString: String, onCreatureClick: (String) -> Unit) {
-    val armyList = remember(armyString) { ArmyMapper.parseArmy(armyString) }
+    val armyList = remember(armyString) { JSON_Mapper.parseArmy(armyString) }
 
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 8.dp),
-        horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally),
+            // Добавляем отступ по краям (например, 8.dp или 16.dp),
+            // чтобы крайние слоты не "прилипали" вплотную к рамкам экрана
+            .padding(vertical = 6.dp),
+        // SpaceBetween "расталкивает" элементы: первый в начало, последний в конец
+        horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
         armyList.forEach { (imageRes, count) ->
@@ -262,35 +265,41 @@ fun ArmySlot(imageRes: String, count: String, onClick: () -> Unit) {
         context.resources.getIdentifier(imageRes, "drawable", context.packageName)
     }
 
+    // Внешний контейнер слота
     Box(
         contentAlignment = Alignment.BottomCenter,
         modifier = Modifier
             .padding(4.dp)
             .clickable { onClick() }
     ) {
-        if (resId != 0) {
-            Image(
-                painter = painterResource(id = resId),
-                contentDescription = null,
-                modifier = Modifier
-                    .width(100.dp)
-                    .height(130.dp)
-                    .clip(RoundedCornerShape(8.dp))
-                    .background(Color.DarkGray)
-                    .border(2.dp, Color(0xFFD4AF37), RoundedCornerShape(8.dp)),
-                contentScale = ContentScale.Fit
-            )
-        } else {
-            Box(
-                modifier = Modifier
-                    .width(100.dp)
-                    .height(130.dp)
-                    .background(Color.Gray, RoundedCornerShape(8.dp))
-                    .border(2.dp, Color(0xFFD4AF37), RoundedCornerShape(8.dp))
-            )
+        // 1. КОНТЕЙНЕР РАМКИ (Фон и Границы)
+        // Размеры и декор задаем этому Box, а не Image
+        Box(
+            modifier = Modifier
+                .width(100.dp)
+                .height(130.dp)
+                .clip(RoundedCornerShape(8.dp)) // Обрезаем контент по форме
+                .background(Color.DarkGray)
+                .border(2.dp, Color(0xFFD4AF37), RoundedCornerShape(8.dp)),
+            contentAlignment = Alignment.Center // Или BottomCenter, зависит от желаемого исходного положения
+        ) {
+            if (resId != 0) {
+                // 2. КАРТИНКА (Внутри рамки)
+                Image(
+                    painter = painterResource(id = resId),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .fillMaxSize()       // Занимаем все пространство контейнера
+                        .offset(y = (-15).dp), // <--- СМЕЩАЕМ ТОЛЬКО КАРТИНКУ ВНУТРИ
+                    contentScale = ContentScale.Fit
+                )
+            } else {
+                // Пустой слот (можно оставить просто фон контейнера или добавить заглушку)
+            }
         }
 
-        Box(modifier = Modifier.offset(y = 8.dp)) {
+        // 3. ТЕКСТ (Поверх всего, внизу)
+        Box(modifier = Modifier.offset(y = 0.dp)) {
             OutlinedText(text = count, fontSize = 14.sp)
         }
     }

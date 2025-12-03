@@ -90,7 +90,7 @@ fun SecondarySkillDetailScreen(skill: SecondarySkill, onBack: () -> Unit) {
                 )
             }
 
-            HorizontalDivider(modifier = Modifier.padding(vertical = 16.dp), color = Color.Gray)
+            HorizontalDivider(modifier = Modifier.padding(vertical = 16.dp), color = Color.White)
 
             SkillLevelRow("Основной", skill.basic)
             SkillLevelRow("Продвинутый", skill.advanced)
@@ -106,6 +106,6 @@ fun SkillLevelRow(level: String, description: String) {
         Spacer(modifier = Modifier.height(4.dp))
         Text(text = description, color = Color.White, fontSize = 16.sp)
         Spacer(modifier = Modifier.height(8.dp))
-        HorizontalDivider(color = Color.Gray.copy(alpha = 0.5f))
+        HorizontalDivider(modifier = Modifier.padding(vertical = 16.dp), color = Color.White)
     }
 }
