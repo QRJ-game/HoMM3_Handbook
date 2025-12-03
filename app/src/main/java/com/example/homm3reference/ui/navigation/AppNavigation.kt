@@ -1,11 +1,12 @@
 package com.example.homm3reference.ui.navigation
 
 import androidx.activity.compose.BackHandler
-import androidx.compose.runtime.* // Гарантирует наличие getValue/setValue
-import com.example.homm3reference.data.Creature
+import androidx.compose.runtime.* import com.example.homm3reference.data.Creature
 import com.example.homm3reference.data.CreatureDao
 import com.example.homm3reference.data.Hero
 import com.example.homm3reference.data.HeroDao
+import com.example.homm3reference.data.SecondarySkill
+import com.example.homm3reference.data.SecondarySkillsRepo
 import com.example.homm3reference.ui.common.TownSelectionScreen
 import com.example.homm3reference.ui.creatures.CreatureDetailScreen
 import com.example.homm3reference.ui.creatures.CreatureListScreen
@@ -13,11 +14,15 @@ import com.example.homm3reference.ui.heroes.ClassSelectionScreen
 import com.example.homm3reference.ui.heroes.HeroDetailScreen
 import com.example.homm3reference.ui.heroes.HeroListScreen
 import com.example.homm3reference.ui.main_menu.MainMenuScreen
+import com.example.homm3reference.ui.skills.SecondarySkillDetailScreen
+import com.example.homm3reference.ui.skills.SecondarySkillsListScreen
 
+// Добавляем новые экраны в Enum
 enum class Screen {
     MainMenu,
     HeroTowns, HeroClasses, HeroList, HeroDetail,
-    CreatureTowns, CreatureList, CreatureDetail
+    CreatureTowns, CreatureList, CreatureDetail,
+    SkillsList, SkillDetail // <--- Новые экраны
 }
 
 val TOWN_ORDER = listOf(
@@ -35,16 +40,23 @@ fun AppRoot(
 ) {
     var currentScreen by remember { mutableStateOf(Screen.MainMenu) }
 
+    // Состояния для Героев
     var selectedHeroTown by remember { mutableStateOf<String?>(null) }
     var selectedHeroClassType by remember { mutableStateOf<String?>(null) }
     var selectedHero by remember { mutableStateOf<Hero?>(null) }
 
+    // Состояния для Существ
     var selectedCreatureTown by remember { mutableStateOf<String?>(null) }
     var selectedCreature by remember { mutableStateOf<Creature?>(null) }
 
+    // Состояния для Навыков
+    var selectedSkill by remember { mutableStateOf<SecondarySkill?>(null) }
+
+    // Загрузка данных (Flow)
     val allHeroes by heroDao.getAllHeroes().collectAsState(initial = emptyList())
     val allCreatures by creatureDao.getAllCreatures().collectAsState(initial = emptyList())
 
+    // Списки городов (сортированные)
     val heroTowns = remember(allHeroes) {
         allHeroes.map { it.town }.distinct().sortedBy { TOWN_ORDER.indexOf(it) }
     }
@@ -53,15 +65,18 @@ fun AppRoot(
     }
 
     when (currentScreen) {
+        // --- ГЛАВНОЕ МЕНЮ ---
         Screen.MainMenu -> {
             MainMenuScreen(
                 onHeroesClick = { currentScreen = Screen.HeroTowns },
                 onCreaturesClick = { currentScreen = Screen.CreatureTowns },
+                onSkillsClick = { currentScreen = Screen.SkillsList },
                 isMuted = isMuted,
                 onMuteToggle = onMuteToggle
             )
         }
 
+        // --- ВЕТКА ГЕРОЕВ ---
         Screen.HeroTowns -> {
             BackHandler { currentScreen = Screen.MainMenu }
             TownSelectionScreen(
@@ -119,6 +134,7 @@ fun AppRoot(
             }
         }
 
+        // --- ВЕТКА СУЩЕСТВ ---
         Screen.CreatureTowns -> {
             BackHandler { currentScreen = Screen.MainMenu }
             TownSelectionScreen(
@@ -152,6 +168,28 @@ fun AppRoot(
                 CreatureDetailScreen(
                     creature = selectedCreature!!,
                     onBack = { currentScreen = Screen.CreatureList }
+                )
+            }
+        }
+
+        // --- ВЕТКА ВТОРИЧНЫХ НАВЫКОВ ---
+        Screen.SkillsList -> {
+            BackHandler { currentScreen = Screen.MainMenu }
+            SecondarySkillsListScreen(
+                skills = SecondarySkillsRepo.skills,
+                onBack = { currentScreen = Screen.MainMenu },
+                onSkillSelected = { skill ->
+                    selectedSkill = skill
+                    currentScreen = Screen.SkillDetail
+                }
+            )
+        }
+        Screen.SkillDetail -> {
+            BackHandler { currentScreen = Screen.SkillsList }
+            selectedSkill?.let { skill ->
+                SecondarySkillDetailScreen(
+                    skill = skill,
+                    onBack = { currentScreen = Screen.SkillsList }
                 )
             }
         }

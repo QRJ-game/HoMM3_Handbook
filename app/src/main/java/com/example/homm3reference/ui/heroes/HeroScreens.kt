@@ -205,7 +205,26 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>, onBack: () -> Unit) 
                 HorizontalDivider(modifier = Modifier.padding(vertical = 16.dp), color = Color.Gray)
 
                 InfoRow("Специализация", hero.specialty)
-                InfoRow("Навыки", hero.skills)
+                // Внутри HeroDetailScreen, вместо старого InfoRow("Навыки"...)
+
+                Text("Навыки:", color = Color.Gray, fontSize = 16.sp)
+                Row(modifier = Modifier.padding(vertical = 4.dp)) {
+                    val icons = remember(hero.skills) { getSkillIcons(hero.skills) }
+
+                    // Если удалось найти иконки
+                    if (icons.isNotEmpty()) {
+                        icons.forEach { iconName ->
+                            HeroImage(
+                                imageName = iconName,
+                                width = 40.dp,
+                                height = 40.dp,
+                                modifier = Modifier.padding(end = 8.dp)
+                            )
+                        }
+                    }
+                    // Выводим текст навыков рядом или под иконками (по желанию, здесь оставим текст)
+                }
+                Text(text = hero.skills, color = Color.White, fontSize = 18.sp, modifier = Modifier.padding(bottom = 8.dp))
                 InfoRow("Заклинание", hero.spell ?: "Нет")
 
                 Spacer(modifier = Modifier.height(16.dp))
@@ -285,4 +304,54 @@ fun CreaturePopup(creature: Creature, onDismiss: () -> Unit) {
             }
         }
     }
+}
+// --- Вставьте это в самый низ файла HeroScreens.kt ---
+
+// Вспомогательная карта соответствия названий и ресурсов
+private val skillImageMap = mapOf(
+    "Артиллерия" to "secondary_artillery",
+    "Баллистика" to "secondary_ballistics",
+    "Волшебство" to "secondary_sorcery",
+    "Грамотность" to "secondary_scholar",
+    "Дипломатия" to "secondary_diplomacy",
+    "Доспехи" to "secondary_armorer",
+    "Интеллект" to "secondary_intelligence",
+    "Лидерство" to "secondary_leadership",
+    "Логистика" to "secondary_logistics",
+    "Магия Воды" to "secondary_water_magic",
+    "Магия Воздуха" to "secondary_air_magic",
+    "Магия Земли" to "secondary_earth_magic",
+    "Магия Огня" to "secondary_fire_magic",
+    "Мистицизм" to "secondary_mysticism",
+    "Мудрость" to "secondary_wisdom",
+    "Навигация" to "secondary_navigation",
+    "Нападение" to "secondary_offense",
+    "Некромантия" to "secondary_necromancy",
+    "Обучаемость" to "secondary_learning",
+    "Обучение" to "secondary_learning",
+    "Орлиный глаз" to "secondary_eagle_eye",
+    "Первая помощь" to "secondary_first_aid",
+    "Поиск пути" to "secondary_pathfinding",
+    "Поиск Пути" to "secondary_pathfinding",
+    "Поместья" to "secondary_estates",
+    "Поместье" to "secondary_estates",
+    "Помехи" to "secondary_interference",
+    "Разведка" to "secondary_scouting",
+    "Сопротивление" to "secondary_resistance",
+    "Стрельба" to "secondary_archery",
+    "Тактика" to "secondary_tactics",
+    "Удача" to "secondary_luck"
+)
+
+// Функция парсинга
+fun getSkillIcons(skillsString: String): List<String> {
+    return skillsString.split(",") // Разделяем по запятой
+        .map { it.trim() } // Убираем пробелы
+        .map { rawName ->
+            // Убираем уровни навыков в скобках, например "Мудрость(продвинутый)" -> "Мудрость"
+            rawName.substringBefore("(").trim()
+        }
+        .mapNotNull { skillName ->
+            skillImageMap[skillName] // Ищем в карте
+        }
 }

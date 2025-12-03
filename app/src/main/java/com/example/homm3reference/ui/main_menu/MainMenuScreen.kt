@@ -25,6 +25,7 @@ import com.example.homm3reference.ui.common.MenuButton
 fun MainMenuScreen(
     onHeroesClick: () -> Unit,
     onCreaturesClick: () -> Unit,
+    onSkillsClick: () -> Unit, // <--- ДОБАВЛЕНО
     isMuted: Boolean,
     onMuteToggle: () -> Unit
 ) {
@@ -60,6 +61,8 @@ fun MainMenuScreen(
                 MenuButton(text = "Герои", onClick = onHeroesClick)
                 Spacer(modifier = Modifier.height(20.dp))
                 MenuButton(text = "Существа", onClick = onCreaturesClick)
+                Spacer(modifier = Modifier.height(20.dp))
+                MenuButton(text = "Вторичные навыки", onClick = onSkillsClick)
 
                 // Дополнительный отступ снизу, чтобы скролл не обрезал кнопку впритык
                 Spacer(modifier = Modifier.height(32.dp))

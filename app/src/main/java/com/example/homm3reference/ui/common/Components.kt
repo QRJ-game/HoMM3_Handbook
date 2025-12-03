@@ -161,6 +161,7 @@ fun TownCard(townName: String, onClick: () -> Unit) {
 @Composable
 fun HeroImage(
     imageName: String,
+    modifier: Modifier = Modifier, // <--- Добавили этот параметр
     width: Dp = 64.dp,
     height: Dp = 64.dp,
     contentScale: ContentScale = ContentScale.Crop,
@@ -172,25 +173,23 @@ fun HeroImage(
         context.resources.getIdentifier(imageName, "drawable", context.packageName)
     }
 
+    // Объединяем переданный modifier с нашими обязательными размерами и стилем
+    val finalModifier = modifier
+        .width(width)
+        .height(height)
+        .clip(RoundedCornerShape(8.dp))
+        .border(borderWidth, borderColor, RoundedCornerShape(8.dp))
+
     if (resId != 0) {
         Image(
             painter = painterResource(id = resId),
             contentDescription = null,
-            modifier = Modifier
-                .width(width)
-                .height(height)
-                .clip(RoundedCornerShape(8.dp))
-                .border(borderWidth, borderColor, RoundedCornerShape(8.dp)),
+            modifier = finalModifier,
             contentScale = contentScale
         )
     } else {
         Box(
-            modifier = Modifier
-                .width(width)
-                .height(height)
-                .background(Color.Gray)
-                .clip(RoundedCornerShape(8.dp))
-                .border(borderWidth, borderColor, RoundedCornerShape(8.dp)),
+            modifier = finalModifier.background(Color.Gray),
             contentAlignment = Alignment.Center
         ) {
             Text("?", color = Color.White)

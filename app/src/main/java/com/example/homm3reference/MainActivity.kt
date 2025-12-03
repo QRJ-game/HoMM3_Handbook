@@ -3,14 +3,15 @@ package com.example.homm3reference
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.viewModels // Нужно добавить импорт
+import androidx.activity.viewModels
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.lifecycleScope
 import com.example.homm3reference.data.AppDatabase
 import com.example.homm3reference.data.DataLoader
-import com.example.homm3reference.navigation.AppRoot
+import com.example.homm3reference.data.MainViewModel // <--- Добавлен импорт ViewModel
+import com.example.homm3reference.ui.navigation.AppRoot // <--- ИСПРАВЛЕН ИМПОРТ (добавлено .ui)
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
@@ -58,12 +59,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onPause() {
         super.onPause()
-        // Сообщаем ViewModel, что приложение свернуто (музыку надо паузить)
-        // При повороте экрана onPause вызовется, но Activity не уничтожится до конца,
-        // однако ViewModel продолжит жить.
-        // Нюанс: При повороте музыка может на долю секунды прерваться из-за onPause->onResume,
-        // но прогресс не сбросится.
-        // Если хотите идеальной непрерывности при повороте, можно проверять isChangingConfigurations.
+        // Сообщаем ViewModel, что приложение свернуто
         if (!isChangingConfigurations) {
             viewModel.onPause()
         }

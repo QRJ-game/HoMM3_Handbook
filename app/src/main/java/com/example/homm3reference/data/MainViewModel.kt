@@ -1,4 +1,4 @@
-package com.example.homm3reference
+package com.example.homm3reference.data // <--- ИСПРАВЛЕНО (добавлено .data)
 
 import android.app.Application
 import android.content.Context
