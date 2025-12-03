@@ -1,7 +1,7 @@
-package com.example.homm3reference.navigation
+package com.example.homm3reference.ui.navigation
 
 import androidx.activity.compose.BackHandler
-import androidx.compose.runtime.*
+import androidx.compose.runtime.* // Гарантирует наличие getValue/setValue
 import com.example.homm3reference.data.Creature
 import com.example.homm3reference.data.CreatureDao
 import com.example.homm3reference.data.Hero
@@ -113,6 +113,7 @@ fun AppRoot(
             if (selectedHero != null) {
                 HeroDetailScreen(
                     hero = selectedHero!!,
+                    creatures = allCreatures,
                     onBack = { currentScreen = Screen.HeroList }
                 )
             }

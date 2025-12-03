@@ -1,5 +1,6 @@
 package com.example.homm3reference.ui.common
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -32,8 +33,8 @@ import com.example.homm3reference.data.ArmyMapper
 
 /**
  * Общий компонент фона приложения.
- * Рисует картинку "main_background" и накладывает затемнение.
  */
+@SuppressLint("DiscouragedApi")
 @Composable
 fun AppBackground(
     content: @Composable BoxScope.() -> Unit
@@ -43,8 +44,6 @@ fun AppBackground(
         context.resources.getIdentifier("main_background", "drawable", context.packageName)
     }
 
-    // Матрица цветов для создания эффекта "негатива" (инверсия цветов).
-    // Используется, чтобы сделать светлый пергамент темным.
     val colorMatrix = floatArrayOf(
         -1f, 0f, 0f, 0f, 255f,
         0f, -1f, 0f, 0f, 255f,
@@ -59,15 +58,10 @@ fun AppBackground(
                 contentDescription = null,
                 modifier = Modifier.fillMaxSize(),
                 contentScale = ContentScale.Crop,
-                // Применяем фильтр инверсии. Если убрать эту строку, фон будет светлым.
                 colorFilter = ColorFilter.colorMatrix(ColorMatrix(colorMatrix))
             )
-            // Слой затемнения поверх картинки.
-            // alpha = 0.2f означает 20% прозрачности черного цвета.
-            // Можно увеличить (например, до 0.5f), чтобы фон был темнее.
             Box(modifier = Modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.2f)))
         } else {
-            // Запасной вариант: просто темный фон, если картинка не найдена
             Box(modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background))
         }
 
@@ -75,19 +69,14 @@ fun AppBackground(
     }
 }
 
-/**
- * Стандартная кнопка меню.
- */
 @Composable
 fun MenuButton(text: String, onClick: () -> Unit) {
     Button(
         onClick = onClick,
-        // Размер кнопки: ширина 250dp, высота 60dp
         modifier = Modifier.width(250.dp).height(60.dp),
         colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.surface),
         shape = RoundedCornerShape(12.dp)
     ) {
-        // Размер текста кнопки (22.sp) и цвет (Золотой)
         Text(text, fontSize = 22.sp, color = Color(0xFFD4AF37), fontWeight = FontWeight.Bold)
     }
 }
@@ -95,11 +84,11 @@ fun MenuButton(text: String, onClick: () -> Unit) {
 /**
  * Карточка выбора города в меню.
  */
+@SuppressLint("DiscouragedApi")
 @Composable
 fun TownCard(townName: String, onClick: () -> Unit) {
     val context = LocalContext.current
 
-    // Сопоставление названия города и имени файла картинки
     val imageResName = when(townName) {
         "Замок" -> "town_castle"
         "Оплот" -> "town_rampart"
@@ -124,7 +113,7 @@ fun TownCard(townName: String, onClick: () -> Unit) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .aspectRatio(1.5f) // Пропорция ширины к высоте (3:2). Меняйте, если нужно выше/ниже.
+            .aspectRatio(1.5f)
             .clickable { onClick() },
         shape = RoundedCornerShape(12.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
@@ -137,7 +126,6 @@ fun TownCard(townName: String, onClick: () -> Unit) {
                     contentScale = ContentScale.Crop,
                     modifier = Modifier.fillMaxSize()
                 )
-                // Градиентное затемнение снизу, чтобы текст читался
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
@@ -152,10 +140,9 @@ fun TownCard(townName: String, onClick: () -> Unit) {
                 Box(modifier = Modifier.fillMaxSize().background(Color.DarkGray))
             }
 
-            // Текст названия города
             Text(
                 text = townName,
-                fontSize = 20.sp, // <-- РАЗМЕР ШРИФТА НАЗВАНИЯ ГОРОДА
+                fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.White,
                 modifier = Modifier
@@ -169,16 +156,16 @@ fun TownCard(townName: String, onClick: () -> Unit) {
 
 /**
  * Универсальный компонент для картинки (героя или существа).
- * Поддерживает настройку размеров и рамки.
  */
+@SuppressLint("DiscouragedApi")
 @Composable
 fun HeroImage(
     imageName: String,
-    width: Dp = 64.dp, // Ширина по умолчанию
-    height: Dp = 64.dp, // Высота по умолчанию
-    contentScale: ContentScale = ContentScale.Crop, // Как вписывать картинку (Crop - обрезать, Fit - вписать)
-    borderWidth: Dp = 1.dp, // Толщина рамки
-    borderColor: Color = Color(0xFFD4AF37) // Цвет рамки (золотой)
+    width: Dp = 64.dp,
+    height: Dp = 64.dp,
+    contentScale: ContentScale = ContentScale.Crop,
+    borderWidth: Dp = 1.dp,
+    borderColor: Color = Color(0xFFD4AF37)
 ) {
     val context = LocalContext.current
     val resId = remember(imageName) {
@@ -192,12 +179,11 @@ fun HeroImage(
             modifier = Modifier
                 .width(width)
                 .height(height)
-                .clip(RoundedCornerShape(8.dp)) // Скругление углов
-                .border(borderWidth, borderColor, RoundedCornerShape(8.dp)), // Рамка
+                .clip(RoundedCornerShape(8.dp))
+                .border(borderWidth, borderColor, RoundedCornerShape(8.dp)),
             contentScale = contentScale
         )
     } else {
-        // Заглушка, если картинки нет
         Box(
             modifier = Modifier
                 .width(width)
@@ -212,61 +198,45 @@ fun HeroImage(
     }
 }
 
-/**
- * Элемент статистики (Атака, Защита и т.д.) с иконкой.
- */
 @Composable
 fun StatItem(label: String, icon: String, value: String) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        // Размер иконки (эмодзи)
         Text(icon, fontSize = 24.sp)
-
-        // Значение стата (Цифра)
         Text(
             text = value,
-            fontSize = 22.sp, // <-- РАЗМЕР ЦИФРЫ
-            fontWeight = FontWeight.Black, // Жирность (Black - очень жирный)
+            fontSize = 22.sp,
+            fontWeight = FontWeight.Black,
             color = Color.White
         )
-
-        // Подпись (Название стата)
         Text(
             text = label,
-            fontSize = 14.sp, // <-- РАЗМЕР ПОДПИСИ
+            fontSize = 14.sp,
             fontWeight = FontWeight.Bold,
-            color = Color.White.copy(alpha = 0.8f) // Немного прозрачный белый
+            color = Color.White.copy(alpha = 0.8f)
         )
     }
 }
 
-/**
- * Строка информации (Цена, Прирост и т.д.)
- */
 @Composable
 fun InfoRow(label: String, value: String) {
     Column(modifier = Modifier.padding(vertical = 8.dp)) {
-        // Заголовок (Название параметра)
         Text(
             text = label,
-            color = Color(0xFFD4AF37), // Золотой цвет
+            color = Color(0xFFD4AF37),
             fontWeight = FontWeight.Bold,
-            fontSize = 16.sp // <-- РАЗМЕР ЗАГОЛОВКА
+            fontSize = 16.sp
         )
-        // Значение параметра
         Text(
             text = value,
             fontWeight = FontWeight.Medium,
-            color = Color.White, // Белый цвет
-            fontSize = 16.sp // <-- РАЗМЕР ТЕКСТА ЗНАЧЕНИЯ
+            color = Color.White,
+            fontSize = 16.sp
         )
     }
 }
 
-/**
- * Блок отрисовки стартовой армии.
- */
 @Composable
-fun ArmyVisuals(armyString: String) {
+fun ArmyVisuals(armyString: String, onCreatureClick: (String) -> Unit) {
     val armyList = remember(armyString) { ArmyMapper.parseArmy(armyString) }
 
     Row(
@@ -277,7 +247,7 @@ fun ArmyVisuals(armyString: String) {
         verticalAlignment = Alignment.CenterVertically
     ) {
         armyList.forEach { (imageRes, count) ->
-            ArmySlot(imageRes, count)
+            ArmySlot(imageRes, count, onClick = { onCreatureClick(imageRes) })
         }
     }
 }
@@ -285,8 +255,9 @@ fun ArmyVisuals(armyString: String) {
 /**
  * Одиночный слот армии (Картинка + Количество).
  */
+@SuppressLint("DiscouragedApi")
 @Composable
-fun ArmySlot(imageRes: String, count: String) {
+fun ArmySlot(imageRes: String, count: String, onClick: () -> Unit) {
     val context = LocalContext.current
     val resId = remember(imageRes) {
         context.resources.getIdentifier(imageRes, "drawable", context.packageName)
@@ -294,19 +265,21 @@ fun ArmySlot(imageRes: String, count: String) {
 
     Box(
         contentAlignment = Alignment.BottomCenter,
-        modifier = Modifier.padding(4.dp)
+        modifier = Modifier
+            .padding(4.dp)
+            .clickable { onClick() }
     ) {
         if (resId != 0) {
             Image(
                 painter = painterResource(id = resId),
                 contentDescription = null,
                 modifier = Modifier
-                    .width(100.dp)  // <-- ШИРИНА КАРТИНКИ ЮНИТА
-                    .height(130.dp) // <-- ВЫСОТА КАРТИНКИ ЮНИТА
+                    .width(100.dp)
+                    .height(130.dp)
                     .clip(RoundedCornerShape(8.dp))
                     .background(Color.DarkGray)
-                    .border(2.dp, Color(0xFFD4AF37), RoundedCornerShape(8.dp)), // Толщина рамки 2.dp
-                contentScale = ContentScale.Fit // Вписываем картинку целиком
+                    .border(2.dp, Color(0xFFD4AF37), RoundedCornerShape(8.dp)),
+                contentScale = ContentScale.Fit
             )
         } else {
             Box(
@@ -318,29 +291,21 @@ fun ArmySlot(imageRes: String, count: String) {
             )
         }
 
-        Box(
-            modifier = Modifier.offset(y = 8.dp) // Смещение текста вниз
-        ) {
-            // Размер шрифта количества юнитов
+        Box(modifier = Modifier.offset(y = 8.dp)) {
             OutlinedText(text = count, fontSize = 14.sp)
         }
     }
 }
 
-/**
- * Текст с черной обводкой (Stroke).
- * Используется для имени героя и количества юнитов.
- */
 @Composable
 fun OutlinedText(
     text: String,
-    fontSize: TextUnit = 14.sp, // <-- РАЗМЕР ПО УМОЛЧАНИЮ
+    fontSize: TextUnit = 14.sp,
     textColor: Color = Color.White,
     strokeColor: Color = Color.Black,
-    strokeWidth: Float = 5f // <-- ТОЛЩИНА ОБВОДКИ
+    strokeWidth: Float = 5f
 ) {
     Box(contentAlignment = Alignment.Center) {
-        // Слой обводки (рисуется снизу)
         Text(
             text = text,
             fontSize = fontSize,
@@ -354,7 +319,6 @@ fun OutlinedText(
             ),
             color = strokeColor
         )
-        // Слой основного текста (рисуется поверх)
         Text(
             text = text,
             fontSize = fontSize,
