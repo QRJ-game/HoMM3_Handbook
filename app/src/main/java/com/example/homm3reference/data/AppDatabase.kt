@@ -12,7 +12,6 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface HeroDao {
-    //тест мержа
     @Query("SELECT * FROM heroes ORDER BY name ASC")
     fun getAllHeroes(): Flow<List<Hero>>
 
