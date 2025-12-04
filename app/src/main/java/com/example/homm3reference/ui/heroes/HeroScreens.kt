@@ -5,6 +5,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -19,11 +21,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.graphics.toColorInt // <-- Импорт для KTX Color
+import androidx.core.graphics.toColorInt
 import com.example.homm3reference.data.Creature
 import com.example.homm3reference.data.Hero
+import com.example.homm3reference.data.SecondarySkill
 import com.example.homm3reference.ui.common.*
 import com.example.homm3reference.data.JSON_Mapper
+import com.example.homm3reference.data.GameData
 
 
 @Composable
@@ -159,13 +163,20 @@ fun HeroCard(hero: Hero, onHeroSelected: (Hero) -> Unit) {
 
 @Composable
 fun HeroDetailScreen(hero: Hero, creatures: List<Creature>, onBack: () -> Unit) {
-    val stats = remember(hero.heroClass) { com.example.homm3reference.data.GameData.getStatsForClass(hero.heroClass) }
+    val stats = remember(hero.heroClass) { GameData.getStatsForClass(hero.heroClass) }
     var selectedCreature by remember { mutableStateOf<Creature?>(null) }
+
+    // States for Skill Popup
+    var selectedSkill by remember { mutableStateOf<SecondarySkill?>(null) }
+    val allSkills = remember { GameData.secondarySkills }
 
     AppBackground {
         Box(modifier = Modifier.fillMaxSize()) {
+
+            // 1. SCROLLABLE CONTENT COLUMN
             Column(modifier = Modifier
                 .fillMaxSize()
+                .verticalScroll(rememberScrollState()) // Enable scrolling here
                 .padding(16.dp)
             ) {
                 Button(
@@ -206,24 +217,27 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>, onBack: () -> Unit) 
                 HorizontalDivider(color = Color.White)
 
                 InfoRow("Специализация", hero.specialty)
-                // Внутри HeroDetailScreen, вместо старого InfoRow("Навыки"...)
 
                 Text("Навыки", color = Color(0xFFD4AF37), fontSize = 16.sp, fontWeight = FontWeight.Bold,)
                 Row(modifier = Modifier.padding(vertical = 6.dp)) {
                     val icons = remember(hero.skills) { JSON_Mapper.getSkillIcons(hero.skills) }
 
-                    // Если удалось найти иконки
                     if (icons.isNotEmpty()) {
                         icons.forEach { iconName ->
+                            // Find skill object
+                            val skill = allSkills.find { it.imageRes == iconName }
                             HeroImage(
                                 imageName = iconName,
                                 width = 82.dp,
                                 height = 93.dp,
-                                modifier = Modifier.padding(end = 6.dp)
+                                modifier = Modifier
+                                    .padding(end = 6.dp)
+                                    .clickable(enabled = skill != null) {
+                                        if (skill != null) selectedSkill = skill
+                                    }
                             )
                         }
                     }
-                    // Выводим текст навыков рядом или под иконками (по желанию, здесь оставим текст)
                 }
                 Text(text = hero.skills, color = Color.White, fontSize = 16.sp, modifier = Modifier.padding(bottom = 10.dp),fontWeight = FontWeight.Medium)
                 InfoRow("Заклинание", hero.spell ?: "Нет")
@@ -234,12 +248,21 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>, onBack: () -> Unit) 
                 ArmyVisuals(armyString = hero.army, onCreatureClick = { clickedImageRes ->
                     selectedCreature = creatures.find { it.imageRes == clickedImageRes }
                 })
-            }
+            } // END OF SCROLLABLE COLUMN
+
+            // 2. POPUPS (MUST BE OUTSIDE THE SCROLLABLE COLUMN)
 
             if (selectedCreature != null) {
                 CreaturePopup(
                     creature = selectedCreature!!,
                     onDismiss = { selectedCreature = null }
+                )
+            }
+
+            if (selectedSkill != null) {
+                SkillPopup(
+                    skill = selectedSkill!!,
+                    onDismiss = { selectedSkill = null }
                 )
             }
         }
@@ -290,8 +313,6 @@ fun CreaturePopup(creature: Creature, onDismiss: () -> Unit) {
                 }
 
                 Spacer(modifier = Modifier.height(12.dp))
-                //val damage = if (creature.minDamage == creature.maxDamage) "${creature.minDamage}" else "${creature.minDamage}-${creature.maxDamage}"
-                //Text("Урон: $damage", color = Color.White, fontWeight = FontWeight.Bold)
 
                 if (creature.abilities.isNotEmpty()) {
                     Spacer(modifier = Modifier.height(12.dp))
@@ -305,5 +326,60 @@ fun CreaturePopup(creature: Creature, onDismiss: () -> Unit) {
                 }
             }
         }
+    }
+}
+
+@Composable
+fun SkillPopup(skill: SecondarySkill, onDismiss: () -> Unit) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.Black.copy(alpha = 0.6f))
+            .clickable { onDismiss() },
+        contentAlignment = Alignment.Center
+    ) {
+        Card(
+            modifier = Modifier
+                .fillMaxWidth(0.9f)
+                .fillMaxHeight(0.75f)
+                .clickable(enabled = false) {},
+            colors = CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.95f)
+            ),
+            elevation = CardDefaults.cardElevation(8.dp)
+        ) {
+            Column(
+                modifier = Modifier
+                    .padding(16.dp)
+                    .weight(1f) // Ensure Column takes available space before scrolling
+                    .verticalScroll(rememberScrollState()),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                HeroImage(
+                    imageName = skill.imageRes,
+                    width = 80.dp,
+                    height = 80.dp,
+                    contentScale = ContentScale.Fit
+                )
+                Spacer(modifier = Modifier.height(8.dp))
+
+                Text(skill.name, fontSize = 22.sp, fontWeight = FontWeight.Bold, color = Color(0xFFD4AF37))
+
+                HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp), color = Color.Gray)
+
+                SkillPopupRow("Основной", skill.basic)
+                SkillPopupRow("Продвинутый", skill.advanced)
+                SkillPopupRow("Эксперт", skill.expert)
+            }
+        }
+    }
+}
+
+@Composable
+fun SkillPopupRow(level: String, description: String) {
+    Column(modifier = Modifier.fillMaxWidth().padding(vertical = 6.dp)) {
+        Text(text = level, color = Color(0xFFD4AF37), fontWeight = FontWeight.Bold, fontSize = 16.sp)
+        Text(text = description, color = Color.White, fontSize = 14.sp)
+        Spacer(modifier = Modifier.height(4.dp))
     }
 }

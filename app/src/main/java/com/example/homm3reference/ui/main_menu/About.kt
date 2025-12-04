@@ -84,7 +84,7 @@ fun AboutPopup(onDismiss: () -> Unit) {
                     textAlign = TextAlign.Center
                 )
                 Text(
-                    text = "За лучшую игру и наше счастливое детство\n",
+                    text = "За Лучшую игру и наше счастливое детство\n",
                     fontSize = 16.sp,
                     fontStyle = FontStyle.Italic,
                     color = Color(0xFFD4AF37),
@@ -98,7 +98,7 @@ fun AboutPopup(onDismiss: () -> Unit) {
                     textAlign = TextAlign.Center
                 )
                 Text(
-                    text = "За лучшее продолжение лучшей игры\n",
+                    text = "За Лучшее продолжение Лучшей игры\n",
                     fontSize = 16.sp,
                     fontStyle = FontStyle.Italic,
                     color = Color(0xFFD4AF37),
@@ -112,7 +112,7 @@ fun AboutPopup(onDismiss: () -> Unit) {
                     textAlign = TextAlign.Center
                 )
                 Text(
-                    text = "Потому что Книга всегда лучше!\n",
+                    text = "Потому что Книга всегда Лучше!\n",
                     fontSize = 16.sp,
                     fontStyle = FontStyle.Italic,
                     color = Color(0xFFD4AF37),

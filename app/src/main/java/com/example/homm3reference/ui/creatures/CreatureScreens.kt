@@ -27,6 +27,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.border
 import androidx.compose.ui.draw.clip
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 
 @Composable
 fun CreatureListScreen(
@@ -161,6 +163,7 @@ fun CreatureDetailScreen(creature: Creature, onBack: () -> Unit) {
     AppBackground {
         Column(modifier = Modifier
             .fillMaxSize()
+            .verticalScroll(rememberScrollState())
             .padding(16.dp)
         ) {
             Button(
