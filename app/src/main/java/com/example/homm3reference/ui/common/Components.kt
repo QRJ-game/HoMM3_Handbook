@@ -1,6 +1,7 @@
 package com.example.homm3reference.ui.common
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -77,7 +78,7 @@ fun MenuButton(text: String, onClick: () -> Unit) {
         colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.surface),
         shape = RoundedCornerShape(12.dp)
     ) {
-        Text(text, fontSize = 22.sp, color = Color(0xFFD4AF37), fontWeight = FontWeight.Bold)
+        Text(text, textAlign = TextAlign.Center, fontSize = 22.sp, color = Color(0xFFD4AF37), fontWeight = FontWeight.Bold)
     }
 }
 
@@ -265,46 +266,51 @@ fun ArmySlot(imageRes: String, count: String, onClick: () -> Unit) {
         context.resources.getIdentifier(imageRes, "drawable", context.packageName)
     }
 
-    // Внешний контейнер слота
+    // Внешний контейнер (для клика и текста поверх)
     Box(
         contentAlignment = Alignment.BottomCenter,
         modifier = Modifier
             .padding(4.dp)
             .clickable { onClick() }
     ) {
-        // 1. КОНТЕЙНЕР РАМКИ (Фон и Границы)
-        // Размеры и декор задаем этому Box, а не Image
-        Box(
+        // 1. КАРТОЧКА (Рамка + Фон Surface + Тень)
+        // Используем Card, чтобы цвет фона (Surface) автоматически подстраивался под elevation
+        Card(
             modifier = Modifier
                 .width(100.dp)
-                .height(130.dp)
-                .clip(RoundedCornerShape(8.dp)) // Обрезаем контент по форме
-                .background(Color.DarkGray)
-                .border(2.dp, Color(0xFFD4AF37), RoundedCornerShape(8.dp)),
-            contentAlignment = Alignment.Center // Или BottomCenter, зависит от желаемого исходного положения
+                .height(130.dp),
+            shape = RoundedCornerShape(8.dp),
+            // Используем системный цвет Surface
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+            // Elevation 4.dp делает цвет чуть светлее, как в списках
+            elevation = CardDefaults.cardElevation(4.dp),
+            // Золотая рамка через параметр border
+            border = BorderStroke(2.dp, Color(0xFFD4AF37))
         ) {
-            if (resId != 0) {
-                // 2. КАРТИНКА (Внутри рамки)
-                Image(
-                    painter = painterResource(id = resId),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .fillMaxSize()       // Занимаем все пространство контейнера
-                        .offset(y = (-15).dp), // <--- СМЕЩАЕМ ТОЛЬКО КАРТИНКУ ВНУТРИ
-                    contentScale = ContentScale.Fit
-                )
-            } else {
-                // Пустой слот (можно оставить просто фон контейнера или добавить заглушку)
+            // Внутренний контейнер для картинки
+            Box(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.BottomCenter
+            ) {
+                if (resId != 0) {
+                    Image(
+                        painter = painterResource(id = resId),
+                        contentDescription = null,
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .offset(y = (-15).dp), // Смещение картинки вверх
+                        contentScale = ContentScale.Fit
+                    )
+                }
             }
         }
 
-        // 3. ТЕКСТ (Поверх всего, внизу)
+        // 2. ТЕКСТ (Поверх карточки)
         Box(modifier = Modifier.offset(y = 0.dp)) {
             OutlinedText(text = count, fontSize = 14.sp)
         }
     }
 }
-
 @Composable
 fun OutlinedText(
     text: String,

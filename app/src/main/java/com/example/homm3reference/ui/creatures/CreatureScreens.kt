@@ -159,7 +159,10 @@ fun CreatureCard(creature: Creature, onClick: (Creature) -> Unit) {
 @Composable
 fun CreatureDetailScreen(creature: Creature, onBack: () -> Unit) {
     AppBackground {
-        Column(modifier = Modifier.padding(16.dp)) {
+        Column(modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp)
+        ) {
             Button(
                 onClick = onBack,
                 colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.surface)
@@ -169,12 +172,24 @@ fun CreatureDetailScreen(creature: Creature, onBack: () -> Unit) {
             Spacer(modifier = Modifier.height(16.dp))
 
             Row(verticalAlignment = Alignment.CenterVertically) {
-                HeroImage(
-                    imageName = creature.imageRes,
-                    width = 120.dp,
-                    height = 156.dp,
-                    contentScale = ContentScale.Fit
-                )
+                // --- ИСПРАВЛЕНИЕ: Оборачиваем изображение в Card ---
+                // Card автоматически применяет правильный цвет surface с учетом elevation (теней),
+                // как это сделано в списках героев и существ.
+                Card(
+                    shape = RoundedCornerShape(8.dp),
+                    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+                    elevation = CardDefaults.cardElevation(4.dp) // Важно: такая же высота, как в списке
+                ) {
+                    HeroImage(
+                        imageName = creature.imageRes,
+                        width = 150.dp,
+                        height = 195.dp,
+                        contentScale = ContentScale.Fit,
+                        borderWidth = 2.dp
+                    )
+                }
+                // ---------------------------------------------------
+
                 Spacer(modifier = Modifier.width(16.dp))
                 Column {
                     Text(text = creature.name, fontSize = 24.sp, fontWeight = FontWeight.Bold, color = Color(0xFFD4AF37))
