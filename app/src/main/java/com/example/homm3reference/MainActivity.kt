@@ -10,14 +10,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.lifecycleScope
 import com.example.homm3reference.data.AppDatabase
 import com.example.homm3reference.data.DataLoader
-import com.example.homm3reference.data.MainViewModel // <--- Добавлен импорт ViewModel
+import com.example.homm3reference.data.MediaPlayer // <--- Добавлен импорт ViewModel
 import com.example.homm3reference.ui.navigation.AppRoot // <--- ИСПРАВЛЕН ИМПОРТ (добавлено .ui)
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
 
     // Инициализируем ViewModel. Она переживет поворот экрана.
-    private val viewModel: MainViewModel by viewModels()
+    private val viewModel: MediaPlayer by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
