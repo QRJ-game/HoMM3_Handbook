@@ -21,12 +21,7 @@ fun TownSelectionScreen(
 ) {
     AppBackground {
         Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
-            Button(
-                onClick = onBack,
-                colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.surface)
-            ) {
-                Text("Назад", color = Color(0xFFD4AF37))
-            }
+
             Spacer(modifier = Modifier.height(16.dp))
 
             Text(title, fontSize = 24.sp, fontWeight = FontWeight.Bold, color = Color(0xFFD4AF37))

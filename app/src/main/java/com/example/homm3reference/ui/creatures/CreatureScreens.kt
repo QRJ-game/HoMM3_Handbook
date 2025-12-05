@@ -1,6 +1,8 @@
 package com.example.homm3reference.ui.creatures
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -8,27 +10,25 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.homm3reference.data.Creature
 import com.example.homm3reference.ui.common.*
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
-import androidx.compose.runtime.remember
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.border
-import androidx.compose.ui.draw.clip
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 
 @Composable
 fun CreatureListScreen(
@@ -39,14 +39,12 @@ fun CreatureListScreen(
 ) {
     AppBackground {
         Column(modifier = Modifier.fillMaxSize()) {
-            Box(modifier = Modifier.padding(16.dp)) {
-                Button(onClick = onBack, colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.surface)) {
-                    Text("Назад", color = Color(0xFFD4AF37))
-                }
-            }
+            // Кнопка "Назад" удалена.
+
+            // Добавляем padding сверху (top), так как раньше там была кнопка
             Text(
                 text = townName,
-                modifier = Modifier.padding(start = 16.dp, bottom = 16.dp),
+                modifier = Modifier.padding(start = 16.dp, bottom = 16.dp, top = 16.dp),
                 fontSize = 24.sp,
                 color = Color(0xFFD4AF37),
                 fontWeight = FontWeight.Bold
@@ -125,10 +123,9 @@ fun CreatureCard(creature: Creature, onClick: (Creature) -> Unit) {
                 modifier = Modifier
                     .width(100.dp)
                     .height(130.dp)
-                    .clip(RoundedCornerShape(8.dp)) // Скругляем углы рамки
-                    //.background(Color.Gray) // Фон, если картинка прозрачная или отсутствует
-                    .border(2.dp, Color(0xFFD4AF37), RoundedCornerShape(8.dp)), // Золотая рамка
-                contentAlignment = Alignment.BottomCenter // Выравниваем по низу, чтобы offset поднимал вверх
+                    .clip(RoundedCornerShape(8.dp))
+                    .border(2.dp, Color(0xFFD4AF37), RoundedCornerShape(8.dp)),
+                contentAlignment = Alignment.BottomCenter
             ) {
                 if (resId != 0) {
                     Image(
@@ -136,13 +133,11 @@ fun CreatureCard(creature: Creature, onClick: (Creature) -> Unit) {
                         contentDescription = null,
                         modifier = Modifier
                             .fillMaxSize()
-                            .offset(y = (-10).dp), // <--- СМЕЩЕНИЕ КАРТИНКИ ВВЕРХ НА 15dp
+                            .offset(y = (-10).dp),
                         contentScale = ContentScale.Fit
                     )
                 }
             }
-
-
 
             Spacer(modifier = Modifier.height(4.dp))
             Text(
@@ -157,7 +152,6 @@ fun CreatureCard(creature: Creature, onClick: (Creature) -> Unit) {
     }
 }
 
-
 @Composable
 fun CreatureDetailScreen(creature: Creature, onBack: () -> Unit) {
     AppBackground {
@@ -166,22 +160,14 @@ fun CreatureDetailScreen(creature: Creature, onBack: () -> Unit) {
             .verticalScroll(rememberScrollState())
             .padding(16.dp)
         ) {
-            Button(
-                onClick = onBack,
-                colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.surface)
-            ) {
-                Text("Назад", color = Color(0xFFD4AF37))
-            }
+            // Кнопка "Назад" удалена.
             Spacer(modifier = Modifier.height(16.dp))
 
             Row(verticalAlignment = Alignment.CenterVertically) {
-                // --- ИСПРАВЛЕНИЕ: Оборачиваем изображение в Card ---
-                // Card автоматически применяет правильный цвет surface с учетом elevation (теней),
-                // как это сделано в списках героев и существ.
                 Card(
                     shape = RoundedCornerShape(8.dp),
                     colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
-                    elevation = CardDefaults.cardElevation(4.dp) // Важно: такая же высота, как в списке
+                    elevation = CardDefaults.cardElevation(4.dp)
                 ) {
                     HeroImage(
                         imageName = creature.imageRes,
@@ -191,7 +177,6 @@ fun CreatureDetailScreen(creature: Creature, onBack: () -> Unit) {
                         borderWidth = 2.dp
                     )
                 }
-                // ---------------------------------------------------
 
                 Spacer(modifier = Modifier.width(16.dp))
                 Column {

@@ -26,10 +26,7 @@ fun SecondarySkillsListScreen(
 ) {
     AppBackground {
         Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
-            Button(
-                onClick = onBack,
-                colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.surface)
-            ) { Text("Назад", color = Color(0xFFD4AF37)) }
+            // Кнопка "Назад" удалена.
 
             Spacer(modifier = Modifier.height(16.dp))
             Text(
@@ -71,10 +68,7 @@ fun SecondarySkillsListScreen(
 fun SecondarySkillDetailScreen(skill: SecondarySkill, onBack: () -> Unit) {
     AppBackground {
         Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
-            Button(
-                onClick = onBack,
-                colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.surface)
-            ) { Text("Назад", color = Color(0xFFD4AF37)) }
+            // Кнопка "Назад" удалена.
 
             Spacer(modifier = Modifier.height(16.dp))
 

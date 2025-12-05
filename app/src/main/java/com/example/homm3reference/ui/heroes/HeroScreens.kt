@@ -40,11 +40,7 @@ fun ClassSelectionScreen(
 ) {
     AppBackground {
         Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
-            Button(
-                onClick = onBack,
-                colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.surface)
-            ) { Text("Назад", color = Color(0xFFD4AF37)) }
-
+            // Кнопка "Назад" удалена.
             Spacer(modifier = Modifier.height(32.dp))
             Text(
                 text = "$townName: Классы",
@@ -103,15 +99,11 @@ fun HeroListScreen(
 
     AppBackground {
         Column(modifier = Modifier.fillMaxSize()) {
-            Box(modifier = Modifier.padding(16.dp)) {
-                Button(
-                    onClick = onBack,
-                    colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.surface)
-                ) { Text("Назад", color = Color(0xFFD4AF37)) }
-            }
+            // Кнопка "Назад" удалена.
+
             Text(
                 text = "$townName • $className",
-                modifier = Modifier.padding(start = 16.dp, bottom = 16.dp),
+                modifier = Modifier.padding(start = 16.dp, bottom = 16.dp, top = 16.dp), // top padding added
                 fontSize = 20.sp,
                 color = Color(0xFFD4AF37),
                 fontWeight = FontWeight.Bold
@@ -166,7 +158,6 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>, onBack: () -> Unit) 
     val stats = remember(hero.heroClass) { GameData.getStatsForClass(hero.heroClass) }
     var selectedCreature by remember { mutableStateOf<Creature?>(null) }
 
-    // States for Skill Popup
     var selectedSkill by remember { mutableStateOf<SecondarySkill?>(null) }
     val allSkills = remember { GameData.secondarySkills }
 
@@ -176,13 +167,10 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>, onBack: () -> Unit) 
             // 1. SCROLLABLE CONTENT COLUMN
             Column(modifier = Modifier
                 .fillMaxSize()
-                .verticalScroll(rememberScrollState()) // Enable scrolling here
+                .verticalScroll(rememberScrollState())
                 .padding(16.dp)
             ) {
-                Button(
-                    onClick = onBack,
-                    colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.surface)
-                ) { Text("Назад", color = Color(0xFFD4AF37)) }
+                // Кнопка "Назад" удалена.
                 Spacer(modifier = Modifier.height(16.dp))
 
                 Row(verticalAlignment = Alignment.CenterVertically) {
@@ -224,7 +212,6 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>, onBack: () -> Unit) 
 
                     if (icons.isNotEmpty()) {
                         icons.forEach { iconName ->
-                            // Find skill object
                             val skill = allSkills.find { it.imageRes == iconName }
                             HeroImage(
                                 imageName = iconName,
@@ -248,9 +235,9 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>, onBack: () -> Unit) 
                 ArmyVisuals(armyString = hero.army, onCreatureClick = { clickedImageRes ->
                     selectedCreature = creatures.find { it.imageRes == clickedImageRes }
                 })
-            } // END OF SCROLLABLE COLUMN
+            }
 
-            // 2. POPUPS (MUST BE OUTSIDE THE SCROLLABLE COLUMN)
+            // 2. POPUPS
 
             if (selectedCreature != null) {
                 CreaturePopup(
@@ -351,7 +338,7 @@ fun SkillPopup(skill: SecondarySkill, onDismiss: () -> Unit) {
             Column(
                 modifier = Modifier
                     .padding(16.dp)
-                    .weight(1f) // Ensure Column takes available space before scrolling
+                    .weight(1f)
                     .verticalScroll(rememberScrollState()),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
