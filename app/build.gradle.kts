@@ -1,5 +1,5 @@
 plugins {
-    id("com.android.application") version "8.13.1"
+    id("com.android.application") version "8.2.2" // Проверьте версию, если была новее - верните её
     id("org.jetbrains.kotlin.android") version "1.9.22"
     id("com.google.devtools.ksp") version "1.9.22-1.0.17"
 }
@@ -49,6 +49,21 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+
+    // --- ВАШ БЛОК SOURCE SETS ---
+    sourceSets {
+        getByName("main") {
+            res.srcDirs(
+                "src/main/res",
+                "src/main/01-heroes",
+                "src/main/02-creatures",
+                "src/main/03-secondary_skills",
+                "src/main/04-towns",
+                "src/main/05-magic"
+            )
+        }
+    }
+    // ------------------------
 }
 
 dependencies {
@@ -60,7 +75,6 @@ dependencies {
 
     // Compose
     implementation("androidx.activity:activity-compose:1.8.2")
-    // ОБНОВЛЕНО: Используем более свежий BOM для доступа к HorizontalDivider (M3 1.2.0+)
     implementation(platform("androidx.compose:compose-bom:2024.02.01"))
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")
