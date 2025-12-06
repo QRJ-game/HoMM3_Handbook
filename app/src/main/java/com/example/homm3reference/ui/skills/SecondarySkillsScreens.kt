@@ -88,7 +88,9 @@ fun SecondarySkillDetailScreen(skill: SecondarySkill, onBack: () -> Unit) {
 
             // Уровни навыка с соответствующими иконками
             SkillLevelRow("Основной", skill.basic, "basic_${skill.id}")
+            HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp), color = Color.White)
             SkillLevelRow("Продвинутый", skill.advanced, "advanced_${skill.id}")
+            HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp), color = Color.White)
             SkillLevelRow("Эксперт", skill.expert, "expert_${skill.id}")
         }
     }
@@ -112,6 +114,6 @@ fun SkillLevelRow(level: String, description: String, imageRes: String) {
                 Text(text = description, color = Color.White, fontSize = 16.sp)
             }
         }
-        HorizontalDivider(modifier = Modifier.padding(top = 16.dp), color = Color.White)
+
     }
 }

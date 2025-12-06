@@ -212,13 +212,18 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>, onBack: () -> Unit) 
 
                     if (icons.isNotEmpty()) {
                         icons.forEach { iconName ->
-                            val skill = allSkills.find { it.imageRes == iconName }
+                            // FIX: Ищем навык по ID, извлеченному из имени иконки (например, "basic_archery" -> "archery")
+                            // Прямое сравнение imageRes может не сработать.
+                            val skillId = iconName.substringAfter("_")
+                            val skill = allSkills.find { it.id == skillId } ?: allSkills.find { iconName.contains(it.id) }
+
                             HeroImage(
                                 imageName = iconName,
                                 width = 82.dp,
                                 height = 93.dp,
                                 modifier = Modifier
                                     .padding(end = 6.dp)
+                                    // Теперь skill корректно находится, и клик будет работать
                                     .clickable(enabled = skill != null) {
                                         if (skill != null) selectedSkill = skill
                                     }
@@ -328,7 +333,7 @@ fun SkillPopup(skill: SecondarySkill, onDismiss: () -> Unit) {
         Card(
             modifier = Modifier
                 .fillMaxWidth(0.9f)
-                .fillMaxHeight(0.75f)
+                // УБРАНО: .fillMaxHeight(0.75f) - теперь высота зависит от контента
                 .clickable(enabled = false) {},
             colors = CardDefaults.cardColors(
                 containerColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.95f)
@@ -338,35 +343,44 @@ fun SkillPopup(skill: SecondarySkill, onDismiss: () -> Unit) {
             Column(
                 modifier = Modifier
                     .padding(16.dp)
-                    .weight(1f)
+                    // УБРАНО: .weight(1f) - колонка не растягивается
+                    // verticalScroll оставляем на случай, если описание навыка
+                    // все-таки окажется очень длинным и не влезет в экран.
                     .verticalScroll(rememberScrollState()),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                HeroImage(
-                    imageName = skill.imageRes,
-                    width = 80.dp,
-                    height = 80.dp,
-                    contentScale = ContentScale.Fit
-                )
-                Spacer(modifier = Modifier.height(8.dp))
 
-                Text(skill.name, fontSize = 22.sp, fontWeight = FontWeight.Bold, color = Color(0xFFD4AF37))
+                // Заголовок попапа
+                Text(skill.name, fontSize = 24.sp, fontWeight = FontWeight.Bold, color = Color(0xFFD4AF37))
 
-                HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp), color = Color.Gray)
+                HorizontalDivider(modifier = Modifier.padding(vertical = 16.dp), color = Color.White)
 
-                SkillPopupRow("Основной", skill.basic)
-                SkillPopupRow("Продвинутый", skill.advanced)
-                SkillPopupRow("Эксперт", skill.expert)
+                // Строки с описанием уровней и иконками
+                SkillPopupRow("Основной", skill.basic, "basic_${skill.id}")
+                HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp), color = Color.White)
+                SkillPopupRow("Продвинутый", skill.advanced, "advanced_${skill.id}")
+                HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp), color = Color.White)
+                SkillPopupRow("Эксперт", skill.expert, "expert_${skill.id}")
             }
         }
     }
 }
 
 @Composable
-fun SkillPopupRow(level: String, description: String) {
-    Column(modifier = Modifier.fillMaxWidth().padding(vertical = 6.dp)) {
-        Text(text = level, color = Color(0xFFD4AF37), fontWeight = FontWeight.Bold, fontSize = 16.sp)
-        Text(text = description, color = Color.White, fontSize = 14.sp)
-        Spacer(modifier = Modifier.height(4.dp))
+fun SkillPopupRow(level: String, description: String, imageRes: String) {
+    Column(modifier = Modifier.padding(vertical = 8.dp)) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.Top
+        ) {
+            HeroImage(imageName = imageRes, width = 64.dp, height = 64.dp)
+            Spacer(modifier = Modifier.width(16.dp))
+            Column {
+                Text(text = level, color = Color(0xFFD4AF37), fontWeight = FontWeight.Bold, fontSize = 18.sp)
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(text = description, color = Color.White, fontSize = 16.sp)
+            }
+        }
+        // HorizontalDivider(modifier = Modifier.padding(top = 16.dp), color = Color.White)
     }
 }
