@@ -80,7 +80,7 @@ fun AppRoot(
     val allHeroes by heroDao.getAllHeroes().collectAsState(initial = emptyList())
     val allCreatures by creatureDao.getAllCreatures().collectAsState(initial = emptyList())
 
-    // FIX: Не используем remember для GameData.spells, чтобы данные обновлялись при поиске
+    // Данные для магии (Singleton)
     val allSpells = GameData.spells
 
     // Списки городов (сортированные)
@@ -97,15 +97,18 @@ fun AppRoot(
             MainMenuScreen(
                 onHeroesClick = {
                     heroesSearchQuery = ""
+                    selectedHeroTown = null // Сброс состояния
                     currentScreen = Screen.HeroTowns
                 },
                 onCreaturesClick = {
                     creaturesSearchQuery = ""
+                    selectedCreatureTown = null // Сброс состояния
                     currentScreen = Screen.CreatureTowns
                 },
                 onSkillsClick = { currentScreen = Screen.SkillsList },
                 onMagicClick = {
                     magicSearchQuery = ""
+                    selectedSchool = null // Сброс состояния
                     currentScreen = Screen.MagicSchools
                 },
                 isMuted = isMuted,
@@ -139,6 +142,8 @@ fun AppRoot(
                         items(filteredHeroes) { hero ->
                             HeroCard(hero = hero, onHeroSelected = {
                                 selectedHero = it
+                                // FIX: Явно указываем, что город не выбран, чтобы вернуться в поиск
+                                selectedHeroTown = null
                                 currentScreen = Screen.HeroDetail
                             })
                         }
@@ -147,7 +152,12 @@ fun AppRoot(
             )
         }
         Screen.HeroClasses -> {
-            BackHandler { currentScreen = Screen.HeroTowns }
+            // FIX: При возврате сбрасываем выбранный город
+            BackHandler {
+                selectedHeroTown = null
+                currentScreen = Screen.HeroTowns
+            }
+
             if (selectedHeroTown != null) {
                 val mightClass = allHeroes.firstOrNull { it.town == selectedHeroTown && it.classType == "Might" }?.heroClass ?: "Воин"
                 val magicClass = allHeroes.firstOrNull { it.town == selectedHeroTown && it.classType == "Magic" }?.heroClass ?: "Маг"
@@ -156,7 +166,10 @@ fun AppRoot(
                     townName = selectedHeroTown!!,
                     mightClassName = mightClass,
                     magicClassName = magicClass,
-                    onBack = { currentScreen = Screen.HeroTowns },
+                    onBack = {
+                        selectedHeroTown = null
+                        currentScreen = Screen.HeroTowns
+                    },
                     onClassSelected = { type ->
                         selectedHeroClassType = type
                         currentScreen = Screen.HeroList
@@ -221,6 +234,8 @@ fun AppRoot(
                         items(filteredCreatures) { creature ->
                             CreatureCard(creature = creature, onClick = {
                                 selectedCreature = it
+                                // FIX: Сбрасываем город для корректного возврата
+                                selectedCreatureTown = null
                                 currentScreen = Screen.CreatureDetail
                             })
                         }
@@ -229,13 +244,21 @@ fun AppRoot(
             )
         }
         Screen.CreatureList -> {
-            BackHandler { currentScreen = Screen.CreatureTowns }
+            // FIX: При возврате сбрасываем выбранный город
+            BackHandler {
+                selectedCreatureTown = null
+                currentScreen = Screen.CreatureTowns
+            }
+
             if (selectedCreatureTown != null) {
                 val creatures = allCreatures.filter { it.town == selectedCreatureTown }
                 CreatureListScreen(
                     townName = selectedCreatureTown!!,
                     creatures = creatures,
-                    onBack = { currentScreen = Screen.CreatureTowns },
+                    onBack = {
+                        selectedCreatureTown = null
+                        currentScreen = Screen.CreatureTowns
+                    },
                     onCreatureSelected = { c ->
                         selectedCreature = c
                         currentScreen = Screen.CreatureDetail
@@ -283,7 +306,6 @@ fun AppRoot(
         Screen.MagicSchools -> {
             BackHandler { currentScreen = Screen.MainMenu }
 
-            // Фильтрация заклинаний (используем allSpells без remember для актуальности данных)
             val filteredSpells = remember(allSpells, magicSearchQuery) {
                 if (magicSearchQuery.isBlank()) emptyList()
                 else allSpells.filter { it.name.contains(magicSearchQuery, ignoreCase = true) }
@@ -304,6 +326,8 @@ fun AppRoot(
                         items(filteredSpells) { spell ->
                             SpellCard(spell = spell, onClick = {
                                 selectedSpell = spell
+                                // FIX: Явно зануляем школу, чтобы BackHandler в деталях вернул нас сюда (в поиск)
+                                selectedSchool = null
                                 currentScreen = Screen.MagicDetail
                             })
                         }
@@ -312,9 +336,15 @@ fun AppRoot(
             )
         }
         Screen.MagicList -> {
-            BackHandler { currentScreen = Screen.MagicSchools }
+            // FIX: При возврате сбрасываем выбранную школу
+            BackHandler {
+                selectedSchool = null
+                currentScreen = Screen.MagicSchools
+            }
+
             if (selectedSchool != null) {
-                val spells = allSpells.filter { it.school == selectedSchool }
+                val spells = allSpells.filter { it.school.contains(selectedSchool!!, ignoreCase = true) }
+
                 SpellListScreen(
                     school = selectedSchool!!,
                     spells = spells,

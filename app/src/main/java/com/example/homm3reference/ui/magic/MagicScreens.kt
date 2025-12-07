@@ -258,7 +258,7 @@ fun SpellDetailScreen(spell: Spell) {
             Row(modifier = Modifier.padding(bottom = 8.dp)) {
                 Text(text = "Навык", modifier = Modifier.weight(1f), color = Color(0xFFD4AF37), fontWeight = FontWeight.Bold, fontSize = 16.sp)
                 Text(text = "Мана", modifier = Modifier.weight(0.6f), color = Color(0xFFD4AF37), fontWeight = FontWeight.Bold, fontSize = 16.sp, textAlign = TextAlign.Center)
-                Text(text = "Эффект", modifier = Modifier.weight(2.5f), color = Color(0xFFD4AF37), fontWeight = FontWeight.Bold, fontSize = 16.sp)
+                Text(text = "Эффект", modifier = Modifier.weight(2.5f), color = Color(0xFFD4AF37), fontWeight = FontWeight.Bold, fontSize = 16.sp, textAlign = TextAlign.Center)
             }
 
             HorizontalDivider(color = Color.White, thickness = 1.dp)
@@ -270,7 +270,7 @@ fun SpellDetailScreen(spell: Spell) {
             SpellEffectRow("Базовый", spell.manaCostBasic, spell.descriptionBasic)
             HorizontalDivider(color = Color.White)
 
-            SpellEffectRow("Продвинутый", spell.manaCostAdvanced, spell.descriptionAdvanced)
+            SpellEffectRow("Продв.", spell.manaCostAdvanced, spell.descriptionAdvanced)
             HorizontalDivider(color = Color.White)
 
             SpellEffectRow("Эксперт", spell.manaCostExpert, spell.descriptionExpert)
