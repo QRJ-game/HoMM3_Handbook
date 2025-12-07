@@ -139,7 +139,7 @@ fun SpellCard(spell: Spell, onClick: () -> Unit) {
                     color = Color.White
                 )
                 Text(
-                    text = "Уровень: ${spell.level} | Мана: ${spell.manaCostBasic}",
+                    text = "Уровень: ${spell.level} | Мана: ${spell.manaCostNone}",
                     fontSize = 14.sp,
                     color = Color.White
                 )
