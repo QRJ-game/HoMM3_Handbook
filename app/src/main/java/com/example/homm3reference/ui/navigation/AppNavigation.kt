@@ -91,24 +91,41 @@ fun AppRoot(
         allCreatures.map { it.town }.distinct().sortedBy { TOWN_ORDER.indexOf(it) }
     }
 
+    // Инициализация GameData и проверка логов
+    LaunchedEffect(allCreatures, allHeroes) {
+        if (allCreatures.isNotEmpty()) {
+            GameData.creatures = allCreatures
+        }
+
+        // FIX: Добавлена проверка GameData.spells.isNotEmpty() и secondarySkills
+        // Это предотвращает ложные срабатывания логов, если JSON еще не распарсился
+        if (allHeroes.isNotEmpty() &&
+            GameData.creatures.isNotEmpty() &&
+            GameData.spells.isNotEmpty() &&
+            GameData.secondarySkills.isNotEmpty()) {
+
+            GameData.checkMissingSpecialtyIcons(allHeroes)
+        }
+    }
+
     when (currentScreen) {
         // --- ГЛАВНОЕ МЕНЮ ---
         Screen.MainMenu -> {
             MainMenuScreen(
                 onHeroesClick = {
                     heroesSearchQuery = ""
-                    selectedHeroTown = null // Сброс состояния
+                    selectedHeroTown = null
                     currentScreen = Screen.HeroTowns
                 },
                 onCreaturesClick = {
                     creaturesSearchQuery = ""
-                    selectedCreatureTown = null // Сброс состояния
+                    selectedCreatureTown = null
                     currentScreen = Screen.CreatureTowns
                 },
                 onSkillsClick = { currentScreen = Screen.SkillsList },
                 onMagicClick = {
                     magicSearchQuery = ""
-                    selectedSchool = null // Сброс состояния
+                    selectedSchool = null
                     currentScreen = Screen.MagicSchools
                 },
                 isMuted = isMuted,
@@ -128,6 +145,7 @@ fun AppRoot(
             TownSelectionScreen(
                 title = "Герои: Выбор города",
                 towns = heroTowns,
+                // onBack удален
                 onTownSelected = { town ->
                     selectedHeroTown = town
                     currentScreen = Screen.HeroClasses
@@ -142,7 +160,6 @@ fun AppRoot(
                         items(filteredHeroes) { hero ->
                             HeroCard(hero = hero, onHeroSelected = {
                                 selectedHero = it
-                                // FIX: Явно указываем, что город не выбран, чтобы вернуться в поиск
                                 selectedHeroTown = null
                                 currentScreen = Screen.HeroDetail
                             })
@@ -152,7 +169,6 @@ fun AppRoot(
             )
         }
         Screen.HeroClasses -> {
-            // FIX: При возврате сбрасываем выбранный город
             BackHandler {
                 selectedHeroTown = null
                 currentScreen = Screen.HeroTowns
@@ -166,10 +182,7 @@ fun AppRoot(
                     townName = selectedHeroTown!!,
                     mightClassName = mightClass,
                     magicClassName = magicClass,
-                    onBack = {
-                        selectedHeroTown = null
-                        currentScreen = Screen.HeroTowns
-                    },
+                    // onBack удален
                     onClassSelected = { type ->
                         selectedHeroClassType = type
                         currentScreen = Screen.HeroList
@@ -185,7 +198,7 @@ fun AppRoot(
                     heroes = filtered,
                     townName = selectedHeroTown!!,
                     className = filtered.firstOrNull()?.heroClass ?: "",
-                    onBack = { currentScreen = Screen.HeroClasses },
+                    // onBack удален
                     onHeroSelected = { h ->
                         selectedHero = h
                         currentScreen = Screen.HeroDetail
@@ -200,10 +213,8 @@ fun AppRoot(
             if (selectedHero != null) {
                 HeroDetailScreen(
                     hero = selectedHero!!,
-                    creatures = allCreatures,
-                    onBack = {
-                        if (selectedHeroTown == null) currentScreen = Screen.HeroTowns else currentScreen = Screen.HeroList
-                    }
+                    creatures = allCreatures
+                    // onBack удален
                 )
             }
         }
@@ -220,6 +231,7 @@ fun AppRoot(
             TownSelectionScreen(
                 title = "Существа: Выбор фракции",
                 towns = creatureTowns,
+                // onBack удален
                 onTownSelected = { town ->
                     selectedCreatureTown = town
                     currentScreen = Screen.CreatureList
@@ -234,7 +246,6 @@ fun AppRoot(
                         items(filteredCreatures) { creature ->
                             CreatureCard(creature = creature, onClick = {
                                 selectedCreature = it
-                                // FIX: Сбрасываем город для корректного возврата
                                 selectedCreatureTown = null
                                 currentScreen = Screen.CreatureDetail
                             })
@@ -244,7 +255,6 @@ fun AppRoot(
             )
         }
         Screen.CreatureList -> {
-            // FIX: При возврате сбрасываем выбранный город
             BackHandler {
                 selectedCreatureTown = null
                 currentScreen = Screen.CreatureTowns
@@ -255,10 +265,7 @@ fun AppRoot(
                 CreatureListScreen(
                     townName = selectedCreatureTown!!,
                     creatures = creatures,
-                    onBack = {
-                        selectedCreatureTown = null
-                        currentScreen = Screen.CreatureTowns
-                    },
+                    // onBack удален
                     onCreatureSelected = { c ->
                         selectedCreature = c
                         currentScreen = Screen.CreatureDetail
@@ -272,10 +279,8 @@ fun AppRoot(
             }
             if (selectedCreature != null) {
                 CreatureDetailScreen(
-                    creature = selectedCreature!!,
-                    onBack = {
-                        if (selectedCreatureTown == null) currentScreen = Screen.CreatureTowns else currentScreen = Screen.CreatureList
-                    }
+                    creature = selectedCreature!!
+                    // onBack удален
                 )
             }
         }
@@ -285,7 +290,7 @@ fun AppRoot(
             BackHandler { currentScreen = Screen.MainMenu }
             SecondarySkillsListScreen(
                 skills = GameData.secondarySkills,
-                onBack = { currentScreen = Screen.MainMenu },
+                // onBack удален
                 onSkillSelected = { skill ->
                     selectedSkill = skill
                     currentScreen = Screen.SkillDetail
@@ -296,8 +301,8 @@ fun AppRoot(
             BackHandler { currentScreen = Screen.SkillsList }
             selectedSkill?.let { skill ->
                 SecondarySkillDetailScreen(
-                    skill = skill,
-                    onBack = { currentScreen = Screen.SkillsList }
+                    skill = skill
+                    // onBack удален
                 )
             }
         }
@@ -312,6 +317,7 @@ fun AppRoot(
             }
 
             MagicSchoolSelectScreen(
+                // onBack удален
                 onSchoolSelected = { school ->
                     selectedSchool = school
                     currentScreen = Screen.MagicList
@@ -326,7 +332,6 @@ fun AppRoot(
                         items(filteredSpells) { spell ->
                             SpellCard(spell = spell, onClick = {
                                 selectedSpell = spell
-                                // FIX: Явно зануляем школу, чтобы BackHandler в деталях вернул нас сюда (в поиск)
                                 selectedSchool = null
                                 currentScreen = Screen.MagicDetail
                             })
@@ -336,7 +341,6 @@ fun AppRoot(
             )
         }
         Screen.MagicList -> {
-            // FIX: При возврате сбрасываем выбранную школу
             BackHandler {
                 selectedSchool = null
                 currentScreen = Screen.MagicSchools
@@ -348,6 +352,7 @@ fun AppRoot(
                 SpellListScreen(
                     school = selectedSchool!!,
                     spells = spells,
+                    // onBack удален
                     onSpellSelected = { spell ->
                         selectedSpell = spell
                         currentScreen = Screen.MagicDetail
@@ -362,6 +367,7 @@ fun AppRoot(
             if (selectedSpell != null) {
                 SpellDetailScreen(
                     spell = selectedSpell!!
+                    // onBack удален
                 )
             }
         }

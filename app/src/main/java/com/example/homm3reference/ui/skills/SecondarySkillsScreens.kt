@@ -24,7 +24,6 @@ import com.example.homm3reference.ui.common.HeroImage
 @Composable
 fun SecondarySkillsListScreen(
     skills: List<SecondarySkill>,
-    onBack: () -> Unit,
     onSkillSelected: (SecondarySkill) -> Unit
 ) {
     var searchQuery by remember { mutableStateOf("") }
@@ -85,7 +84,7 @@ fun SecondarySkillsListScreen(
 }
 
 @Composable
-fun SecondarySkillDetailScreen(skill: SecondarySkill, onBack: () -> Unit) {
+fun SecondarySkillDetailScreen(skill: SecondarySkill) {
     AppBackground {
         Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
             // Кнопка "Назад" удалена

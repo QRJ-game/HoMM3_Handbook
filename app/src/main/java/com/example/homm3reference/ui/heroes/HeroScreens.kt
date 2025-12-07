@@ -36,7 +36,6 @@ fun ClassSelectionScreen(
     townName: String,
     mightClassName: String,
     magicClassName: String,
-    onBack: () -> Unit,
     onClassSelected: (String) -> Unit
 ) {
     AppBackground {
@@ -92,7 +91,6 @@ fun HeroListScreen(
     heroes: List<Hero>,
     townName: String,
     className: String,
-    onBack: () -> Unit,
     onHeroSelected: (Hero) -> Unit
 ) {
     val groupedHeroes = remember(heroes) {
@@ -158,12 +156,18 @@ fun HeroCard(hero: Hero, onHeroSelected: (Hero) -> Unit) {
     }
 }
 
+
 @Composable
-fun HeroDetailScreen(hero: Hero, creatures: List<Creature>, onBack: () -> Unit) {
+fun HeroDetailScreen(hero: Hero, creatures: List<Creature>) { // onBack удален
     val stats = remember(hero.heroClass) { GameData.getStatsForClass(hero.heroClass) }
 
     val spellObj = remember(hero.spell) {
         GameData.spells.find { it.name.equals(hero.spell, ignoreCase = true) }
+    }
+
+    // Ищем иконку специализации
+    val specialtyIcon = remember(hero.specialty) {
+        GameData.getSpecialtyIcon(hero.specialty)
     }
 
     var selectedCreature by remember { mutableStateOf<Creature?>(null) }
@@ -182,6 +186,7 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>, onBack: () -> Unit) 
             ) {
                 Spacer(modifier = Modifier.height(24.dp))
 
+                // ... (Шапка героя и статы без изменений) ...
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     HeroImage(
                         imageName = hero.imageRes,
@@ -213,15 +218,22 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>, onBack: () -> Unit) 
 
                 HorizontalDivider(color = Color.White)
 
-                InfoRow("Специализация", hero.specialty)
+                // ОБНОВЛЕНО: Используем кастомный ряд для специализации с иконкой
+                SpecialtyInfoRow(
+                    label = "Специализация",
+                    value = hero.specialty,
+                    iconRes = specialtyIcon
+                )
 
                 HorizontalDivider(color = Color.White, modifier = Modifier.padding(vertical = 8.dp))
 
+                // ... (Блок навыков и заклинаний без изменений) ...
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.Top
                 ) {
+                    // ... (код колонок навыков и заклинаний) ...
                     // Левая колонка: Навыки
                     Column(modifier = Modifier.weight(1f).padding(end = 8.dp)) {
                         Text("Навыки", color = Color(0xFFD4AF37), fontSize = 16.sp, fontWeight = FontWeight.Bold)
@@ -312,27 +324,15 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>, onBack: () -> Unit) 
                 Spacer(modifier = Modifier.height(32.dp))
             }
 
-            // 2. POPUPS
-
+            // ... (Popups без изменений) ...
             if (selectedCreature != null) {
-                CreaturePopup(
-                    creature = selectedCreature!!,
-                    onDismiss = { selectedCreature = null }
-                )
+                CreaturePopup(creature = selectedCreature!!, onDismiss = { selectedCreature = null })
             }
-
             if (selectedSkill != null) {
-                SkillPopup(
-                    skill = selectedSkill!!,
-                    onDismiss = { selectedSkill = null }
-                )
+                SkillPopup(skill = selectedSkill!!, onDismiss = { selectedSkill = null })
             }
-
             if (selectedSpell != null) {
-                SpellPopup(
-                    spell = selectedSpell!!,
-                    onDismiss = { selectedSpell = null }
-                )
+                SpellPopup(spell = selectedSpell!!, onDismiss = { selectedSpell = null })
             }
         }
     }
@@ -549,6 +549,34 @@ fun SkillPopupRow(level: String, description: String, imageRes: String) {
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(text = description, color = Color.White, fontSize = 16.sp)
             }
+        }
+    }
+}
+@Composable
+fun SpecialtyInfoRow(label: String, value: String, iconRes: String?) {
+    Column(modifier = Modifier.padding(vertical = 8.dp)) {
+        Text(
+            text = label,
+            color = Color(0xFFD4AF37),
+            fontWeight = FontWeight.Bold,
+            fontSize = 16.sp
+        )
+        Spacer(modifier = Modifier.height(4.dp))
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            if (iconRes != null) {
+                HeroImage(
+                    imageName = iconRes,
+                    width = 48.dp, // Немного меньше стандартных иконок навыков
+                    height = 54.dp,
+                    modifier = Modifier.padding(end = 12.dp)
+                )
+            }
+            Text(
+                text = value,
+                fontWeight = FontWeight.Medium,
+                color = Color.White,
+                fontSize = 16.sp
+            )
         }
     }
 }

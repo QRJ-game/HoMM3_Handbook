@@ -37,7 +37,6 @@ import com.example.homm3reference.ui.common.*
 fun CreatureListScreen(
     townName: String,
     creatures: List<Creature>,
-    onBack: () -> Unit,
     onCreatureSelected: (Creature) -> Unit
 ) {
     var searchQuery by remember { mutableStateOf("") }
@@ -172,7 +171,7 @@ fun CreatureCard(creature: Creature, onClick: (Creature) -> Unit) {
 }
 
 @Composable
-fun CreatureDetailScreen(creature: Creature, onBack: () -> Unit) {
+fun CreatureDetailScreen(creature: Creature) {
     AppBackground {
         Column(modifier = Modifier
             .fillMaxSize()
