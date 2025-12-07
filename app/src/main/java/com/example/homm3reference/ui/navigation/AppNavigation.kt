@@ -1,27 +1,32 @@
 package com.example.homm3reference.ui.navigation
 
 import androidx.activity.compose.BackHandler
-import androidx.compose.runtime.* import com.example.homm3reference.data.Creature
+import androidx.compose.runtime.*
+import com.example.homm3reference.data.Creature
 import com.example.homm3reference.data.CreatureDao
 import com.example.homm3reference.data.Hero
 import com.example.homm3reference.data.HeroDao
 import com.example.homm3reference.data.SecondarySkill
+import com.example.homm3reference.data.Spell // <-- Import
 import com.example.homm3reference.ui.common.TownSelectionScreen
 import com.example.homm3reference.ui.creatures.CreatureDetailScreen
 import com.example.homm3reference.ui.creatures.CreatureListScreen
 import com.example.homm3reference.ui.heroes.ClassSelectionScreen
 import com.example.homm3reference.ui.heroes.HeroDetailScreen
 import com.example.homm3reference.ui.heroes.HeroListScreen
+import com.example.homm3reference.ui.magic.MagicSchoolSelectScreen // <-- Import
+import com.example.homm3reference.ui.magic.SpellDetailScreen // <-- Import
+import com.example.homm3reference.ui.magic.SpellListScreen // <-- Import
 import com.example.homm3reference.ui.main_menu.MainMenuScreen
 import com.example.homm3reference.ui.skills.SecondarySkillDetailScreen
 import com.example.homm3reference.ui.skills.SecondarySkillsListScreen
 
-// Добавляем новые экраны в Enum
 enum class Screen {
     MainMenu,
     HeroTowns, HeroClasses, HeroList, HeroDetail,
     CreatureTowns, CreatureList, CreatureDetail,
-    SkillsList, SkillDetail // <--- Новые экраны
+    SkillsList, SkillDetail,
+    MagicSchools, MagicList, MagicDetail // <--- Новые экраны для Магии
 }
 
 val TOWN_ORDER = listOf(
@@ -51,6 +56,11 @@ fun AppRoot(
     // Состояния для Навыков
     var selectedSkill by remember { mutableStateOf<SecondarySkill?>(null) }
 
+    // Состояния для Магии
+    var selectedSchool by remember { mutableStateOf<String?>(null) }
+    var selectedSpell by remember { mutableStateOf<Spell?>(null) }
+
+
     // Загрузка данных (Flow)
     val allHeroes by heroDao.getAllHeroes().collectAsState(initial = emptyList())
     val allCreatures by creatureDao.getAllCreatures().collectAsState(initial = emptyList())
@@ -70,6 +80,7 @@ fun AppRoot(
                 onHeroesClick = { currentScreen = Screen.HeroTowns },
                 onCreaturesClick = { currentScreen = Screen.CreatureTowns },
                 onSkillsClick = { currentScreen = Screen.SkillsList },
+                onMagicClick = { currentScreen = Screen.MagicSchools }, // <-- Добавлено
                 isMuted = isMuted,
                 onMuteToggle = onMuteToggle
             )
@@ -189,6 +200,42 @@ fun AppRoot(
                 SecondarySkillDetailScreen(
                     skill = skill,
                     onBack = { currentScreen = Screen.SkillsList }
+                )
+            }
+        }
+
+        // --- ВЕТКА МАГИИ (НОВАЯ) ---
+        Screen.MagicSchools -> {
+            BackHandler { currentScreen = Screen.MainMenu }
+            MagicSchoolSelectScreen(
+                onBack = { currentScreen = Screen.MainMenu },
+                onSchoolSelected = { school ->
+                    selectedSchool = school
+                    currentScreen = Screen.MagicList
+                }
+            )
+        }
+        Screen.MagicList -> {
+            BackHandler { currentScreen = Screen.MagicSchools }
+            if (selectedSchool != null) {
+                val spells = com.example.homm3reference.data.GameData.spells.filter { it.school == selectedSchool }
+                SpellListScreen(
+                    school = selectedSchool!!,
+                    spells = spells,
+                    onBack = { currentScreen = Screen.MagicSchools },
+                    onSpellSelected = { spell ->
+                        selectedSpell = spell
+                        currentScreen = Screen.MagicDetail
+                    }
+                )
+            }
+        }
+        Screen.MagicDetail -> {
+            BackHandler { currentScreen = Screen.MagicList }
+            if (selectedSpell != null) {
+                SpellDetailScreen(
+                    spell = selectedSpell!!,
+                    onBack = { currentScreen = Screen.MagicList }
                 )
             }
         }

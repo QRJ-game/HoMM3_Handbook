@@ -29,10 +29,9 @@ class MainActivity : ComponentActivity() {
         lifecycleScope.launch {
             DataLoader.loadHeroes(applicationContext, heroDao)
             DataLoader.loadCreatures(applicationContext, creatureDao)
-
-            // Добавляем загрузку новых JSON
             DataLoader.loadSecondarySkills(applicationContext)
             DataLoader.loadHeroClasses(applicationContext)
+            DataLoader.loadSpells(applicationContext)
         }
 
         setContent {

@@ -21,13 +21,12 @@ import com.example.homm3reference.R
 import com.example.homm3reference.ui.common.AppBackground
 import com.example.homm3reference.ui.common.MenuButton
 
-
-
 @Composable
 fun MainMenuScreen(
     onHeroesClick: () -> Unit,
     onCreaturesClick: () -> Unit,
     onSkillsClick: () -> Unit,
+    onMagicClick: () -> Unit, // <-- Добавлен этот параметр
     isMuted: Boolean,
     onMuteToggle: () -> Unit
 ) {
@@ -63,6 +62,8 @@ fun MainMenuScreen(
                 MenuButton(text = "Существа", onClick = onCreaturesClick)
                 Spacer(modifier = Modifier.height(20.dp))
                 MenuButton(text = "Вторичные навыки", onClick = onSkillsClick)
+                Spacer(modifier = Modifier.height(20.dp))
+                MenuButton(text = "Магия", onClick = onMagicClick) // <-- Добавлена кнопка
 
                 Spacer(modifier = Modifier.height(32.dp))
             }
@@ -87,8 +88,8 @@ fun MainMenuScreen(
                 onClick = { showAboutPopup = true },
                 modifier = Modifier
                     .padding(16.dp)
-                    .align(Alignment.BottomEnd) // Прибиваем к правому нижнему углу
-                    .navigationBarsPadding() // Отступ от системной навигации снизу
+                    .align(Alignment.BottomEnd)
+                    .navigationBarsPadding()
                     .background(Color.Black.copy(alpha = 0.5f), CircleShape)
             ) {
                 Text(
@@ -105,4 +106,3 @@ fun MainMenuScreen(
         }
     }
 }
-
