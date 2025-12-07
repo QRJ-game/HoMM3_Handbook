@@ -1,14 +1,14 @@
 package com.example.homm3reference.ui.heroes
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.border
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -20,6 +20,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
+import androidx.compose.foundation.Image
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -45,7 +48,6 @@ fun ClassSelectionScreen(
         Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Кнопка Назад убрана, оставлен только заголовок
             Text(
                 text = "$townName: Классы",
                 fontSize = 24.sp,
@@ -105,7 +107,6 @@ fun HeroListScreen(
     AppBackground {
         Column(modifier = Modifier.fillMaxSize()) {
 
-            // Кнопка Назад убрана
             Text(
                 text = "$townName • $className",
                 fontSize = 20.sp,
@@ -159,7 +160,6 @@ fun HeroCard(hero: Hero, onHeroSelected: (Hero) -> Unit) {
     }
 }
 
-
 @Composable
 fun HeroDetailScreen(hero: Hero, creatures: List<Creature>) {
     val stats = remember(hero.heroClass) { GameData.getStatsForClass(hero.heroClass) }
@@ -167,7 +167,6 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>) {
     val spellObj = remember(hero.spell) {
         GameData.spells.find { it.name.equals(hero.spell, ignoreCase = true) }
     }
-    val specialtyIcon = hero.specialtyIcon
 
     var selectedCreature by remember { mutableStateOf<Creature?>(null) }
     var selectedSkill by remember { mutableStateOf<SecondarySkill?>(null) }
@@ -184,6 +183,8 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>) {
                 .padding(16.dp)
             ) {
                 Spacer(modifier = Modifier.height(24.dp))
+
+                // Шапка и статы (без изменений)
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     HeroImage(
                         imageName = hero.imageRes,
@@ -215,22 +216,22 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>) {
 
                 HorizontalDivider(color = Color.White)
 
-                // ОБНОВЛЕНО: Используем кастомный ряд для специализации с иконкой
+                // ОБНОВЛЕНО: Передаем описание специализации
                 SpecialtyInfoRow(
                     label = "Специализация",
                     value = hero.specialty,
-                    iconRes = specialtyIcon
+                    iconRes = hero.specialtyIcon,
+                    description = hero.specialtyDescription
                 )
 
                 HorizontalDivider(color = Color.White, modifier = Modifier.padding(vertical = 8.dp))
 
-                // ... (Блок навыков и заклинаний без изменений) ...
+                // Навыки и Заклинание (без изменений)
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.Top
                 ) {
-                    // ... (код колонок навыков и заклинаний) ...
                     // Левая колонка: Навыки
                     Column(modifier = Modifier.weight(1f).padding(end = 8.dp)) {
                         Text("Навыки", color = Color(0xFFD4AF37), fontSize = 16.sp, fontWeight = FontWeight.Bold)
@@ -245,8 +246,8 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>) {
 
                                     HeroImage(
                                         imageName = iconName,
-                                        width = 80.dp,
-                                        height = 80.dp,
+                                        width = 60.dp,
+                                        height = 68.dp,
                                         modifier = Modifier
                                             .padding(end = 6.dp)
                                             .clickable(enabled = skill != null) {
@@ -259,9 +260,9 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>) {
                         Text(
                             text = hero.skills,
                             color = Color.White,
-                            fontSize = 16.sp,
+                            fontSize = 14.sp,
                             fontWeight = FontWeight.Medium,
-                            lineHeight = 20.sp
+                            lineHeight = 16.sp
                         )
                     }
 
@@ -284,15 +285,15 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>) {
                         if (spellObj != null) {
                             HeroImage(
                                 imageName = spellObj.imageRes,
-                                width = 80.dp,
-                                height = 80.dp,
+                                width = 60.dp,
+                                height = 68.dp,
                                 modifier = Modifier.clickable { selectedSpell = spellObj }
                             )
                             Spacer(modifier = Modifier.height(4.dp))
                             Text(
                                 text = spellObj.name,
                                 color = Color.White,
-                                fontSize = 16.sp,
+                                fontSize = 14.sp,
                                 fontWeight = FontWeight.Medium,
                                 maxLines = 1,
                                 overflow = TextOverflow.Ellipsis,
@@ -302,7 +303,7 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>) {
                             Text(
                                 text = hero.spell ?: "Нет",
                                 color = Color.Gray,
-                                fontSize = 16.sp,
+                                fontSize = 14.sp,
                                 textAlign = TextAlign.End
                             )
                         }
@@ -321,7 +322,7 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>) {
                 Spacer(modifier = Modifier.height(32.dp))
             }
 
-            // ... (Popups без изменений) ...
+            // POPUPS
             if (selectedCreature != null) {
                 CreaturePopup(creature = selectedCreature!!, onDismiss = { selectedCreature = null })
             }
@@ -335,6 +336,89 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>) {
     }
 }
 
+@Composable
+fun SpecialtyInfoRow(
+    label: String,
+    value: String,
+    iconRes: String?,
+    description: String?
+) {
+    val context = LocalContext.current
+
+    Column(modifier = Modifier.padding(vertical = 8.dp)) {
+        Text(
+            text = label,
+            color = Color(0xFFD4AF37),
+            fontWeight = FontWeight.Bold,
+            fontSize = 16.sp
+        )
+        Spacer(modifier = Modifier.height(8.dp))
+        Row(
+            verticalAlignment = Alignment.Top,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            // --- ЛЕВАЯ ЧАСТЬ: Иконка ---
+            if (iconRes != null) {
+                val isCreature = iconRes.startsWith("creature_")
+
+                if (isCreature) {
+                    val resId = remember(iconRes) {
+                        context.resources.getIdentifier(iconRes, "drawable", context.packageName)
+                    }
+
+                    Box(
+                        modifier = Modifier
+                            .padding(end = 12.dp)
+                            .width(50.dp)
+                            .height(60.dp)
+                            .clip(RoundedCornerShape(8.dp))
+                            .background(MaterialTheme.colorScheme.surface)
+                            .border(1.dp, Color(0xFFD4AF37), RoundedCornerShape(8.dp)),
+                        contentAlignment = Alignment.BottomCenter
+                    ) {
+                        if (resId != 0) {
+                            Image(
+                                painter = painterResource(id = resId),
+                                contentDescription = null,
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .height(65.dp)
+                                    .offset(y = (-5).dp),
+                                contentScale = ContentScale.Fit
+                            )
+                        }
+                    }
+                } else {
+                    HeroImage(
+                        imageName = iconRes,
+                        width = 48.dp,
+                        height = 54.dp,
+                        modifier = Modifier.padding(end = 12.dp)
+                    )
+                }
+            }
+
+            // --- ПРАВАЯ ЧАСТЬ: Название и Описание ---
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = value,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.White,
+                    fontSize = 16.sp
+                )
+                if (!description.isNullOrEmpty()) {
+                    Spacer(modifier = Modifier.height(4.dp))
+                    Text(
+                        text = description,
+                        color = Color.White.copy(alpha = 0.8f),
+                        fontSize = 14.sp,
+                        lineHeight = 18.sp
+                    )
+                }
+            }
+        }
+    }
+}
 @Composable
 fun CreaturePopup(creature: Creature, onDismiss: () -> Unit) {
     Box(
@@ -446,7 +530,7 @@ fun SpellPopup(spell: Spell, onDismiss: () -> Unit) {
         Card(
             modifier = Modifier
                 .fillMaxWidth(0.9f)
-                .wrapContentHeight() // Высота подстраивается под контент
+                .wrapContentHeight()
                 .clickable(enabled = false) {},
             colors = CardDefaults.cardColors(
                 containerColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.95f)
@@ -480,19 +564,19 @@ fun SpellPopup(spell: Spell, onDismiss: () -> Unit) {
                     modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text("Навык", modifier = Modifier.weight(0.8f), color = Color(0xFFD4AF37), fontWeight = FontWeight.Bold)
+                    Text("Уровень", modifier = Modifier.weight(1f), color = Color(0xFFD4AF37), fontWeight = FontWeight.Bold)
                     Text("Мана", modifier = Modifier.weight(0.8f), color = Color(0xFFD4AF37), fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
-                    Text("Эффект", modifier = Modifier.weight(2.4f), color = Color(0xFFD4AF37), fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
+                    Text("Эффект", modifier = Modifier.weight(2.2f), color = Color(0xFFD4AF37), fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
                 }
 
                 HorizontalDivider(color = Color.Gray, thickness = 1.dp)
 
                 SpellPopupRow("Нет", spell.manaCostNone, spell.descriptionNone)
-                HorizontalDivider(color = Color.White)
+                HorizontalDivider(color = Color.Gray, thickness = 0.5.dp)
                 SpellPopupRow("Базовый", spell.manaCostBasic, spell.descriptionBasic)
-                HorizontalDivider(color = Color.White)
+                HorizontalDivider(color = Color.Gray, thickness = 0.5.dp)
                 SpellPopupRow("Продв.", spell.manaCostAdvanced, spell.descriptionAdvanced)
-                HorizontalDivider(color = Color.White)
+                HorizontalDivider(color = Color.Gray, thickness = 0.5.dp)
                 SpellPopupRow("Эксперт", spell.manaCostExpert, spell.descriptionExpert)
             }
         }
@@ -512,22 +596,22 @@ fun SpellPopupRow(level: String, mana: Int, description: String) {
             modifier = Modifier.weight(1f),
             color = Color.White,
             fontWeight = FontWeight.Bold,
-            fontSize = 16.sp
+            fontSize = 14.sp
         )
         Text(
             text = mana.toString(),
-            modifier = Modifier.weight(0.5f),
+            modifier = Modifier.weight(0.8f),
             color = Color(0xFF4FC3F7),
             fontWeight = FontWeight.Bold,
             textAlign = TextAlign.Center,
-            fontSize = 16.sp
+            fontSize = 14.sp
         )
         Text(
             text = description,
-            modifier = Modifier.weight(2.5f),
+            modifier = Modifier.weight(2.2f),
             color = Color.White,
-            fontSize = 16.sp,
-            lineHeight = 20.sp
+            fontSize = 14.sp,
+            lineHeight = 18.sp
         )
     }
 }
@@ -546,72 +630,6 @@ fun SkillPopupRow(level: String, description: String, imageRes: String) {
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(text = description, color = Color.White, fontSize = 16.sp)
             }
-        }
-    }
-}
-// Новый компонент для отображения специализации с иконкой
-@Composable
-fun SpecialtyInfoRow(label: String, value: String, iconRes: String?) {
-    val context = androidx.compose.ui.platform.LocalContext.current
-
-    Column(modifier = Modifier.padding(vertical = 8.dp)) {
-        Text(
-            text = label,
-            color = Color(0xFFD4AF37),
-            fontWeight = FontWeight.Bold,
-            fontSize = 16.sp
-        )
-        Spacer(modifier = Modifier.height(6.dp))
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            if (iconRes != null) {
-                val isCreature = iconRes.startsWith("creature_")
-
-                if (isCreature) {
-                    val resId = remember(iconRes) {
-                        context.resources.getIdentifier(iconRes, "drawable", context.packageName)
-                    }
-
-                    // Ручная отрисовка контейнера, как в карточках существ
-                    // Это убирает проблему "двойного бордера" от HeroImage
-                    Box(
-                        modifier = Modifier
-                            .padding(end = 12.dp)
-                            .width(60.dp)
-                            .height(80.dp)
-                            .clip(RoundedCornerShape(8.dp)) // Скругляем углы
-                            .background(MaterialTheme.colorScheme.surface) // Фон
-                            .border(2.dp, Color(0xFFD4AF37), RoundedCornerShape(8.dp)), // Золотая рамка
-                        contentAlignment = Alignment.BottomCenter
-                    ) {
-                        if (resId != 0) {
-                            androidx.compose.foundation.Image(
-                                painter = androidx.compose.ui.res.painterResource(id = resId),
-                                contentDescription = null,
-                                modifier = Modifier
-                                    .fillMaxWidth() // Растягиваем по ширине
-                                    .height(80.dp)  // Делаем картинку чуть выше контейнера
-                                    .offset(y = (-5).dp), // Поднимаем вверх, чтобы существо было видно лучше
-                                contentScale = ContentScale.Fit
-                            )
-                        }
-                    }
-                } else {
-                    // Для Навыков, Заклинаний и Ресурсов используем стандартный HeroImage
-                    HeroImage(
-                        imageName = iconRes,
-                        width = 80.dp,
-                        height = 80.dp,
-                        modifier = Modifier.padding(end = 12.dp)
-                    )
-                }
-            }
-            Text(
-                text = value,
-                fontWeight = FontWeight.Medium,
-                color = Color.White,
-                fontSize = 16.sp,
-                modifier = Modifier.weight(1f)
-            )
         }
     }
 }
