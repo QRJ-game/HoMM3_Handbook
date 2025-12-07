@@ -216,7 +216,7 @@ fun CreatureDetailScreen(creature: Creature, onBack: () -> Unit) {
                 StatItem("Атака", "⚔️", creature.attack.toString())
                 StatItem("Защита", "🛡️", creature.defense.toString())
                 StatItem("Урон", "💥", damageString)
-                StatItem("Здоровье", "❤️", creature.health.toString())
+                StatItem("ХП", "❤️", creature.health.toString())
                 StatItem("Скорость", "🦶", creature.speed.toString())
             }
             HorizontalDivider(modifier = Modifier.padding(vertical = 16.dp), color = Color.White)

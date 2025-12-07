@@ -483,9 +483,9 @@ fun SpellPopup(spell: Spell, onDismiss: () -> Unit) {
                     modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text("Уровень", modifier = Modifier.weight(1f), color = Color(0xFFD4AF37), fontWeight = FontWeight.Bold)
-                    Text("Мана", modifier = Modifier.weight(0.5f), color = Color(0xFFD4AF37), fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
-                    Text("Эффект", modifier = Modifier.weight(2.5f), color = Color(0xFFD4AF37), fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
+                    Text("Уровень", modifier = Modifier.weight(0.8f), color = Color(0xFFD4AF37), fontWeight = FontWeight.Bold)
+                    Text("Мана", modifier = Modifier.weight(0.8f), color = Color(0xFFD4AF37), fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
+                    Text("Эффект", modifier = Modifier.weight(2.4f), color = Color(0xFFD4AF37), fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
                 }
 
                 HorizontalDivider(color = Color.Gray, thickness = 1.dp)
