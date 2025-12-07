@@ -2,6 +2,7 @@ package com.example.homm3reference.data
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "heroes")
 data class Hero(
@@ -17,5 +18,6 @@ data class Hero(
     val imageRes: String,
     val backgroundColor: String? = null,
     val specialtyIcon: String? = null,
+    @SerializedName("specialtyDescription")
     val specialtyDescription: String? = null
 )

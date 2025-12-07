@@ -247,7 +247,7 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>) {
                                     HeroImage(
                                         imageName = iconName,
                                         width = 60.dp,
-                                        height = 68.dp,
+                                        height = 60.dp,
                                         modifier = Modifier
                                             .padding(end = 6.dp)
                                             .clickable(enabled = skill != null) {
@@ -369,11 +369,11 @@ fun SpecialtyInfoRow(
                     Box(
                         modifier = Modifier
                             .padding(end = 12.dp)
-                            .width(50.dp)
+                            .width(60.dp)
                             .height(60.dp)
                             .clip(RoundedCornerShape(8.dp))
                             .background(MaterialTheme.colorScheme.surface)
-                            .border(1.dp, Color(0xFFD4AF37), RoundedCornerShape(8.dp)),
+                            .border(2.dp, Color(0xFFD4AF37), RoundedCornerShape(8.dp)),
                         contentAlignment = Alignment.BottomCenter
                     ) {
                         if (resId != 0) {
@@ -391,8 +391,8 @@ fun SpecialtyInfoRow(
                 } else {
                     HeroImage(
                         imageName = iconRes,
-                        width = 48.dp,
-                        height = 54.dp,
+                        width = 60.dp,
+                        height = 60.dp,
                         modifier = Modifier.padding(end = 12.dp)
                     )
                 }
@@ -404,15 +404,16 @@ fun SpecialtyInfoRow(
                     text = value,
                     fontWeight = FontWeight.Bold,
                     color = Color.White,
-                    fontSize = 16.sp
+                    fontSize = 16.sp,
+                    lineHeight = 20.sp
                 )
                 if (!description.isNullOrEmpty()) {
                     Spacer(modifier = Modifier.height(4.dp))
                     Text(
                         text = description,
-                        color = Color.White.copy(alpha = 0.8f),
-                        fontSize = 14.sp,
-                        lineHeight = 18.sp
+                        color = Color.White,
+                        fontSize = 16.sp,
+                        lineHeight = 20.sp
                     )
                 }
             }

@@ -1,6 +1,7 @@
 package com.example.homm3reference.data
 
 import android.content.Context
+import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.Dispatchers
@@ -12,14 +13,17 @@ object DataLoader {
     suspend fun loadHeroes(context: Context, dao: HeroDao) {
         withContext(Dispatchers.IO) {
             try {
-                // Если база уже заполнена, можно не загружать заново (опциональная проверка)
-                // if (dao.getAllHeroesSync().isNotEmpty()) return@withContext
-
+                // Читаем файл
                 val jsonString = context.assets.open("heroes_data.json").bufferedReader().use { it.readText() }
+
+                // Парсим
                 val listType = object : TypeToken<List<Hero>>() {}.type
                 val heroes: List<Hero> = Gson().fromJson(jsonString, listType)
                 dao.insertAll(heroes)
-            } catch (e: Exception) { e.printStackTrace() }
+            } catch (e: Exception) {
+                Log.e("HOMM_DEBUG", "Ошибка загрузки: ${e.message}")
+                e.printStackTrace()
+            }
         }
     }
 
@@ -35,7 +39,7 @@ object DataLoader {
         }
     }
 
-    // Загрузка вторичных навыков в GameData
+    // Загрузка вторичных навыков
     suspend fun loadSecondarySkills(context: Context) {
         withContext(Dispatchers.IO) {
             val jsonString = loadJsonFromAsset(context, "secondary_skills.json")
@@ -47,7 +51,7 @@ object DataLoader {
         }
     }
 
-    // Загрузка классов героев в GameData
+    // Загрузка классов
     suspend fun loadHeroClasses(context: Context) {
         withContext(Dispatchers.IO) {
             val jsonString = loadJsonFromAsset(context, "hero_classes.json")
@@ -59,10 +63,9 @@ object DataLoader {
         }
     }
 
-    // --- НОВАЯ ФУНКЦИЯ: Загрузка заклинаний в GameData ---
+    // Загрузка заклинаний
     suspend fun loadSpells(context: Context) {
         withContext(Dispatchers.IO) {
-            // Используем loadJsonFromAsset (правильный регистр)
             val jsonString = loadJsonFromAsset(context, "spells_data.json")
             if (jsonString != null) {
                 val type = object : TypeToken<List<Spell>>() {}.type
@@ -72,7 +75,6 @@ object DataLoader {
         }
     }
 
-    // Вспомогательная функция
     private fun loadJsonFromAsset(context: Context, fileName: String): String? {
         return try {
             context.assets.open(fileName).bufferedReader().use { it.readText() }

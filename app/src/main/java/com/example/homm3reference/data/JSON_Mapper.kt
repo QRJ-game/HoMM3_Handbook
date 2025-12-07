@@ -13,7 +13,6 @@ object JSON_Mapper {
         for (line in lines) {
             val match = regex.find(line.trim())
             if (match != null) {
-                android.util.Log.e("ArmyMapper", "Не найдено существо: '$line.trim', заменено на крестьянина")
                 val (count, rawName) = match.destructured
                 val cleanName = rawName.trim().lowercase()
                 val imageRes = creatureMap[cleanName] ?: "creature_peasant"

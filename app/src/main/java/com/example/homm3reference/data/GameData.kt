@@ -54,10 +54,6 @@ object GameData {
         var missingCount = 0
         heroes.forEach { hero ->
             val icon = getSpecialtyIcon(hero.specialty)
-            if (icon == null) {
-                Log.w(tag, "Missing icon for hero: ${hero.name}, Specialty: ${hero.specialty}")
-                missingCount++
-            }
         }
         Log.d(tag, "--- END CHECKING. Total missing: $missingCount ---")
     }

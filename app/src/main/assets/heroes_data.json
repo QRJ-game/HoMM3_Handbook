@@ -10,7 +10,9 @@
     "spell": "Нет",
     "army": "10-20 Копейщиков\n4-7 Арбалетчиков\n4-5 Грифонов",
     "imageRes": "hero_orrin",
-    "specialtyIcon": "expert_archery"
+    "specialtyIcon": "expert_archery",
+    "specialtyDescription": "Увеличивает эффективность навыка Стрельба на 5% за каждый уровень героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "valeska",
@@ -23,7 +25,8 @@
     "spell": "Нет",
     "army": "4-7 Арбалетчиков\n4-7 Арбалетчиков\n4-7 Арбалетчиков",
     "imageRes": "hero_valeska",
-    "specialtyIcon": "creature_marksman"
+    "specialtyIcon": "creature_marksman",
+    "specialtyDescription": "Повышает скорость Арбалетчиков и Стрелков на 1. Дает бонус к Атаке и Защите за каждый 2-й уровень героя."
   },
   {
     "id": "edric",
@@ -36,7 +39,8 @@
     "spell": "Нет",
     "army": "10-20 Копейщиков\n4-5 Грифонов\n4-5 Грифонов",
     "imageRes": "hero_edric",
-    "specialtyIcon": "creature_griffin"
+    "specialtyIcon": "creature_griffin",
+    "specialtyDescription": "Повышает скорость Грифонов и Королевских грифонов на 1. Дает бонус к Атаке и Защите за каждый 3-й уровень героя."
   },
   {
     "id": "sylvia",
@@ -49,8 +53,9 @@
     "spell": "Нет",
     "army": "10-20 Копейщиков\n4-7 Арбалетчиков\n4-5 Грифонов",
     "imageRes": "hero_sylvia",
-    "backgroundColor": "#1E90FF",
-    "specialtyIcon": "expert_navigation"
+    "specialtyIcon": "expert_navigation",
+    "specialtyDescription": "Увеличивает запас очков хода на воде на 75 единиц за каждый уровень героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "lord_haart",
@@ -63,7 +68,9 @@
     "spell": "Нет",
     "army": "10-20 Копейщиков\n4-7 Арбалетчиков\n4-5 Грифонов",
     "imageRes": "hero_lord_haart",
-    "specialtyIcon": "expert_estates"
+    "specialtyIcon": "expert_estates",
+    "specialtyDescription": "Увеличивает эффективность навыка Имущество на 5% за каждый уровень героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "sorsha",
@@ -76,7 +83,8 @@
     "spell": "Нет",
     "army": "10-20 Копейщиков\n4-7 Арбалетчиков\n 4-5 Грифонов",
     "imageRes": "hero_sorsha",
-    "specialtyIcon": "creature_swordsman"
+    "specialtyIcon": "creature_swordsman",
+    "specialtyDescription": "Повышает скорость Мечников и Крестоносцев на 1. Дает бонус к Атаке и Защите за каждый 4-й уровень героя."
   },
   {
     "id": "christian",
@@ -89,7 +97,9 @@
     "spell": "Нет",
     "army": "10-20 Копейщиков\n4-5 Грифонов\n1 Баллиста",
     "imageRes": "hero_christian",
-    "specialtyIcon": "creature_ballista"
+    "specialtyIcon": "creature_ballista",
+    "specialtyDescription": "Увеличивает атаку и защиту Баллисты на 30% за каждые 5 уровней героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "tyris",
@@ -102,7 +112,8 @@
     "spell": "Нет",
     "army": "10-20 Копейщиков\n4-7 Арбалетчиков\n4-5 Грифонов",
     "imageRes": "hero_tyris",
-    "specialtyIcon": "creature_cavalier"
+    "specialtyIcon": "creature_cavalier",
+    "specialtyDescription": "Повышает скорость Кавалеристов и Чемпионов на 1. Дает бонус к Атаке и Защите за каждый 6-й уровень героя."
   },
   {
     "id": "sir_mullich",
@@ -115,8 +126,9 @@
     "spell": "Нет",
     "army": "10-20 Копейщиков\n4-7 Арбалетчиков\n4-5 Грифонов",
     "imageRes": "hero_sir_mullich",
-    "backgroundColor": "#DC143C",
-    "specialtyIcon": "special_speed"
+    "specialtyIcon": "special_speed",
+    "specialtyDescription": "Увеличивает скорость всех существ в армии героя на 2 единицы.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "beatrice",
@@ -129,7 +141,9 @@
     "spell": "Нет",
     "army": "10-20 Копейщиков\n4-7 Арбалетчиков\n4-5 Грифонов",
     "imageRes": "hero_beatrice",
-    "specialtyIcon": "expert_scouting"
+    "specialtyIcon": "expert_scouting",
+    "specialtyDescription": "Увеличивает радиус обзора героя на 1 клетку каждые 6 уровней.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "catherine",
@@ -142,8 +156,8 @@
     "spell": "Нет",
     "army": "10-20 Копейщиков\n4-7 Арбалетчиков\n4-5 Грифонов",
     "imageRes": "hero_catherine",
-    "backgroundColor": "#DC143C",
-    "specialtyIcon": "creature_swordsman"
+    "specialtyIcon": "creature_swordsman",
+    "specialtyDescription": "Повышает скорость Мечников и Крестоносцев на 1. Дает бонус к Атаке и Защите за каждый 4-й уровень героя."
   },
   {
     "id": "roland",
@@ -156,8 +170,8 @@
     "spell": "Нет",
     "army": "10-20 Копейщиков\n4-7 Арбалетчиков\n4-5 Грифонов",
     "imageRes": "hero_roland",
-    "backgroundColor": "#DC143C",
-    "specialtyIcon": "creature_swordsman"
+    "specialtyIcon": "creature_swordsman",
+    "specialtyDescription": "Повышает скорость Мечников и Крестоносцев на 1. Дает бонус к Атаке и Защите за каждый 4-й уровень героя. (Примечание: На Мечников бонус может не действовать)."
   },
   {
     "id": "adela",
@@ -170,7 +184,9 @@
     "spell": "Благословение",
     "army": "10-20 Копейщиков\n4-7 Арбалетчиков\n4-5 Грифонов",
     "imageRes": "hero_adela",
-    "specialtyIcon": "spell_bless"
+    "specialtyIcon": "spell_bless",
+    "specialtyDescription": "Увеличивает урон существа под Благословением на 10% за каждый уровень героя, кратный уровню существа.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "adelaide",
@@ -183,7 +199,9 @@
     "spell": "Кольцо холода",
     "army": "10-20 Копейщиков\n4-7 Арбалетчиков\n4-5 Грифонов",
     "imageRes": "hero_adelaide",
-    "specialtyIcon": "spell_frost_ring"
+    "specialtyIcon": "spell_frost_ring",
+    "specialtyDescription": "Увеличивает урон Кольца холода на 10% за каждый уровень героя, кратный уровню целевого существа.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "caitlin",
@@ -196,7 +214,8 @@
     "spell": "Лечение",
     "army": "10-20 Копейщиков\n4-7 Арбалетчиков\n4-5 Грифонов",
     "imageRes": "hero_caitlin",
-    "specialtyIcon": "resource_gold"
+    "specialtyIcon": "resource_gold",
+    "specialtyDescription": "Приносит 350 золота в день."
   },
   {
     "id": "cuthbert",
@@ -209,7 +228,9 @@
     "spell": "Слабость",
     "army": "10-20 Копейщиков\n4-7 Арбалетчиков\n4-5 Грифонов",
     "imageRes": "hero_cuthbert",
-    "specialtyIcon": "spell_weakness"
+    "specialtyIcon": "spell_weakness",
+    "specialtyDescription": "Усиливает эффект Слабости: штраф к атаке увеличивается в зависимости от уровня цели (от -4 для 1-2 ур. до -10 для 7 ур.).",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "ingham",
@@ -222,7 +243,8 @@
     "spell": "Проклятие",
     "army": "10-20 Копейщиков\n4-7 Арбалетчиков\n4-5 Грифонов",
     "imageRes": "hero_ingham",
-    "specialtyIcon": "creature_monk"
+    "specialtyIcon": "creature_monk",
+    "specialtyDescription": "Повышает скорость Монахов и Фанатиков на 1. Дает бонус к Атаке и Защите за каждый 5-й уровень героя."
   },
   {
     "id": "loynis",
@@ -235,7 +257,9 @@
     "spell": "Молитва",
     "army": "10-20 Копейщиков\n4-7 Арбалетчиков\n4-5 Грифонов",
     "imageRes": "hero_loynis",
-    "specialtyIcon": "spell_prayer"
+    "specialtyIcon": "spell_prayer",
+    "specialtyDescription": "Усиливает эффект Молитвы: бонус к параметрам увеличивается в зависимости от уровня цели (+3 для 1-4 ур, +1 для 7 ур).",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "rion",
@@ -248,7 +272,9 @@
     "spell": "Каменная кожа",
     "army": "10-20 Копейщиков\n4-5 Грифонов\n1 Палатка",
     "imageRes": "hero_rion",
-    "specialtyIcon": "expert_first_aid"
+    "specialtyIcon": "expert_first_aid",
+    "specialtyDescription": "Увеличивает эффективность лечения палатки (на 5% за уровень) или бонус к здоровью существ (в HotA).",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "sanya",
@@ -261,7 +287,9 @@
     "spell": "Снятие заклинаний",
     "army": "10-20 Копейщиков\n4-7 Арбалетчиков\n4-5 Грифонов",
     "imageRes": "hero_sanya",
-    "specialtyIcon": "expert_eagle_eye"
+    "specialtyIcon": "expert_eagle_eye",
+    "specialtyDescription": "Увеличивает эффективность Орлиного глаза на 5% за каждый уровень героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "jenova",
@@ -274,7 +302,8 @@
     "spell": "Нет",
     "army": "12-24 Кентавров\n5-7 Гномов\n2-4 Эльфов",
     "imageRes": "hero_jenova",
-    "specialtyIcon": "resource_gold"
+    "specialtyIcon": "resource_gold",
+    "specialtyDescription": "Приносит 350 золота в день."
   },
   {
     "id": "kyrre",
@@ -287,7 +316,9 @@
     "spell": "Нет",
     "army": "12-24 Кентавров\n5-7 Гномов\n2-4 Эльфов",
     "imageRes": "hero_kyrre",
-    "specialtyIcon": "expert_logistics"
+    "specialtyIcon": "expert_logistics",
+    "specialtyDescription": "Увеличивает эффективность Логистики на 5% за каждый уровень героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "ivor",
@@ -300,7 +331,8 @@
     "spell": "Нет",
     "army": "12-24 Кентавров\n2-4 Эльфов\n2-4 Эльфов",
     "imageRes": "hero_ivor",
-    "specialtyIcon": "creature_wood_elf"
+    "specialtyIcon": "creature_wood_elf",
+    "specialtyDescription": "Повышает скорость Эльфов и Благородных эльфов на 1. Дает бонус к Атаке и Защите за каждый 3-й уровень героя."
   },
   {
     "id": "ufretin",
@@ -313,7 +345,8 @@
     "spell": "Нет",
     "army": "3-5 Гномов\n5-7 Гномов\n5-7 Гномов",
     "imageRes": "hero_ufretin",
-    "specialtyIcon": "creature_dwarf"
+    "specialtyIcon": "creature_dwarf",
+    "specialtyDescription": "Повышает скорость Гномов и Боевых гномов на 1. Дает бонус к Атаке и Защите за каждый 2-й уровень героя."
   },
   {
     "id": "clancy",
@@ -326,7 +359,8 @@
     "spell": "Нет",
     "army": "12-24 Кентавров\n5-7 Гномов\n2-4 Эльфов",
     "imageRes": "hero_clancy",
-    "specialtyIcon": "creature_unicorn"
+    "specialtyIcon": "creature_unicorn",
+    "specialtyDescription": "Повышает скорость Единорогов и Боевых единорогов на 1. Дает бонус к Атаке и Защите за каждый 6-й уровень героя."
   },
   {
     "id": "thorgrim",
@@ -339,8 +373,9 @@
     "spell": "Нет",
     "army": "12-24 Кентавров\n5-7 Гномов\n2-4 Эльфов",
     "imageRes": "hero_thorgrim",
-    "backgroundColor": "#DC143C",
-    "specialtyIcon": "expert_resistance"
+    "specialtyIcon": "expert_resistance",
+    "specialtyDescription": "Увеличивает эффективность Сопротивления на 5% за каждый уровень героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "giselle",
@@ -353,7 +388,9 @@
     "spell": "Нет",
     "army": "12-24 Кентавров\n5-7 Гномов\n2-4 Эльфов",
     "imageRes": "hero_giselle",
-    "specialtyIcon": "expert_interference"
+    "specialtyIcon": "expert_interference",
+    "specialtyDescription": "Увеличивает эффективность Помех на 5% за каждый уровень героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "ryland",
@@ -366,7 +403,8 @@
     "spell": "Нет",
     "army": "12-24 Кентавров\n5-7 Гномов\n2-4 Эльфов",
     "imageRes": "hero_ryland",
-    "specialtyIcon": "creature_dendroid_guard"
+    "specialtyIcon": "creature_dendroid_guard",
+    "specialtyDescription": "Повышает скорость Дендроидов и Дендроидов-солдат на 1. Дает бонус к Атаке и Защите за каждый 5-й уровень героя."
   },
   {
     "id": "mephala",
@@ -379,7 +417,9 @@
     "spell": "Нет",
     "army": "12-24 Кентавров\n5-7 Гномов\n2-4 Эльфов",
     "imageRes": "hero_mephala",
-    "specialtyIcon": "expert_armorer"
+    "specialtyIcon": "expert_armorer",
+    "specialtyDescription": "Увеличивает эффективность навыка Доспехи на 5% за каждый уровень героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "gelu",
@@ -393,7 +433,8 @@
     "army": "6 Снайперов\n3 Снайпера\n1 Снайпер",
     "imageRes": "hero_gelu",
     "backgroundColor": "#DC143C",
-    "specialtyIcon": "creature_sharpshooter"
+    "specialtyIcon": "creature_sharpshooter",
+    "specialtyDescription": "В любое время можно улучшать Арбалетчиков, Стрелков, Лесных и Великих эльфов в Снайперов."
   },
   {
     "id": "alagar",
@@ -406,7 +447,9 @@
     "spell": "Ледяная молния",
     "army": "12-24 Кентавров\n5-7 Гномов\n2-4 Эльфов",
     "imageRes": "hero_alagar",
-    "specialtyIcon": "spell_ice_bolt"
+    "specialtyIcon": "spell_ice_bolt",
+    "specialtyDescription": "Увеличивает урон Ледяной молнии на 10% за каждый уровень героя, кратный уровню целевого существа.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "aeris",
@@ -419,7 +462,8 @@
     "spell": "Защита от воздуха",
     "army": "12-24 Кентавров\n5-7 Гномов\n2-4 Эльфов",
     "imageRes": "hero_aeris",
-    "specialtyIcon": "creature_pegasus"
+    "specialtyIcon": "creature_pegasus",
+    "specialtyDescription": "Повышает скорость Пегасов и Серебряных пегасов на 1. Дает бонус к Атаке и Защите за каждый 4-й уровень героя."
   },
   {
     "id": "coronius",
@@ -432,7 +476,9 @@
     "spell": "Палач",
     "army": "12-24 Кентавров\n5-7 Гномов\n2-4 Эльфов",
     "imageRes": "hero_coronius",
-    "specialtyIcon": "spell_slayer"
+    "specialtyIcon": "spell_slayer",
+    "specialtyDescription": "Усиливает эффект Палача. Бонус к атаке зависит от уровня цели (от +20 для 1-2 ур. до +8 для 7 ур.).",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "elleshar",
@@ -445,7 +491,9 @@
     "spell": "Проклятие",
     "army": "12-24 Кентавров\n5-7 Гномов\n2-4 Эльфов",
     "imageRes": "hero_elleshar",
-    "specialtyIcon": "expert_intelligence"
+    "specialtyIcon": "expert_intelligence",
+    "specialtyDescription": "Увеличивает эффективность Интеллекта на 5% за каждый уровень героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "gem",
@@ -458,7 +506,9 @@
     "spell": "Благословение",
     "army": "12-24 Кентавров\n2-4 Эльфов\n1 Палатка",
     "imageRes": "hero_gem",
-    "specialtyIcon": "expert_first_aid"
+    "specialtyIcon": "expert_first_aid",
+    "specialtyDescription": "Увеличивает эффективность лечения палатки (на 5% за уровень) или бонус к здоровью существ (в HotA).",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "malcom",
@@ -471,7 +521,9 @@
     "spell": "Волшебная стрела",
     "army": "12-24 Кентавров\n5-7 Гномов\n2-4 Эльфов",
     "imageRes": "hero_malcom",
-    "specialtyIcon": "expert_eagle_eye"
+    "specialtyIcon": "expert_eagle_eye",
+    "specialtyDescription": "Увеличивает эффективность Орлиного глаза на 5% за каждый уровень героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "melodia",
@@ -484,7 +536,8 @@
     "spell": "Удача",
     "army": "12-24 Кентавров\n5-7 Гномов\n2-4 Эльфов",
     "imageRes": "hero_melodia",
-    "specialtyIcon": "spell_fortune"
+    "specialtyIcon": "spell_fortune",
+    "specialtyDescription": "Усиливает эффект заклинания Удача до максимума (+3 к удаче)."
   },
   {
     "id": "uland",
@@ -497,7 +550,9 @@
     "spell": "Лечение",
     "army": "12-24 Кентавров\n5-7 Гномов\n2-4 Эльфов",
     "imageRes": "hero_uland",
-    "specialtyIcon": "spell_cure"
+    "specialtyIcon": "spell_cure",
+    "specialtyDescription": "Усиливает эффект Лечения на 10% за каждые 8-n уровней героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "fafner",
@@ -510,7 +565,8 @@
     "spell": "Ускорение",
     "army": "30-40 Гремлинов\n5-7 Каменных Горгулий\n4-5 Каменных големов",
     "imageRes": "hero_fafner",
-    "specialtyIcon": "creature_naga"
+    "specialtyIcon": "creature_naga",
+    "specialtyDescription": "Повышает скорость Наг и Наг-королев на 1. Дает бонус к Атаке и Защите за каждый 6-й уровень героя."
   },
   {
     "id": "iona",
@@ -523,7 +579,8 @@
     "spell": "Волшебная стрела",
     "army": "30-40 Гремлинов\n5-7 Каменных Горгулий\n4-5 Каменных големов",
     "imageRes": "hero_iona",
-    "specialtyIcon": "creature_genie"
+    "specialtyIcon": "creature_genie",
+    "specialtyDescription": "Повышает скорость Джиннов и Верховных джиннов на 1. Дает бонус к Атаке и Защите за каждый 5-й уровень героя."
   },
   {
     "id": "josephine",
@@ -536,7 +593,8 @@
     "spell": "Ускорение",
     "army": "30-40 Гремлинов\n5-7 Каменных Горгулий\n4-5 Каменных големов",
     "imageRes": "hero_josephine",
-    "specialtyIcon": "creature_stone_golem"
+    "specialtyIcon": "creature_stone_golem",
+    "specialtyDescription": "Повышает скорость всех типов Големов на 1. Дает бонус к Атаке и Защите за каждый 3-й уровень героя."
   },
   {
     "id": "neela",
@@ -549,7 +607,9 @@
     "spell": "Щит",
     "army": "30-40 Гремлинов\n5-7 Каменных Горгулий\n4-5 Каменных големов",
     "imageRes": "hero_neela",
-    "specialtyIcon": "expert_armorer"
+    "specialtyIcon": "expert_armorer",
+    "specialtyDescription": "Увеличивает эффективность навыка Доспехи на 5% за каждый уровень героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "piquedram",
@@ -562,7 +622,8 @@
     "spell": "Щит",
     "army": "5-7 Горгулий\n5-7 Горгулий\n5-7 Горгулий",
     "imageRes": "hero_piquedram",
-    "specialtyIcon": "creature_stone_gargoyle"
+    "specialtyIcon": "creature_stone_gargoyle",
+    "specialtyDescription": "Повышает скорость Каменных и Обсидиановых горгулий на 1. Дает бонус к Атаке и Защите за каждый 2-й уровень героя."
   },
   {
     "id": "rissa",
@@ -575,7 +636,8 @@
     "spell": "Волшебная стрела",
     "army": "30-40 Гремлинов\n5-7 Каменных Горгулий\n4-5 Каменных големов",
     "imageRes": "hero_rissa",
-    "specialtyIcon": "resource_mercury"
+    "specialtyIcon": "resource_mercury",
+    "specialtyDescription": "Приносит 1 единицу ртути в день."
   },
   {
     "id": "thane",
@@ -588,7 +650,8 @@
     "spell": "Волшебная стрела",
     "army": "30-40 Гремлинов\n5-7 Каменных Горгулий\n4-5 Каменных големов",
     "imageRes": "hero_thane",
-    "specialtyIcon": "creature_genie"
+    "specialtyIcon": "creature_genie",
+    "specialtyDescription": "Повышает скорость Джиннов и Верховных джиннов на 1. Дает бонус к Атаке и Защите за каждый 5-й уровень героя."
   },
   {
     "id": "torosar",
@@ -601,7 +664,9 @@
     "spell": "Волшебная стрела",
     "army": "30-40 Гремлинов\n4-5 Каменных големов\n1 Баллиста",
     "imageRes": "hero_torosar",
-    "specialtyIcon": "creature_ballista"
+    "specialtyIcon": "creature_ballista",
+    "specialtyDescription": "Увеличивает атаку и защиту Баллисты на 30% за каждые 5 уровней героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "astral",
@@ -614,7 +679,9 @@
     "spell": "Гипноз",
     "army": "30-40 Гремлинов\n5-7 Каменных Горгулий\n4-5 Каменных големов",
     "imageRes": "hero_astral",
-    "specialtyIcon": "spell_hypnotize"
+    "specialtyIcon": "spell_hypnotize",
+    "specialtyDescription": "Усиливает эффект Гипноза на 10% за каждый уровень героя, кратный уровню цели.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "solmyr",
@@ -627,7 +694,9 @@
     "spell": "Цепная молния",
     "army": "30-40 Гремлинов\n5-7 Каменных Горгулий\n4-5 Каменных големов",
     "imageRes": "hero_solmyr",
-    "specialtyIcon": "spell_chain_lightning"
+    "specialtyIcon": "spell_chain_lightning",
+    "specialtyDescription": "Увеличивает урон Цепной молнии на 5% за каждый уровень героя, кратный уровню целевого существа.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "cyra",
@@ -640,7 +709,9 @@
     "spell": "Ускорение",
     "army": "30-40 Гремлинов\n5-7 Каменных Горгулий\n4-5 Каменных големов",
     "imageRes": "hero_cyra",
-    "specialtyIcon": "spell_haste"
+    "specialtyIcon": "spell_haste",
+    "specialtyDescription": "Усиливает эффект Ускорения. Бонус к скорости зависит от уровня цели (+3 для 1-4 ур, +1 для 7 ур).",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "aine",
@@ -653,7 +724,8 @@
     "spell": "Проклятие",
     "army": "30-40 Гремлинов\n5-7 Каменных Горгулий\n4-5 Каменных големов",
     "imageRes": "hero_aine",
-    "specialtyIcon": "resource_gold"
+    "specialtyIcon": "resource_gold",
+    "specialtyDescription": "Приносит 350 золота в день."
   },
   {
     "id": "theodorus",
@@ -666,7 +738,8 @@
     "spell": "Щит",
     "army": "30-40 Гремлинов\n5-7 Каменных Горгулий\n4-5 Каменных големов",
     "imageRes": "hero_theodorus",
-    "specialtyIcon": "creature_mage"
+    "specialtyIcon": "creature_mage",
+    "specialtyDescription": "Повышает скорость Магов и Архимагов на 1. Дает бонус к Атаке и Защите за каждый 4-й уровень героя."
   },
   {
     "id": "halon",
@@ -679,7 +752,9 @@
     "spell": "Каменная кожа",
     "army": "30-40 Гремлинов\n5-7 Каменных Горгулий\n4-5 Каменных големов",
     "imageRes": "hero_halon",
-    "specialtyIcon": "expert_mysticism"
+    "specialtyIcon": "expert_mysticism",
+    "specialtyDescription": "Увеличивает восстанавливаемую ману на 5% за каждый уровень героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "serena",
@@ -692,7 +767,9 @@
     "spell": "Снятие заклинаний",
     "army": "30-40 Гремлинов\n5-7 Каменных Горгулий\n4-5 Каменных големов",
     "imageRes": "hero_serena",
-    "specialtyIcon": "expert_eagle_eye"
+    "specialtyIcon": "expert_eagle_eye",
+    "specialtyDescription": "Увеличивает эффективность Орлиного глаза на 5% за каждый уровень героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "daremyth",
@@ -705,7 +782,8 @@
     "spell": "Удача",
     "army": "30-40 Гремлинов\n5-7 Каменных Горгулий\n4-5 Каменных големов",
     "imageRes": "hero_daremyth",
-    "specialtyIcon": "spell_fortune"
+    "specialtyIcon": "spell_fortune",
+    "specialtyDescription": "Усиливает эффект заклинания Удача до максимума (+3 к удаче)."
   },
   {
     "id": "dracon",
@@ -719,7 +797,8 @@
     "army": "6 Чародеев\n3 Чародея\n1 Чародей",
     "imageRes": "hero_dracon",
     "backgroundColor": "#DC143C",
-    "specialtyIcon": "creature_enchanter"
+    "specialtyIcon": "creature_enchanter",
+    "specialtyDescription": "В любое время можно улучшать Монахов, Фанатиков, Магов и Архимагов в Чародеев."
   },
   {
     "id": "pyre",
@@ -732,7 +811,9 @@
     "spell": "Нет",
     "army": "20-30 Бесов\n4-5 Адских гончих\n1 Баллиста",
     "imageRes": "hero_pyre",
-    "specialtyIcon": "creature_ballista"
+    "specialtyIcon": "creature_ballista",
+    "specialtyDescription": "Увеличивает атаку и защиту Баллисты на 30% за каждые 5 уровней героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "rashka",
@@ -745,7 +826,8 @@
     "spell": "Нет",
     "army": "20-30 Бесов\n5-7 Гогов\n4-5 Адских гончих",
     "imageRes": "hero_rashka",
-    "specialtyIcon": "creature_efreeti"
+    "specialtyIcon": "creature_efreeti",
+    "specialtyDescription": "Повышает скорость Ифритов и Ифритов-султанов на 1. Дает бонус к Атаке и Защите за каждый 6-й уровень героя."
   },
   {
     "id": "nymus",
@@ -758,7 +840,8 @@
     "spell": "Нет",
     "army": "20-30 Бесов\n5-7 Гогов\n4-5 Адских гончих",
     "imageRes": "hero_nymus",
-    "specialtyIcon": "creature_pit_fiend"
+    "specialtyIcon": "creature_pit_fiend",
+    "specialtyDescription": "Повышает скорость Отродий пропасти и Властителей пропасти на 1. Дает бонус к Атаке и Защите за каждый 5-й уровень героя."
   },
   {
     "id": "marius",
@@ -771,7 +854,8 @@
     "spell": "Нет",
     "army": "20-30 Бесов\n5-7 Гогов\n4-5 Адских гончих",
     "imageRes": "hero_marius",
-    "specialtyIcon": "creature_demon"
+    "specialtyIcon": "creature_demon",
+    "specialtyDescription": "Повышает скорость Демонов и Рогатых демонов на 1. Дает бонус к Атаке и Защите за каждый 4-й уровень героя."
   },
   {
     "id": "fiona",
@@ -784,7 +868,8 @@
     "spell": "Нет",
     "army": "20-30 Бесов\n4-5 Адских гончих\n4-5 Адских гончих",
     "imageRes": "hero_fiona",
-    "specialtyIcon": "creature_hell_hound"
+    "specialtyIcon": "creature_hell_hound",
+    "specialtyDescription": "Повышает скорость Адских гончих и Церберов на 1. Дает бонус к Атаке и Защите за каждый 3-й уровень героя."
   },
   {
     "id": "octavia",
@@ -797,7 +882,8 @@
     "spell": "Нет",
     "army": "20-30 Бесов\n5-7 Гогов\n4-5 Адских гончих",
     "imageRes": "hero_octavia",
-    "specialtyIcon": "resource_gold"
+    "specialtyIcon": "resource_gold",
+    "specialtyDescription": "Приносит 350 золота в день."
   },
   {
     "id": "ignatius",
@@ -810,7 +896,8 @@
     "spell": "Нет",
     "army": "20-30 Бесов\n20-30 Бесов\n20-30 Бесов",
     "imageRes": "hero_ignatius",
-    "specialtyIcon": "creature_imp"
+    "specialtyIcon": "creature_imp",
+    "specialtyDescription": "Повышает скорость Бесов и Чертей на 1. Дает бонус к Атаке и Защите за каждый уровень героя."
   },
   {
     "id": "calh",
@@ -823,7 +910,8 @@
     "spell": "Нет",
     "army": "5-7 Гогов\n5-7 Гогов\n5-7 Гогов",
     "imageRes": "hero_calh",
-    "specialtyIcon": "creature_gog"
+    "specialtyIcon": "creature_gog",
+    "specialtyDescription": "Повышает скорость Гогов и Магогов на 1. Дает бонус к Атаке и Защите за каждый 2-й уровень героя."
   },
   {
     "id": "xeron",
@@ -837,7 +925,8 @@
     "army": "20-30 Бесов\n4-5 Адских гончих\n4-5 Адских гончих",
     "imageRes": "hero_xeron",
     "backgroundColor": "#DC143C",
-    "specialtyIcon": "creature_devil"
+    "specialtyIcon": "creature_devil",
+    "specialtyDescription": "Дает Дьяволам и Архидьяволам +10 к Атаке, +10 к Защите и +1 к Скорости."
   },
   {
     "id": "xyron",
@@ -850,7 +939,9 @@
     "spell": "Инферно",
     "army": "20-30 Бесов\n5-7 Гогов\n4-5 Адских гончих",
     "imageRes": "hero_xyron",
-    "specialtyIcon": "spell_inferno"
+    "specialtyIcon": "spell_inferno",
+    "specialtyDescription": "Увеличивает урон Инферно на 10% за каждый уровень героя, кратный уровню целевого существа.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "xarfax",
@@ -863,7 +954,9 @@
     "spell": "Огненный шар",
     "army": "20-30 Бесов\n5-7 Гогов\n4-5 Адских гончих",
     "imageRes": "hero_xarfax",
-    "specialtyIcon": "spell_fireball"
+    "specialtyIcon": "spell_fireball",
+    "specialtyDescription": "Увеличивает урон Огненного шара на 10% за каждый уровень героя, кратный уровню целевого существа.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "ayden",
@@ -876,7 +969,9 @@
     "spell": "Просмотр земли",
     "army": "20-30 Бесов\n5-7 Гогов\n4-5 Адских гончих",
     "imageRes": "hero_ayden",
-    "specialtyIcon": "expert_intelligence"
+    "specialtyIcon": "expert_intelligence",
+    "specialtyDescription": "Увеличивает эффективность Интеллекта на 5% за каждый уровень героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "ash",
@@ -889,7 +984,9 @@
     "spell": "Жажда крови",
     "army": "20-30 Бесов\n5-7 Гогов\n4-5 Адских гончих",
     "imageRes": "hero_ash",
-    "specialtyIcon": "spell_bloodlust"
+    "specialtyIcon": "spell_bloodlust",
+    "specialtyDescription": "Усиливает эффект Жажды крови. Бонус к атаке зависит от уровня цели (от +10 для 1-2 ур. до +4 для 7 ур.).",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "axsis",
@@ -902,7 +999,9 @@
     "spell": "Защита от воздуха",
     "army": "20-30 Бесов\n5-7 Гогов\n4-5 Адских гончих",
     "imageRes": "hero_axsis",
-    "specialtyIcon": "expert_mysticism"
+    "specialtyIcon": "expert_mysticism",
+    "specialtyDescription": "Увеличивает восстанавливаемую ману на 5% за каждый уровень героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "calid",
@@ -915,7 +1014,8 @@
     "spell": "Ускорение",
     "army": "20-30 Бесов\n5-7 Гогов\n4-5 Адских гончих",
     "imageRes": "hero_calid",
-    "specialtyIcon": "resource_sulfur"
+    "specialtyIcon": "resource_sulfur",
+    "specialtyDescription": "Приносит 1 единицу серы в день."
   },
   {
     "id": "olema",
@@ -928,7 +1028,9 @@
     "spell": "Слабость",
     "army": "20-30 Бесов\n5-7 Гогов\n4-5 Адских гончих",
     "imageRes": "hero_olema",
-    "specialtyIcon": "spell_weakness"
+    "specialtyIcon": "spell_weakness",
+    "specialtyDescription": "Усиливает эффект Слабости: штраф к атаке увеличивается в зависимости от уровня цели (от -4 для 1-2 ур. до -10 для 7 ур.).",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "zydar",
@@ -941,7 +1043,9 @@
     "spell": "Каменная кожа",
     "army": "20-30 Бесов\n5-7 Гогов\n4-5 Адских гончих",
     "imageRes": "hero_zydar",
-    "specialtyIcon": "expert_sorcery"
+    "specialtyIcon": "expert_sorcery",
+    "specialtyDescription": "Увеличивает эффективность Волшебства на 5% за каждый уровень героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "galthran",
@@ -955,7 +1059,8 @@
     "army": "20-30 Скелетов\n20-30 Скелетов\n20-30 Скелетов",
     "imageRes": "hero_galthran",
     "backgroundColor": "#DC143C",
-    "specialtyIcon": "creature_skeleton"
+    "specialtyIcon": "creature_skeleton",
+    "specialtyDescription": "Повышает скорость Скелетов и Скелетов-воинов на 1. Дает бонус к Атаке и Защите за каждый уровень героя."
   },
   {
     "id": "charna",
@@ -968,7 +1073,8 @@
     "spell": "Волшебная стрела",
     "army": "20-30 Скелетов\n4-6 Духов\n4-6 Духов",
     "imageRes": "hero_charna",
-    "specialtyIcon": "creature_wight"
+    "specialtyIcon": "creature_wight",
+    "specialtyDescription": "Повышает скорость Духов и Привидений на 1. Дает бонус к Атаке и Защите за каждый 3-й уровень героя."
   },
   {
     "id": "clavius",
@@ -981,7 +1087,8 @@
     "spell": "Волшебная стрела",
     "army": "20-30 Скелетов\n6-8 Ходячих мертвецов\n4-6 Духов",
     "imageRes": "hero_clavius",
-    "specialtyIcon": "resource_gold"
+    "specialtyIcon": "resource_gold",
+    "specialtyDescription": "Приносит 350 золота в день."
   },
   {
     "id": "moandor",
@@ -994,7 +1101,8 @@
     "spell": "Медлительность",
     "army": "20-30 Скелетов\n6-8 Ходячих мертвецов\n4-6 Духов",
     "imageRes": "hero_moandor",
-    "specialtyIcon": "creature_lich"
+    "specialtyIcon": "creature_lich",
+    "specialtyDescription": "Повышает скорость Личей и Могущественных личей на 1. Дает бонус к Атаке и Защите за каждый 5-й уровень героя."
   },
   {
     "id": "straker",
@@ -1007,7 +1115,8 @@
     "spell": "Ускорение",
     "army": "6-8 Ходячих мертвецов\n6-8 Ходячих мертвецов\n6-8 Ходячих мертвецов",
     "imageRes": "hero_straker",
-    "specialtyIcon": "creature_walking_dead"
+    "specialtyIcon": "creature_walking_dead",
+    "specialtyDescription": "Повышает скорость Ходячих мертвецов и Зомби на 1. Дает бонус к Атаке и Защите за каждый 2-й уровень героя."
   },
   {
     "id": "tamika",
@@ -1020,7 +1129,8 @@
     "spell": "Волшебная стрела",
     "army": "20-30 Скелетов\n6-8 Ходячих мертвецов\n4-6 Духов",
     "imageRes": "hero_tamika",
-    "specialtyIcon": "creature_dread_knight"
+    "specialtyIcon": "creature_dread_knight",
+    "specialtyDescription": "Повышает скорость Чёрных рыцарей и Рыцарей ужаса на 1. Дает бонус к Атаке и Защите за каждый 6-й уровень героя."
   },
   {
     "id": "vokial",
@@ -1033,7 +1143,8 @@
     "spell": "Каменная кожа",
     "army": "20-30 Скелетов\n6-8 Ходячих мертвецов\n4-6 Духов",
     "imageRes": "hero_vokial",
-    "specialtyIcon": "creature_vampire"
+    "specialtyIcon": "creature_vampire",
+    "specialtyDescription": "Повышает скорость Вампиров и Вампиров-лордов на 1. Дает бонус к Атаке и Защите за каждый 4-й уровень героя."
   },
   {
     "id": "isra",
@@ -1046,7 +1157,9 @@
     "spell": "Волшебная стрела",
     "army": "20-30 Скелетов\n6-8 Ходячих мертвецов\n4-6 Духов",
     "imageRes": "hero_isra",
-    "specialtyIcon": "expert_necromancy"
+    "specialtyIcon": "expert_necromancy",
+    "specialtyDescription": "Увеличивает эффективность Некромантии на 5% за каждый уровень героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "ranloo",
@@ -1059,7 +1172,9 @@
     "spell": "Ускорение",
     "army": "20-30 Скелетов\n4-6 Духов\n1 Баллиста",
     "imageRes": "hero_ranloo",
-    "specialtyIcon": "creature_ballista"
+    "specialtyIcon": "creature_ballista",
+    "specialtyDescription": "Увеличивает атаку и защиту Баллисты на 30% за каждые 5 уровней героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "haart_lich",
@@ -1073,7 +1188,8 @@
     "army": "20-30 Скелетов\n6-8 Ходячих мертвецов\n4-6 Духов",
     "imageRes": "hero_haart_lich",
     "backgroundColor": "#DC143C",
-    "specialtyIcon": "creature_black_knight"
+    "specialtyIcon": "creature_black_knight",
+    "specialtyDescription": "Дает Чёрным рыцарям и Рыцарям ужаса +10 к Атаке, +10 к Защите и +10 к Урону."
   },
   {
     "id": "vidomina",
@@ -1086,7 +1202,9 @@
     "spell": "Проклятие",
     "army": "20-30 Скелетов\n6-8 Ходячих мертвецов\n4-6 Духов",
     "imageRes": "hero_vidomina",
-    "specialtyIcon": "expert_necromancy"
+    "specialtyIcon": "expert_necromancy",
+    "specialtyDescription": "Увеличивает эффективность Некромантии на 5% за каждый уровень героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "thant",
@@ -1099,7 +1217,9 @@
     "spell": "Поднять мертвецов",
     "army": "20-30 Скелетов\n6-8 Ходячих мертвецов\n4-6 Духов",
     "imageRes": "hero_thant",
-    "specialtyIcon": "spell_animate_dead"
+    "specialtyIcon": "spell_animate_dead",
+    "specialtyDescription": "Усиливает эффект Оживления мертвецов на 5% за каждый уровень героя, кратный уровню воскрешаемого существа.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "sandro",
@@ -1112,7 +1232,9 @@
     "spell": "Медлительность",
     "army": "20-30 Скелетов\n6-8 Ходячих мертвецов\n4-6 Духов",
     "imageRes": "hero_sandro",
-    "specialtyIcon": "expert_sorcery"
+    "specialtyIcon": "expert_sorcery",
+    "specialtyDescription": "Увеличивает эффективность Волшебства на 5% за каждый уровень героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "nagash",
@@ -1125,7 +1247,8 @@
     "spell": "Защита от воздуха",
     "army": "20-30 Скелетов\n6-8 Ходячих мертвецов\n4-6 Духов",
     "imageRes": "hero_nagash",
-    "specialtyIcon": "resource_gold"
+    "specialtyIcon": "resource_gold",
+    "specialtyDescription": "Приносит 350 золота в день."
   },
   {
     "id": "septienna",
@@ -1138,7 +1261,9 @@
     "spell": "Волна смерти",
     "army": "20-30 Скелетов\n6-8 Ходячих мертвецов\n4-6 Духов",
     "imageRes": "hero_septienna",
-    "specialtyIcon": "spell_death_ripple"
+    "specialtyIcon": "spell_death_ripple",
+    "specialtyDescription": "Увеличивает урон Волны смерти на 10% за каждый уровень героя, кратный уровню целевого существа.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "aislinn",
@@ -1151,7 +1276,9 @@
     "spell": "Метеоритный дождь",
     "army": "20-30 Скелетов\n6-8 Ходячих мертвецов\n4-6 Духов",
     "imageRes": "hero_aislinn",
-    "specialtyIcon": "spell_meteor_shower"
+    "specialtyIcon": "spell_meteor_shower",
+    "specialtyDescription": "Увеличивает урон Метеоритного дождя на 5% за каждый уровень героя, кратный уровню целевого существа.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "ximiron",
@@ -1164,7 +1291,9 @@
     "spell": "Каменная кожа",
     "army": "20-30 Скелетов\n6-8 Ходячих мертвецов\n4-6 Духов",
     "imageRes": "hero_xsi",
-    "specialtyIcon": "spell_stone_skin"
+    "specialtyIcon": "spell_stone_skin",
+    "specialtyDescription": "Усиливает эффект Каменной кожи. Бонус к защите зависит от уровня цели (от +10 для 1-2 ур. до +4 для 7 ур.).",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "nimbus",
@@ -1177,7 +1306,9 @@
     "spell": "Щит",
     "army": "20-30 Скелетов\n6-8 Ходячих мертвецов\n4-6 Духов",
     "imageRes": "hero_nimbus",
-    "specialtyIcon": "expert_eagle_eye"
+    "specialtyIcon": "expert_eagle_eye",
+    "specialtyDescription": "Увеличивает эффективность Орлиного глаза на 5% за каждый уровень героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "lorelei",
@@ -1190,7 +1321,8 @@
     "spell": "Нет",
     "army": "6-8 Гарпий\n6-8 Гарпий\n6-8 Гарпий",
     "imageRes": "hero_lorelei",
-    "specialtyIcon": "creature_harpy"
+    "specialtyIcon": "creature_harpy",
+    "specialtyDescription": "Повышает скорость Гарпий и Гарпий-ведьм на 1. Дает бонус к Атаке и Защите за каждый 2-й уровень героя."
   },
   {
     "id": "arlach",
@@ -1203,7 +1335,9 @@
     "spell": "Нет",
     "army": "20-30 Троглодитов\n3-4 Бехолдера\n1 Баллиста",
     "imageRes": "hero_arlach",
-    "specialtyIcon": "creature_ballista"
+    "specialtyIcon": "creature_ballista",
+    "specialtyDescription": "Увеличивает атаку и защиту Баллисты на 30% за каждые 5 уровней героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "dace",
@@ -1216,7 +1350,8 @@
     "spell": "Нет",
     "army": "20-30 Троглодитов\n6-8 Гарпий\n3-4 Бехолдера",
     "imageRes": "hero_dace",
-    "specialtyIcon": "creature_minotaur"
+    "specialtyIcon": "creature_minotaur",
+    "specialtyDescription": "Повышает скорость Минотавров и Минотавров-королей на 1. Дает бонус к Атаке и Защите за каждый 5-й уровень героя."
   },
   {
     "id": "damacon",
@@ -1229,7 +1364,8 @@
     "spell": "Нет",
     "army": "20-30 Троглодитов\n6-8 Гарпий\n3-4 Бехолдера",
     "imageRes": "hero_damacon",
-    "specialtyIcon": "resource_gold"
+    "specialtyIcon": "resource_gold",
+    "specialtyDescription": "Приносит 350 золота в день."
   },
   {
     "id": "gunnar",
@@ -1242,7 +1378,9 @@
     "spell": "Нет",
     "army": "20-30 Троглодитов\n6-8 Гарпий\n3-4 Бехолдера",
     "imageRes": "hero_gunnar",
-    "specialtyIcon": "expert_logistics"
+    "specialtyIcon": "expert_logistics",
+    "specialtyDescription": "Увеличивает эффективность Логистики на 5% за каждый уровень героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "synca",
@@ -1255,7 +1393,8 @@
     "spell": "Нет",
     "army": "20-30 Троглодитов\n6-8 Гарпий\n3-4 Бехолдера",
     "imageRes": "hero_synca",
-    "specialtyIcon": "creature_manticore"
+    "specialtyIcon": "creature_manticore",
+    "specialtyDescription": "Повышает скорость Мантикор и Скорпикор на 1. Дает бонус к Атаке и Защите за каждый 6-й уровень героя."
   },
   {
     "id": "shakti",
@@ -1268,7 +1407,8 @@
     "spell": "Нет",
     "army": "20-30 Троглодитов\n220-30 Троглодитов\n20-30 Троглодитов",
     "imageRes": "hero_shakti",
-    "specialtyIcon": "creature_troglodyte"
+    "specialtyIcon": "creature_troglodyte",
+    "specialtyDescription": "Повышает скорость Троглодитов и Троглодитов-охотников на 1. Дает бонус к Атаке и Защите за каждый уровень героя."
   },
   {
     "id": "ajit",
@@ -1281,7 +1421,8 @@
     "spell": "Нет",
     "army": "20-30 Троглодитов\n6-8 Гарпий\n3-4 Бехолдера",
     "imageRes": "hero_ajit",
-    "specialtyIcon": "creature_beholder"
+    "specialtyIcon": "creature_beholder",
+    "specialtyDescription": "Повышает скорость Бехолдеров и Злых глаз на 1. Дает бонус к Атаке и Защите за каждый 3-й уровень героя."
   },
   {
     "id": "mutare",
@@ -1295,11 +1436,12 @@
     "army": "20-30 Троглодитов\n6-8 Гарпий\n3-4 Бехолдера",
     "imageRes": "hero_mutare",
     "backgroundColor": "#DC143C",
-    "specialtyIcon": "creature_red_dragon"
+    "specialtyIcon": "creature_red_dragon",
+    "specialtyDescription": "Дает всем Драконам +10 к Атаке и +10 к Защите."
   },
   {
     "id": "mutare_drake",
-    "name": "Мутаре",
+    "name": "Мутаре Дрейк",
     "town": "Темница",
     "heroClass": "Лорд",
     "classType": "Might",
@@ -1309,7 +1451,8 @@
     "army": "20-30 Троглодитов\n6-8 Гарпий\n3-4 Бехолдера",
     "imageRes": "hero_mutare_drake",
     "backgroundColor": "#DC143C",
-    "specialtyIcon": "creature_red_dragon"
+    "specialtyIcon": "creature_red_dragon",
+    "specialtyDescription": "Дает всем Драконам +10 к Атаке и +10 к Защите."
   },
   {
     "id": "alamar",
@@ -1322,7 +1465,9 @@
     "spell": "Воскрешение",
     "army": "20-30 Троглодитов\n6-8 Гарпий\n3-4 Бехолдера",
     "imageRes": "hero_alamar",
-    "specialtyIcon": "spell_resurrection"
+    "specialtyIcon": "spell_resurrection",
+    "specialtyDescription": "Усиливает эффект Воскрешения на 5% за каждый уровень героя, кратный уровню воскрешаемого существа.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "jeddite",
@@ -1335,7 +1480,9 @@
     "spell": "Воскрешение",
     "army": "20-30 Троглодитов\n6-8 Гарпий\n3-4 Бехолдера",
     "imageRes": "hero_jeddite",
-    "specialtyIcon": "spell_resurrection"
+    "specialtyIcon": "spell_resurrection",
+    "specialtyDescription": "Усиливает эффект Воскрешения на 5% за каждый уровень героя, кратный уровню воскрешаемого существа.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "geon",
@@ -1348,7 +1495,9 @@
     "spell": "Медлительность",
     "army": "20-30 Троглодитов\n6-8 Гарпий\n3-4 Бехолдера",
     "imageRes": "hero_geon",
-    "specialtyIcon": "expert_eagle_eye"
+    "specialtyIcon": "expert_eagle_eye",
+    "specialtyDescription": "Увеличивает эффективность Орлиного глаза на 5% за каждый уровень героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "deemer",
@@ -1361,7 +1510,9 @@
     "spell": "Метеоритный дождь",
     "army": "20-30 Троглодитов\n6-8 Гарпий\n3-4 Бехолдера",
     "imageRes": "hero_deemer",
-    "specialtyIcon": "spell_meteor_shower"
+    "specialtyIcon": "spell_meteor_shower",
+    "specialtyDescription": "Увеличивает урон Метеоритного дождя на 5% за каждый уровень героя, кратный уровню целевого существа.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "sephinroth",
@@ -1374,7 +1525,8 @@
     "spell": "Защита от воздуха",
     "army": "20-30 Троглодитов\n6-8 Гарпий\n3-4 Бехолдера",
     "imageRes": "hero_sephinroth",
-    "specialtyIcon": "resource_crystal"
+    "specialtyIcon": "resource_crystal",
+    "specialtyDescription": "Приносит 1 кристалл в день."
   },
   {
     "id": "darkstorn",
@@ -1387,7 +1539,9 @@
     "spell": "Каменная кожа",
     "army": "20-30 Троглодитов\n6-8 Гарпий\n3-4 Бехолдера",
     "imageRes": "hero_darkstorn",
-    "specialtyIcon": "spell_stone_skin"
+    "specialtyIcon": "spell_stone_skin",
+    "specialtyDescription": "Усиливает эффект Каменной кожи. Бонус к защите зависит от уровня цели (от +10 для 1-2 ур. до +4 для 7 ур.).",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "malekith",
@@ -1400,7 +1554,9 @@
     "spell": "Жажда крови",
     "army": "20-30 Троглодитов\n6-8 Гарпий\n3-4 Бехолдера",
     "imageRes": "hero_malekith",
-    "specialtyIcon": "expert_sorcery"
+    "specialtyIcon": "expert_sorcery",
+    "specialtyDescription": "Увеличивает эффективность Волшебства на 5% за каждый уровень героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "jaegar",
@@ -1413,7 +1569,9 @@
     "spell": "Щит",
     "army": "20-30 Троглодитов\n6-8 Гарпий\n3-4 Бехолдера",
     "imageRes": "hero_jaegar",
-    "specialtyIcon": "expert_mysticism"
+    "specialtyIcon": "expert_mysticism",
+    "specialtyDescription": "Увеличивает восстанавливаемую ману на 5% за каждый уровень героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "crag_hack",
@@ -1426,7 +1584,9 @@
     "spell": "Нет",
     "army": "20-30 Гоблинов\n5-7 Наездников на волках\n5-6 Орков",
     "imageRes": "hero_crag_hack",
-    "specialtyIcon": "expert_offense"
+    "specialtyIcon": "expert_offense",
+    "specialtyDescription": "Увеличивает эффективность навыка Нападение на 5% за каждый уровень героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "gurnisson",
@@ -1439,7 +1599,9 @@
     "spell": "Нет",
     "army": "20-30 Гоблинов\n5-6 Орков\n1 Баллиста",
     "imageRes": "hero_gurnisson",
-    "specialtyIcon": "creature_ballista"
+    "specialtyIcon": "creature_ballista",
+    "specialtyDescription": "Увеличивает атаку и защиту Баллисты на 30% за каждые 5 уровней героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "jabarkas",
@@ -1452,7 +1614,8 @@
     "spell": "Нет",
     "army": "20-30 Гоблинов\n5-6 Орков\n5-6 Орков",
     "imageRes": "hero_jabarkas",
-    "specialtyIcon": "creature_orc"
+    "specialtyIcon": "creature_orc",
+    "specialtyDescription": "Повышает скорость Орков и Орков-вождей на 1. Дает бонус к Атаке и Защите за каждый 3-й уровень героя."
   },
   {
     "id": "krellion",
@@ -1465,7 +1628,8 @@
     "spell": "Нет",
     "army": "20-30 Гоблинов\n5-7 Наездников на волках\n5-6 Орков",
     "imageRes": "hero_krellion",
-    "specialtyIcon": "creature_ogre"
+    "specialtyIcon": "creature_ogre",
+    "specialtyDescription": "Повышает скорость Огров и Огров-магов на 1. Дает бонус к Атаке и Защите за каждый 4-й уровень героя."
   },
   {
     "id": "shiva",
@@ -1478,7 +1642,8 @@
     "spell": "Нет",
     "army": "20-30 Гоблинов\n5-7 Наездников на волках\n5-6 Орков",
     "imageRes": "hero_shiva",
-    "specialtyIcon": "creature_roc"
+    "specialtyIcon": "creature_roc",
+    "specialtyDescription": "Повышает скорость Птиц Рух и Громовых птиц на 1. Дает бонус к Атаке и Защите за каждый 5-й уровень героя."
   },
   {
     "id": "tyraxor",
@@ -1491,7 +1656,8 @@
     "spell": "Нет",
     "army": "20-30 5-7 Наездников на волках\n5-7 Наездников на волках\n5-6 5-7 Наездников на волках",
     "imageRes": "hero_tyraxor",
-    "specialtyIcon": "creature_wolf_rider"
+    "specialtyIcon": "creature_wolf_rider",
+    "specialtyDescription": "Повышает скорость Наездников на волках и Налетчиков на 1. Дает бонус к Атаке и Защите за каждый 2-й уровень героя."
   },
   {
     "id": "yog",
@@ -1504,7 +1670,8 @@
     "spell": "Нет",
     "army": "20-30 Гоблинов\n5-7 Наездников на волках\n5-6 Орков",
     "imageRes": "hero_yog",
-    "specialtyIcon": "creature_cyclops"
+    "specialtyIcon": "creature_cyclops",
+    "specialtyDescription": "Повышает скорость Циклопов и Циклопов-королей на 1. Дает бонус к Атаке и Защите за каждый 6-й уровень героя."
   },
   {
     "id": "gretchin",
@@ -1517,7 +1684,8 @@
     "spell": "Нет",
     "army": "20-30 Гоблинов\n20-30 Гоблинов\n20-30 Гоблинов",
     "imageRes": "hero_gretchin",
-    "specialtyIcon": "creature_goblin"
+    "specialtyIcon": "creature_goblin",
+    "specialtyDescription": "Повышает скорость Гоблинов и Хобгоблинов на 1. Дает бонус к Атаке и Защите за каждый уровень героя."
   },
   {
     "id": "kilgor",
@@ -1531,7 +1699,8 @@
     "army": "20-30 Гоблинов\n5-7 Наездников на волках\n5-6 Орков",
     "imageRes": "hero_kilgor",
     "backgroundColor": "#DC143C",
-    "specialtyIcon": "creature_behemoth"
+    "specialtyIcon": "creature_behemoth",
+    "specialtyDescription": "Дает Чудищам и Древним чудищам +10 к Атаке, +10 к Защите и +10 к Урону."
   },
   {
     "id": "boragus",
@@ -1545,7 +1714,8 @@
     "army": "20-30 Гоблинов\n5-7 Наездников на волках\n5-6 Орков",
     "imageRes": "hero_boragus",
     "backgroundColor": "#DC143C",
-    "specialtyIcon": "creature_ogre"
+    "specialtyIcon": "creature_ogre",
+    "specialtyDescription": "Повышает скорость Огров и Огров-магов на 1. Дает бонус к Атаке и Защите за каждый 4-й уровень героя."
   },
   {
     "id": "dessa",
@@ -1558,7 +1728,9 @@
     "spell": "Каменная кожа",
     "army": "20-30 Гоблинов\n5-7 Наездников на волках\n5-6 Орков",
     "imageRes": "hero_dessa",
-    "specialtyIcon": "expert_logistics"
+    "specialtyIcon": "expert_logistics",
+    "specialtyDescription": "Увеличивает эффективность навыка Логистика на 5% за каждый уровень героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "gird",
@@ -1571,7 +1743,9 @@
     "spell": "Жажда крови",
     "army": "20-30 Гоблинов\n5-7 Наездников на волках\n5-6 Орков",
     "imageRes": "hero_gird",
-    "specialtyIcon": "expert_sorcery"
+    "specialtyIcon": "expert_sorcery",
+    "specialtyDescription": "Увеличивает эффективность навыка Волшебство на 5% за каждый уровень героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "gundula",
@@ -1584,7 +1758,9 @@
     "spell": "Медлительность",
     "army": "20-30 Гоблинов\n5-7 Наездников на волках\n5-6 Орков",
     "imageRes": "hero_gundula",
-    "specialtyIcon": "expert_offense"
+    "specialtyIcon": "expert_offense",
+    "specialtyDescription": "Увеличивает эффективность навыка Нападение на 5% за каждый уровень героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "oris",
@@ -1597,7 +1773,9 @@
     "spell": "Защита от воздуха",
     "army": "20-30 Гоблинов\n5-7 Наездников на волках\n5-6 Орков",
     "imageRes": "hero_oris",
-    "specialtyIcon": "expert_eagle_eye"
+    "specialtyIcon": "expert_eagle_eye",
+    "specialtyDescription": "Увеличивает эффективность навыка Орлиный глаз на 5% за каждый уровень героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "saurug",
@@ -1610,7 +1788,8 @@
     "spell": "Жажда крови",
     "army": "20-30 Гоблинов\n5-7 Наездников на волках\n5-6 Орков",
     "imageRes": "hero_saurug",
-    "specialtyIcon": "resource_gems"
+    "specialtyIcon": "resource_gems",
+    "specialtyDescription": "Приносит 1 самоцвет в день."
   },
   {
     "id": "terek",
@@ -1623,7 +1802,9 @@
     "spell": "Ускорение",
     "army": "20-30 Гоблинов\n5-7 Наездников на волках\n5-6 Орков",
     "imageRes": "hero_terek",
-    "specialtyIcon": "spell_haste"
+    "specialtyIcon": "spell_haste",
+    "specialtyDescription": "Усиливает эффект Ускорения. Бонус к скорости зависит от уровня цели (+3 для 1-4 ур, +1 для 7 ур).",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "vey",
@@ -1637,7 +1818,8 @@
     "army": "20-30 Гоблинов\n5-7 Наездников на волках\n5-6 Орков",
     "imageRes": "hero_vey",
     "backgroundColor": "#1E90FF",
-    "specialtyIcon": "creature_ogre"
+    "specialtyIcon": "creature_ogre",
+    "specialtyDescription": "Повышает скорость Огров и Огров-магов на 1. Дает бонус к Атаке и Защите за каждый 4-й уровень героя."
   },
   {
     "id": "zubin",
@@ -1650,7 +1832,9 @@
     "spell": "Точность",
     "army": "20-30 Гоблинов\n5-7 Наездников на волках\n5-6 Орков",
     "imageRes": "hero_zubin",
-    "specialtyIcon": "spell_precision"
+    "specialtyIcon": "spell_precision",
+    "specialtyDescription": "Усиливает эффект Точности. Бонус к атаке зависит от уровня цели (от +10 для 1-2 ур. до +4 для 7 ур.).",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "tazar",
@@ -1663,7 +1847,9 @@
     "spell": "Нет",
     "army": "15-25 Гноллов\n4-7 Ящеров\n3-4 Змиев",
     "imageRes": "hero_tazar",
-    "specialtyIcon": "expert_armorer"
+    "specialtyIcon": "expert_armorer",
+    "specialtyDescription": "Увеличивает эффективность навыка Доспехи на 5% за каждый уровень героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "alkin",
@@ -1676,7 +1862,8 @@
     "spell": "Нет",
     "army": "15-25 Гноллов\n4-7 Ящеров\n3-4 Змиев",
     "imageRes": "hero_alkin",
-    "specialtyIcon": "creature_gorgon"
+    "specialtyIcon": "creature_gorgon",
+    "specialtyDescription": "Повышает скорость Горгон и Могучих горгон на 1. Дает бонус к Атаке и Защите за каждый 5-й уровень героя."
   },
   {
     "id": "bron",
@@ -1689,7 +1876,8 @@
     "spell": "Нет",
     "army": "15-25 Гноллов\n3-4 Змиев\n4-7 Василисков",
     "imageRes": "hero_bron",
-    "specialtyIcon": "creature_basilisk"
+    "specialtyIcon": "creature_basilisk",
+    "specialtyDescription": "Повышает скорость Василисков и Великих василисков на 1. Дает бонус к Атаке и Защите за каждый 4-й уровень героя."
   },
   {
     "id": "broghild",
@@ -1702,7 +1890,8 @@
     "spell": "Нет",
     "army": "15-25 Гноллов\n4-7 Ящеров\n3-4 Змиев",
     "imageRes": "hero_broghild",
-    "specialtyIcon": "creature_wyvern"
+    "specialtyIcon": "creature_wyvern",
+    "specialtyDescription": "Повышает скорость Виверн и Виверн-монархов на 1. Дает бонус к Атаке и Защите за каждый 6-й уровень героя."
   },
   {
     "id": "drakon",
@@ -1715,7 +1904,8 @@
     "spell": "Нет",
     "army": "15-25 Гноллов\n15-25 Гноллов\n15-25 Гноллов",
     "imageRes": "hero_drakon",
-    "specialtyIcon": "creature_gnoll"
+    "specialtyIcon": "creature_gnoll",
+    "specialtyDescription": "Повышает скорость Гноллов и Гноллов-мародеров на 1. Дает бонус к Атаке и Защите за каждый уровень героя."
   },
   {
     "id": "gerwulf",
@@ -1728,7 +1918,9 @@
     "spell": "Нет",
     "army": "15-25 Гноллов\n3-4 Змиев\n1 Баллиста",
     "imageRes": "hero_gerwulf",
-    "specialtyIcon": "creature_ballista"
+    "specialtyIcon": "creature_ballista",
+    "specialtyDescription": "Увеличивает атаку и защиту Баллисты на 30% за каждые 5 уровней героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "korbac",
@@ -1741,7 +1933,8 @@
     "spell": "Нет",
     "army": "15-25 Гноллов\n3-4 Змиев\n3-4 Змиев",
     "imageRes": "hero_korbac",
-    "specialtyIcon": "creature_serpent_fly"
+    "specialtyIcon": "creature_serpent_fly",
+    "specialtyDescription": "Повышает скорость Змиев и Стрекоз на 1. Дает бонус к Атаке и Защите за каждый 3-й уровень героя."
   },
   {
     "id": "wystan",
@@ -1754,7 +1947,8 @@
     "spell": "Нет",
     "army": "4-7 Ящеров\n4-7 Ящеров\n4-7 Ящеров",
     "imageRes": "hero_wystan",
-    "specialtyIcon": "creature_lizardman"
+    "specialtyIcon": "creature_lizardman",
+    "specialtyDescription": "Повышает скорость Ящеров и Ящеров-воинов на 1. Дает бонус к Атаке и Защите за каждый 2-й уровень героя."
   },
   {
     "id": "andra",
@@ -1767,7 +1961,9 @@
     "spell": "Снятие заклинаний",
     "army": "15-25 Гноллов\n4-7 Ящеров\n3-4 Змиев",
     "imageRes": "hero_andra",
-    "specialtyIcon": "expert_intelligence"
+    "specialtyIcon": "expert_intelligence",
+    "specialtyDescription": "Увеличивает эффективность навыка Интеллект на 5% за каждый уровень героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "merist",
@@ -1780,7 +1976,9 @@
     "spell": "Каменная кожа",
     "army": "15-25 Гноллов\n4-7 Ящеров\n3-4 Змиев",
     "imageRes": "hero_merist",
-    "specialtyIcon": "spell_stone_skin"
+    "specialtyIcon": "spell_stone_skin",
+    "specialtyDescription": "Усиливает эффект Каменной кожи. Бонус к защите зависит от уровня цели (от +10 для 1-2 ур. до +4 для 7 ур.).",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "mirlanda",
@@ -1793,7 +1991,9 @@
     "spell": "Слабость",
     "army": "15-25 Гноллов\n4-7 Ящеров\n3-4 Змиев",
     "imageRes": "hero_mirlanda",
-    "specialtyIcon": "spell_weakness"
+    "specialtyIcon": "spell_weakness",
+    "specialtyDescription": "Усиливает эффект Слабости: штраф к атаке увеличивается в зависимости от уровня цели (от -4 для 1-2 ур. до -10 для 7 ур.).",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "rosic",
@@ -1806,7 +2006,9 @@
     "spell": "Волшебная стрела",
     "army": "15-25 Гноллов\n4-7 Ящеров\n3-4 Змиев",
     "imageRes": "hero_rosic",
-    "specialtyIcon": "expert_mysticism"
+    "specialtyIcon": "expert_mysticism",
+    "specialtyDescription": "Увеличивает восстанавливаемую ману на 5% за каждый уровень героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "styg",
@@ -1819,7 +2021,9 @@
     "spell": "Щит",
     "army": "15-25 Гноллов\n4-7 Ящеров\n3-4 Змиев",
     "imageRes": "hero_styg",
-    "specialtyIcon": "expert_sorcery"
+    "specialtyIcon": "expert_sorcery",
+    "specialtyDescription": "Увеличивает эффективность навыка Волшебство на 5% за каждый уровень героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "tiva",
@@ -1832,7 +2036,9 @@
     "spell": "Каменная кожа",
     "army": "15-25 Гноллов\n4-7 Ящеров\n3-4 Змиев",
     "imageRes": "hero_tiva",
-    "specialtyIcon": "expert_eagle_eye"
+    "specialtyIcon": "expert_eagle_eye",
+    "specialtyDescription": "Увеличивает эффективность навыка Орлиный глаз на 5% за каждый уровень героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "verdish",
@@ -1845,7 +2051,9 @@
     "spell": "Защита от огня",
     "army": "15-25 Гноллов\n3-4 Змиев\n1 Палатка",
     "imageRes": "hero_verdish",
-    "specialtyIcon": "expert_first_aid"
+    "specialtyIcon": "expert_first_aid",
+    "specialtyDescription": "Увеличивает эффективность лечения палатки (на 5% за уровень) или бонус к здоровью существ (в HotA).",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "voy",
@@ -1859,7 +2067,9 @@
     "army": "15-25 Гноллов\n4-7 Ящеров\n3-4 Змиев",
     "imageRes": "hero_voy",
     "backgroundColor": "#1E90FF",
-    "specialtyIcon": "expert_navigation"
+    "specialtyIcon": "expert_navigation",
+    "specialtyDescription": "Увеличивает запас очков хода на воде на 75 единиц за каждый уровень героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "adrianne",
@@ -1873,7 +2083,8 @@
     "army": "15-25 Гноллов\n4-7 Ящеров\n3-4 Змиев",
     "imageRes": "hero_adrienne",
     "backgroundColor": "#DC143C",
-    "specialtyIcon": "expert_fire_magic"
+    "specialtyIcon": "expert_fire_magic",
+    "specialtyDescription": "Увеличивает урон заклинаний Магии Огня на 50%."
   },
   {
     "id": "kinkeria",
@@ -1886,215 +2097,9 @@
     "spell": "Медлительность",
     "army": "15-25 Гноллов\n4-7 Ящеров\n3-4 Змиев",
     "imageRes": "hero_kinkeria",
-    "specialtyIcon": "expert_learning"
-  },
-  {
-    "id": "pasis",
-    "name": "Пасис",
-    "town": "Сопряжение",
-    "heroClass": "Воитель стихий",
-    "classType": "Might",
-    "specialty": "Психические элементали",
-    "skills": "Нападение, Артиллерия",
-    "spell": "Нет",
-    "army": "15-25 Пикси\n3-5 Воздушных элементалей\n2-3 Воздушных элементаля",
-    "imageRes": "hero_pasis",
-    "specialtyIcon": "creature_psychic_elemental"
-  },
-  {
-    "id": "monere",
-    "name": "Монер",
-    "town": "Сопряжение",
-    "heroClass": "Воитель стихий",
-    "classType": "Might",
-    "specialty": "Психические элементали",
-    "skills": "Нападение, Логистика",
-    "spell": "Нет",
-    "army": "15-25 Пикси\n3-5 Воздушных элементалей\n2-3 Воздушных элементаля",
-    "imageRes": "hero_monere",
-    "specialtyIcon": "creature_psychic_elemental"
-  },
-  {
-    "id": "thunar",
-    "name": "Тунар",
-    "town": "Сопряжение",
-    "heroClass": "Воитель стихий",
-    "classType": "Might",
-    "specialty": "Земляные элементали",
-    "skills": "Тактика, Поместья",
-    "spell": "Нет",
-    "army": "15-25 Пикси\n3-5 Воздушных элементалей\n3-5 Водных элементалей",
-    "imageRes": "hero_thunar",
-    "specialtyIcon": "creature_earth_elemental"
-  },
-  {
-    "id": "erdamon",
-    "name": "Эрдамон",
-    "town": "Сопряжение",
-    "heroClass": "Воитель стихий",
-    "classType": "Might",
-    "specialty": "Земляные элементали",
-    "skills": "Тактика, Поместья",
-    "spell": "Нет",
-    "army": "15-25 Пикси\n3-5 Воздушных элементалей\n3-5 Водных элементалей",
-    "imageRes": "hero_erdamon",
-    "specialtyIcon": "creature_earth_elemental"
-  },
-  {
-    "id": "ignissa",
-    "name": "Игнисса",
-    "town": "Сопряжение",
-    "heroClass": "Воитель стихий",
-    "classType": "Might",
-    "specialty": "Огненные элементали",
-    "skills": "Нападение, Артиллерия",
-    "spell": "Нет",
-    "army": "15-25 Пикси\n3-5 Воздушных элементалей\n3-5 Водных элементалей",
-    "imageRes": "hero_ignissa",
-    "specialtyIcon": "creature_fire_elemental"
-  },
-  {
-    "id": "fiur",
-    "name": "Фьюр",
-    "town": "Сопряжение",
-    "heroClass": "Воитель стихий",
-    "classType": "Might",
-    "specialty": "Огненные элементали",
-    "skills": "Нападение(продвинутый)",
-    "spell": "Нет",
-    "army": "15-25 Пикси\n3-5 Воздушных элементалей\n3-5 Водных элементалей",
-    "imageRes": "hero_fiur",
-    "specialtyIcon": "creature_fire_elemental"
-  },
-  {
-    "id": "lacus",
-    "name": "Лакус",
-    "town": "Сопряжение",
-    "heroClass": "Воитель стихий",
-    "classType": "Might",
-    "specialty": "Водные элементали",
-    "skills": "Тактика(продвинутый)",
-    "spell": "Нет",
-    "army": "15-25 Пикси\n3-5 Водных элементалей\n2-3 Водных элементалей",
-    "imageRes": "hero_lacus",
-    "specialtyIcon": "creature_water_elemental"
-  },
-  {
-    "id": "kalt",
-    "name": "Кальт",
-    "town": "Сопряжение",
-    "heroClass": "Воитель стихий",
-    "classType": "Might",
-    "specialty": "Водные элементали",
-    "skills": "Тактика, Обучаемость",
-    "spell": "Нет",
-    "army": "15-25 Пикси\n3-5 Водных элементалей\n2-3 Водных элементалей",
-    "imageRes": "hero_kalt",
-    "specialtyIcon": "creature_water_elemental"
-  },
-  {
-    "id": "ciele",
-    "name": "Циель",
-    "town": "Сопряжение",
-    "heroClass": "Элементалист",
-    "classType": "Magic",
-    "specialty": "Волшебная стрела",
-    "skills": "Мудрость, Магия Воды",
-    "spell": "Волшебная стрела",
-    "army": "15-25 Пикси\n3-5 Воздушных элементалей\n3-5 Водных элементалей",
-    "imageRes": "hero_ciele",
-    "specialtyIcon": "spell_magic_arrow"
-  },
-  {
-    "id": "gelare",
-    "name": "Джелар",
-    "town": "Сопряжение",
-    "heroClass": "Элементалист",
-    "classType": "Magic",
-    "specialty": "Золото",
-    "skills": "Мудрость, Магия Воды",
-    "spell": "Снятие заклинаний",
-    "army": "15-25 Пикси\n3-5 Воздушных элементалей\n3-5 Водных элементалей",
-    "imageRes": "hero_gelare",
-    "specialtyIcon": "resource_gold"
-  },
-  {
-    "id": "grindan",
-    "name": "Гриндан",
-    "town": "Сопряжение",
-    "heroClass": "Элементалист",
-    "classType": "Magic",
-    "specialty": "Золото",
-    "skills": "Мудрость, Магия Земли",
-    "spell": "Медлительность",
-    "army": "15-25 Пикси\n3-5 Воздушных элементалей\n3-5 Водных элементалей",
-    "imageRes": "hero_grindan",
-    "specialtyIcon": "resource_gold"
-  },
-  {
-    "id": "inteus",
-    "name": "Интей",
-    "town": "Сопряжение",
-    "heroClass": "Элементалист",
-    "classType": "Magic",
-    "specialty": "Жажда крови",
-    "skills": "Мудрость, Магия Огня",
-    "spell": "Жажда крови",
-    "army": "15-25 Пикси\n3-5 Воздушных элементалей\n3-5 Водных элементалей",
-    "imageRes": "hero_inteus",
-    "specialtyIcon": "spell_bloodlust"
-  },
-  {
-    "id": "luna",
-    "name": "Луна",
-    "town": "Сопряжение",
-    "heroClass": "Элементалист",
-    "classType": "Magic",
-    "specialty": "Стена огня",
-    "skills": "Мудрость, Магия Огня",
-    "spell": "Стена огня",
-    "army": "15-25 Пикси\n3-5 Воздушных элементалей\n3-5 Водных элементалей",
-    "imageRes": "hero_luna",
-    "specialtyIcon": "spell_wall_of_fire"
-  },
-  {
-    "id": "labetha",
-    "name": "Лабета",
-    "town": "Сопряжение",
-    "heroClass": "Элементалист",
-    "classType": "Magic",
-    "specialty": "Каменная кожа",
-    "skills": "Мудрость, Магия Земли",
-    "spell": "Каменная кожа",
-    "army": "15-25 Пикси\n3-5 Воздушных элементалей\n3-5 Водных элементалей",
-    "imageRes": "hero_labetha",
-    "specialtyIcon": "spell_stone_skin"
-  },
-  {
-    "id": "brissa",
-    "name": "Брисса",
-    "town": "Сопряжение",
-    "heroClass": "Элементалист",
-    "classType": "Magic",
-    "specialty": "Ускорение",
-    "skills": "Мудрость, Магия Воздуха",
-    "spell": "Ускорение",
-    "army": "15-25 Пикси\n3-5 Воздушных элементалей\n3-5 Водных элементалей",
-    "imageRes": "hero_brissa",
-    "specialtyIcon": "spell_haste"
-  },
-  {
-    "id": "aenain",
-    "name": "Анаин",
-    "town": "Сопряжение",
-    "heroClass": "Элементалист",
-    "classType": "Magic",
-    "specialty": "Разрушающий луч",
-    "skills": "Мудрость, Магия Воздуха",
-    "spell": "Разрушающий луч",
-    "army": "15-25 Пикси\n3-5 Воздушных элементалей\n3-5 Водных элементалей",
-    "imageRes": "hero_aenain",
-    "specialtyIcon": "spell_disrupting_ray"
+    "specialtyIcon": "expert_learning",
+    "specialtyDescription": "Увеличивает эффективность навыка Обучаемость на 5% за каждый уровень героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "corkes",
@@ -2107,7 +2112,9 @@
     "spell": "Нет",
     "army": "15-25 Нимф\n6-9 Матросов\n4-7 Пиратов",
     "imageRes": "hero_corkes",
-    "specialtyIcon": "expert_offense"
+    "specialtyIcon": "expert_offense",
+    "specialtyDescription": "Увеличивает эффективность навыка Нападение на 5% за каждый уровень героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "jeremy",
@@ -2120,7 +2127,9 @@
     "spell": "Нет",
     "army": "15-25 Нимф\n4-7 Пиратов\n1 Пушка",
     "imageRes": "hero_jeremy",
-    "specialtyIcon": "creature_cannon"
+    "specialtyIcon": "creature_cannon",
+    "specialtyDescription": "Увеличивает атаку и защиту Пушки на 20% за каждые 6 уровней героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "illor",
@@ -2133,7 +2142,8 @@
     "spell": "Нет",
     "army": "15-25 Нимф\n4-7 Пиратов\n3-5 Духов океана",
     "imageRes": "hero_illor",
-    "specialtyIcon": "creature_oceanid"
+    "specialtyIcon": "creature_oceanid",
+    "specialtyDescription": "Повышает скорость Духов океана и Ассид на 1. Дает бонус к Атаке и Защите за каждый 4-й уровень героя."
   },
   {
     "id": "derek",
@@ -2146,7 +2156,8 @@
     "spell": "Нет",
     "army": "6-9 Матросов\n6-9 Матросов\n6-9 Матросов",
     "imageRes": "hero_derek",
-    "specialtyIcon": "creature_crew_mate"
+    "specialtyIcon": "creature_crew_mate",
+    "specialtyDescription": "Повышает скорость Матросов и Головорезов на 1. Дает бонус к Атаке и Защите за каждый 2-й уровень героя."
   },
   {
     "id": "elmore",
@@ -2160,7 +2171,9 @@
     "army": "15-25 Нимф\n6-9 Матросов\n4-7 Пиратов",
     "imageRes": "hero_elmore",
     "backgroundColor": "#1E90FF",
-    "specialtyIcon": "expert_navigation"
+    "specialtyIcon": "expert_navigation",
+    "specialtyDescription": "Увеличивает запас очков хода на воде на 75 единиц за каждый уровень героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "leena",
@@ -2173,7 +2186,8 @@
     "spell": "Нет",
     "army": "15-25 Нимф\n6-9 Матросов\n4-7 Пиратов",
     "imageRes": "hero_leena",
-    "specialtyIcon": "resource_gold"
+    "specialtyIcon": "resource_gold",
+    "specialtyDescription": "Приносит 350 золота в день."
   },
   {
     "id": "anabel",
@@ -2186,7 +2200,8 @@
     "spell": "Нет",
     "army": "15-25 Нимф\n4-7 Пиратов\n4-7 Пиратов",
     "imageRes": "hero_anabel",
-    "specialtyIcon": "creature_pirate"
+    "specialtyIcon": "creature_pirate",
+    "specialtyDescription": "Повышает скорость Пиратов, Корсаров и Морских волков на 1. Дает бонус к Атаке и Защите за каждый 3-й уровень героя."
   },
   {
     "id": "cassiopeia",
@@ -2199,7 +2214,8 @@
     "spell": "Нет",
     "army": "15-25 Нимф\n15-25 Нимф\n15-25 Нимф",
     "imageRes": "hero_cassiopeia",
-    "specialtyIcon": "creature_nymph"
+    "specialtyIcon": "creature_nymph",
+    "specialtyDescription": "Повышает скорость Нимф и Океанид на 1. Дает бонус к Атаке и Защите за каждый уровень героя."
   },
   {
     "id": "miriam",
@@ -2212,7 +2228,9 @@
     "spell": "Нет",
     "army": "15-25 Нимф\n6-9 Матросов\n4-7 Пиратов",
     "imageRes": "hero_miriam",
-    "specialtyIcon": "expert_scouting"
+    "specialtyIcon": "expert_scouting",
+    "specialtyDescription": "Увеличивает радиус обзора героя на 1 клетку каждые 6 уровней.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "tark",
@@ -2226,7 +2244,8 @@
     "army": "1 Никс\n1 Никс\n1 Никс",
     "imageRes": "hero_tark",
     "backgroundColor": "#DC143C",
-    "specialtyIcon": "creature_nix"
+    "specialtyIcon": "creature_nix",
+    "specialtyDescription": "Повышает скорость Никсов и Никсов-воинов на 1. Дает бонус к Атаке и Защите за каждый 6-й уровень героя."
   },
   {
     "id": "bidley",
@@ -2240,7 +2259,8 @@
     "army": "1-3 Морских волков\n1-3 Морских волков\n4-7 Корсаров",
     "imageRes": "hero_bidley",
     "backgroundColor": "#DC143C",
-    "specialtyIcon": "creature_sea_dog"
+    "specialtyIcon": "creature_sea_dog",
+    "specialtyDescription": "В любое время можно улучшать Пиратов и Корсаров в Морских волков."
   },
   {
     "id": "casmetra",
@@ -2253,7 +2273,8 @@
     "spell": "Снятие заклинаний",
     "army": "15-25 Нимф\n6-9 Матросов\n4-7 Пиратов",
     "imageRes": "hero_casmetra",
-    "specialtyIcon": "creature_sea_witch"
+    "specialtyIcon": "creature_sea_witch",
+    "specialtyDescription": "Повышает скорость Жриц моря и Заклинательниц на 1. Дает бонус к Атаке и Защите за каждый 5-й уровень героя."
   },
   {
     "id": "eovacius",
@@ -2266,7 +2287,8 @@
     "spell": "Клон",
     "army": "15-25 Нимф\n6-9 Матросов\n4-7 Пиратов",
     "imageRes": "hero_eovacius",
-    "specialtyIcon": "spell_clone"
+    "specialtyIcon": "spell_clone",
+    "specialtyDescription": "Первое колдовство Клона за битву создаёт 2 копии целевого отряда вместо 1."
   },
   {
     "id": "spint",
@@ -2279,7 +2301,9 @@
     "spell": "Благословение",
     "army": "15-25 Нимф\n6-9 Матросов\n4-7 Пиратов",
     "imageRes": "hero_spint",
-    "specialtyIcon": "expert_sorcery"
+    "specialtyIcon": "expert_sorcery",
+    "specialtyDescription": "Увеличивает эффективность навыка Волшебство на 5% за каждый уровень героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "andal",
@@ -2292,7 +2316,8 @@
     "spell": "Медлительность",
     "army": "15-25 Нимф\n6-9 Матросов\n4-7 Пиратов",
     "imageRes": "hero_andal",
-    "specialtyIcon": "resource_crystal"
+    "specialtyIcon": "resource_crystal",
+    "specialtyDescription": "Приносит 1 кристалл в день."
   },
   {
     "id": "manfred",
@@ -2305,7 +2330,9 @@
     "spell": "Огненный шар",
     "army": "15-25 Нимф\n6-9 Матросов\n4-7 Пиратов",
     "imageRes": "hero_manfred",
-    "specialtyIcon": "spell_fireball"
+    "specialtyIcon": "spell_fireball",
+    "specialtyDescription": "Увеличивает урон Огненного шара на 10% за каждый уровень героя, кратный уровню целевого существа.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "zilare",
@@ -2318,7 +2345,9 @@
     "spell": "Забывчивость",
     "army": "15-25 Нимф\n6-9 Матросов\n4-7 Пиратов",
     "imageRes": "hero_zilare",
-    "specialtyIcon": "spell_forgetfulness"
+    "specialtyIcon": "spell_forgetfulness",
+    "specialtyDescription": "Усиливает эффект Забывчивости на 10% за каждый уровень героя, кратный уровню цели.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "astra",
@@ -2331,7 +2360,9 @@
     "spell": "Лечение",
     "army": "15-25 Нимф\n6-9 Матросов\n4-7 Пиратов",
     "imageRes": "hero_astra",
-    "specialtyIcon": "spell_cure"
+    "specialtyIcon": "spell_cure",
+    "specialtyDescription": "Усиливает эффект Лечения на 10% за каждые 8-n уровней героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "dargem",
@@ -2344,7 +2375,9 @@
     "spell": "Воздушный щит",
     "army": "15-25 Нимф\n6-9 Матросов\n4-7 Пиратов",
     "imageRes": "hero_dargem",
-    "specialtyIcon": "spell_air_shield"
+    "specialtyIcon": "spell_air_shield",
+    "specialtyDescription": "Увеличивает эффективность Воздушного щита на 10% за каждый уровень героя, кратный уровню цели.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "sam",
@@ -2357,7 +2390,8 @@
     "spell": "Нет",
     "army": "6-8 Механиков\n6-8 Механиков\n6-8 Механиков",
     "imageRes": "hero_sam",
-    "specialtyIcon": "creature_mechanic"
+    "specialtyIcon": "creature_mechanic",
+    "specialtyDescription": "Повышает скорость Механиков и Инженеров на 1. Дает бонус к Атаке и Защите за каждый 2-й уровень героя."
   },
   {
     "id": "henrietta",
@@ -2370,7 +2404,8 @@
     "spell": "Нет",
     "army": "15-25 Полуросликов\n15-25 Полуросликов\n15-25 Полуросликов",
     "imageRes": "hero_henrietta",
-    "specialtyIcon": "creature_halfling"
+    "specialtyIcon": "creature_halfling",
+    "specialtyDescription": "Повышает скорость Полуросликов и Полуросликов-гренадеров на 1. Дает бонус к Атаке и Защите за каждый уровень героя."
   },
   {
     "id": "floribert",
@@ -2383,7 +2418,9 @@
     "spell": "Нет",
     "army": "15-25 Полуросликов\n4-6 Броненосцев\n1 Палатка",
     "imageRes": "hero_floribert",
-    "specialtyIcon": "expert_first_aid"
+    "specialtyIcon": "expert_first_aid",
+    "specialtyDescription": "Увеличивает бонус к здоровью дружественных существ от Палатки первой помощи.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "wynona",
@@ -2396,7 +2433,9 @@
     "spell": "Нет",
     "army": "15-25 Полуросликов\n6-8 Механиков\n4-6 Броненосцев",
     "imageRes": "hero_wynona",
-    "specialtyIcon": "expert_scouting"
+    "specialtyIcon": "expert_scouting",
+    "specialtyDescription": "Увеличивает радиус обзора героя на 1 клетку каждые 6 уровней.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "dury",
@@ -2409,7 +2448,9 @@
     "spell": "Нет",
     "army": "15-25 Полуросликов\n6-8 Механиков\n4-6 Броненосцев",
     "imageRes": "hero_dury",
-    "specialtyIcon": "expert_armorer"
+    "specialtyIcon": "expert_armorer",
+    "specialtyDescription": "Увеличивает эффективность навыка Доспехи на 5% за каждый уровень героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "tancred",
@@ -2422,7 +2463,8 @@
     "spell": "Нет",
     "army": "15-25 Полуросликов\n6-8 Механиков\n4-6 Броненосцев",
     "imageRes": "hero_tancred",
-    "specialtyIcon": "creature_gunslinger"
+    "specialtyIcon": "creature_gunslinger",
+    "specialtyDescription": "Повышает скорость Стрелков и Охотников за головами на 1. Дает бонус к Атаке и Защите за каждый 6-й уровень героя."
   },
   {
     "id": "melchior",
@@ -2435,7 +2477,9 @@
     "spell": "Нет",
     "army": "15-25 Полуросликов\n6-8 Механиков\n4-6 Броненосцев",
     "imageRes": "hero_melchior",
-    "specialtyIcon": "expert_diplomacy"
+    "specialtyIcon": "expert_diplomacy",
+    "specialtyDescription": "Увеличивает эффективность Дипломатии при откупе с поля боя на 5% за каждый уровень героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "morton",
@@ -2448,7 +2492,9 @@
     "spell": "Нет",
     "army": "15-25 Полуросликов\n4-6 Броненосцев\n1 Баллиста",
     "imageRes": "hero_morton",
-    "specialtyIcon": "creature_ballista"
+    "specialtyIcon": "creature_ballista",
+    "specialtyDescription": "Увеличивает атаку и защиту Баллисты на 30% за каждые 5 уровней героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "tavin",
@@ -2462,7 +2508,9 @@
     "army": "15-25 Полуросликов\n6-8 Механиков\n4-6 Броненосцев",
     "imageRes": "hero_tavin",
     "backgroundColor": "#DC143C",
-    "specialtyIcon": "expert_offense"
+    "specialtyIcon": "expert_offense",
+    "specialtyDescription": "Увеличивает эффективность навыка Нападение на 5% за каждый уровень героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "murdoch",
@@ -2476,7 +2524,9 @@
     "army": "15-25 Полуросликов\n6-8 Механиков\n4-6 Броненосцев",
     "imageRes": "hero_murdoch",
     "backgroundColor": "#DC143C",
-    "specialtyIcon": "expert_archery"
+    "specialtyIcon": "expert_archery",
+    "specialtyDescription": "Увеличивает эффективность навыка Стрельба на 5% за каждый уровень героя.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "bertram",
@@ -2489,7 +2539,8 @@
     "spell": "Волшебная стрела",
     "army": "15-25 Полуросликов\n6-8 Механиков\n4-6 Броненосцев",
     "imageRes": "hero_bertram",
-    "specialtyIcon": "resource_gold"
+    "specialtyIcon": "resource_gold",
+    "specialtyDescription": "Приносит 350 золота в день."
   },
   {
     "id": "agar",
@@ -2502,7 +2553,8 @@
     "spell": "Просмотр земли",
     "army": "15-25 Полуросликов\n6-8 Механиков\n4-6 Броненосцев",
     "imageRes": "hero_agar",
-    "specialtyIcon": "creature_sandworm"
+    "specialtyIcon": "creature_sandworm",
+    "specialtyDescription": "Повышает скорость Песчаных червей и Олгой-хорхоев на 1. Дает бонус к Атаке и Защите за каждый 5-й уровень героя."
   },
   {
     "id": "wrathmont",
@@ -2515,7 +2567,9 @@
     "spell": "Бешенство",
     "army": "15-25 Полуросликов\n6-8 Механиков\n4-6 Броненосцев",
     "imageRes": "hero_wrathmont",
-    "specialtyIcon": "spell_frenzy"
+    "specialtyIcon": "spell_frenzy",
+    "specialtyDescription": "Увеличивает эффективность Бешенства на 10% за каждый уровень героя, кратный уровню цели.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "eanswythe",
@@ -2528,7 +2582,9 @@
     "spell": "Слабость",
     "army": "15-25 Полуросликов\n6-8 Механиков\n4-6 Броненосцев",
     "imageRes": "hero_eanswythe",
-    "specialtyIcon": "spell_weakness"
+    "specialtyIcon": "spell_weakness",
+    "specialtyDescription": "Усиливает эффект Слабости: штраф к атаке увеличивается в зависимости от уровня цели (от -4 для 1-2 ур. до -10 для 7 ур.).",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "todd",
@@ -2541,7 +2597,8 @@
     "spell": "Щит",
     "army": "15-25 Полуросликов\n4-6 Броненосцев\n3-5 Автоматонов",
     "imageRes": "hero_todd",
-    "specialtyIcon": "creature_automaton"
+    "specialtyIcon": "creature_automaton",
+    "specialtyDescription": "Повышает скорость Автоматонов и Автоматонов-часовых на 1. Дает бонус к Атаке и Защите за каждый 4-й уровень героя."
   },
   {
     "id": "celestine",
@@ -2554,7 +2611,8 @@
     "spell": "Ускорение",
     "army": "15-25 Полуросликов\n4-6 Броненосцев\n4-6 Броненосцев",
     "imageRes": "hero_celestine",
-    "specialtyIcon": "creature_armadillo"
+    "specialtyIcon": "creature_armadillo",
+    "specialtyDescription": "Повышает скорость Броненосцев и Броненосцев-вожаков на 1. Дает бонус к Атаке и Защите за каждый 3-й уровень героя."
   },
   {
     "id": "victoria",
@@ -2567,7 +2625,9 @@
     "spell": "Минное поле",
     "army": "15-25 Полуросликов\n6-8 Механиков\n4-6 Броненосцев",
     "imageRes": "hero_victoria",
-    "specialtyIcon": "spell_land_mine"
+    "specialtyIcon": "spell_land_mine",
+    "specialtyDescription": "Увеличивает урон Минного поля на 10% за каждый уровень героя, кратный уровню целевого существа.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "ziph",
@@ -2580,7 +2640,9 @@
     "spell": "Молния",
     "army": "15-25 Полуросликов\n6-8 Механиков\n4-6 Броненосцев",
     "imageRes": "hero_ziph",
-    "specialtyIcon": "spell_lightning_bolt"
+    "specialtyIcon": "spell_lightning_bolt",
+    "specialtyDescription": "Увеличивает урон Молнии на 10% за каждый уровень героя, кратный уровню целевого существа.",
+    "backgroundColor": "#FFC0CB"
   },
   {
     "id": "frederick",
@@ -2594,6 +2656,7 @@
     "army": "3-5 Автоматонов\n3-5 Автоматонов\n3-5 Автоматонов",
     "imageRes": "hero_frederick",
     "backgroundColor": "#DC143C",
-    "specialtyIcon": "creature_automaton"
+    "specialtyIcon": "creature_automaton",
+    "specialtyDescription": "Увеличивает урон от взрыва Автоматонов на 5% за каждый уровень героя."
   }
 ]
