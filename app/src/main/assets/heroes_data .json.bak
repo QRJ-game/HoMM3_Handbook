@@ -9,8 +9,7 @@
     "skills": "Лидерство, Стрельба",
     "spell": "Нет",
     "army": "10-20 Копейщиков\n4-7 Арбалетчиков\n4-5 Грифонов",
-    "imageRes": "hero_orrin",
-    "specialtyIcon": "expert_archery"
+    "imageRes": "hero_orrin"
   },
   {
     "id": "valeska",
@@ -22,8 +21,7 @@
     "skills": "Лидерство, Стрельба",
     "spell": "Нет",
     "army": "4-7 Арбалетчиков\n4-7 Арбалетчиков\n4-7 Арбалетчиков",
-    "imageRes": "hero_valeska",
-    "specialtyIcon": "creature_marksman"
+    "imageRes": "hero_valeska"
   },
   {
     "id": "edric",
@@ -35,8 +33,7 @@
     "skills": "Лидерство, Доспехи",
     "spell": "Нет",
     "army": "10-20 Копейщиков\n4-5 Грифонов\n4-5 Грифонов",
-    "imageRes": "hero_edric",
-    "specialtyIcon": "creature_griffin"
+    "imageRes": "hero_edric"
   },
   {
     "id": "sylvia",
@@ -49,8 +46,7 @@
     "spell": "Нет",
     "army": "10-20 Копейщиков\n4-7 Арбалетчиков\n4-5 Грифонов",
     "imageRes": "hero_sylvia",
-    "backgroundColor": "#1E90FF",
-    "specialtyIcon": "expert_navigation"
+    "backgroundColor": "#1E90FF"
   },
   {
     "id": "lord_haart",
@@ -62,8 +58,7 @@
     "skills": "Лидерство, Поместья",
     "spell": "Нет",
     "army": "10-20 Копейщиков\n4-7 Арбалетчиков\n4-5 Грифонов",
-    "imageRes": "hero_lord_haart",
-    "specialtyIcon": "expert_estates"
+    "imageRes": "hero_lord_haart"
   },
   {
     "id": "sorsha",
@@ -75,8 +70,7 @@
     "skills": "Лидерство, Нападение",
     "spell": "Нет",
     "army": "10-20 Копейщиков\n4-7 Арбалетчиков\n 4-5 Грифонов",
-    "imageRes": "hero_sorsha",
-    "specialtyIcon": "creature_swordsman"
+    "imageRes": "hero_sorsha"
   },
   {
     "id": "christian",
@@ -88,8 +82,7 @@
     "skills": "Лидерство, Артиллерия",
     "spell": "Нет",
     "army": "10-20 Копейщиков\n4-5 Грифонов\n1 Баллиста",
-    "imageRes": "hero_christian",
-    "specialtyIcon": "creature_ballista"
+    "imageRes": "hero_christian"
   },
   {
     "id": "tyris",
@@ -101,8 +94,7 @@
     "skills": "Лидерство, Тактика",
     "spell": "Нет",
     "army": "10-20 Копейщиков\n4-7 Арбалетчиков\n4-5 Грифонов",
-    "imageRes": "hero_tyris",
-    "specialtyIcon": "creature_cavalier"
+    "imageRes": "hero_tyris"
   },
   {
     "id": "sir_mullich",
@@ -115,8 +107,7 @@
     "spell": "Нет",
     "army": "10-20 Копейщиков\n4-7 Арбалетчиков\n4-5 Грифонов",
     "imageRes": "hero_sir_mullich",
-    "backgroundColor": "#DC143C",
-    "specialtyIcon": "special_speed"
+    "backgroundColor": "#DC143C"
   },
   {
     "id": "beatrice",
@@ -128,8 +119,7 @@
     "skills": "Лидерство, Разведка",
     "spell": "Нет",
     "army": "10-20 Копейщиков\n4-7 Арбалетчиков\n4-5 Грифонов",
-    "imageRes": "hero_beatrice",
-    "specialtyIcon": "expert_scouting"
+    "imageRes": "hero_beatrice"
   },
   {
     "id": "catherine",
@@ -142,8 +132,7 @@
     "spell": "Нет",
     "army": "10-20 Копейщиков\n4-7 Арбалетчиков\n4-5 Грифонов",
     "imageRes": "hero_catherine",
-    "backgroundColor": "#DC143C",
-    "specialtyIcon": "creature_swordsman"
+    "backgroundColor": "#DC143C"
   },
   {
     "id": "roland",
@@ -156,8 +145,7 @@
     "spell": "Нет",
     "army": "10-20 Копейщиков\n4-7 Арбалетчиков\n4-5 Грифонов",
     "imageRes": "hero_roland",
-    "backgroundColor": "#DC143C",
-    "specialtyIcon": "creature_swordsman"
+    "backgroundColor": "#DC143C"
   },
   {
     "id": "adela",
@@ -165,12 +153,11 @@
     "town": "Замок",
     "heroClass": "Священник",
     "classType": "Magic",
-    "specialty": "Благословление",
+    "specialty": "Благословение",
     "skills": "Мудрость, Дипломатия",
     "spell": "Благословение",
     "army": "10-20 Копейщиков\n4-7 Арбалетчиков\n4-5 Грифонов",
-    "imageRes": "hero_adela",
-    "specialtyIcon": "spell_bless"
+    "imageRes": "hero_adela"
   },
   {
     "id": "adelaide",
@@ -182,8 +169,7 @@
     "skills": "Мудрость(продвинутый)",
     "spell": "Кольцо холода",
     "army": "10-20 Копейщиков\n4-7 Арбалетчиков\n4-5 Грифонов",
-    "imageRes": "hero_adelaide",
-    "specialtyIcon": "spell_frost_ring"
+    "imageRes": "hero_adelaide"
   },
   {
     "id": "caitlin",
@@ -195,8 +181,7 @@
     "skills": "Мудрость, Интеллект",
     "spell": "Лечение",
     "army": "10-20 Копейщиков\n4-7 Арбалетчиков\n4-5 Грифонов",
-    "imageRes": "hero_caitlin",
-    "specialtyIcon": "resource_gold"
+    "imageRes": "hero_caitlin"
   },
   {
     "id": "cuthbert",
@@ -208,8 +193,7 @@
     "skills": "Мудрость, Поместья",
     "spell": "Слабость",
     "army": "10-20 Копейщиков\n4-7 Арбалетчиков\n4-5 Грифонов",
-    "imageRes": "hero_cuthbert",
-    "specialtyIcon": "spell_weakness"
+    "imageRes": "hero_cuthbert"
   },
   {
     "id": "ingham",
@@ -221,8 +205,7 @@
     "skills": "Мудрость, Мистицизм",
     "spell": "Проклятие",
     "army": "10-20 Копейщиков\n4-7 Арбалетчиков\n4-5 Грифонов",
-    "imageRes": "hero_ingham",
-    "specialtyIcon": "creature_monk"
+    "imageRes": "hero_ingham"
   },
   {
     "id": "loynis",
@@ -234,8 +217,7 @@
     "skills": "Мудрость, Обучаемость",
     "spell": "Молитва",
     "army": "10-20 Копейщиков\n4-7 Арбалетчиков\n4-5 Грифонов",
-    "imageRes": "hero_loynis",
-    "specialtyIcon": "spell_prayer"
+    "imageRes": "hero_loynis"
   },
   {
     "id": "rion",
@@ -247,8 +229,7 @@
     "skills": "Мудрость, Первая помощь",
     "spell": "Каменная кожа",
     "army": "10-20 Копейщиков\n4-5 Грифонов\n1 Палатка",
-    "imageRes": "hero_rion",
-    "specialtyIcon": "expert_first_aid"
+    "imageRes": "hero_rion"
   },
   {
     "id": "sanya",
@@ -260,8 +241,7 @@
     "skills": "Мудрость, Орлиный глаз",
     "spell": "Снятие заклинаний",
     "army": "10-20 Копейщиков\n4-7 Арбалетчиков\n4-5 Грифонов",
-    "imageRes": "hero_sanya",
-    "specialtyIcon": "expert_eagle_eye"
+    "imageRes": "hero_sanya"
   },
   {
     "id": "jenova",
@@ -273,8 +253,7 @@
     "skills": "Стрельба(продвинутый)",
     "spell": "Нет",
     "army": "12-24 Кентавров\n5-7 Гномов\n2-4 Эльфов",
-    "imageRes": "hero_jenova",
-    "specialtyIcon": "resource_gold"
+    "imageRes": "hero_jenova"
   },
   {
     "id": "kyrre",
@@ -286,8 +265,7 @@
     "skills": "Стрельба, Логистика",
     "spell": "Нет",
     "army": "12-24 Кентавров\n5-7 Гномов\n2-4 Эльфов",
-    "imageRes": "hero_kyrre",
-    "specialtyIcon": "expert_logistics"
+    "imageRes": "hero_kyrre"
   },
   {
     "id": "ivor",
@@ -299,8 +277,7 @@
     "skills": "Стрельба, Нападение",
     "spell": "Нет",
     "army": "12-24 Кентавров\n2-4 Эльфов\n2-4 Эльфов",
-    "imageRes": "hero_ivor",
-    "specialtyIcon": "creature_wood_elf"
+    "imageRes": "hero_ivor"
   },
   {
     "id": "ufretin",
@@ -312,8 +289,7 @@
     "skills": "Помехи, Удача",
     "spell": "Нет",
     "army": "3-5 Гномов\n5-7 Гномов\n5-7 Гномов",
-    "imageRes": "hero_ufretin",
-    "specialtyIcon": "creature_dwarf"
+    "imageRes": "hero_ufretin"
   },
   {
     "id": "clancy",
@@ -325,8 +301,7 @@
     "skills": "Помехи, Поиск пути",
     "spell": "Нет",
     "army": "12-24 Кентавров\n5-7 Гномов\n2-4 Эльфов",
-    "imageRes": "hero_clancy",
-    "specialtyIcon": "creature_unicorn"
+    "imageRes": "hero_clancy"
   },
   {
     "id": "thorgrim",
@@ -339,8 +314,7 @@
     "spell": "Нет",
     "army": "12-24 Кентавров\n5-7 Гномов\n2-4 Эльфов",
     "imageRes": "hero_thorgrim",
-    "backgroundColor": "#DC143C",
-    "specialtyIcon": "expert_resistance"
+    "backgroundColor": "#DC143C"
   },
   {
     "id": "giselle",
@@ -352,8 +326,7 @@
     "skills": "Помехи(продвинутый)",
     "spell": "Нет",
     "army": "12-24 Кентавров\n5-7 Гномов\n2-4 Эльфов",
-    "imageRes": "hero_giselle",
-    "specialtyIcon": "expert_interference"
+    "imageRes": "hero_giselle"
   },
   {
     "id": "ryland",
@@ -365,8 +338,7 @@
     "skills": "Лидерство, Дипломатия",
     "spell": "Нет",
     "army": "12-24 Кентавров\n5-7 Гномов\n2-4 Эльфов",
-    "imageRes": "hero_ryland",
-    "specialtyIcon": "creature_dendroid_guard"
+    "imageRes": "hero_ryland"
   },
   {
     "id": "mephala",
@@ -378,8 +350,7 @@
     "skills": "Лидерство, Доспехи",
     "spell": "Нет",
     "army": "12-24 Кентавров\n5-7 Гномов\n2-4 Эльфов",
-    "imageRes": "hero_mephala",
-    "specialtyIcon": "expert_armorer"
+    "imageRes": "hero_mephala"
   },
   {
     "id": "gelu",
@@ -392,8 +363,7 @@
     "spell": "Нет",
     "army": "6 Снайперов\n3 Снайпера\n1 Снайпер",
     "imageRes": "hero_gelu",
-    "backgroundColor": "#DC143C",
-    "specialtyIcon": "creature_sharpshooter"
+    "backgroundColor": "#DC143C"
   },
   {
     "id": "alagar",
@@ -405,8 +375,7 @@
     "skills": "Мудрость, Волшебство",
     "spell": "Ледяная молния",
     "army": "12-24 Кентавров\n5-7 Гномов\n2-4 Эльфов",
-    "imageRes": "hero_alagar",
-    "specialtyIcon": "spell_ice_bolt"
+    "imageRes": "hero_alagar"
   },
   {
     "id": "aeris",
@@ -418,8 +387,7 @@
     "skills": "Мудрость, Разведка",
     "spell": "Защита от воздуха",
     "army": "12-24 Кентавров\n5-7 Гномов\n2-4 Эльфов",
-    "imageRes": "hero_aeris",
-    "specialtyIcon": "creature_pegasus"
+    "imageRes": "hero_aeris"
   },
   {
     "id": "coronius",
@@ -431,8 +399,7 @@
     "skills": "Мудрость, Грамотность",
     "spell": "Палач",
     "army": "12-24 Кентавров\n5-7 Гномов\n2-4 Эльфов",
-    "imageRes": "hero_coronius",
-    "specialtyIcon": "spell_slayer"
+    "imageRes": "hero_coronius"
   },
   {
     "id": "elleshar",
@@ -444,8 +411,7 @@
     "skills": "Мудрость, Интеллект",
     "spell": "Проклятие",
     "army": "12-24 Кентавров\n5-7 Гномов\n2-4 Эльфов",
-    "imageRes": "hero_elleshar",
-    "specialtyIcon": "expert_intelligence"
+    "imageRes": "hero_elleshar"
   },
   {
     "id": "gem",
@@ -457,8 +423,7 @@
     "skills": "Мудрость, Первая помощь",
     "spell": "Благословение",
     "army": "12-24 Кентавров\n2-4 Эльфов\n1 Палатка",
-    "imageRes": "hero_gem",
-    "specialtyIcon": "expert_first_aid"
+    "imageRes": "hero_gem"
   },
   {
     "id": "malcom",
@@ -470,8 +435,7 @@
     "skills": "Мудрость, Орлиный глаз",
     "spell": "Волшебная стрела",
     "army": "12-24 Кентавров\n5-7 Гномов\n2-4 Эльфов",
-    "imageRes": "hero_malcom",
-    "specialtyIcon": "expert_eagle_eye"
+    "imageRes": "hero_malcom"
   },
   {
     "id": "melodia",
@@ -483,8 +447,7 @@
     "skills": "Мудрость, Удача",
     "spell": "Удача",
     "army": "12-24 Кентавров\n5-7 Гномов\n2-4 Эльфов",
-    "imageRes": "hero_melodia",
-    "specialtyIcon": "spell_fortune"
+    "imageRes": "hero_melodia"
   },
   {
     "id": "uland",
@@ -496,8 +459,7 @@
     "skills": "Мудрость, Баллистика",
     "spell": "Лечение",
     "army": "12-24 Кентавров\n5-7 Гномов\n2-4 Эльфов",
-    "imageRes": "hero_uland",
-    "specialtyIcon": "spell_cure"
+    "imageRes": "hero_uland"
   },
   {
     "id": "fafner",
@@ -509,8 +471,7 @@
     "skills": "Грамотность, Помехи",
     "spell": "Ускорение",
     "army": "30-40 Гремлинов\n5-7 Каменных Горгулий\n4-5 Каменных големов",
-    "imageRes": "hero_fafner",
-    "specialtyIcon": "creature_naga"
+    "imageRes": "hero_fafner"
   },
   {
     "id": "iona",
@@ -522,8 +483,7 @@
     "skills": "Грамотность, Интеллект",
     "spell": "Волшебная стрела",
     "army": "30-40 Гремлинов\n5-7 Каменных Горгулий\n4-5 Каменных големов",
-    "imageRes": "hero_iona",
-    "specialtyIcon": "creature_genie"
+    "imageRes": "hero_iona"
   },
   {
     "id": "josephine",
@@ -535,8 +495,7 @@
     "skills": "Мистицизм, Волшебство",
     "spell": "Ускорение",
     "army": "30-40 Гремлинов\n5-7 Каменных Горгулий\n4-5 Каменных големов",
-    "imageRes": "hero_josephine",
-    "specialtyIcon": "creature_stone_golem"
+    "imageRes": "hero_josephine"
   },
   {
     "id": "neela",
@@ -548,8 +507,7 @@
     "skills": "Грамотность, Доспехи",
     "spell": "Щит",
     "army": "30-40 Гремлинов\n5-7 Каменных Горгулий\n4-5 Каменных големов",
-    "imageRes": "hero_neela",
-    "specialtyIcon": "expert_armorer"
+    "imageRes": "hero_neela"
   },
   {
     "id": "piquedram",
@@ -561,8 +519,7 @@
     "skills": "Мистицизм, Разведка",
     "spell": "Щит",
     "army": "5-7 Горгулий\n5-7 Горгулий\n5-7 Горгулий",
-    "imageRes": "hero_piquedram",
-    "specialtyIcon": "creature_stone_gargoyle"
+    "imageRes": "hero_piquedram"
   },
   {
     "id": "rissa",
@@ -574,8 +531,7 @@
     "skills": "Мистицизм, Нападение",
     "spell": "Волшебная стрела",
     "army": "30-40 Гремлинов\n5-7 Каменных Горгулий\n4-5 Каменных големов",
-    "imageRes": "hero_rissa",
-    "specialtyIcon": "resource_mercury"
+    "imageRes": "hero_rissa"
   },
   {
     "id": "thane",
@@ -587,8 +543,7 @@
     "skills": "Грамоность(продвинутый)",
     "spell": "Волшебная стрела",
     "army": "30-40 Гремлинов\n5-7 Каменных Горгулий\n4-5 Каменных големов",
-    "imageRes": "hero_thane",
-    "specialtyIcon": "creature_genie"
+    "imageRes": "hero_thane"
   },
   {
     "id": "torosar",
@@ -600,8 +555,7 @@
     "skills": "Мистицизм, Тактика",
     "spell": "Волшебная стрела",
     "army": "30-40 Гремлинов\n4-5 Каменных големов\n1 Баллиста",
-    "imageRes": "hero_torosar",
-    "specialtyIcon": "creature_ballista"
+    "imageRes": "hero_torosar"
   },
   {
     "id": "astral",
@@ -613,8 +567,7 @@
     "skills": "Мудрость(продвинутый)",
     "spell": "Гипноз",
     "army": "30-40 Гремлинов\n5-7 Каменных Горгулий\n4-5 Каменных големов",
-    "imageRes": "hero_astral",
-    "specialtyIcon": "spell_hypnotize"
+    "imageRes": "hero_astral"
   },
   {
     "id": "solmyr",
@@ -626,8 +579,7 @@
     "skills": "Мудрость, Волшебство",
     "spell": "Цепная молния",
     "army": "30-40 Гремлинов\n5-7 Каменных Горгулий\n4-5 Каменных големов",
-    "imageRes": "hero_solmyr",
-    "specialtyIcon": "spell_chain_lightning"
+    "imageRes": "hero_solmyr"
   },
   {
     "id": "cyra",
@@ -639,8 +591,7 @@
     "skills": "Мудрость, Дипломатия",
     "spell": "Ускорение",
     "army": "30-40 Гремлинов\n5-7 Каменных Горгулий\n4-5 Каменных големов",
-    "imageRes": "hero_cyra",
-    "specialtyIcon": "spell_haste"
+    "imageRes": "hero_cyra"
   },
   {
     "id": "aine",
@@ -652,8 +603,7 @@
     "skills": "Мудрость, Грамотность",
     "spell": "Проклятие",
     "army": "30-40 Гремлинов\n5-7 Каменных Горгулий\n4-5 Каменных големов",
-    "imageRes": "hero_aine",
-    "specialtyIcon": "resource_gold"
+    "imageRes": "hero_aine"
   },
   {
     "id": "theodorus",
@@ -665,8 +615,7 @@
     "skills": "Мудрость, Баллистика",
     "spell": "Щит",
     "army": "30-40 Гремлинов\n5-7 Каменных Горгулий\n4-5 Каменных големов",
-    "imageRes": "hero_theodorus",
-    "specialtyIcon": "creature_mage"
+    "imageRes": "hero_theodorus"
   },
   {
     "id": "halon",
@@ -678,8 +627,7 @@
     "skills": "Мудрость, Мистицизм",
     "spell": "Каменная кожа",
     "army": "30-40 Гремлинов\n5-7 Каменных Горгулий\n4-5 Каменных големов",
-    "imageRes": "hero_halon",
-    "specialtyIcon": "expert_mysticism"
+    "imageRes": "hero_halon"
   },
   {
     "id": "serena",
@@ -691,8 +639,7 @@
     "skills": "Мудрость, Орлиный глаз",
     "spell": "Снятие заклинаний",
     "army": "30-40 Гремлинов\n5-7 Каменных Горгулий\n4-5 Каменных големов",
-    "imageRes": "hero_serena",
-    "specialtyIcon": "expert_eagle_eye"
+    "imageRes": "hero_serena"
   },
   {
     "id": "daremyth",
@@ -704,8 +651,7 @@
     "skills": "Мудрость, Интеллект",
     "spell": "Удача",
     "army": "30-40 Гремлинов\n5-7 Каменных Горгулий\n4-5 Каменных големов",
-    "imageRes": "hero_daremyth",
-    "specialtyIcon": "spell_fortune"
+    "imageRes": "hero_daremyth"
   },
   {
     "id": "dracon",
@@ -718,8 +664,7 @@
     "spell": "Ускорение",
     "army": "6 Чародеев\n3 Чародея\n1 Чародей",
     "imageRes": "hero_dracon",
-    "backgroundColor": "#DC143C",
-    "specialtyIcon": "creature_enchanter"
+    "backgroundColor": "#DC143C"
   },
   {
     "id": "pyre",
@@ -731,8 +676,7 @@
     "skills": "Логистика, Артиллерия",
     "spell": "Нет",
     "army": "20-30 Бесов\n4-5 Адских гончих\n1 Баллиста",
-    "imageRes": "hero_pyre",
-    "specialtyIcon": "creature_ballista"
+    "imageRes": "hero_pyre"
   },
   {
     "id": "rashka",
@@ -744,8 +688,7 @@
     "skills": "Грамотность, Мудрость",
     "spell": "Нет",
     "army": "20-30 Бесов\n5-7 Гогов\n4-5 Адских гончих",
-    "imageRes": "hero_rashka",
-    "specialtyIcon": "creature_efreeti"
+    "imageRes": "hero_rashka"
   },
   {
     "id": "nymus",
@@ -757,8 +700,7 @@
     "skills": "Нападение(продвинутый)",
     "spell": "Нет",
     "army": "20-30 Бесов\n5-7 Гогов\n4-5 Адских гончих",
-    "imageRes": "hero_nymus",
-    "specialtyIcon": "creature_pit_fiend"
+    "imageRes": "hero_nymus"
   },
   {
     "id": "marius",
@@ -770,8 +712,7 @@
     "skills": "Доспехи(продвинутый)",
     "spell": "Нет",
     "army": "20-30 Бесов\n5-7 Гогов\n4-5 Адских гончих",
-    "imageRes": "hero_marius",
-    "specialtyIcon": "creature_demon"
+    "imageRes": "hero_marius"
   },
   {
     "id": "fiona",
@@ -783,8 +724,7 @@
     "skills": "Разведка(продвинутый)",
     "spell": "Нет",
     "army": "20-30 Бесов\n4-5 Адских гончих\n4-5 Адских гончих",
-    "imageRes": "hero_fiona",
-    "specialtyIcon": "creature_hell_hound"
+    "imageRes": "hero_fiona"
   },
   {
     "id": "octavia",
@@ -796,8 +736,7 @@
     "skills": "Грамотность, Нападение",
     "spell": "Нет",
     "army": "20-30 Бесов\n5-7 Гогов\n4-5 Адских гончих",
-    "imageRes": "hero_octavia",
-    "specialtyIcon": "resource_gold"
+    "imageRes": "hero_octavia"
   },
   {
     "id": "ignatius",
@@ -809,8 +748,7 @@
     "skills": "Тактика, Помехи",
     "spell": "Нет",
     "army": "20-30 Бесов\n20-30 Бесов\n20-30 Бесов",
-    "imageRes": "hero_ignatius",
-    "specialtyIcon": "creature_imp"
+    "imageRes": "hero_ignatius"
   },
   {
     "id": "calh",
@@ -822,8 +760,7 @@
     "skills": "Стрельба, Разведка",
     "spell": "Нет",
     "army": "5-7 Гогов\n5-7 Гогов\n5-7 Гогов",
-    "imageRes": "hero_calh",
-    "specialtyIcon": "creature_gog"
+    "imageRes": "hero_calh"
   },
   {
     "id": "xeron",
@@ -836,8 +773,7 @@
     "spell": "Нет",
     "army": "20-30 Бесов\n4-5 Адских гончих\n4-5 Адских гончих",
     "imageRes": "hero_xeron",
-    "backgroundColor": "#DC143C",
-    "specialtyIcon": "creature_devil"
+    "backgroundColor": "#DC143C"
   },
   {
     "id": "xyron",
@@ -849,8 +785,7 @@
     "skills": "Мудрость, Грамотность",
     "spell": "Инферно",
     "army": "20-30 Бесов\n5-7 Гогов\n4-5 Адских гончих",
-    "imageRes": "hero_xyron",
-    "specialtyIcon": "spell_inferno"
+    "imageRes": "hero_xyron"
   },
   {
     "id": "xarfax",
@@ -862,8 +797,7 @@
     "skills": "Мудрость, Лидерство",
     "spell": "Огненный шар",
     "army": "20-30 Бесов\n5-7 Гогов\n4-5 Адских гончих",
-    "imageRes": "hero_xarfax",
-    "specialtyIcon": "spell_fireball"
+    "imageRes": "hero_xarfax"
   },
   {
     "id": "ayden",
@@ -875,8 +809,7 @@
     "skills": "Мудрость, Интеллект",
     "spell": "Просмотр земли",
     "army": "20-30 Бесов\n5-7 Гогов\n4-5 Адских гончих",
-    "imageRes": "hero_ayden",
-    "specialtyIcon": "expert_intelligence"
+    "imageRes": "hero_ayden"
   },
   {
     "id": "ash",
@@ -888,8 +821,7 @@
     "skills": "Мудрость, Орлиный глаз",
     "spell": "Жажда крови",
     "army": "20-30 Бесов\n5-7 Гогов\n4-5 Адских гончих",
-    "imageRes": "hero_ash",
-    "specialtyIcon": "spell_bloodlust"
+    "imageRes": "hero_ash"
   },
   {
     "id": "axsis",
@@ -901,8 +833,7 @@
     "skills": "Мудрость, Мистицизм",
     "spell": "Защита от воздуха",
     "army": "20-30 Бесов\n5-7 Гогов\n4-5 Адских гончих",
-    "imageRes": "hero_axsis",
-    "specialtyIcon": "expert_mysticism"
+    "imageRes": "hero_axsis"
   },
   {
     "id": "calid",
@@ -914,8 +845,7 @@
     "skills": "Мудрость, Обучаемость",
     "spell": "Ускорение",
     "army": "20-30 Бесов\n5-7 Гогов\n4-5 Адских гончих",
-    "imageRes": "hero_calid",
-    "specialtyIcon": "resource_sulfur"
+    "imageRes": "hero_calid"
   },
   {
     "id": "olema",
@@ -927,8 +857,7 @@
     "skills": "Мудрость, Баллистика",
     "spell": "Слабость",
     "army": "20-30 Бесов\n5-7 Гогов\n4-5 Адских гончих",
-    "imageRes": "hero_olema",
-    "specialtyIcon": "spell_weakness"
+    "imageRes": "hero_olema"
   },
   {
     "id": "zydar",
@@ -940,8 +869,7 @@
     "skills": "Мудрость, Волшебство",
     "spell": "Каменная кожа",
     "army": "20-30 Бесов\n5-7 Гогов\n4-5 Адских гончих",
-    "imageRes": "hero_zydar",
-    "specialtyIcon": "expert_sorcery"
+    "imageRes": "hero_zydar"
   },
   {
     "id": "galthran",
@@ -954,8 +882,7 @@
     "spell": "Щит",
     "army": "20-30 Скелетов\n20-30 Скелетов\n20-30 Скелетов",
     "imageRes": "hero_galthran",
-    "backgroundColor": "#DC143C",
-    "specialtyIcon": "creature_skeleton"
+    "backgroundColor": "#DC143C"
   },
   {
     "id": "charna",
@@ -967,8 +894,7 @@
     "skills": "Некромантия, Тактика",
     "spell": "Волшебная стрела",
     "army": "20-30 Скелетов\n4-6 Духов\n4-6 Духов",
-    "imageRes": "hero_charna",
-    "specialtyIcon": "creature_wight"
+    "imageRes": "hero_charna"
   },
   {
     "id": "clavius",
@@ -980,8 +906,7 @@
     "skills": "Некромантия, Нападение",
     "spell": "Волшебная стрела",
     "army": "20-30 Скелетов\n6-8 Ходячих мертвецов\n4-6 Духов",
-    "imageRes": "hero_clavius",
-    "specialtyIcon": "resource_gold"
+    "imageRes": "hero_clavius"
   },
   {
     "id": "moandor",
@@ -993,8 +918,7 @@
     "skills": "Некромантия, Обучение",
     "spell": "Медлительность",
     "army": "20-30 Скелетов\n6-8 Ходячих мертвецов\n4-6 Духов",
-    "imageRes": "hero_moandor",
-    "specialtyIcon": "creature_lich"
+    "imageRes": "hero_moandor"
   },
   {
     "id": "straker",
@@ -1006,8 +930,7 @@
     "skills": "Некромантия, Помехи",
     "spell": "Ускорение",
     "army": "6-8 Ходячих мертвецов\n6-8 Ходячих мертвецов\n6-8 Ходячих мертвецов",
-    "imageRes": "hero_straker",
-    "specialtyIcon": "creature_walking_dead"
+    "imageRes": "hero_straker"
   },
   {
     "id": "tamika",
@@ -1019,8 +942,7 @@
     "skills": "Некромантия, Нападение",
     "spell": "Волшебная стрела",
     "army": "20-30 Скелетов\n6-8 Ходячих мертвецов\n4-6 Духов",
-    "imageRes": "hero_tamika",
-    "specialtyIcon": "creature_dread_knight"
+    "imageRes": "hero_tamika"
   },
   {
     "id": "vokial",
@@ -1032,8 +954,7 @@
     "skills": "Некромантия, Артиллерия",
     "spell": "Каменная кожа",
     "army": "20-30 Скелетов\n6-8 Ходячих мертвецов\n4-6 Духов",
-    "imageRes": "hero_vokial",
-    "specialtyIcon": "creature_vampire"
+    "imageRes": "hero_vokial"
   },
   {
     "id": "isra",
@@ -1045,8 +966,7 @@
     "skills": "Некромантия(продвинутый)",
     "spell": "Волшебная стрела",
     "army": "20-30 Скелетов\n6-8 Ходячих мертвецов\n4-6 Духов",
-    "imageRes": "hero_isra",
-    "specialtyIcon": "expert_necromancy"
+    "imageRes": "hero_isra"
   },
   {
     "id": "ranloo",
@@ -1058,8 +978,7 @@
     "skills": "Некромантия, Артиллерия",
     "spell": "Ускорение",
     "army": "20-30 Скелетов\n4-6 Духов\n1 Баллиста",
-    "imageRes": "hero_ranloo",
-    "specialtyIcon": "creature_ballista"
+    "imageRes": "hero_ranloo"
   },
   {
     "id": "haart_lich",
@@ -1072,8 +991,7 @@
     "spell": "Медлительность",
     "army": "20-30 Скелетов\n6-8 Ходячих мертвецов\n4-6 Духов",
     "imageRes": "hero_haart_lich",
-    "backgroundColor": "#DC143C",
-    "specialtyIcon": "creature_black_knight"
+    "backgroundColor": "#DC143C"
   },
   {
     "id": "vidomina",
@@ -1085,8 +1003,7 @@
     "skills": "Некромантия(продвинутый)",
     "spell": "Проклятие",
     "army": "20-30 Скелетов\n6-8 Ходячих мертвецов\n4-6 Духов",
-    "imageRes": "hero_vidomina",
-    "specialtyIcon": "expert_necromancy"
+    "imageRes": "hero_vidomina"
   },
   {
     "id": "thant",
@@ -1098,8 +1015,7 @@
     "skills": "Некромантия, Мистицизм",
     "spell": "Поднять мертвецов",
     "army": "20-30 Скелетов\n6-8 Ходячих мертвецов\n4-6 Духов",
-    "imageRes": "hero_thant",
-    "specialtyIcon": "spell_animate_dead"
+    "imageRes": "hero_thant"
   },
   {
     "id": "sandro",
@@ -1111,8 +1027,7 @@
     "skills": "Некромантия, Волшебство",
     "spell": "Медлительность",
     "army": "20-30 Скелетов\n6-8 Ходячих мертвецов\n4-6 Духов",
-    "imageRes": "hero_sandro",
-    "specialtyIcon": "expert_sorcery"
+    "imageRes": "hero_sandro"
   },
   {
     "id": "nagash",
@@ -1124,8 +1039,7 @@
     "skills": "Некромантия, Интеллект",
     "spell": "Защита от воздуха",
     "army": "20-30 Скелетов\n6-8 Ходячих мертвецов\n4-6 Духов",
-    "imageRes": "hero_nagash",
-    "specialtyIcon": "resource_gold"
+    "imageRes": "hero_nagash"
   },
   {
     "id": "septienna",
@@ -1137,8 +1051,7 @@
     "skills": "Некромантия, Грамотность",
     "spell": "Волна смерти",
     "army": "20-30 Скелетов\n6-8 Ходячих мертвецов\n4-6 Духов",
-    "imageRes": "hero_septienna",
-    "specialtyIcon": "spell_death_ripple"
+    "imageRes": "hero_septienna"
   },
   {
     "id": "aislinn",
@@ -1150,8 +1063,7 @@
     "skills": "Некромантия, Мудрость",
     "spell": "Метеоритный дождь",
     "army": "20-30 Скелетов\n6-8 Ходячих мертвецов\n4-6 Духов",
-    "imageRes": "hero_aislinn",
-    "specialtyIcon": "spell_meteor_shower"
+    "imageRes": "hero_aislinn"
   },
   {
     "id": "ximiron",
@@ -1163,8 +1075,7 @@
     "skills": "Некромантия, Обучаемость",
     "spell": "Каменная кожа",
     "army": "20-30 Скелетов\n6-8 Ходячих мертвецов\n4-6 Духов",
-    "imageRes": "hero_xsi",
-    "specialtyIcon": "spell_stone_skin"
+    "imageRes": "hero_xsi"
   },
   {
     "id": "nimbus",
@@ -1176,8 +1087,7 @@
     "skills": "Некромантия, Орлиный глаз",
     "spell": "Щит",
     "army": "20-30 Скелетов\n6-8 Ходячих мертвецов\n4-6 Духов",
-    "imageRes": "hero_nimbus",
-    "specialtyIcon": "expert_eagle_eye"
+    "imageRes": "hero_nimbus"
   },
   {
     "id": "lorelei",
@@ -1189,8 +1099,7 @@
     "skills": "Лидерство, Разведка",
     "spell": "Нет",
     "army": "6-8 Гарпий\n6-8 Гарпий\n6-8 Гарпий",
-    "imageRes": "hero_lorelei",
-    "specialtyIcon": "creature_harpy"
+    "imageRes": "hero_lorelei"
   },
   {
     "id": "arlach",
@@ -1202,8 +1111,7 @@
     "skills": "Нападение, Артиллерия",
     "spell": "Нет",
     "army": "20-30 Троглодитов\n3-4 Бехолдера\n1 Баллиста",
-    "imageRes": "hero_arlach",
-    "specialtyIcon": "creature_ballista"
+    "imageRes": "hero_arlach"
   },
   {
     "id": "dace",
@@ -1215,8 +1123,7 @@
     "skills": "Тактика, Нападение",
     "spell": "Нет",
     "army": "20-30 Троглодитов\n6-8 Гарпий\n3-4 Бехолдера",
-    "imageRes": "hero_dace",
-    "specialtyIcon": "creature_minotaur"
+    "imageRes": "hero_dace"
   },
   {
     "id": "damacon",
@@ -1228,8 +1135,7 @@
     "skills": "Нападение(продвинутый)",
     "spell": "Нет",
     "army": "20-30 Троглодитов\n6-8 Гарпий\n3-4 Бехолдера",
-    "imageRes": "hero_damacon",
-    "specialtyIcon": "resource_gold"
+    "imageRes": "hero_damacon"
   },
   {
     "id": "gunnar",
@@ -1241,8 +1147,7 @@
     "skills": "Тактика, Логистика",
     "spell": "Нет",
     "army": "20-30 Троглодитов\n6-8 Гарпий\n3-4 Бехолдера",
-    "imageRes": "hero_gunnar",
-    "specialtyIcon": "expert_logistics"
+    "imageRes": "hero_gunnar"
   },
   {
     "id": "synca",
@@ -1254,8 +1159,7 @@
     "skills": "Лидерство, Грамотность",
     "spell": "Нет",
     "army": "20-30 Троглодитов\n6-8 Гарпий\n3-4 Бехолдера",
-    "imageRes": "hero_synca",
-    "specialtyIcon": "creature_manticore"
+    "imageRes": "hero_synca"
   },
   {
     "id": "shakti",
@@ -1267,8 +1171,7 @@
     "skills": "Нападение, Тактика",
     "spell": "Нет",
     "army": "20-30 Троглодитов\n220-30 Троглодитов\n20-30 Троглодитов",
-    "imageRes": "hero_shakti",
-    "specialtyIcon": "creature_troglodyte"
+    "imageRes": "hero_shakti"
   },
   {
     "id": "ajit",
@@ -1280,8 +1183,7 @@
     "skills": "Лидерство, Помехи",
     "spell": "Нет",
     "army": "20-30 Троглодитов\n6-8 Гарпий\n3-4 Бехолдера",
-    "imageRes": "hero_ajit",
-    "specialtyIcon": "creature_beholder"
+    "imageRes": "hero_ajit"
   },
   {
     "id": "mutare",
@@ -1294,8 +1196,7 @@
     "spell": "Волшебная стрела",
     "army": "20-30 Троглодитов\n6-8 Гарпий\n3-4 Бехолдера",
     "imageRes": "hero_mutare",
-    "backgroundColor": "#DC143C",
-    "specialtyIcon": "creature_red_dragon"
+    "backgroundColor": "#DC143C"
   },
   {
     "id": "mutare_drake",
@@ -1308,8 +1209,7 @@
     "spell": "Волшебная стрела",
     "army": "20-30 Троглодитов\n6-8 Гарпий\n3-4 Бехолдера",
     "imageRes": "hero_mutare_drake",
-    "backgroundColor": "#DC143C",
-    "specialtyIcon": "creature_red_dragon"
+    "backgroundColor": "#DC143C"
   },
   {
     "id": "alamar",
@@ -1321,8 +1221,7 @@
     "skills": "Мудрость, Грамотность",
     "spell": "Воскрешение",
     "army": "20-30 Троглодитов\n6-8 Гарпий\n3-4 Бехолдера",
-    "imageRes": "hero_alamar",
-    "specialtyIcon": "spell_resurrection"
+    "imageRes": "hero_alamar"
   },
   {
     "id": "jeddite",
@@ -1334,8 +1233,7 @@
     "skills": "Мудрость(продвинутый)",
     "spell": "Воскрешение",
     "army": "20-30 Троглодитов\n6-8 Гарпий\n3-4 Бехолдера",
-    "imageRes": "hero_jeddite",
-    "specialtyIcon": "spell_resurrection"
+    "imageRes": "hero_jeddite"
   },
   {
     "id": "geon",
@@ -1347,8 +1245,7 @@
     "skills": "Мудрость, Орлиный глаз",
     "spell": "Медлительность",
     "army": "20-30 Троглодитов\n6-8 Гарпий\n3-4 Бехолдера",
-    "imageRes": "hero_geon",
-    "specialtyIcon": "expert_eagle_eye"
+    "imageRes": "hero_geon"
   },
   {
     "id": "deemer",
@@ -1360,8 +1257,7 @@
     "skills": "Мудрость, Разведка",
     "spell": "Метеоритный дождь",
     "army": "20-30 Троглодитов\n6-8 Гарпий\n3-4 Бехолдера",
-    "imageRes": "hero_deemer",
-    "specialtyIcon": "spell_meteor_shower"
+    "imageRes": "hero_deemer"
   },
   {
     "id": "sephinroth",
@@ -1373,8 +1269,7 @@
     "skills": "Мудрость, Интеллект",
     "spell": "Защита от воздуха",
     "army": "20-30 Троглодитов\n6-8 Гарпий\n3-4 Бехолдера",
-    "imageRes": "hero_sephinroth",
-    "specialtyIcon": "resource_crystal"
+    "imageRes": "hero_sephinroth"
   },
   {
     "id": "darkstorn",
@@ -1386,8 +1281,7 @@
     "skills": "Мудрость, Обучаемость",
     "spell": "Каменная кожа",
     "army": "20-30 Троглодитов\n6-8 Гарпий\n3-4 Бехолдера",
-    "imageRes": "hero_darkstorn",
-    "specialtyIcon": "spell_stone_skin"
+    "imageRes": "hero_darkstorn"
   },
   {
     "id": "malekith",
@@ -1399,8 +1293,7 @@
     "skills": "Мудрость, Волшебство",
     "spell": "Жажда крови",
     "army": "20-30 Троглодитов\n6-8 Гарпий\n3-4 Бехолдера",
-    "imageRes": "hero_malekith",
-    "specialtyIcon": "expert_sorcery"
+    "imageRes": "hero_malekith"
   },
   {
     "id": "jaegar",
@@ -1412,8 +1305,7 @@
     "skills": "Мудрость, Мистицизм",
     "spell": "Щит",
     "army": "20-30 Троглодитов\n6-8 Гарпий\n3-4 Бехолдера",
-    "imageRes": "hero_jaegar",
-    "specialtyIcon": "expert_mysticism"
+    "imageRes": "hero_jaegar"
   },
   {
     "id": "crag_hack",
@@ -1425,8 +1317,7 @@
     "skills": "Нападение",
     "spell": "Нет",
     "army": "20-30 Гоблинов\n5-7 Наездников на волках\n5-6 Орков",
-    "imageRes": "hero_crag_hack",
-    "specialtyIcon": "expert_offense"
+    "imageRes": "hero_crag_hack"
   },
   {
     "id": "gurnisson",
@@ -1438,8 +1329,7 @@
     "skills": "Нападение, Артиллерия",
     "spell": "Нет",
     "army": "20-30 Гоблинов\n5-6 Орков\n1 Баллиста",
-    "imageRes": "hero_gurnisson",
-    "specialtyIcon": "creature_ballista"
+    "imageRes": "hero_gurnisson"
   },
   {
     "id": "jabarkas",
@@ -1451,8 +1341,7 @@
     "skills": "Нападение, Стрельба",
     "spell": "Нет",
     "army": "20-30 Гоблинов\n5-6 Орков\n5-6 Орков",
-    "imageRes": "hero_jabarkas",
-    "specialtyIcon": "creature_orc"
+    "imageRes": "hero_jabarkas"
   },
   {
     "id": "krellion",
@@ -1464,8 +1353,7 @@
     "skills": "Нападение, Помехи",
     "spell": "Нет",
     "army": "20-30 Гоблинов\n5-7 Наездников на волках\n5-6 Орков",
-    "imageRes": "hero_krellion",
-    "specialtyIcon": "creature_ogre"
+    "imageRes": "hero_krellion"
   },
   {
     "id": "shiva",
@@ -1477,8 +1365,7 @@
     "skills": "Нападение, Разведка",
     "spell": "Нет",
     "army": "20-30 Гоблинов\n5-7 Наездников на волках\n5-6 Орков",
-    "imageRes": "hero_shiva",
-    "specialtyIcon": "creature_roc"
+    "imageRes": "hero_shiva"
   },
   {
     "id": "tyraxor",
@@ -1490,8 +1377,7 @@
     "skills": "Нападение, Тактика",
     "spell": "Нет",
     "army": "20-30 5-7 Наездников на волках\n5-7 Наездников на волках\n5-6 5-7 Наездников на волках",
-    "imageRes": "hero_tyraxor",
-    "specialtyIcon": "creature_wolf_rider"
+    "imageRes": "hero_tyraxor"
   },
   {
     "id": "yog",
@@ -1503,8 +1389,7 @@
     "skills": "Нападение, Баллистика",
     "spell": "Нет",
     "army": "20-30 Гоблинов\n5-7 Наездников на волках\n5-6 Орков",
-    "imageRes": "hero_yog",
-    "specialtyIcon": "creature_cyclops"
+    "imageRes": "hero_yog"
   },
   {
     "id": "gretchin",
@@ -1516,8 +1401,7 @@
     "skills": "Нападение, Поиск пути",
     "spell": "Нет",
     "army": "20-30 Гоблинов\n20-30 Гоблинов\n20-30 Гоблинов",
-    "imageRes": "hero_gretchin",
-    "specialtyIcon": "creature_goblin"
+    "imageRes": "hero_gretchin"
   },
   {
     "id": "kilgor",
@@ -1530,8 +1414,7 @@
     "spell": "Нет",
     "army": "20-30 Гоблинов\n5-7 Наездников на волках\n5-6 Орков",
     "imageRes": "hero_kilgor",
-    "backgroundColor": "#DC143C",
-    "specialtyIcon": "creature_behemoth"
+    "backgroundColor": "#DC143C"
   },
   {
     "id": "boragus",
@@ -1544,8 +1427,7 @@
     "spell": "Нет",
     "army": "20-30 Гоблинов\n5-7 Наездников на волках\n5-6 Орков",
     "imageRes": "hero_boragus",
-    "backgroundColor": "#DC143C",
-    "specialtyIcon": "creature_ogre"
+    "backgroundColor": "#DC143C"
   },
   {
     "id": "dessa",
@@ -1557,8 +1439,7 @@
     "skills": "Мудрость, Логистика",
     "spell": "Каменная кожа",
     "army": "20-30 Гоблинов\n5-7 Наездников на волках\n5-6 Орков",
-    "imageRes": "hero_dessa",
-    "specialtyIcon": "expert_logistics"
+    "imageRes": "hero_dessa"
   },
   {
     "id": "gird",
@@ -1570,8 +1451,7 @@
     "skills": "Мудрость, Волшебство",
     "spell": "Жажда крови",
     "army": "20-30 Гоблинов\n5-7 Наездников на волках\n5-6 Орков",
-    "imageRes": "hero_gird",
-    "specialtyIcon": "expert_sorcery"
+    "imageRes": "hero_gird"
   },
   {
     "id": "gundula",
@@ -1583,8 +1463,7 @@
     "skills": "Мудрость, Нападение",
     "spell": "Медлительность",
     "army": "20-30 Гоблинов\n5-7 Наездников на волках\n5-6 Орков",
-    "imageRes": "hero_gundula",
-    "specialtyIcon": "expert_offense"
+    "imageRes": "hero_gundula"
   },
   {
     "id": "oris",
@@ -1596,8 +1475,7 @@
     "skills": "Мудрость, Орлиный глаз",
     "spell": "Защита от воздуха",
     "army": "20-30 Гоблинов\n5-7 Наездников на волках\n5-6 Орков",
-    "imageRes": "hero_oris",
-    "specialtyIcon": "expert_eagle_eye"
+    "imageRes": "hero_oris"
   },
   {
     "id": "saurug",
@@ -1609,8 +1487,7 @@
     "skills": "Мудрость, Помехи",
     "spell": "Жажда крови",
     "army": "20-30 Гоблинов\n5-7 Наездников на волках\n5-6 Орков",
-    "imageRes": "hero_saurug",
-    "specialtyIcon": "resource_gems"
+    "imageRes": "hero_saurug"
   },
   {
     "id": "terek",
@@ -1622,8 +1499,7 @@
     "skills": "Мудрость, Тактика",
     "spell": "Ускорение",
     "army": "20-30 Гоблинов\n5-7 Наездников на волках\n5-6 Орков",
-    "imageRes": "hero_terek",
-    "specialtyIcon": "spell_haste"
+    "imageRes": "hero_terek"
   },
   {
     "id": "vey",
@@ -1636,8 +1512,7 @@
     "spell": "Волшебная стрела",
     "army": "20-30 Гоблинов\n5-7 Наездников на волках\n5-6 Орков",
     "imageRes": "hero_vey",
-    "backgroundColor": "#1E90FF",
-    "specialtyIcon": "creature_ogre"
+    "backgroundColor": "#1E90FF"
   },
   {
     "id": "zubin",
@@ -1649,8 +1524,7 @@
     "skills": "Мудрость, Артиллерия",
     "spell": "Точность",
     "army": "20-30 Гоблинов\n5-7 Наездников на волках\n5-6 Орков",
-    "imageRes": "hero_zubin",
-    "specialtyIcon": "spell_precision"
+    "imageRes": "hero_zubin"
   },
   {
     "id": "tazar",
@@ -1662,8 +1536,7 @@
     "skills": "Доспехи(продвинутый)",
     "spell": "Нет",
     "army": "15-25 Гноллов\n4-7 Ящеров\n3-4 Змиев",
-    "imageRes": "hero_tazar",
-    "specialtyIcon": "expert_armorer"
+    "imageRes": "hero_tazar"
   },
   {
     "id": "alkin",
@@ -1675,8 +1548,7 @@
     "skills": "Доспехи, Нападение",
     "spell": "Нет",
     "army": "15-25 Гноллов\n4-7 Ящеров\n3-4 Змиев",
-    "imageRes": "hero_alkin",
-    "specialtyIcon": "creature_gorgon"
+    "imageRes": "hero_alkin"
   },
   {
     "id": "bron",
@@ -1688,8 +1560,7 @@
     "skills": "Доспехи, Помехи",
     "spell": "Нет",
     "army": "15-25 Гноллов\n3-4 Змиев\n4-7 Василисков",
-    "imageRes": "hero_bron",
-    "specialtyIcon": "creature_basilisk"
+    "imageRes": "hero_bron"
   },
   {
     "id": "broghild",
@@ -1701,8 +1572,7 @@
     "skills": "Доспехи, Разведка",
     "spell": "Нет",
     "army": "15-25 Гноллов\n4-7 Ящеров\n3-4 Змиев",
-    "imageRes": "hero_broghild",
-    "specialtyIcon": "creature_wyvern"
+    "imageRes": "hero_broghild"
   },
   {
     "id": "drakon",
@@ -1714,8 +1584,7 @@
     "skills": "Доспехи, Лидерство",
     "spell": "Нет",
     "army": "15-25 Гноллов\n15-25 Гноллов\n15-25 Гноллов",
-    "imageRes": "hero_drakon",
-    "specialtyIcon": "creature_gnoll"
+    "imageRes": "hero_drakon"
   },
   {
     "id": "gerwulf",
@@ -1727,8 +1596,7 @@
     "skills": "Доспехи, Артиллерия",
     "spell": "Нет",
     "army": "15-25 Гноллов\n3-4 Змиев\n1 Баллиста",
-    "imageRes": "hero_gerwulf",
-    "specialtyIcon": "creature_ballista"
+    "imageRes": "hero_gerwulf"
   },
   {
     "id": "korbac",
@@ -1740,8 +1608,7 @@
     "skills": "Доспехи, Поиск пути",
     "spell": "Нет",
     "army": "15-25 Гноллов\n3-4 Змиев\n3-4 Змиев",
-    "imageRes": "hero_korbac",
-    "specialtyIcon": "creature_serpent_fly"
+    "imageRes": "hero_korbac"
   },
   {
     "id": "wystan",
@@ -1753,8 +1620,7 @@
     "skills": "Доспехи, Стрельба",
     "spell": "Нет",
     "army": "4-7 Ящеров\n4-7 Ящеров\n4-7 Ящеров",
-    "imageRes": "hero_wystan",
-    "specialtyIcon": "creature_lizardman"
+    "imageRes": "hero_wystan"
   },
   {
     "id": "andra",
@@ -1766,8 +1632,7 @@
     "skills": "Мудрость, Интеллект",
     "spell": "Снятие заклинаний",
     "army": "15-25 Гноллов\n4-7 Ящеров\n3-4 Змиев",
-    "imageRes": "hero_andra",
-    "specialtyIcon": "expert_intelligence"
+    "imageRes": "hero_andra"
   },
   {
     "id": "merist",
@@ -1779,8 +1644,7 @@
     "skills": "Мудрость, Обучаемость",
     "spell": "Каменная кожа",
     "army": "15-25 Гноллов\n4-7 Ящеров\n3-4 Змиев",
-    "imageRes": "hero_merist",
-    "specialtyIcon": "spell_stone_skin"
+    "imageRes": "hero_merist"
   },
   {
     "id": "mirlanda",
@@ -1792,8 +1656,7 @@
     "skills": "Мудрость(продвинутый)",
     "spell": "Слабость",
     "army": "15-25 Гноллов\n4-7 Ящеров\n3-4 Змиев",
-    "imageRes": "hero_mirlanda",
-    "specialtyIcon": "spell_weakness"
+    "imageRes": "hero_mirlanda"
   },
   {
     "id": "rosic",
@@ -1805,8 +1668,7 @@
     "skills": "Мудрость, Мистицизм",
     "spell": "Волшебная стрела",
     "army": "15-25 Гноллов\n4-7 Ящеров\n3-4 Змиев",
-    "imageRes": "hero_rosic",
-    "specialtyIcon": "expert_mysticism"
+    "imageRes": "hero_rosic"
   },
   {
     "id": "styg",
@@ -1818,8 +1680,7 @@
     "skills": "Мудрость, Волшебство",
     "spell": "Щит",
     "army": "15-25 Гноллов\n4-7 Ящеров\n3-4 Змиев",
-    "imageRes": "hero_styg",
-    "specialtyIcon": "expert_sorcery"
+    "imageRes": "hero_styg"
   },
   {
     "id": "tiva",
@@ -1831,8 +1692,7 @@
     "skills": "Мудрость, Орлиный глаз",
     "spell": "Каменная кожа",
     "army": "15-25 Гноллов\n4-7 Ящеров\n3-4 Змиев",
-    "imageRes": "hero_tiva",
-    "specialtyIcon": "expert_eagle_eye"
+    "imageRes": "hero_tiva"
   },
   {
     "id": "verdish",
@@ -1844,8 +1704,7 @@
     "skills": "Мудрость, Первая помощь",
     "spell": "Защита от огня",
     "army": "15-25 Гноллов\n3-4 Змиев\n1 Палатка",
-    "imageRes": "hero_verdish",
-    "specialtyIcon": "expert_first_aid"
+    "imageRes": "hero_verdish"
   },
   {
     "id": "voy",
@@ -1858,8 +1717,7 @@
     "spell": "Медлительность",
     "army": "15-25 Гноллов\n4-7 Ящеров\n3-4 Змиев",
     "imageRes": "hero_voy",
-    "backgroundColor": "#1E90FF",
-    "specialtyIcon": "expert_navigation"
+    "backgroundColor": "#1E90FF"
   },
   {
     "id": "adrianne",
@@ -1872,8 +1730,7 @@
     "spell": "Инферно",
     "army": "15-25 Гноллов\n4-7 Ящеров\n3-4 Змиев",
     "imageRes": "hero_adrienne",
-    "backgroundColor": "#DC143C",
-    "specialtyIcon": "expert_fire_magic"
+    "backgroundColor": "#DC143C"
   },
   {
     "id": "kinkeria",
@@ -1885,8 +1742,7 @@
     "skills": "Мудрость, Обучаемость",
     "spell": "Медлительность",
     "army": "15-25 Гноллов\n4-7 Ящеров\n3-4 Змиев",
-    "imageRes": "hero_kinkeria",
-    "specialtyIcon": "expert_learning"
+    "imageRes": "hero_kinkeria"
   },
   {
     "id": "pasis",
@@ -1898,8 +1754,7 @@
     "skills": "Нападение, Артиллерия",
     "spell": "Нет",
     "army": "15-25 Пикси\n3-5 Воздушных элементалей\n2-3 Воздушных элементаля",
-    "imageRes": "hero_pasis",
-    "specialtyIcon": "creature_psychic_elemental"
+    "imageRes": "hero_pasis"
   },
   {
     "id": "monere",
@@ -1911,8 +1766,7 @@
     "skills": "Нападение, Логистика",
     "spell": "Нет",
     "army": "15-25 Пикси\n3-5 Воздушных элементалей\n2-3 Воздушных элементаля",
-    "imageRes": "hero_monere",
-    "specialtyIcon": "creature_psychic_elemental"
+    "imageRes": "hero_monere"
   },
   {
     "id": "thunar",
@@ -1924,8 +1778,7 @@
     "skills": "Тактика, Поместья",
     "spell": "Нет",
     "army": "15-25 Пикси\n3-5 Воздушных элементалей\n3-5 Водных элементалей",
-    "imageRes": "hero_thunar",
-    "specialtyIcon": "creature_earth_elemental"
+    "imageRes": "hero_thunar"
   },
   {
     "id": "erdamon",
@@ -1937,8 +1790,7 @@
     "skills": "Тактика, Поместья",
     "spell": "Нет",
     "army": "15-25 Пикси\n3-5 Воздушных элементалей\n3-5 Водных элементалей",
-    "imageRes": "hero_erdamon",
-    "specialtyIcon": "creature_earth_elemental"
+    "imageRes": "hero_erdamon"
   },
   {
     "id": "ignissa",
@@ -1950,8 +1802,7 @@
     "skills": "Нападение, Артиллерия",
     "spell": "Нет",
     "army": "15-25 Пикси\n3-5 Воздушных элементалей\n3-5 Водных элементалей",
-    "imageRes": "hero_ignissa",
-    "specialtyIcon": "creature_fire_elemental"
+    "imageRes": "hero_ignissa"
   },
   {
     "id": "fiur",
@@ -1963,8 +1814,7 @@
     "skills": "Нападение(продвинутый)",
     "spell": "Нет",
     "army": "15-25 Пикси\n3-5 Воздушных элементалей\n3-5 Водных элементалей",
-    "imageRes": "hero_fiur",
-    "specialtyIcon": "creature_fire_elemental"
+    "imageRes": "hero_fiur"
   },
   {
     "id": "lacus",
@@ -1976,8 +1826,7 @@
     "skills": "Тактика(продвинутый)",
     "spell": "Нет",
     "army": "15-25 Пикси\n3-5 Водных элементалей\n2-3 Водных элементалей",
-    "imageRes": "hero_lacus",
-    "specialtyIcon": "creature_water_elemental"
+    "imageRes": "hero_lacus"
   },
   {
     "id": "kalt",
@@ -1989,8 +1838,7 @@
     "skills": "Тактика, Обучаемость",
     "spell": "Нет",
     "army": "15-25 Пикси\n3-5 Водных элементалей\n2-3 Водных элементалей",
-    "imageRes": "hero_kalt",
-    "specialtyIcon": "creature_water_elemental"
+    "imageRes": "hero_kalt"
   },
   {
     "id": "ciele",
@@ -2002,8 +1850,7 @@
     "skills": "Мудрость, Магия Воды",
     "spell": "Волшебная стрела",
     "army": "15-25 Пикси\n3-5 Воздушных элементалей\n3-5 Водных элементалей",
-    "imageRes": "hero_ciele",
-    "specialtyIcon": "spell_magic_arrow"
+    "imageRes": "hero_ciele"
   },
   {
     "id": "gelare",
@@ -2015,8 +1862,7 @@
     "skills": "Мудрость, Магия Воды",
     "spell": "Снятие заклинаний",
     "army": "15-25 Пикси\n3-5 Воздушных элементалей\n3-5 Водных элементалей",
-    "imageRes": "hero_gelare",
-    "specialtyIcon": "resource_gold"
+    "imageRes": "hero_gelare"
   },
   {
     "id": "grindan",
@@ -2028,8 +1874,7 @@
     "skills": "Мудрость, Магия Земли",
     "spell": "Медлительность",
     "army": "15-25 Пикси\n3-5 Воздушных элементалей\n3-5 Водных элементалей",
-    "imageRes": "hero_grindan",
-    "specialtyIcon": "resource_gold"
+    "imageRes": "hero_grindan"
   },
   {
     "id": "inteus",
@@ -2041,8 +1886,7 @@
     "skills": "Мудрость, Магия Огня",
     "spell": "Жажда крови",
     "army": "15-25 Пикси\n3-5 Воздушных элементалей\n3-5 Водных элементалей",
-    "imageRes": "hero_inteus",
-    "specialtyIcon": "spell_bloodlust"
+    "imageRes": "hero_inteus"
   },
   {
     "id": "luna",
@@ -2054,8 +1898,7 @@
     "skills": "Мудрость, Магия Огня",
     "spell": "Стена огня",
     "army": "15-25 Пикси\n3-5 Воздушных элементалей\n3-5 Водных элементалей",
-    "imageRes": "hero_luna",
-    "specialtyIcon": "spell_wall_of_fire"
+    "imageRes": "hero_luna"
   },
   {
     "id": "labetha",
@@ -2067,8 +1910,7 @@
     "skills": "Мудрость, Магия Земли",
     "spell": "Каменная кожа",
     "army": "15-25 Пикси\n3-5 Воздушных элементалей\n3-5 Водных элементалей",
-    "imageRes": "hero_labetha",
-    "specialtyIcon": "spell_stone_skin"
+    "imageRes": "hero_labetha"
   },
   {
     "id": "brissa",
@@ -2080,8 +1922,7 @@
     "skills": "Мудрость, Магия Воздуха",
     "spell": "Ускорение",
     "army": "15-25 Пикси\n3-5 Воздушных элементалей\n3-5 Водных элементалей",
-    "imageRes": "hero_brissa",
-    "specialtyIcon": "spell_haste"
+    "imageRes": "hero_brissa"
   },
   {
     "id": "aenain",
@@ -2093,8 +1934,7 @@
     "skills": "Мудрость, Магия Воздуха",
     "spell": "Разрушающий луч",
     "army": "15-25 Пикси\n3-5 Воздушных элементалей\n3-5 Водных элементалей",
-    "imageRes": "hero_aenain",
-    "specialtyIcon": "spell_disrupting_ray"
+    "imageRes": "hero_aenain"
   },
   {
     "id": "corkes",
@@ -2106,8 +1946,7 @@
     "skills": "Нападение, Поиск пути",
     "spell": "Нет",
     "army": "15-25 Нимф\n6-9 Матросов\n4-7 Пиратов",
-    "imageRes": "hero_corkes",
-    "specialtyIcon": "expert_offense"
+    "imageRes": "hero_corkes"
   },
   {
     "id": "jeremy",
@@ -2119,8 +1958,7 @@
     "skills": "Нападение, Артиллерия",
     "spell": "Нет",
     "army": "15-25 Нимф\n4-7 Пиратов\n1 Пушка",
-    "imageRes": "hero_jeremy",
-    "specialtyIcon": "creature_cannon"
+    "imageRes": "hero_jeremy"
   },
   {
     "id": "illor",
@@ -2132,8 +1970,7 @@
     "skills": "Доспехи, Тактика",
     "spell": "Нет",
     "army": "15-25 Нимф\n4-7 Пиратов\n3-5 Духов океана",
-    "imageRes": "hero_illor",
-    "specialtyIcon": "creature_oceanid"
+    "imageRes": "hero_illor"
   },
   {
     "id": "derek",
@@ -2145,8 +1982,7 @@
     "skills": "Нападение, Лидерство",
     "spell": "Нет",
     "army": "6-9 Матросов\n6-9 Матросов\n6-9 Матросов",
-    "imageRes": "hero_derek",
-    "specialtyIcon": "creature_crew_mate"
+    "imageRes": "hero_derek"
   },
   {
     "id": "elmore",
@@ -2159,8 +1995,7 @@
     "spell": "Нет",
     "army": "15-25 Нимф\n6-9 Матросов\n4-7 Пиратов",
     "imageRes": "hero_elmore",
-    "backgroundColor": "#1E90FF",
-    "specialtyIcon": "expert_navigation"
+    "backgroundColor": "#1E90FF"
   },
   {
     "id": "leena",
@@ -2172,8 +2007,7 @@
     "skills": "Поместья, Поиск пути",
     "spell": "Нет",
     "army": "15-25 Нимф\n6-9 Матросов\n4-7 Пиратов",
-    "imageRes": "hero_leena",
-    "specialtyIcon": "resource_gold"
+    "imageRes": "hero_leena"
   },
   {
     "id": "anabel",
@@ -2185,8 +2019,7 @@
     "skills": "Нападение, Стрельба",
     "spell": "Нет",
     "army": "15-25 Нимф\n4-7 Пиратов\n4-7 Пиратов",
-    "imageRes": "hero_anabel",
-    "specialtyIcon": "creature_pirate"
+    "imageRes": "hero_anabel"
   },
   {
     "id": "cassiopeia",
@@ -2198,8 +2031,7 @@
     "skills": "Нападение, Тактика",
     "spell": "Нет",
     "army": "15-25 Нимф\n15-25 Нимф\n15-25 Нимф",
-    "imageRes": "hero_cassiopeia",
-    "specialtyIcon": "creature_nymph"
+    "imageRes": "hero_cassiopeia"
   },
   {
     "id": "miriam",
@@ -2211,8 +2043,7 @@
     "skills": "Логистика, Разведка",
     "spell": "Нет",
     "army": "15-25 Нимф\n6-9 Матросов\n4-7 Пиратов",
-    "imageRes": "hero_miriam",
-    "specialtyIcon": "expert_scouting"
+    "imageRes": "hero_miriam"
   },
   {
     "id": "tark",
@@ -2225,8 +2056,7 @@
     "spell": "Нет",
     "army": "1 Никс\n1 Никс\n1 Никс",
     "imageRes": "hero_tark",
-    "backgroundColor": "#DC143C",
-    "specialtyIcon": "creature_nix"
+    "backgroundColor": "#DC143C"
   },
   {
     "id": "bidley",
@@ -2239,8 +2069,7 @@
     "spell": "Нет",
     "army": "1-3 Морских волков\n1-3 Морских волков\n4-7 Корсаров",
     "imageRes": "hero_bidley",
-    "backgroundColor": "#DC143C",
-    "specialtyIcon": "creature_sea_dog"
+    "backgroundColor": "#DC143C"
   },
   {
     "id": "casmetra",
@@ -2252,8 +2081,7 @@
     "skills": "Мудрость, Магия Воды",
     "spell": "Снятие заклинаний",
     "army": "15-25 Нимф\n6-9 Матросов\n4-7 Пиратов",
-    "imageRes": "hero_casmetra",
-    "specialtyIcon": "creature_sea_witch"
+    "imageRes": "hero_casmetra"
   },
   {
     "id": "eovacius",
@@ -2265,8 +2093,7 @@
     "skills": "Мудрость, Интеллект",
     "spell": "Клон",
     "army": "15-25 Нимф\n6-9 Матросов\n4-7 Пиратов",
-    "imageRes": "hero_eovacius",
-    "specialtyIcon": "spell_clone"
+    "imageRes": "hero_eovacius"
   },
   {
     "id": "spint",
@@ -2278,8 +2105,7 @@
     "skills": "Мудрость, Волшебство",
     "spell": "Благословение",
     "army": "15-25 Нимф\n6-9 Матросов\n4-7 Пиратов",
-    "imageRes": "hero_spint",
-    "specialtyIcon": "expert_sorcery"
+    "imageRes": "hero_spint"
   },
   {
     "id": "andal",
@@ -2291,8 +2117,7 @@
     "skills": "Мудрость, Поиск пути",
     "spell": "Медлительность",
     "army": "15-25 Нимф\n6-9 Матросов\n4-7 Пиратов",
-    "imageRes": "hero_andal",
-    "specialtyIcon": "resource_crystal"
+    "imageRes": "hero_andal"
   },
   {
     "id": "manfred",
@@ -2304,8 +2129,7 @@
     "skills": "Мудрость, Магия Огня",
     "spell": "Огненный шар",
     "army": "15-25 Нимф\n6-9 Матросов\n4-7 Пиратов",
-    "imageRes": "hero_manfred",
-    "specialtyIcon": "spell_fireball"
+    "imageRes": "hero_manfred"
   },
   {
     "id": "zilare",
@@ -2317,8 +2141,7 @@
     "skills": "Мудрость, Помехи",
     "spell": "Забывчивость",
     "army": "15-25 Нимф\n6-9 Матросов\n4-7 Пиратов",
-    "imageRes": "hero_zilare",
-    "specialtyIcon": "spell_forgetfulness"
+    "imageRes": "hero_zilare"
   },
   {
     "id": "astra",
@@ -2330,8 +2153,7 @@
     "skills": "Мудрость, Удача",
     "spell": "Лечение",
     "army": "15-25 Нимф\n6-9 Матросов\n4-7 Пиратов",
-    "imageRes": "hero_astra",
-    "specialtyIcon": "spell_cure"
+    "imageRes": "hero_astra"
   },
   {
     "id": "dargem",
@@ -2343,8 +2165,7 @@
     "skills": "Мудрость, Тактика",
     "spell": "Воздушный щит",
     "army": "15-25 Нимф\n6-9 Матросов\n4-7 Пиратов",
-    "imageRes": "hero_dargem",
-    "specialtyIcon": "spell_air_shield"
+    "imageRes": "hero_dargem"
   },
   {
     "id": "sam",
@@ -2356,8 +2177,7 @@
     "skills": "Нападение, Тактика",
     "spell": "Нет",
     "army": "6-8 Механиков\n6-8 Механиков\n6-8 Механиков",
-    "imageRes": "hero_sam",
-    "specialtyIcon": "creature_mechanic"
+    "imageRes": "hero_sam"
   },
   {
     "id": "henrietta",
@@ -2369,8 +2189,7 @@
     "skills": "Лидерство, Удача",
     "spell": "Нет",
     "army": "15-25 Полуросликов\n15-25 Полуросликов\n15-25 Полуросликов",
-    "imageRes": "hero_henrietta",
-    "specialtyIcon": "creature_halfling"
+    "imageRes": "hero_henrietta"
   },
   {
     "id": "floribert",
@@ -2382,8 +2201,7 @@
     "skills": "Доспехи, Первая помощь",
     "spell": "Нет",
     "army": "15-25 Полуросликов\n4-6 Броненосцев\n1 Палатка",
-    "imageRes": "hero_floribert",
-    "specialtyIcon": "expert_first_aid"
+    "imageRes": "hero_floribert"
   },
   {
     "id": "wynona",
@@ -2395,8 +2213,7 @@
     "skills": "Стрельба, Разведка",
     "spell": "Нет",
     "army": "15-25 Полуросликов\n6-8 Механиков\n4-6 Броненосцев",
-    "imageRes": "hero_wynona",
-    "specialtyIcon": "expert_scouting"
+    "imageRes": "hero_wynona"
   },
   {
     "id": "dury",
@@ -2408,8 +2225,7 @@
     "skills": "Нападение, Доспехи",
     "spell": "Нет",
     "army": "15-25 Полуросликов\n6-8 Механиков\n4-6 Броненосцев",
-    "imageRes": "hero_dury",
-    "specialtyIcon": "expert_armorer"
+    "imageRes": "hero_dury"
   },
   {
     "id": "tancred",
@@ -2421,8 +2237,7 @@
     "skills": "Стрельба",
     "spell": "Нет",
     "army": "15-25 Полуросликов\n6-8 Механиков\n4-6 Броненосцев",
-    "imageRes": "hero_tancred",
-    "specialtyIcon": "creature_gunslinger"
+    "imageRes": "hero_tancred"
   },
   {
     "id": "melchior",
@@ -2434,8 +2249,7 @@
     "skills": "Лидерство, Дипломатия",
     "spell": "Нет",
     "army": "15-25 Полуросликов\n6-8 Механиков\n4-6 Броненосцев",
-    "imageRes": "hero_melchior",
-    "specialtyIcon": "expert_diplomacy"
+    "imageRes": "hero_melchior"
   },
   {
     "id": "morton",
@@ -2447,8 +2261,7 @@
     "skills": "Артилерия, Баллистика",
     "spell": "Нет",
     "army": "15-25 Полуросликов\n4-6 Броненосцев\n1 Баллиста",
-    "imageRes": "hero_morton",
-    "specialtyIcon": "creature_ballista"
+    "imageRes": "hero_morton"
   },
   {
     "id": "tavin",
@@ -2461,8 +2274,7 @@
     "spell": "Нет",
     "army": "15-25 Полуросликов\n6-8 Механиков\n4-6 Броненосцев",
     "imageRes": "hero_tavin",
-    "backgroundColor": "#DC143C",
-    "specialtyIcon": "expert_offense"
+    "backgroundColor": "#DC143C"
   },
   {
     "id": "murdoch",
@@ -2475,8 +2287,7 @@
     "spell": "Нет",
     "army": "15-25 Полуросликов\n6-8 Механиков\n4-6 Броненосцев",
     "imageRes": "hero_murdoch",
-    "backgroundColor": "#DC143C",
-    "specialtyIcon": "expert_archery"
+    "backgroundColor": "#DC143C"
   },
   {
     "id": "bertram",
@@ -2488,8 +2299,7 @@
     "skills": "Мудрость, Грамотность",
     "spell": "Волшебная стрела",
     "army": "15-25 Полуросликов\n6-8 Механиков\n4-6 Броненосцев",
-    "imageRes": "hero_bertram",
-    "specialtyIcon": "resource_gold"
+    "imageRes": "hero_bertram"
   },
   {
     "id": "agar",
@@ -2501,8 +2311,7 @@
     "skills": "Мудрость",
     "spell": "Просмотр земли",
     "army": "15-25 Полуросликов\n6-8 Механиков\n4-6 Броненосцев",
-    "imageRes": "hero_agar",
-    "specialtyIcon": "creature_sandworm"
+    "imageRes": "hero_agar"
   },
   {
     "id": "wrathmont",
@@ -2514,8 +2323,7 @@
     "skills": "Мудрость, Интеллект",
     "spell": "Бешенство",
     "army": "15-25 Полуросликов\n6-8 Механиков\n4-6 Броненосцев",
-    "imageRes": "hero_wrathmont",
-    "specialtyIcon": "spell_frenzy"
+    "imageRes": "hero_wrathmont"
   },
   {
     "id": "eanswythe",
@@ -2527,8 +2335,7 @@
     "skills": "Мудрость, Поместья",
     "spell": "Слабость",
     "army": "15-25 Полуросликов\n6-8 Механиков\n4-6 Броненосцев",
-    "imageRes": "hero_eanswythe",
-    "specialtyIcon": "spell_weakness"
+    "imageRes": "hero_eanswythe"
   },
   {
     "id": "todd",
@@ -2540,8 +2347,7 @@
     "skills": "Мудрость, Тактика",
     "spell": "Щит",
     "army": "15-25 Полуросликов\n4-6 Броненосцев\n3-5 Автоматонов",
-    "imageRes": "hero_todd",
-    "specialtyIcon": "creature_automaton"
+    "imageRes": "hero_todd"
   },
   {
     "id": "celestine",
@@ -2553,8 +2359,7 @@
     "skills": "Мудрость, Поиск пути",
     "spell": "Ускорение",
     "army": "15-25 Полуросликов\n4-6 Броненосцев\n4-6 Броненосцев",
-    "imageRes": "hero_celestine",
-    "specialtyIcon": "creature_armadillo"
+    "imageRes": "hero_celestine"
   },
   {
     "id": "victoria",
@@ -2566,8 +2371,7 @@
     "skills": "Мудрость, Обучаемость",
     "spell": "Минное поле",
     "army": "15-25 Полуросликов\n6-8 Механиков\n4-6 Броненосцев",
-    "imageRes": "hero_victoria",
-    "specialtyIcon": "spell_land_mine"
+    "imageRes": "hero_victoria"
   },
   {
     "id": "ziph",
@@ -2579,8 +2383,7 @@
     "skills": "Мудрость, Волшебство",
     "spell": "Молния",
     "army": "15-25 Полуросликов\n6-8 Механиков\n4-6 Броненосцев",
-    "imageRes": "hero_ziph",
-    "specialtyIcon": "spell_lightning_bolt"
+    "imageRes": "hero_ziph"
   },
   {
     "id": "frederick",
@@ -2593,7 +2396,7 @@
     "spell": "Ускорение",
     "army": "3-5 Автоматонов\n3-5 Автоматонов\n3-5 Автоматонов",
     "imageRes": "hero_frederick",
-    "backgroundColor": "#DC143C",
-    "specialtyIcon": "creature_automaton"
+    "backgroundColor": "#DC143C"
   }
 ]
+    
