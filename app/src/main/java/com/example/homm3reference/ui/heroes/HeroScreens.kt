@@ -448,7 +448,7 @@ fun SpellPopup(spell: Spell, onDismiss: () -> Unit) {
     ) {
         Card(
             modifier = Modifier
-                .fillMaxWidth(0.95f)
+                .fillMaxWidth(0.9f)
                 .wrapContentHeight() // Высота подстраивается под контент
                 .clickable(enabled = false) {},
             colors = CardDefaults.cardColors(
