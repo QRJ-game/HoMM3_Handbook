@@ -7,6 +7,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -40,14 +42,21 @@ fun ClassSelectionScreen(
 ) {
     AppBackground {
         Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
-            // Кнопка "Назад" удалена.
-            Spacer(modifier = Modifier.height(32.dp))
-            Text(
-                text = "$townName: Классы",
-                fontSize = 24.sp,
-                fontWeight = FontWeight.Bold,
-                color = Color(0xFFD4AF37)
-            )
+            Spacer(modifier = Modifier.height(16.dp))
+
+            // Кнопка Назад и заголовок
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                IconButton(onClick = onBack) {
+                    Icon(Icons.Filled.ArrowBack, contentDescription = "Back", tint = Color(0xFFD4AF37))
+                }
+                Text(
+                    text = "$townName: Классы",
+                    fontSize = 24.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color(0xFFD4AF37)
+                )
+            }
+
             Spacer(modifier = Modifier.height(32.dp))
 
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
@@ -91,6 +100,7 @@ fun HeroListScreen(
     onBack: () -> Unit,
     onHeroSelected: (Hero) -> Unit
 ) {
+    // Убран поиск, оставлена только группировка
     val groupedHeroes = remember(heroes) {
         val standardHeroes = heroes.filter { it.backgroundColor.isNullOrEmpty() }
         val coloredHeroes = heroes.filter { !it.backgroundColor.isNullOrEmpty() }.groupBy { it.backgroundColor }
@@ -99,15 +109,23 @@ fun HeroListScreen(
 
     AppBackground {
         Column(modifier = Modifier.fillMaxSize()) {
-            // Кнопка "Назад" удалена.
 
-            Text(
-                text = "$townName • $className",
-                modifier = Modifier.padding(start = 16.dp, bottom = 16.dp, top = 16.dp), // top padding added
-                fontSize = 20.sp,
-                color = Color(0xFFD4AF37),
-                fontWeight = FontWeight.Bold
-            )
+            // Хедер
+            Row(
+                modifier = Modifier.padding(start = 8.dp, end = 16.dp, top = 16.dp, bottom = 16.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                IconButton(onClick = onBack) {
+                    Icon(Icons.Filled.ArrowBack, contentDescription = "Back", tint = Color(0xFFD4AF37))
+                }
+                Text(
+                    text = "$townName • $className",
+                    fontSize = 20.sp,
+                    color = Color(0xFFD4AF37),
+                    fontWeight = FontWeight.Bold
+                )
+            }
+
             LazyColumn(contentPadding = PaddingValues(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 items(groupedHeroes.first) { hero ->
                     HeroCard(hero, onHeroSelected)
@@ -170,8 +188,11 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>, onBack: () -> Unit) 
                 .verticalScroll(rememberScrollState())
                 .padding(16.dp)
             ) {
-                // Кнопка "Назад" удалена.
                 Spacer(modifier = Modifier.height(16.dp))
+                // Кнопка Назад
+                IconButton(onClick = onBack) {
+                    Icon(Icons.Filled.ArrowBack, contentDescription = "Back", tint = Color(0xFFD4AF37))
+                }
 
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     HeroImage(
@@ -212,8 +233,6 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>, onBack: () -> Unit) 
 
                     if (icons.isNotEmpty()) {
                         icons.forEach { iconName ->
-                            // FIX: Ищем навык по ID, извлеченному из имени иконки (например, "basic_archery" -> "archery")
-                            // Прямое сравнение imageRes может не сработать.
                             val skillId = iconName.substringAfter("_")
                             val skill = allSkills.find { it.id == skillId } ?: allSkills.find { iconName.contains(it.id) }
 
@@ -223,7 +242,6 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>, onBack: () -> Unit) 
                                 height = 93.dp,
                                 modifier = Modifier
                                     .padding(end = 6.dp)
-                                    // Теперь skill корректно находится, и клик будет работать
                                     .clickable(enabled = skill != null) {
                                         if (skill != null) selectedSkill = skill
                                     }
@@ -333,7 +351,6 @@ fun SkillPopup(skill: SecondarySkill, onDismiss: () -> Unit) {
         Card(
             modifier = Modifier
                 .fillMaxWidth(0.9f)
-                // УБРАНО: .fillMaxHeight(0.75f) - теперь высота зависит от контента
                 .clickable(enabled = false) {},
             colors = CardDefaults.cardColors(
                 containerColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.95f)
@@ -343,19 +360,14 @@ fun SkillPopup(skill: SecondarySkill, onDismiss: () -> Unit) {
             Column(
                 modifier = Modifier
                     .padding(16.dp)
-                    // УБРАНО: .weight(1f) - колонка не растягивается
-                    // verticalScroll оставляем на случай, если описание навыка
-                    // все-таки окажется очень длинным и не влезет в экран.
                     .verticalScroll(rememberScrollState()),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
 
-                // Заголовок попапа
                 Text(skill.name, fontSize = 24.sp, fontWeight = FontWeight.Bold, color = Color(0xFFD4AF37))
 
                 HorizontalDivider(modifier = Modifier.padding(vertical = 16.dp), color = Color.White)
 
-                // Строки с описанием уровней и иконками
                 SkillPopupRow("Основной", skill.basic, "basic_${skill.id}")
                 HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp), color = Color.White)
                 SkillPopupRow("Продвинутый", skill.advanced, "advanced_${skill.id}")
@@ -381,6 +393,5 @@ fun SkillPopupRow(level: String, description: String, imageRes: String) {
                 Text(text = description, color = Color.White, fontSize = 16.sp)
             }
         }
-        // HorizontalDivider(modifier = Modifier.padding(top = 16.dp), color = Color.White)
     }
 }

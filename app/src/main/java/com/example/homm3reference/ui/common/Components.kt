@@ -341,3 +341,32 @@ fun OutlinedText(
         )
     }
 }
+
+@Composable
+fun AppSearchBar(
+    query: String,
+    onQueryChanged: (String) -> Unit,
+    modifier: Modifier = Modifier,
+    placeholderText: String = "Поиск..."
+) {
+    TextField(
+        value = query,
+        onValueChange = onQueryChanged,
+        modifier = modifier
+            .fillMaxWidth()
+            .border(2.dp, Color(0xFFD4AF37), RoundedCornerShape(8.dp))
+            .clip(RoundedCornerShape(8.dp)),
+        placeholder = { Text(placeholderText, color = Color.Gray) },
+        colors = TextFieldDefaults.colors(
+            focusedContainerColor = Color.Black.copy(alpha = 0.6f),
+            unfocusedContainerColor = Color.Black.copy(alpha = 0.6f),
+            focusedTextColor = Color.White,
+            unfocusedTextColor = Color.White,
+            cursorColor = Color(0xFFD4AF37),
+            focusedIndicatorColor = Color.Transparent,
+            unfocusedIndicatorColor = Color.Transparent
+        ),
+        singleLine = true,
+        leadingIcon = { Text("🔍", fontSize = 18.sp) }
+    )
+}

@@ -1,22 +1,31 @@
 package com.example.homm3reference.ui.navigation
 
 import androidx.activity.compose.BackHandler
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.*
+import androidx.compose.ui.unit.dp
 import com.example.homm3reference.data.Creature
 import com.example.homm3reference.data.CreatureDao
+import com.example.homm3reference.data.GameData
 import com.example.homm3reference.data.Hero
 import com.example.homm3reference.data.HeroDao
 import com.example.homm3reference.data.SecondarySkill
-import com.example.homm3reference.data.Spell // <-- Import
+import com.example.homm3reference.data.Spell
 import com.example.homm3reference.ui.common.TownSelectionScreen
+import com.example.homm3reference.ui.creatures.CreatureCard
 import com.example.homm3reference.ui.creatures.CreatureDetailScreen
 import com.example.homm3reference.ui.creatures.CreatureListScreen
 import com.example.homm3reference.ui.heroes.ClassSelectionScreen
+import com.example.homm3reference.ui.heroes.HeroCard
 import com.example.homm3reference.ui.heroes.HeroDetailScreen
 import com.example.homm3reference.ui.heroes.HeroListScreen
-import com.example.homm3reference.ui.magic.MagicSchoolSelectScreen // <-- Import
-import com.example.homm3reference.ui.magic.SpellDetailScreen // <-- Import
-import com.example.homm3reference.ui.magic.SpellListScreen // <-- Import
+import com.example.homm3reference.ui.magic.MagicSchoolSelectScreen
+import com.example.homm3reference.ui.magic.SpellCard
+import com.example.homm3reference.ui.magic.SpellDetailScreen
+import com.example.homm3reference.ui.magic.SpellListScreen
 import com.example.homm3reference.ui.main_menu.MainMenuScreen
 import com.example.homm3reference.ui.skills.SecondarySkillDetailScreen
 import com.example.homm3reference.ui.skills.SecondarySkillsListScreen
@@ -26,7 +35,7 @@ enum class Screen {
     HeroTowns, HeroClasses, HeroList, HeroDetail,
     CreatureTowns, CreatureList, CreatureDetail,
     SkillsList, SkillDetail,
-    MagicSchools, MagicList, MagicDetail // <--- Новые экраны для Магии
+    MagicSchools, MagicList, MagicDetail
 }
 
 val TOWN_ORDER = listOf(
@@ -48,10 +57,14 @@ fun AppRoot(
     var selectedHeroTown by remember { mutableStateOf<String?>(null) }
     var selectedHeroClassType by remember { mutableStateOf<String?>(null) }
     var selectedHero by remember { mutableStateOf<Hero?>(null) }
+    // Поиск Героев
+    var heroesSearchQuery by remember { mutableStateOf("") }
 
     // Состояния для Существ
     var selectedCreatureTown by remember { mutableStateOf<String?>(null) }
     var selectedCreature by remember { mutableStateOf<Creature?>(null) }
+    // Поиск Существ
+    var creaturesSearchQuery by remember { mutableStateOf("") }
 
     // Состояния для Навыков
     var selectedSkill by remember { mutableStateOf<SecondarySkill?>(null) }
@@ -59,11 +72,16 @@ fun AppRoot(
     // Состояния для Магии
     var selectedSchool by remember { mutableStateOf<String?>(null) }
     var selectedSpell by remember { mutableStateOf<Spell?>(null) }
+    // Поиск Заклинаний
+    var magicSearchQuery by remember { mutableStateOf("") }
 
 
     // Загрузка данных (Flow)
     val allHeroes by heroDao.getAllHeroes().collectAsState(initial = emptyList())
     val allCreatures by creatureDao.getAllCreatures().collectAsState(initial = emptyList())
+
+    // FIX: Не используем remember для GameData.spells, чтобы данные обновлялись при поиске
+    val allSpells = GameData.spells
 
     // Списки городов (сортированные)
     val heroTowns = remember(allHeroes) {
@@ -77,10 +95,19 @@ fun AppRoot(
         // --- ГЛАВНОЕ МЕНЮ ---
         Screen.MainMenu -> {
             MainMenuScreen(
-                onHeroesClick = { currentScreen = Screen.HeroTowns },
-                onCreaturesClick = { currentScreen = Screen.CreatureTowns },
+                onHeroesClick = {
+                    heroesSearchQuery = ""
+                    currentScreen = Screen.HeroTowns
+                },
+                onCreaturesClick = {
+                    creaturesSearchQuery = ""
+                    currentScreen = Screen.CreatureTowns
+                },
                 onSkillsClick = { currentScreen = Screen.SkillsList },
-                onMagicClick = { currentScreen = Screen.MagicSchools }, // <-- Добавлено
+                onMagicClick = {
+                    magicSearchQuery = ""
+                    currentScreen = Screen.MagicSchools
+                },
                 isMuted = isMuted,
                 onMuteToggle = onMuteToggle
             )
@@ -89,13 +116,33 @@ fun AppRoot(
         // --- ВЕТКА ГЕРОЕВ ---
         Screen.HeroTowns -> {
             BackHandler { currentScreen = Screen.MainMenu }
+
+            val filteredHeroes = remember(allHeroes, heroesSearchQuery) {
+                if (heroesSearchQuery.isBlank()) emptyList()
+                else allHeroes.filter { it.name.contains(heroesSearchQuery, ignoreCase = true) }
+            }
+
             TownSelectionScreen(
                 title = "Герои: Выбор города",
                 towns = heroTowns,
-                onBack = { currentScreen = Screen.MainMenu },
                 onTownSelected = { town ->
                     selectedHeroTown = town
                     currentScreen = Screen.HeroClasses
+                },
+                searchQuery = heroesSearchQuery,
+                onQueryChanged = { heroesSearchQuery = it },
+                searchResultsContent = {
+                    LazyColumn(
+                        verticalArrangement = Arrangement.spacedBy(8.dp),
+                        contentPadding = PaddingValues(bottom = 16.dp)
+                    ) {
+                        items(filteredHeroes) { hero ->
+                            HeroCard(hero = hero, onHeroSelected = {
+                                selectedHero = it
+                                currentScreen = Screen.HeroDetail
+                            })
+                        }
+                    }
                 }
             )
         }
@@ -134,12 +181,16 @@ fun AppRoot(
             }
         }
         Screen.HeroDetail -> {
-            BackHandler { currentScreen = Screen.HeroList }
+            BackHandler {
+                if (selectedHeroTown == null) currentScreen = Screen.HeroTowns else currentScreen = Screen.HeroList
+            }
             if (selectedHero != null) {
                 HeroDetailScreen(
                     hero = selectedHero!!,
                     creatures = allCreatures,
-                    onBack = { currentScreen = Screen.HeroList }
+                    onBack = {
+                        if (selectedHeroTown == null) currentScreen = Screen.HeroTowns else currentScreen = Screen.HeroList
+                    }
                 )
             }
         }
@@ -147,13 +198,33 @@ fun AppRoot(
         // --- ВЕТКА СУЩЕСТВ ---
         Screen.CreatureTowns -> {
             BackHandler { currentScreen = Screen.MainMenu }
+
+            val filteredCreatures = remember(allCreatures, creaturesSearchQuery) {
+                if (creaturesSearchQuery.isBlank()) emptyList()
+                else allCreatures.filter { it.name.contains(creaturesSearchQuery, ignoreCase = true) }
+            }
+
             TownSelectionScreen(
                 title = "Существа: Выбор фракции",
                 towns = creatureTowns,
-                onBack = { currentScreen = Screen.MainMenu },
                 onTownSelected = { town ->
                     selectedCreatureTown = town
                     currentScreen = Screen.CreatureList
+                },
+                searchQuery = creaturesSearchQuery,
+                onQueryChanged = { creaturesSearchQuery = it },
+                searchResultsContent = {
+                    LazyColumn(
+                        verticalArrangement = Arrangement.spacedBy(8.dp),
+                        contentPadding = PaddingValues(bottom = 16.dp)
+                    ) {
+                        items(filteredCreatures) { creature ->
+                            CreatureCard(creature = creature, onClick = {
+                                selectedCreature = it
+                                currentScreen = Screen.CreatureDetail
+                            })
+                        }
+                    }
                 }
             )
         }
@@ -173,11 +244,15 @@ fun AppRoot(
             }
         }
         Screen.CreatureDetail -> {
-            BackHandler { currentScreen = Screen.CreatureList }
+            BackHandler {
+                if (selectedCreatureTown == null) currentScreen = Screen.CreatureTowns else currentScreen = Screen.CreatureList
+            }
             if (selectedCreature != null) {
                 CreatureDetailScreen(
                     creature = selectedCreature!!,
-                    onBack = { currentScreen = Screen.CreatureList }
+                    onBack = {
+                        if (selectedCreatureTown == null) currentScreen = Screen.CreatureTowns else currentScreen = Screen.CreatureList
+                    }
                 )
             }
         }
@@ -186,7 +261,7 @@ fun AppRoot(
         Screen.SkillsList -> {
             BackHandler { currentScreen = Screen.MainMenu }
             SecondarySkillsListScreen(
-                skills = com.example.homm3reference.data.GameData.secondarySkills,
+                skills = GameData.secondarySkills,
                 onBack = { currentScreen = Screen.MainMenu },
                 onSkillSelected = { skill ->
                     selectedSkill = skill
@@ -204,25 +279,45 @@ fun AppRoot(
             }
         }
 
-        // --- ВЕТКА МАГИИ (НОВАЯ) ---
+        // --- ВЕТКА МАГИИ ---
         Screen.MagicSchools -> {
             BackHandler { currentScreen = Screen.MainMenu }
+
+            // Фильтрация заклинаний (используем allSpells без remember для актуальности данных)
+            val filteredSpells = remember(allSpells, magicSearchQuery) {
+                if (magicSearchQuery.isBlank()) emptyList()
+                else allSpells.filter { it.name.contains(magicSearchQuery, ignoreCase = true) }
+            }
+
             MagicSchoolSelectScreen(
-                onBack = { currentScreen = Screen.MainMenu },
                 onSchoolSelected = { school ->
                     selectedSchool = school
                     currentScreen = Screen.MagicList
+                },
+                searchQuery = magicSearchQuery,
+                onQueryChanged = { magicSearchQuery = it },
+                searchResultsContent = {
+                    LazyColumn(
+                        verticalArrangement = Arrangement.spacedBy(8.dp),
+                        contentPadding = PaddingValues(bottom = 16.dp)
+                    ) {
+                        items(filteredSpells) { spell ->
+                            SpellCard(spell = spell, onClick = {
+                                selectedSpell = spell
+                                currentScreen = Screen.MagicDetail
+                            })
+                        }
+                    }
                 }
             )
         }
         Screen.MagicList -> {
             BackHandler { currentScreen = Screen.MagicSchools }
             if (selectedSchool != null) {
-                val spells = com.example.homm3reference.data.GameData.spells.filter { it.school == selectedSchool }
+                val spells = allSpells.filter { it.school == selectedSchool }
                 SpellListScreen(
                     school = selectedSchool!!,
                     spells = spells,
-                    onBack = { currentScreen = Screen.MagicSchools },
                     onSpellSelected = { spell ->
                         selectedSpell = spell
                         currentScreen = Screen.MagicDetail
@@ -231,11 +326,12 @@ fun AppRoot(
             }
         }
         Screen.MagicDetail -> {
-            BackHandler { currentScreen = Screen.MagicList }
+            BackHandler {
+                if (selectedSchool == null) currentScreen = Screen.MagicSchools else currentScreen = Screen.MagicList
+            }
             if (selectedSpell != null) {
                 SpellDetailScreen(
-                    spell = selectedSpell!!,
-                    onBack = { currentScreen = Screen.MagicList }
+                    spell = selectedSpell!!
                 )
             }
         }

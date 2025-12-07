@@ -4,7 +4,7 @@
     "imageRes": "spell_magic_arrow",
     "name": "Волшебная стрела",
     "level": 1,
-    "school": "Air",
+    "school": "Air, Earth, Fire, Water",
     "manaCostNone": 5,
     "manaCostBasic": 4,
     "manaCostAdvanced": 4,
@@ -12,15 +12,14 @@
     "descriptionNone": "Наносит СМ*10+10 урона.",
     "descriptionBasic": "Наносит СМ*10+10 урона.",
     "descriptionAdvanced": "Наносит СМ*10+20 урона.",
-    "descriptionExpert": "Наносит СМ*10+30 урона.",
-    "backgroundColor": "#DC143C"
+    "descriptionExpert": "Наносит СМ*10+30 урона."
   },
   {
     "id": "visions",
     "imageRes": "spell_visions",
     "name": "Видение",
     "level": 2,
-    "school": "Air",
+    "school": "Air, Earth, Fire, Water",
     "manaCostNone": 4,
     "manaCostBasic": 2,
     "manaCostAdvanced": 2,
@@ -29,7 +28,7 @@
     "descriptionBasic": "Мгновенное. По ПКМ на нейтральном отряде показывает точное количество существ в нём, агрессивность и цену в случае присоединения на расстоянии СМ клеток (минимум 3 клетки)",
     "descriptionAdvanced": "То же, но на расстоянии СМ*2 клеток + Показывает первичные навыки, удачу и боевой дух, ману вражеских героев, а также точное количество существ в армии",
     "descriptionExpert": "То же, но на расстоянии СМ*3 клеток + Показывает точное количество существ в гарнизонах и городах, уровень развития Управы, наличие Хранилища ресурсов и доход городов",
-    "backgroundColor": "#DC143C"
+    "backgroundColor": "#006400"
   },
   {
     "id": "haste",
@@ -59,7 +58,8 @@
     "descriptionNone": "Показывает расположение всех артефактов на уменьшенной карте «Обзор мира».",
     "descriptionBasic": "Показывает расположение всех артефактов на уменьшенной карте «Обзор мира».",
     "descriptionAdvanced": "То же + Показывает всех героев на карте.",
-    "descriptionExpert": "То же + Показывает все города."
+    "descriptionExpert": "То же + Показывает все города.",
+    "backgroundColor": "#006400"
   },
   {
     "id": "disguise",
@@ -74,7 +74,8 @@
     "descriptionNone": "Скрывает армию героя от противников. Они видят только самых сильных существ.",
     "descriptionBasic": "Скрывает армию героя от противников. Они видят только самых сильных существ.",
     "descriptionAdvanced": "То же + Скрывает количество существ в отрядах.",
-    "descriptionExpert": "То же, но противники видят, будто армия состоит из улучшенных отрядов 7 уровня."
+    "descriptionExpert": "То же, но противники видят, будто армия состоит из улучшенных отрядов 7 уровня.",
+    "backgroundColor": "#006400"
   },
   {
     "id": "disrupting_ray",
@@ -239,7 +240,8 @@
     "descriptionNone": "Перемещает героя на клетку карты. Можно использовать 2 раза в день.",
     "descriptionBasic": "Перемещает героя на клетку карты. Можно использовать 2 раза в день.",
     "descriptionAdvanced": "То же, но можно использовать 3 раза в день.",
-    "descriptionExpert": "То же, но можно использовать 4 раза в день. (200 MP)"
+    "descriptionExpert": "То же, но можно использовать 4 раза в день. (200 MP)",
+    "backgroundColor": "#006400"
   },
   {
     "id": "fly",
@@ -254,7 +256,8 @@
     "descriptionNone": "Герой может перемещаться через любые объекты. Штраф 40%.",
     "descriptionBasic": "Герой может перемещаться через любые объекты. Штраф 40%.",
     "descriptionAdvanced": "То же, но штраф составляет 20%.",
-    "descriptionExpert": "То же, но без штрафа."
+    "descriptionExpert": "То же, но без штрафа.",
+    "backgroundColor": "#006400"
   },
   {
     "id": "air_elemental",
@@ -296,10 +299,10 @@
     "manaCostBasic": 0,
     "manaCostAdvanced": 0,
     "manaCostExpert": 0,
-    "descriptionNone": "Наносит 600 урона. Не требует маны. Нужен артефакт Грохот Титана.",
-    "descriptionBasic": "Наносит 600 урона.",
-    "descriptionAdvanced": "Наносит 600 урона.",
-    "descriptionExpert": "Наносит 600 урона."
+    "descriptionNone": "Наносит 600 урона. Не требует маны. Нужен артефакт Грохот Титана. Если у героя нет книги Магии он ее получает.",
+    "descriptionBasic": "Наносит 600 урона. Не требует маны. Нужен артефакт Грохот Титана. Если у героя нет книги Магии он ее получает.",
+    "descriptionAdvanced": "Наносит 600 урона. Не требует маны. Нужен артефакт Грохот Титана. Если у героя нет книги Магии он ее получает.",
+    "descriptionExpert": "Наносит 600 урона. Не требует маны. Нужен артефакт Грохот Титана. Если у героя нет книги Магии он ее получает."
   },
   {
     "id": "shield",
@@ -359,7 +362,8 @@
     "descriptionNone": "Показывает расположение ресурсов.",
     "descriptionBasic": "Показывает расположение ресурсов.",
     "descriptionAdvanced": "То же + Показывает шахты.",
-    "descriptionExpert": "То же + Открывает терру инкогнито, показывая тип поверхности."
+    "descriptionExpert": "То же + Открывает терру инкогнито, показывая тип поверхности.",
+    "backgroundColor": "#006400"
   },
   {
     "id": "death_ripple",
@@ -524,7 +528,8 @@
     "descriptionNone": "Перемещает героя в ближайший город. (300 очков хода).",
     "descriptionBasic": "Перемещает героя в ближайший город. (300 очков хода).",
     "descriptionAdvanced": "То же, но даётся выбор цели из списка городов.",
-    "descriptionExpert": "То же, но отнимает 200 очков хода."
+    "descriptionExpert": "То же, но отнимает 200 очков хода.",
+    "backgroundColor": "#006400"
   },
   {
     "id": "implosion",
@@ -869,7 +874,8 @@
     "descriptionNone": "Призывает корабль (50% успеха).",
     "descriptionBasic": "Призывает корабль (50% успеха).",
     "descriptionAdvanced": "То же, но 75% успеха (или создает новый).",
-    "descriptionExpert": "То же, но 100% успеха."
+    "descriptionExpert": "То же, но 100% успеха.",
+    "backgroundColor": "#006400"
   },
   {
     "id": "ice_bolt",
@@ -914,7 +920,8 @@
     "descriptionNone": "Уничтожает корабль (50% шанс).",
     "descriptionBasic": "Уничтожает корабль (50% шанс).",
     "descriptionAdvanced": "То же, но 75% шанс.",
-    "descriptionExpert": "То же, но 100% шанс."
+    "descriptionExpert": "То же, но 100% шанс.",
+    "backgroundColor": "#006400"
   },
   {
     "id": "weakness",
@@ -1034,7 +1041,8 @@
     "descriptionNone": "Герой может перемещаться по воде (60% штраф).",
     "descriptionBasic": "Герой может перемещаться по воде (60% штраф).",
     "descriptionAdvanced": "То же, но 40% штраф.",
-    "descriptionExpert": "То же, но без штрафа."
+    "descriptionExpert": "То же, но без штрафа.",
+    "backgroundColor": "#006400"
   },
   {
     "id": "water_elemental",

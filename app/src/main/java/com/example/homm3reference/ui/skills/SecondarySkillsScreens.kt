@@ -6,7 +6,10 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue // ВАЖНО
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue // ВАЖНО
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -15,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.homm3reference.data.SecondarySkill
 import com.example.homm3reference.ui.common.AppBackground
+import com.example.homm3reference.ui.common.AppSearchBar
 import com.example.homm3reference.ui.common.HeroImage
 
 @Composable
@@ -23,12 +27,18 @@ fun SecondarySkillsListScreen(
     onBack: () -> Unit,
     onSkillSelected: (SecondarySkill) -> Unit
 ) {
-    // Сортировка списка по алфавиту (Артиллерия -> ... -> Удача)
-    val sortedSkills = remember(skills) { skills.sortedBy { it.name } }
+    var searchQuery by remember { mutableStateOf("") }
+
+    // Сортировка и фильтрация
+    val displayedSkills = remember(skills, searchQuery) {
+        val filtered = if (searchQuery.isBlank()) skills else skills.filter {
+            it.name.contains(searchQuery, ignoreCase = true)
+        }
+        filtered.sortedBy { it.name }
+    }
 
     AppBackground {
         Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
-            // Кнопка "Назад" удалена
 
             Spacer(modifier = Modifier.height(16.dp))
             Text(
@@ -36,11 +46,19 @@ fun SecondarySkillsListScreen(
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color(0xFFD4AF37),
-                modifier = Modifier.padding(bottom = 16.dp)
+                modifier = Modifier.padding(bottom = 8.dp)
+            )
+
+            // Поиск
+            AppSearchBar(
+                query = searchQuery,
+                onQueryChanged = { searchQuery = it },
+                modifier = Modifier.padding(bottom = 16.dp),
+                placeholderText = "Поиск навыка..."
             )
 
             LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                items(sortedSkills) { skill ->
+                items(displayedSkills) { skill ->
                     Card(
                         modifier = Modifier.fillMaxWidth().clickable { onSkillSelected(skill) },
                         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
@@ -50,7 +68,6 @@ fun SecondarySkillsListScreen(
                             modifier = Modifier.padding(12.dp),
                             verticalAlignment = Alignment.CenterVertically
                         ) {
-                            // В списке отображаем иконку Экспертного уровня
                             HeroImage(imageName = "expert_${skill.id}", width = 48.dp, height = 48.dp)
                             Spacer(modifier = Modifier.width(16.dp))
                             Text(

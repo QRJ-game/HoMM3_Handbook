@@ -15,7 +15,10 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue // ВАЖНО: для работы 'by'
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue // ВАЖНО: для работы 'by'
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -37,17 +40,31 @@ fun CreatureListScreen(
     onBack: () -> Unit,
     onCreatureSelected: (Creature) -> Unit
 ) {
+    var searchQuery by remember { mutableStateOf("") }
+
+    // Фильтрация списка существ
+    val filteredCreatures = remember(creatures, searchQuery) {
+        if (searchQuery.isBlank()) creatures
+        else creatures.filter { it.name.contains(searchQuery, ignoreCase = true) }
+    }
+
     AppBackground {
         Column(modifier = Modifier.fillMaxSize()) {
-            // Кнопка "Назад" удалена.
 
-            // Добавляем padding сверху (top), так как раньше там была кнопка
             Text(
                 text = townName,
-                modifier = Modifier.padding(start = 16.dp, bottom = 16.dp, top = 16.dp),
+                modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 16.dp),
                 fontSize = 24.sp,
                 color = Color(0xFFD4AF37),
                 fontWeight = FontWeight.Bold
+            )
+
+            // Поиск
+            AppSearchBar(
+                query = searchQuery,
+                onQueryChanged = { searchQuery = it },
+                modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+                placeholderText = "Поиск существа..."
             )
 
             if (townName == "Нейтралы" || townName == "Боевые машины") {
@@ -57,15 +74,17 @@ fun CreatureListScreen(
                     verticalArrangement = Arrangement.spacedBy(16.dp),
                     horizontalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
-                    items(creatures) { creature ->
+                    items(filteredCreatures) { creature ->
                         CreatureCard(creature, onCreatureSelected)
                     }
                 }
             } else {
-                val levels = creatures.map { it.level }.distinct().sorted()
+                // Группируем отфильтрованный список по уровням
+                val levels = filteredCreatures.map { it.level }.distinct().sorted()
+
                 LazyColumn(contentPadding = PaddingValues(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
                     items(levels) { level ->
-                        val levelCreatures = creatures.filter { it.level == level }.sortedBy { it.isUpgraded }
+                        val levelCreatures = filteredCreatures.filter { it.level == level }.sortedBy { it.isUpgraded }
 
                         levelCreatures.chunked(2).forEach { rowCreatures ->
                             Row(modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp), horizontalArrangement = Arrangement.SpaceBetween) {
@@ -211,3 +230,4 @@ fun CreatureDetailScreen(creature: Creature, onBack: () -> Unit) {
         }
     }
 }
+

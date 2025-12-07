@@ -16,23 +16,49 @@ import androidx.compose.ui.unit.sp
 fun TownSelectionScreen(
     title: String,
     towns: List<String>,
-    onBack: () -> Unit,
-    onTownSelected: (String) -> Unit
+    // onBack удален по запросу
+    onTownSelected: (String) -> Unit,
+    searchQuery: String,
+    onQueryChanged: (String) -> Unit,
+    searchResultsContent: @Composable () -> Unit
 ) {
     AppBackground {
-        Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
+        Column(modifier = Modifier.fillMaxSize()) {
 
-            Spacer(modifier = Modifier.height(16.dp))
+            // Заголовок и поиск
+            Column(modifier = Modifier.padding(16.dp)) {
+                Spacer(modifier = Modifier.height(16.dp))
 
-            Text(title, fontSize = 24.sp, fontWeight = FontWeight.Bold, color = Color(0xFFD4AF37))
-            Spacer(modifier = Modifier.height(16.dp))
-            LazyVerticalGrid(
-                columns = GridCells.Fixed(2),
-                verticalArrangement = Arrangement.spacedBy(16.dp),
-                horizontalArrangement = Arrangement.spacedBy(16.dp)
-            ) {
-                items(towns) { town ->
-                    TownCard(townName = town, onClick = { onTownSelected(town) })
+                Text(
+                    text = title,
+                    fontSize = 24.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color(0xFFD4AF37)
+                )
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                AppSearchBar(
+                    query = searchQuery,
+                    onQueryChanged = onQueryChanged,
+                    placeholderText = "Поиск..."
+                )
+            }
+
+            if (searchQuery.isNotBlank()) {
+                Box(modifier = Modifier.padding(horizontal = 16.dp)) {
+                    searchResultsContent()
+                }
+            } else {
+                LazyVerticalGrid(
+                    columns = GridCells.Fixed(2),
+                    verticalArrangement = Arrangement.spacedBy(16.dp),
+                    horizontalArrangement = Arrangement.spacedBy(16.dp),
+                    contentPadding = PaddingValues(16.dp)
+                ) {
+                    items(towns) { town ->
+                        TownCard(townName = town, onClick = { onTownSelected(town) })
+                    }
                 }
             }
         }

@@ -9,6 +9,8 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.getValue // Важный импорт для работы by
+import androidx.compose.runtime.setValue // Важный импорт для работы by
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -18,38 +20,61 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.homm3reference.data.Spell
 import com.example.homm3reference.ui.common.AppBackground
+import com.example.homm3reference.ui.common.AppSearchBar
 import com.example.homm3reference.ui.common.HeroImage
+// import com.example.homm3reference.ui.common.HorizontalDivider — убрано, используем стандартный из material3
 
 @Composable
 fun MagicSchoolSelectScreen(
-    onBack: () -> Unit,
-    onSchoolSelected: (String) -> Unit
+    onSchoolSelected: (String) -> Unit,
+    searchQuery: String,
+    onQueryChanged: (String) -> Unit,
+    searchResultsContent: @Composable () -> Unit
 ) {
     AppBackground {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Spacer(modifier = Modifier.height(32.dp))
-            Text(
-                text = "Школы Магии",
-                fontSize = 28.sp,
-                fontWeight = FontWeight.Bold,
-                color = Color(0xFFD4AF37),
-                modifier = Modifier.padding(bottom = 32.dp)
-            )
+        Column(modifier = Modifier.fillMaxSize()) {
 
-            // Сетка 2x2
-            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
-                MagicSchoolCard("Земля", "expert_earth_magic", "Earth", onSchoolSelected)
-                MagicSchoolCard("Вода", "expert_water_magic", "Water", onSchoolSelected)
+            Column(
+                modifier = Modifier.padding(16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Spacer(modifier = Modifier.height(16.dp))
+
+                Text(
+                    text = "Школы Магии",
+                    fontSize = 28.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color(0xFFD4AF37),
+                    modifier = Modifier.padding(bottom = 16.dp)
+                )
+
+                AppSearchBar(
+                    query = searchQuery,
+                    onQueryChanged = onQueryChanged,
+                    placeholderText = "Поиск заклинания..."
+                )
             }
-            Spacer(modifier = Modifier.height(16.dp))
-            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
-                MagicSchoolCard("Огонь", "expert_fire_magic", "Fire", onSchoolSelected)
-                MagicSchoolCard("Воздух", "expert_air_magic", "Air", onSchoolSelected)
+
+            if (searchQuery.isNotBlank()) {
+                Box(modifier = Modifier.padding(horizontal = 16.dp)) {
+                    searchResultsContent()
+                }
+            } else {
+                Column(
+                    modifier = Modifier.padding(16.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
+                        MagicSchoolCard("Земля", "expert_earth_magic", "Earth", onSchoolSelected)
+                        MagicSchoolCard("Вода", "expert_water_magic", "Water", onSchoolSelected)
+                    }
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
+                        MagicSchoolCard("Огонь", "expert_fire_magic", "Fire", onSchoolSelected)
+                        MagicSchoolCard("Воздух", "expert_air_magic", "Air", onSchoolSelected)
+                    }
+                }
             }
         }
     }
@@ -82,10 +107,51 @@ fun MagicSchoolCard(name: String, icon: String, schoolId: String, onClick: (Stri
 }
 
 @Composable
+fun SpellCard(spell: Spell, onClick: () -> Unit) {
+    val cardColor = if (spell.backgroundColor != null) {
+        try {
+            Color(android.graphics.Color.parseColor(spell.backgroundColor))
+        } catch (e: Exception) {
+            MaterialTheme.colorScheme.surface
+        }
+    } else {
+        MaterialTheme.colorScheme.surface
+    }
+
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable { onClick() },
+        colors = CardDefaults.cardColors(containerColor = cardColor),
+        elevation = CardDefaults.cardElevation(4.dp)
+    ) {
+        Row(
+            modifier = Modifier.padding(12.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            HeroImage(imageName = spell.imageRes, width = 48.dp, height = 48.dp)
+            Spacer(modifier = Modifier.width(16.dp))
+            Column {
+                Text(
+                    text = spell.name,
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.White
+                )
+                Text(
+                    text = "Уровень: ${spell.level} | Мана: ${spell.manaCostBasic}",
+                    fontSize = 14.sp,
+                    color = Color.White
+                )
+            }
+        }
+    }
+}
+
+@Composable
 fun SpellListScreen(
     school: String,
     spells: List<Spell>,
-    onBack: () -> Unit,
     onSpellSelected: (Spell) -> Unit
 ) {
     val schoolName = when(school) {
@@ -96,13 +162,18 @@ fun SpellListScreen(
         else -> "Заклинания"
     }
 
-    // Группируем заклинания по уровню (1..5) и сортируем внутри группы по алфавиту
-    val groupedSpells = remember(spells) {
-        spells
+    var searchQuery by remember { androidx.compose.runtime.mutableStateOf("") }
+
+    val groupedSpells = remember(spells, searchQuery) {
+        val filtered = if (searchQuery.isBlank()) spells else spells.filter {
+            it.name.contains(searchQuery, ignoreCase = true)
+        }
+
+        filtered
             .groupBy { it.level }
-            .toSortedMap() // Сортируем ключи (уровни) по возрастанию
+            .toSortedMap()
             .mapValues { entry ->
-                entry.value.sortedBy { it.name } // Сортируем списки заклинаний по имени
+                entry.value.sortedBy { it.name }
             }
     }
 
@@ -112,77 +183,42 @@ fun SpellListScreen(
             .padding(16.dp)) {
 
             Spacer(modifier = Modifier.height(16.dp))
+
             Text(
                 text = schoolName,
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color(0xFFD4AF37),
-                modifier = Modifier.padding(bottom = 16.dp)
+                modifier = Modifier.padding(vertical = 8.dp)
+            )
+
+            AppSearchBar(
+                query = searchQuery,
+                onQueryChanged = { searchQuery = it },
+                modifier = Modifier.padding(bottom = 16.dp),
+                placeholderText = "Поиск заклинания..."
             )
 
             LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                // Проходимся по каждой группе (Уровень -> Список заклинаний)
-                groupedSpells.forEach { (level, levelSpells) ->
+                groupedSpells.forEach { (_, levelSpells) ->
 
-
-
-                    // Список заклинаний этого уровня
                     items(levelSpells) { spell ->
-                        // Определяем цвет фона карточки
-                        val cardColor = if (spell.backgroundColor != null) {
-                            try {
-                                Color(android.graphics.Color.parseColor(spell.backgroundColor))
-                            } catch (e: Exception) {
-                                MaterialTheme.colorScheme.surface // Если ошибка парсинга
-                            }
-                        } else {
-                            MaterialTheme.colorScheme.surface // Стандартный цвет
-                        }
-
-                        Card(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .clickable { onSpellSelected(spell) },
-                            colors = CardDefaults.cardColors(containerColor = cardColor),
-                            elevation = CardDefaults.cardElevation(4.dp)
-                        ) {
-                            Row(
-                                modifier = Modifier.padding(12.dp),
-                                verticalAlignment = Alignment.CenterVertically
-                            ) {
-                                // Иконка заклинания в списке
-                                HeroImage(imageName = spell.imageRes, width = 48.dp, height = 48.dp)
-                                Spacer(modifier = Modifier.width(16.dp))
-                                Column {
-                                    Text(
-                                        text = spell.name,
-                                        fontSize = 18.sp,
-                                        fontWeight = FontWeight.Bold,
-                                        color = Color.White
-                                    )
-                                    Text(
-                                        text = "Уровень: ${spell.level} | Мана: ${spell.manaCostBasic}",
-                                        fontSize = 14.sp,
-                                        color = Color.White // Можно заменить на Color.White.copy(alpha = 0.8f) для контраста на цветном фоне
-                                    )
-                                }
-                            }
-                        }
+                        SpellCard(spell = spell, onClick = { onSpellSelected(spell) })
                     }
 
-                    // Белый разделитель после каждого уровня
                     item {
-                        Spacer(modifier = Modifier.height(12.dp))
+                        Spacer(modifier = Modifier.height(8.dp))
                         HorizontalDivider(thickness = 1.dp, color = Color.White)
-                        Spacer(modifier = Modifier.height(12.dp))
+                        Spacer(modifier = Modifier.height(8.dp))
                     }
                 }
             }
         }
     }
 }
+
 @Composable
-fun SpellDetailScreen(spell: Spell, onBack: () -> Unit) {
+fun SpellDetailScreen(spell: Spell) {
     AppBackground {
         Column(
             modifier = Modifier
@@ -218,7 +254,7 @@ fun SpellDetailScreen(spell: Spell, onBack: () -> Unit) {
 
             // --- ТАБЛИЦА: Уровень | Мана | Описание ---
 
-            // Заголовки таблицы (опционально)
+            // Заголовки таблицы
             Row(modifier = Modifier.padding(bottom = 8.dp)) {
                 Text(text = "Навык", modifier = Modifier.weight(1f), color = Color(0xFFD4AF37), fontWeight = FontWeight.Bold, fontSize = 16.sp)
                 Text(text = "Мана", modifier = Modifier.weight(0.6f), color = Color(0xFFD4AF37), fontWeight = FontWeight.Bold, fontSize = 16.sp, textAlign = TextAlign.Center)
@@ -250,7 +286,6 @@ fun SpellEffectRow(levelName: String, mana: Int, description: String) {
             .padding(vertical = 12.dp),
         verticalAlignment = Alignment.Top
     ) {
-        // Столбец 1: Уровень навыка
         Text(
             text = levelName,
             modifier = Modifier.weight(1f),
@@ -258,18 +293,14 @@ fun SpellEffectRow(levelName: String, mana: Int, description: String) {
             fontWeight = FontWeight.Bold,
             fontSize = 16.sp
         )
-
-        // Столбец 2: Мана
         Text(
             text = mana.toString(),
             modifier = Modifier.weight(0.6f),
-            color = Color(0xFF4FC3F7), // Голубоватый цвет для маны
+            color = Color(0xFF4FC3F7),
             fontWeight = FontWeight.Bold,
             textAlign = TextAlign.Center,
             fontSize = 16.sp
         )
-
-        // Столбец 3: Описание
         Text(
             text = description,
             modifier = Modifier.weight(2.5f),
@@ -280,7 +311,6 @@ fun SpellEffectRow(levelName: String, mana: Int, description: String) {
     }
 }
 
-// Вспомогательная функция для перевода названия школы
 fun mapSchoolName(schoolId: String): String {
     return when(schoolId) {
         "Earth" -> "Магия Земли"
