@@ -15,5 +15,6 @@ data class Hero(
     val spell: String?,
     val army: String,
     val imageRes: String,
-    val backgroundColor: String? = null
+    val backgroundColor: String? = null,
+    val specialtyIcon: String? = null
 )
