@@ -370,7 +370,7 @@ fun SpecialtyInfoRow(
                         modifier = Modifier
                             .padding(end = 12.dp)
                             .width(60.dp)
-                            .height(60.dp)
+                            .height(80.dp)
                             .clip(RoundedCornerShape(8.dp))
                             .background(MaterialTheme.colorScheme.surface)
                             .border(2.dp, Color(0xFFD4AF37), RoundedCornerShape(8.dp)),
@@ -383,7 +383,7 @@ fun SpecialtyInfoRow(
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .height(65.dp)
-                                    .offset(y = (-5).dp),
+                                    .offset(y = (-10).dp),
                                 contentScale = ContentScale.Fit
                             )
                         }
