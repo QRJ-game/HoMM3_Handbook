@@ -365,7 +365,8 @@
     "army": "12-24 Кентавров\n5-7 Гномов\n2-4 Эльфов",
     "imageRes": "hero_thorgrim",
     "specialtyIcon": "expert_resistance",
-    "specialtyDescription": "Увеличивает эффективность Сопротивления на 5% за каждый уровень героя."
+    "specialtyDescription": "Увеличивает эффективность Сопротивления на 5% за каждый уровень героя.",
+    "backgroundColor": "#DC143C"
   },
   {
     "id": "giselle",
@@ -1759,7 +1760,6 @@
     "spell": "Волшебная стрела",
     "army": "20-30 Гоблинов\n5-7 Наездников на волках\n5-6 Орков",
     "imageRes": "hero_vey",
-    "backgroundColor": "#1E90FF",
     "specialtyIcon": "creature_ogre",
     "specialtyDescription": "Повышает скорость Огров и Огров-магов на 1. Дает 20% бонус к Атаке и Защите за каждый 4-й уровень героя."
   },
