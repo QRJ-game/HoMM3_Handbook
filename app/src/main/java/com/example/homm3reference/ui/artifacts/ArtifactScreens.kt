@@ -31,6 +31,12 @@ import com.example.homm3reference.ui.common.AppBackground
 import com.example.homm3reference.ui.common.AppSearchBar
 import com.example.homm3reference.ui.common.MenuButton
 
+// Константы цветов для удобства и единообразия внутри файла
+private val HommGold = Color(0xFFD4AF37)
+private val HommGlassBackground = Color.Black.copy(alpha = 0.6f)
+private val HommShape = RoundedCornerShape(8.dp)
+private val HommBorder = BorderStroke(2.dp, HommGold)
+
 object ArtifactConstants {
     val MENU_ITEMS = listOf(
         "Класс" to "class",
@@ -38,7 +44,6 @@ object ArtifactConstants {
         "Группа" to "group"
     )
 
-    // Добавлен класс "set" для сборных артефактов
     val CLASSES = listOf("treasure", "minor", "major", "relic", "set")
     val SLOTS = listOf("Right Hand", "Left Hand", "Helmet", "Necklace", "Torso", "Feet", "Cape", "Ring", "Miscellaneous")
     val GROUPS = listOf(
@@ -67,18 +72,31 @@ fun ArtifactsMenuScreen(
 ) {
     AppBackground {
         Column(modifier = Modifier.fillMaxSize()) {
+            // Заголовок и поиск
             Column(modifier = Modifier.padding(16.dp)) {
                 Spacer(modifier = Modifier.height(16.dp))
-                Text("Артефакты", fontSize = 24.sp, fontWeight = FontWeight.Bold, color = Color(0xFFD4AF37))
+                Text(
+                    text = "Артефакты",
+                    fontSize = 24.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = HommGold,
+                    modifier = Modifier.align(Alignment.CenterHorizontally)
+                )
                 Spacer(modifier = Modifier.height(16.dp))
-                AppSearchBar(query = searchQuery, onQueryChanged = onQueryChanged, placeholderText = "Поиск артефакта...")
+                AppSearchBar(
+                    query = searchQuery,
+                    onQueryChanged = onQueryChanged,
+                    placeholderText = "Поиск артефакта..."
+                )
             }
 
             if (searchQuery.isNotBlank()) {
                 Box(modifier = Modifier.padding(horizontal = 16.dp)) { searchResultsContent() }
             } else {
                 Column(
-                    modifier = Modifier.fillMaxSize().padding(16.dp),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(16.dp),
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.Center
                 ) {
@@ -105,15 +123,30 @@ fun ArtifactCategorySelectScreen(categoryType: String, onValueClick: (String) ->
 
     AppBackground {
         Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
-            Text("Выберите категорию", fontSize = 22.sp, color = Color(0xFFD4AF37), modifier = Modifier.padding(bottom = 16.dp))
+            Text(
+                text = "Выберите категорию",
+                fontSize = 22.sp,
+                fontWeight = FontWeight.Bold,
+                color = HommGold,
+                modifier = Modifier.padding(bottom = 16.dp).align(Alignment.CenterHorizontally)
+            )
             LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 items(items) { item ->
                     Card(
-                        modifier = Modifier.fillMaxWidth().clickable { onValueClick(item) },
-                        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
-                        border = BorderStroke(2.dp, Color(0xFF2D2D2D))
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clickable { onValueClick(item) },
+                        colors = CardDefaults.cardColors(containerColor = HommGlassBackground),
+                        border = HommBorder,
+                        shape = HommShape
                     ) {
-                        Text(text = item, modifier = Modifier.padding(16.dp), color = Color.White, fontSize = 18.sp)
+                        Text(
+                            text = item,
+                            modifier = Modifier.padding(16.dp),
+                            color = Color.White,
+                            fontSize = 18.sp,
+                            fontWeight = FontWeight.Medium
+                        )
                     }
                 }
             }
@@ -139,17 +172,33 @@ fun ArtifactListScreen(artifacts: List<Artifact>, onArtifactClick: (Artifact) ->
 @Composable
 fun ArtifactCard(artifact: Artifact, onClick: () -> Unit) {
     Card(
-        modifier = Modifier.fillMaxWidth().clickable(onClick = onClick),
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(onClick = onClick),
         elevation = CardDefaults.cardElevation(4.dp),
-        colors = CardDefaults.cardColors(containerColor = Color(0xFF2D2D2D)),
-        border = BorderStroke(2.dp, Color(0xFFD4AF37).copy(alpha = 0.5f))
+        colors = CardDefaults.cardColors(containerColor = HommGlassBackground),
+        border = HommBorder,
+        shape = HommShape
     ) {
-        Row(modifier = Modifier.padding(12.dp), verticalAlignment = Alignment.CenterVertically) {
+        Row(
+            modifier = Modifier.padding(12.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
             ArtifactImage(imageRes = artifact.imageRes, modifier = Modifier.size(64.dp))
             Spacer(modifier = Modifier.width(16.dp))
             Column {
-                Text(text = artifact.name, color = Color(0xFFD4AF37), fontSize = 18.sp, fontWeight = FontWeight.Bold)
-                Text(text = artifact.slot, color = Color.White, fontSize = 14.sp)
+                Text(
+                    text = artifact.name,
+                    color = HommGold,
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold
+                )
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(
+                    text = artifact.slot,
+                    color = Color.White.copy(alpha = 0.9f),
+                    fontSize = 14.sp
+                )
             }
         }
     }
@@ -158,19 +207,16 @@ fun ArtifactCard(artifact: Artifact, onClick: () -> Unit) {
 @Composable
 fun ArtifactDetailScreen(
     artifact: Artifact,
-    onArtifactClick: (Artifact) -> Unit // Callback для навигации
+    onArtifactClick: (Artifact) -> Unit
 ) {
-    // 1. Поиск родительского (Сборного) артефакта, если этот является частью
     val parentSetArtifact = remember(artifact) {
         if (!artifact.set.isNullOrEmpty() && artifact.set != "-") {
-            // Ищем артефакт, у которого имя совпадает с полем 'set' текущего
             GameData.artifacts.find { it.name.equals(artifact.set, ignoreCase = true) && it.classType == "set" }
         } else {
             null
         }
     }
 
-    // 2. Поиск составных частей, если это Сборный артефакт
     val childComponents = remember(artifact) {
         if (artifact.classType == "set") {
             GameData.artifacts.filter { it.set.equals(artifact.name, ignoreCase = true) }
@@ -180,7 +226,6 @@ fun ArtifactDetailScreen(
     }
 
     AppBackground {
-        // Используем LazyColumn для всего экрана, чтобы список компонентов тоже скроллился
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
             contentPadding = PaddingValues(16.dp),
@@ -188,13 +233,14 @@ fun ArtifactDetailScreen(
         ) {
             // --- HEADER ---
             item {
-                Spacer(modifier = Modifier.height(32.dp))
+                Spacer(modifier = Modifier.height(16.dp))
                 ArtifactImage(imageRes = artifact.imageRes, modifier = Modifier.size(120.dp))
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(
                     text = artifact.name,
-                    color = Color(0xFFD4AF37),
+                    color = HommGold,
                     style = MaterialTheme.typography.headlineMedium,
+                    fontWeight = FontWeight.Bold,
                     textAlign = TextAlign.Center
                 )
                 Spacer(modifier = Modifier.height(24.dp))
@@ -204,8 +250,9 @@ fun ArtifactDetailScreen(
             item {
                 Card(
                     modifier = Modifier.fillMaxWidth(),
-                    colors = CardDefaults.cardColors(containerColor = Color(0xFF2D2D2D).copy(alpha = 0.9f)),
-                    border = BorderStroke(2.dp, Color(0xFFD4AF37))
+                    colors = CardDefaults.cardColors(containerColor = HommGlassBackground),
+                    border = HommBorder,
+                    shape = HommShape
                 ) {
                     Column(modifier = Modifier.padding(16.dp)) {
                         DetailRow("Класс", artifact.classType)
@@ -214,23 +261,23 @@ fun ArtifactDetailScreen(
                         DetailRow("Стоимость", "${artifact.goldCost}")
 
                         Spacer(modifier = Modifier.height(16.dp))
-                        Divider(color = Color.White)
+                        Divider(color = HommGold, thickness = 1.dp)
                         Spacer(modifier = Modifier.height(16.dp))
 
-                        Text(text = "Свойства:", color = Color(0xFFD4AF37), fontWeight = FontWeight.Bold)
-                        Spacer(modifier = Modifier.height(4.dp))
-                        Text(text = artifact.properties, color = Color.White, fontSize = 16.sp)
+                        Text(text = "Свойства:", color = HommGold, fontWeight = FontWeight.Bold, fontSize = 18.sp)
+                        Spacer(modifier = Modifier.height(8.dp))
+                        Text(text = artifact.properties, color = Color.White, fontSize = 16.sp, lineHeight = 22.sp)
 
                         // --- ЛОГИКА ОТОБРАЖЕНИЯ СБОРНОГО АРТЕФАКТА ---
                         if (!artifact.set.isNullOrEmpty() && artifact.set != "-") {
                             Spacer(modifier = Modifier.height(16.dp))
-                            Text(text = "Входит в набор:", color = Color(0xFFD4AF37))
+                            Text(text = "Входит в набор:", color = HommGold, fontWeight = FontWeight.SemiBold)
+                            Spacer(modifier = Modifier.height(4.dp))
 
                             if (parentSetArtifact != null) {
-                                // Если нашли сборный артефакт в базе - делаем ссылку
                                 Text(
                                     text = artifact.set,
-                                    color = Color(0xFF4FC3F7), // Голубой цвет ссылки
+                                    color = Color(0xFF4FC3F7), // Light Blue link
                                     fontWeight = FontWeight.Bold,
                                     fontSize = 18.sp,
                                     textDecoration = TextDecoration.Underline,
@@ -239,7 +286,6 @@ fun ArtifactDetailScreen(
                                     }
                                 )
                             } else {
-                                // Если не нашли (или ошибка данных) - просто текст
                                 Text(text = artifact.set, color = Color.Magenta, fontWeight = FontWeight.Bold)
                             }
                         }
@@ -253,7 +299,7 @@ fun ArtifactDetailScreen(
                     Spacer(modifier = Modifier.height(24.dp))
                     Text(
                         text = "Состоит из:",
-                        color = Color(0xFFD4AF37),
+                        color = HommGold,
                         fontSize = 20.sp,
                         fontWeight = FontWeight.Bold,
                         modifier = Modifier.fillMaxWidth(),
@@ -270,7 +316,6 @@ fun ArtifactDetailScreen(
                 }
             }
 
-            // Отступ снизу для красоты
             item { Spacer(modifier = Modifier.height(32.dp)) }
         }
     }
@@ -279,11 +324,18 @@ fun ArtifactDetailScreen(
 @Composable
 fun DetailRow(label: String, value: String) {
     Row(
-        modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 4.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.Top
     ) {
-        Text(text = "$label:", color = Color(0xFFD4AF37), modifier = Modifier.padding(end = 16.dp))
+        Text(
+            text = "$label:",
+            color = HommGold,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(end = 16.dp)
+        )
         Text(
             text = value,
             color = Color.White,
@@ -304,8 +356,8 @@ fun ArtifactImage(imageRes: String, modifier: Modifier = Modifier) {
 
     Box(
         modifier = modifier
-            .background(Color.Black.copy(alpha = 0.3f), RoundedCornerShape(8.dp))
-            .border(2.dp, Color(0xFFD4AF37), RoundedCornerShape(8.dp))
+            .background(Color.Black.copy(alpha = 0.3f), HommShape)
+            .border(2.dp, HommGold, HommShape) // Золотая рамка для всех картинок
             .padding(4.dp),
         contentAlignment = Alignment.Center
     ) {
