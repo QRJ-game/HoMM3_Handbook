@@ -1,5 +1,5 @@
 plugins {
-    id("com.android.application") version "8.13.1"
+    id("com.android.application") version "8.13.2"
     id("org.jetbrains.kotlin.android") version "1.9.22"
     id("com.google.devtools.ksp") version "1.9.22-1.0.17"
 }
@@ -59,7 +59,9 @@ android {
                 "src/main/02-creatures",
                 "src/main/03-secondary_skills",
                 "src/main/04-towns",
-                "src/main/05-magic"
+                "src/main/05-magic",
+                "src/main/06-artifacts"
+
             )
         }
     }

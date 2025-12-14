@@ -32,6 +32,7 @@ class MainActivity : ComponentActivity() {
             DataLoader.loadSecondarySkills(applicationContext)
             DataLoader.loadHeroClasses(applicationContext)
             DataLoader.loadSpells(applicationContext)
+            DataLoader.loadArtifacts(applicationContext)
         }
 
         setContent {

@@ -26,7 +26,8 @@ fun MainMenuScreen(
     onHeroesClick: () -> Unit,
     onCreaturesClick: () -> Unit,
     onSkillsClick: () -> Unit,
-    onMagicClick: () -> Unit, // <-- Добавлен этот параметр
+    onMagicClick: () -> Unit,
+    onArtifactsClick: () -> Unit,
     isMuted: Boolean,
     onMuteToggle: () -> Unit
 ) {
@@ -64,6 +65,8 @@ fun MainMenuScreen(
                 MenuButton(text = "Вторичные навыки", onClick = onSkillsClick)
                 Spacer(modifier = Modifier.height(20.dp))
                 MenuButton(text = "Магия", onClick = onMagicClick) // <-- Добавлена кнопка
+                Spacer(modifier = Modifier.height(20.dp))
+                MenuButton(text = "Артефакты", onClick = onArtifactsClick)
 
                 Spacer(modifier = Modifier.height(32.dp))
             }

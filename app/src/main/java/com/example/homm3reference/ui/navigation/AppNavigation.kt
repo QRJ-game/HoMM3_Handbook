@@ -7,6 +7,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.*
 import androidx.compose.ui.unit.dp
+import com.example.homm3reference.data.Artifact
 import com.example.homm3reference.data.Creature
 import com.example.homm3reference.data.CreatureDao
 import com.example.homm3reference.data.GameData
@@ -14,6 +15,11 @@ import com.example.homm3reference.data.Hero
 import com.example.homm3reference.data.HeroDao
 import com.example.homm3reference.data.SecondarySkill
 import com.example.homm3reference.data.Spell
+import com.example.homm3reference.ui.artifacts.ArtifactCard
+import com.example.homm3reference.ui.artifacts.ArtifactCategorySelectScreen
+import com.example.homm3reference.ui.artifacts.ArtifactDetailScreen
+import com.example.homm3reference.ui.artifacts.ArtifactListScreen
+import com.example.homm3reference.ui.artifacts.ArtifactsMenuScreen
 import com.example.homm3reference.ui.common.TownSelectionScreen
 import com.example.homm3reference.ui.creatures.CreatureCard
 import com.example.homm3reference.ui.creatures.CreatureDetailScreen
@@ -35,7 +41,9 @@ enum class Screen {
     HeroTowns, HeroClasses, HeroList, HeroDetail,
     CreatureTowns, CreatureList, CreatureDetail,
     SkillsList, SkillDetail,
-    MagicSchools, MagicList, MagicDetail
+    MagicSchools, MagicList, MagicDetail,
+    // Артефакты
+    ArtifactsMenu, ArtifactsCategory, ArtifactsList, ArtifactDetail
 }
 
 val TOWN_ORDER = listOf(
@@ -57,13 +65,11 @@ fun AppRoot(
     var selectedHeroTown by remember { mutableStateOf<String?>(null) }
     var selectedHeroClassType by remember { mutableStateOf<String?>(null) }
     var selectedHero by remember { mutableStateOf<Hero?>(null) }
-    // Поиск Героев
     var heroesSearchQuery by remember { mutableStateOf("") }
 
     // Состояния для Существ
     var selectedCreatureTown by remember { mutableStateOf<String?>(null) }
     var selectedCreature by remember { mutableStateOf<Creature?>(null) }
-    // Поиск Существ
     var creaturesSearchQuery by remember { mutableStateOf("") }
 
     // Состояния для Навыков
@@ -72,18 +78,20 @@ fun AppRoot(
     // Состояния для Магии
     var selectedSchool by remember { mutableStateOf<String?>(null) }
     var selectedSpell by remember { mutableStateOf<Spell?>(null) }
-    // Поиск Заклинаний
     var magicSearchQuery by remember { mutableStateOf("") }
 
+    // Состояния для Артефактов
+    var selectedArtifactCategoryType by remember { mutableStateOf<String?>(null) }
+    var selectedArtifactCategoryValue by remember { mutableStateOf<String?>(null) }
+    var selectedArtifact by remember { mutableStateOf<Artifact?>(null) }
+    // --- Добавлен поиск для артефактов ---
+    var artifactsSearchQuery by remember { mutableStateOf("") }
 
-    // Загрузка данных (Flow)
+    // Загрузка данных
     val allHeroes by heroDao.getAllHeroes().collectAsState(initial = emptyList())
     val allCreatures by creatureDao.getAllCreatures().collectAsState(initial = emptyList())
-
-    // Данные для магии (Singleton)
     val allSpells = GameData.spells
 
-    // Списки городов (сортированные)
     val heroTowns = remember(allHeroes) {
         allHeroes.map { it.town }.distinct().sortedBy { TOWN_ORDER.indexOf(it) }
     }
@@ -91,25 +99,19 @@ fun AppRoot(
         allCreatures.map { it.town }.distinct().sortedBy { TOWN_ORDER.indexOf(it) }
     }
 
-    // Инициализация GameData и проверка логов
     LaunchedEffect(allCreatures, allHeroes) {
         if (allCreatures.isNotEmpty()) {
             GameData.creatures = allCreatures
         }
-
-        // FIX: Добавлена проверка GameData.spells.isNotEmpty() и secondarySkills
-        // Это предотвращает ложные срабатывания логов, если JSON еще не распарсился
         if (allHeroes.isNotEmpty() &&
             GameData.creatures.isNotEmpty() &&
             GameData.spells.isNotEmpty() &&
             GameData.secondarySkills.isNotEmpty()) {
-
             GameData.checkMissingSpecialtyIcons(allHeroes)
         }
     }
 
     when (currentScreen) {
-        // --- ГЛАВНОЕ МЕНЮ ---
         Screen.MainMenu -> {
             MainMenuScreen(
                 onHeroesClick = {
@@ -128,24 +130,25 @@ fun AppRoot(
                     selectedSchool = null
                     currentScreen = Screen.MagicSchools
                 },
+                onArtifactsClick = {
+                    artifactsSearchQuery = "" // Сброс поиска при входе
+                    currentScreen = Screen.ArtifactsMenu
+                },
                 isMuted = isMuted,
                 onMuteToggle = onMuteToggle
             )
         }
 
-        // --- ВЕТКА ГЕРОЕВ ---
+        // --- ГЕРОИ ---
         Screen.HeroTowns -> {
             BackHandler { currentScreen = Screen.MainMenu }
-
             val filteredHeroes = remember(allHeroes, heroesSearchQuery) {
                 if (heroesSearchQuery.isBlank()) emptyList()
                 else allHeroes.filter { it.name.contains(heroesSearchQuery, ignoreCase = true) }
             }
-
             TownSelectionScreen(
                 title = "Герои: Выбор города",
                 towns = heroTowns,
-                // onBack удален
                 onTownSelected = { town ->
                     selectedHeroTown = town
                     currentScreen = Screen.HeroClasses
@@ -173,16 +176,13 @@ fun AppRoot(
                 selectedHeroTown = null
                 currentScreen = Screen.HeroTowns
             }
-
             if (selectedHeroTown != null) {
                 val mightClass = allHeroes.firstOrNull { it.town == selectedHeroTown && it.classType == "Might" }?.heroClass ?: "Воин"
                 val magicClass = allHeroes.firstOrNull { it.town == selectedHeroTown && it.classType == "Magic" }?.heroClass ?: "Маг"
-
                 ClassSelectionScreen(
                     townName = selectedHeroTown!!,
                     mightClassName = mightClass,
                     magicClassName = magicClass,
-                    // onBack удален
                     onClassSelected = { type ->
                         selectedHeroClassType = type
                         currentScreen = Screen.HeroList
@@ -198,7 +198,6 @@ fun AppRoot(
                     heroes = filtered,
                     townName = selectedHeroTown!!,
                     className = filtered.firstOrNull()?.heroClass ?: "",
-                    // onBack удален
                     onHeroSelected = { h ->
                         selectedHero = h
                         currentScreen = Screen.HeroDetail
@@ -210,28 +209,19 @@ fun AppRoot(
             BackHandler {
                 if (selectedHeroTown == null) currentScreen = Screen.HeroTowns else currentScreen = Screen.HeroList
             }
-            if (selectedHero != null) {
-                HeroDetailScreen(
-                    hero = selectedHero!!,
-                    creatures = allCreatures
-                    // onBack удален
-                )
-            }
+            selectedHero?.let { HeroDetailScreen(hero = it, creatures = allCreatures) }
         }
 
-        // --- ВЕТКА СУЩЕСТВ ---
+        // --- СУЩЕСТВА ---
         Screen.CreatureTowns -> {
             BackHandler { currentScreen = Screen.MainMenu }
-
             val filteredCreatures = remember(allCreatures, creaturesSearchQuery) {
                 if (creaturesSearchQuery.isBlank()) emptyList()
                 else allCreatures.filter { it.name.contains(creaturesSearchQuery, ignoreCase = true) }
             }
-
             TownSelectionScreen(
                 title = "Существа: Выбор фракции",
                 towns = creatureTowns,
-                // onBack удален
                 onTownSelected = { town ->
                     selectedCreatureTown = town
                     currentScreen = Screen.CreatureList
@@ -259,13 +249,11 @@ fun AppRoot(
                 selectedCreatureTown = null
                 currentScreen = Screen.CreatureTowns
             }
-
             if (selectedCreatureTown != null) {
                 val creatures = allCreatures.filter { it.town == selectedCreatureTown }
                 CreatureListScreen(
                     townName = selectedCreatureTown!!,
                     creatures = creatures,
-                    // onBack удален
                     onCreatureSelected = { c ->
                         selectedCreature = c
                         currentScreen = Screen.CreatureDetail
@@ -277,20 +265,14 @@ fun AppRoot(
             BackHandler {
                 if (selectedCreatureTown == null) currentScreen = Screen.CreatureTowns else currentScreen = Screen.CreatureList
             }
-            if (selectedCreature != null) {
-                CreatureDetailScreen(
-                    creature = selectedCreature!!
-                    // onBack удален
-                )
-            }
+            selectedCreature?.let { CreatureDetailScreen(creature = it) }
         }
 
-        // --- ВЕТКА ВТОРИЧНЫХ НАВЫКОВ ---
+        // --- НАВЫКИ ---
         Screen.SkillsList -> {
             BackHandler { currentScreen = Screen.MainMenu }
             SecondarySkillsListScreen(
                 skills = GameData.secondarySkills,
-                // onBack удален
                 onSkillSelected = { skill ->
                     selectedSkill = skill
                     currentScreen = Screen.SkillDetail
@@ -299,25 +281,17 @@ fun AppRoot(
         }
         Screen.SkillDetail -> {
             BackHandler { currentScreen = Screen.SkillsList }
-            selectedSkill?.let { skill ->
-                SecondarySkillDetailScreen(
-                    skill = skill
-                    // onBack удален
-                )
-            }
+            selectedSkill?.let { SecondarySkillDetailScreen(skill = it) }
         }
 
-        // --- ВЕТКА МАГИИ ---
+        // --- МАГИЯ ---
         Screen.MagicSchools -> {
             BackHandler { currentScreen = Screen.MainMenu }
-
             val filteredSpells = remember(allSpells, magicSearchQuery) {
                 if (magicSearchQuery.isBlank()) emptyList()
                 else allSpells.filter { it.name.contains(magicSearchQuery, ignoreCase = true) }
             }
-
             MagicSchoolSelectScreen(
-                // onBack удален
                 onSchoolSelected = { school ->
                     selectedSchool = school
                     currentScreen = Screen.MagicList
@@ -345,14 +319,11 @@ fun AppRoot(
                 selectedSchool = null
                 currentScreen = Screen.MagicSchools
             }
-
             if (selectedSchool != null) {
                 val spells = allSpells.filter { it.school.contains(selectedSchool!!, ignoreCase = true) }
-
                 SpellListScreen(
                     school = selectedSchool!!,
                     spells = spells,
-                    // onBack удален
                     onSpellSelected = { spell ->
                         selectedSpell = spell
                         currentScreen = Screen.MagicDetail
@@ -364,10 +335,96 @@ fun AppRoot(
             BackHandler {
                 if (selectedSchool == null) currentScreen = Screen.MagicSchools else currentScreen = Screen.MagicList
             }
-            if (selectedSpell != null) {
-                SpellDetailScreen(
-                    spell = selectedSpell!!
-                    // onBack удален
+            selectedSpell?.let { SpellDetailScreen(spell = it) }
+        }
+
+        // --- АРТЕФАКТЫ ---
+        Screen.ArtifactsMenu -> {
+            BackHandler { currentScreen = Screen.MainMenu }
+
+            // Фильтрация для поиска в главном меню
+            val searchResults = remember(GameData.artifacts, artifactsSearchQuery) {
+                if (artifactsSearchQuery.isBlank()) emptyList()
+                else GameData.artifacts.filter { it.name.contains(artifactsSearchQuery, ignoreCase = true) }
+            }
+
+            ArtifactsMenuScreen(
+                onCategoryClick = { type ->
+                    selectedArtifactCategoryType = type
+                    currentScreen = Screen.ArtifactsCategory
+                },
+                searchQuery = artifactsSearchQuery,
+                onQueryChanged = { artifactsSearchQuery = it },
+                searchResultsContent = {
+                    // Здесь отображаем результаты поиска
+                    LazyColumn(
+                        verticalArrangement = Arrangement.spacedBy(8.dp),
+                        contentPadding = PaddingValues(bottom = 16.dp)
+                    ) {
+                        items(searchResults) { artifact ->
+                            ArtifactCard(artifact = artifact) {
+                                selectedArtifact = artifact
+                                // Скрываем поиск при переходе, чтобы вернуться в меню
+                                // или оставляем как есть.
+                                currentScreen = Screen.ArtifactDetail
+                            }
+                        }
+                    }
+                }
+            )
+        }
+        Screen.ArtifactsCategory -> {
+            BackHandler { currentScreen = Screen.ArtifactsMenu }
+            if (selectedArtifactCategoryType != null) {
+                ArtifactCategorySelectScreen(
+                    categoryType = selectedArtifactCategoryType!!,
+                    onValueClick = { value ->
+                        selectedArtifactCategoryValue = value
+                        currentScreen = Screen.ArtifactsList
+                    }
+                )
+            }
+        }
+        Screen.ArtifactsList -> {
+            BackHandler { currentScreen = Screen.ArtifactsCategory }
+
+            val filteredArtifacts = remember(selectedArtifactCategoryType, selectedArtifactCategoryValue) {
+                GameData.artifacts.filter { artifact ->
+                    when (selectedArtifactCategoryType) {
+                        "class" -> artifact.classType.equals(selectedArtifactCategoryValue, ignoreCase = true)
+                        "slot" -> artifact.slot.equals(selectedArtifactCategoryValue, ignoreCase = true)
+                        "group" -> artifact.group.equals(selectedArtifactCategoryValue, ignoreCase = true)
+                        else -> true
+                    }
+                }
+            }
+
+            ArtifactListScreen(
+                artifacts = filteredArtifacts,
+                onArtifactClick = { artifact ->
+                    selectedArtifact = artifact
+                    currentScreen = Screen.ArtifactDetail
+                }
+            )
+        }
+        Screen.ArtifactDetail -> {
+            BackHandler {
+                if (artifactsSearchQuery.isNotBlank()) {
+                    currentScreen = Screen.ArtifactsMenu
+                } else {
+                    // Если мы "провалились" глубоко (компонент -> сборный),
+                    // кнопка назад вернет нас в список.
+                    // Можно усложнить логику стека, но пока вернемся в список.
+                    currentScreen = Screen.ArtifactsList
+                }
+            }
+            selectedArtifact?.let { artifact ->
+                ArtifactDetailScreen(
+                    artifact = artifact,
+                    onArtifactClick = { newArtifact ->
+                        // Переход на новый артефакт (например, с компонента на сборный или наоборот)
+                        selectedArtifact = newArtifact
+                    }
                 )
             }
         }

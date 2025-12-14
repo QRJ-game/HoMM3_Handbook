@@ -7,6 +7,7 @@ import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.IOException
+import com.example.homm3reference.data.Artifact
 
 object DataLoader {
     // Загрузка героев в БД
@@ -26,6 +27,7 @@ object DataLoader {
             }
         }
     }
+
 
     // Загрузка существ в БД
     suspend fun loadCreatures(context: Context, dao: CreatureDao) {
@@ -75,6 +77,15 @@ object DataLoader {
         }
     }
 
+    suspend fun loadArtifacts(context: Context) {
+        withContext(Dispatchers.IO) {
+            val jsonString = loadJsonFromAsset(context, "artifacts_data.json")
+            if (jsonString != null) {
+                val type = object : TypeToken<List<Artifact>>() {}.type
+                GameData.artifacts = Gson().fromJson(jsonString, type)
+            }
+        }
+    }
     private fun loadJsonFromAsset(context: Context, fileName: String): String? {
         return try {
             context.assets.open(fileName).bufferedReader().use { it.readText() }
