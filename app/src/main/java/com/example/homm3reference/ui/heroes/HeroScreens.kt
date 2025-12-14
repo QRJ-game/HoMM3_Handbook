@@ -1,20 +1,18 @@
 package com.example.homm3reference.ui.heroes
 
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.border
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -22,13 +20,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.foundation.Image
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.graphics.toColorInt
 import com.example.homm3reference.data.Creature
 import com.example.homm3reference.data.GameData
 import com.example.homm3reference.data.Hero
@@ -36,6 +32,13 @@ import com.example.homm3reference.data.JSON_Mapper
 import com.example.homm3reference.data.SecondarySkill
 import com.example.homm3reference.data.Spell
 import com.example.homm3reference.ui.common.*
+import com.example.homm3reference.ui.theme.HommGlassBackground
+import com.example.homm3reference.ui.theme.HommGold
+import android.annotation.SuppressLint
+
+// Локальные константы стиля
+private val HommShape = RoundedCornerShape(8.dp)
+private val HommBorder = BorderStroke(2.dp, HommGold)
 
 @Composable
 fun ClassSelectionScreen(
@@ -52,37 +55,53 @@ fun ClassSelectionScreen(
                 text = "$townName: Классы",
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color(0xFFD4AF37),
-                modifier = Modifier.padding(vertical = 16.dp)
+                color = HommGold,
+                modifier = Modifier
+                    .padding(vertical = 16.dp)
+                    .align(Alignment.CenterHorizontally)
             )
 
             Spacer(modifier = Modifier.height(16.dp))
 
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
+                // Карточка Воина
                 Card(
-                    modifier = Modifier.weight(1f).height(150.dp).padding(8.dp)
+                    modifier = Modifier
+                        .weight(1f)
+                        .height(160.dp)
+                        .padding(8.dp)
                         .clickable { onClassSelected("Might") },
-                    colors = CardDefaults.cardColors(containerColor = Color(0xFF4A3B3B))
+                    colors = CardDefaults.cardColors(containerColor = HommGlassBackground),
+                    border = HommBorder,
+                    shape = HommShape
                 ) {
                     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
                             Text("⚔️", fontSize = 40.sp)
-                            Text(mightClassName, fontSize = 18.sp, fontWeight = FontWeight.Bold, color = Color.White)
-                            Text("Воин", fontSize = 14.sp, color = Color.Gray)
+                            Spacer(modifier = Modifier.height(8.dp))
+                            Text(mightClassName, fontSize = 18.sp, fontWeight = FontWeight.Bold, color = HommGold)
+                            Text("Воин", fontSize = 14.sp, color = Color.White.copy(alpha = 0.8f))
                         }
                     }
                 }
 
+                // Карточка Мага
                 Card(
-                    modifier = Modifier.weight(1f).height(150.dp).padding(8.dp)
+                    modifier = Modifier
+                        .weight(1f)
+                        .height(160.dp)
+                        .padding(8.dp)
                         .clickable { onClassSelected("Magic") },
-                    colors = CardDefaults.cardColors(containerColor = Color(0xFF3B3B4A))
+                    colors = CardDefaults.cardColors(containerColor = HommGlassBackground),
+                    border = HommBorder,
+                    shape = HommShape
                 ) {
                     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
                             Text("⚡", fontSize = 40.sp)
-                            Text(magicClassName, fontSize = 18.sp, fontWeight = FontWeight.Bold, color = Color.White)
-                            Text("Маг", fontSize = 14.sp, color = Color.Gray)
+                            Spacer(modifier = Modifier.height(8.dp))
+                            Text(magicClassName, fontSize = 18.sp, fontWeight = FontWeight.Bold, color = HommGold)
+                            Text("Маг", fontSize = 14.sp, color = Color.White.copy(alpha = 0.8f))
                         }
                     }
                 }
@@ -109,22 +128,30 @@ fun HeroListScreen(
 
             Text(
                 text = "$townName • $className",
-                fontSize = 20.sp,
-                color = Color(0xFFD4AF37),
+                fontSize = 24.sp,
+                color = HommGold,
                 fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 24.dp, bottom = 16.dp)
+                modifier = Modifier
+                    .padding(start = 16.dp, end = 16.dp, top = 24.dp, bottom = 16.dp)
+                    .align(Alignment.CenterHorizontally)
             )
 
-            LazyColumn(contentPadding = PaddingValues(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            LazyColumn(
+                contentPadding = PaddingValues(16.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
                 items(groupedHeroes.first) { hero ->
                     HeroCard(hero, onHeroSelected)
                 }
+
+                // Разделитель, если есть и обычные, и специальные герои
                 if (groupedHeroes.first.isNotEmpty() && groupedHeroes.second.isNotEmpty()) {
-                    item { HorizontalDivider(color = Color.White, thickness = 1.dp, modifier = Modifier.padding(vertical = 8.dp)) }
+                    item { HorizontalDivider(color = HommGold, thickness = 1.dp, modifier = Modifier.padding(vertical = 8.dp)) }
                 }
+
                 groupedHeroes.second.entries.forEachIndexed { index, entry ->
                     if (index > 0) {
-                        item { HorizontalDivider(color = Color.White, thickness = 1.dp, modifier = Modifier.padding(vertical = 8.dp)) }
+                        item { HorizontalDivider(color = HommGold, thickness = 1.dp, modifier = Modifier.padding(vertical = 8.dp)) }
                     }
                     items(entry.value) { hero ->
                         HeroCard(hero, onHeroSelected)
@@ -137,25 +164,27 @@ fun HeroListScreen(
 
 @Composable
 fun HeroCard(hero: Hero, onHeroSelected: (Hero) -> Unit) {
-    val cardColor = if (!hero.backgroundColor.isNullOrEmpty()) {
-        try {
-            Color(hero.backgroundColor.toColorInt())
-        } catch (_: Exception) {
-            MaterialTheme.colorScheme.surface
-        }
-    } else {
-        MaterialTheme.colorScheme.surface
-    }
-
     Card(
-        modifier = Modifier.fillMaxWidth().clickable { onHeroSelected(hero) },
-        colors = CardDefaults.cardColors(containerColor = cardColor),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable { onHeroSelected(hero) },
+        colors = CardDefaults.cardColors(containerColor = HommGlassBackground),
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+        //border = HommBorder,
+        shape = HommShape
     ) {
-        Row(modifier = Modifier.padding(12.dp), verticalAlignment = Alignment.CenterVertically) {
+        Row(
+            modifier = Modifier.padding(12.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
             HeroImage(imageName = hero.imageRes, width = 58.dp, height = 64.dp)
             Spacer(modifier = Modifier.width(16.dp))
-            Text(text = hero.name, fontSize = 18.sp, fontWeight = FontWeight.Bold, color = Color.White)
+            Text(
+                text = hero.name,
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold,
+                color = HommGold
+            )
         }
     }
 }
@@ -182,31 +211,36 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>) {
                 .verticalScroll(rememberScrollState())
                 .padding(16.dp)
             ) {
-                Spacer(modifier = Modifier.height(24.dp))
+                Spacer(modifier = Modifier.height(16.dp))
 
-                // Шапка и статы (без изменений)
+                // Шапка
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     HeroImage(
                         imageName = hero.imageRes,
                         width = 116.dp,
                         height = 128.dp,
-                        borderWidth = 2.dp
+                        borderWidth = 2.dp,
+                        borderColor = HommGold
                     )
                     Spacer(modifier = Modifier.width(16.dp))
                     Column {
-                        OutlinedText(
+                        // Используем обычный текст, так как OutlinedText в Components может быть сложным,
+                        // но для стиля используем золото
+                        Text(
                             text = hero.name,
-                            fontSize = 32.sp,
-                            strokeWidth = 6f,
-                            textColor =  Color(0xFFD4AF37)
+                            fontSize = 28.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = HommGold
                         )
-                        Text(text = hero.town, fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color.White)
-                        Text(text = hero.heroClass, fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color.White.copy(alpha = 0.9f))
+                        Spacer(modifier = Modifier.height(4.dp))
+                        Text(text = hero.town, fontSize = 18.sp, color = Color.White)
+                        Text(text = hero.heroClass, fontSize = 16.sp, color = Color.White.copy(alpha = 0.8f))
                     }
                 }
 
-                HorizontalDivider(modifier = Modifier.padding(vertical = 10.dp), color = Color.White)
+                HorizontalDivider(modifier = Modifier.padding(vertical = 16.dp), color = HommGold)
 
+                // Статы
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
                     StatItem("Атака", "⚔️", stats.attack.toString())
                     StatItem("Защита", "🛡️", stats.defense.toString())
@@ -214,9 +248,9 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>) {
                     StatItem("Знания", "📖", stats.knowledge.toString())
                 }
 
-                HorizontalDivider(color = Color.White)
+                HorizontalDivider(modifier = Modifier.padding(vertical = 16.dp), color = HommGold)
 
-                // ОБНОВЛЕНО: Передаем описание специализации
+                // Специализация
                 SpecialtyInfoRow(
                     label = "Специализация",
                     value = hero.specialty,
@@ -224,9 +258,9 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>) {
                     description = hero.specialtyDescription
                 )
 
-                HorizontalDivider(color = Color.White, modifier = Modifier.padding(vertical = 8.dp))
+                HorizontalDivider(color = HommGold, modifier = Modifier.padding(vertical = 16.dp))
 
-                // Навыки и Заклинание (без изменений)
+                // Навыки и Заклинание
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween,
@@ -234,9 +268,9 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>) {
                 ) {
                     // Левая колонка: Навыки
                     Column(modifier = Modifier.weight(1f).padding(end = 8.dp)) {
-                        Text("Навыки", color = Color(0xFFD4AF37), fontSize = 16.sp, fontWeight = FontWeight.Bold)
+                        Text("Навыки", color = HommGold, fontSize = 18.sp, fontWeight = FontWeight.Bold)
 
-                        Row(modifier = Modifier.padding(vertical = 6.dp)) {
+                        Row(modifier = Modifier.padding(vertical = 8.dp)) {
                             val icons = remember(hero.skills) { JSON_Mapper.getSkillIcons(hero.skills) }
 
                             if (icons.isNotEmpty()) {
@@ -246,8 +280,8 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>) {
 
                                     HeroImage(
                                         imageName = iconName,
-                                        width = 60.dp,
-                                        height = 60.dp,
+                                        width = 50.dp,
+                                        height = 50.dp,
                                         modifier = Modifier
                                             .padding(end = 6.dp)
                                             .clickable(enabled = skill != null) {
@@ -261,8 +295,7 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>) {
                             text = hero.skills,
                             color = Color.White,
                             fontSize = 14.sp,
-                            fontWeight = FontWeight.Medium,
-                            lineHeight = 16.sp
+                            lineHeight = 18.sp
                         )
                     }
 
@@ -273,47 +306,48 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>) {
                     ) {
                         Text(
                             text = "Заклинание",
-                            color = Color(0xFFD4AF37),
-                            fontSize = 16.sp,
+                            color = HommGold,
+                            fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
                             modifier = Modifier.fillMaxWidth(),
                             textAlign = TextAlign.End
                         )
 
-                        Spacer(modifier = Modifier.height(6.dp))
+                        Spacer(modifier = Modifier.height(8.dp))
 
                         if (spellObj != null) {
-                            HeroImage(
-                                imageName = spellObj.imageRes,
-                                width = 60.dp,
-                                height = 68.dp,
-                                modifier = Modifier.clickable { selectedSpell = spellObj }
-                            )
+                            Box(contentAlignment = Alignment.TopEnd, modifier = Modifier.fillMaxWidth()) {
+                                HeroImage(
+                                    imageName = spellObj.imageRes,
+                                    width = 50.dp,
+                                    height = 50.dp,
+                                    modifier = Modifier.clickable { selectedSpell = spellObj }
+                                )
+                            }
                             Spacer(modifier = Modifier.height(4.dp))
                             Text(
                                 text = spellObj.name,
                                 color = Color.White,
                                 fontSize = 14.sp,
-                                fontWeight = FontWeight.Medium,
-                                maxLines = 1,
-                                overflow = TextOverflow.Ellipsis,
-                                textAlign = TextAlign.End
+                                textAlign = TextAlign.End,
+                                modifier = Modifier.fillMaxWidth()
                             )
                         } else {
                             Text(
                                 text = hero.spell ?: "Нет",
                                 color = Color.Gray,
                                 fontSize = 14.sp,
-                                textAlign = TextAlign.End
+                                textAlign = TextAlign.End,
+                                modifier = Modifier.fillMaxWidth()
                             )
                         }
                     }
                 }
 
-                HorizontalDivider(modifier = Modifier.padding(top = 12.dp), color = Color.White)
+                HorizontalDivider(modifier = Modifier.padding(top = 16.dp, bottom = 8.dp), color = HommGold)
 
-                Spacer(modifier = Modifier.height(10.dp))
-                Text("Стартовая армия", color = Color(0xFFD4AF37), fontWeight = FontWeight.Black, fontSize = 16.sp)
+                Text("Стартовая армия", color = HommGold, fontWeight = FontWeight.Bold, fontSize = 18.sp)
+                Spacer(modifier = Modifier.height(8.dp))
 
                 ArmyVisuals(armyString = hero.army, onCreatureClick = { clickedImageRes ->
                     selectedCreature = creatures.find { it.imageRes == clickedImageRes }
@@ -336,6 +370,7 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>) {
     }
 }
 
+@SuppressLint("DiscouragedApi")
 @Composable
 fun SpecialtyInfoRow(
     label: String,
@@ -348,16 +383,16 @@ fun SpecialtyInfoRow(
     Column(modifier = Modifier.padding(vertical = 8.dp)) {
         Text(
             text = label,
-            color = Color(0xFFD4AF37),
+            color = HommGold,
             fontWeight = FontWeight.Bold,
-            fontSize = 16.sp
+            fontSize = 18.sp
         )
         Spacer(modifier = Modifier.height(8.dp))
         Row(
             verticalAlignment = Alignment.Top,
             modifier = Modifier.fillMaxWidth()
         ) {
-            // --- ЛЕВАЯ ЧАСТЬ: Иконка ---
+            // Иконка
             if (iconRes != null) {
                 val isCreature = iconRes.startsWith("creature_")
 
@@ -372,8 +407,8 @@ fun SpecialtyInfoRow(
                             .width(60.dp)
                             .height(80.dp)
                             .clip(RoundedCornerShape(8.dp))
-                            .background(MaterialTheme.colorScheme.surface)
-                            .border(2.dp, Color(0xFFD4AF37), RoundedCornerShape(8.dp)),
+                            .background(Color.Black.copy(alpha = 0.3f))
+                            .border(2.dp, HommGold, RoundedCornerShape(8.dp)),
                         contentAlignment = Alignment.BottomCenter
                     ) {
                         if (resId != 0) {
@@ -398,21 +433,20 @@ fun SpecialtyInfoRow(
                 }
             }
 
-            // --- ПРАВАЯ ЧАСТЬ: Название и Описание ---
+            // Текст
             Column(modifier = Modifier.weight(1f)) {
                 Text(
                     text = value,
                     fontWeight = FontWeight.Bold,
                     color = Color.White,
-                    fontSize = 16.sp,
-                    lineHeight = 20.sp
+                    fontSize = 16.sp
                 )
                 if (!description.isNullOrEmpty()) {
                     Spacer(modifier = Modifier.height(4.dp))
                     Text(
                         text = description,
-                        color = Color.White,
-                        fontSize = 16.sp,
+                        color = Color.White.copy(alpha = 0.9f),
+                        fontSize = 14.sp,
                         lineHeight = 20.sp
                     )
                 }
@@ -420,12 +454,13 @@ fun SpecialtyInfoRow(
         }
     }
 }
+
 @Composable
 fun CreaturePopup(creature: Creature, onDismiss: () -> Unit) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Black.copy(alpha = 0.6f))
+            .background(Color.Black.copy(alpha = 0.8f)) // Затемнение фона
             .clickable { onDismiss() },
         contentAlignment = Alignment.Center
     ) {
@@ -433,9 +468,9 @@ fun CreaturePopup(creature: Creature, onDismiss: () -> Unit) {
             modifier = Modifier
                 .fillMaxWidth(0.9f)
                 .clickable(enabled = false) {},
-            colors = CardDefaults.cardColors(
-                containerColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.95f)
-            ),
+            colors = CardDefaults.cardColors(containerColor = HommGlassBackground),
+            //border = HommBorder,
+            shape = HommShape,
             elevation = CardDefaults.cardElevation(8.dp)
         ) {
             Column(
@@ -450,24 +485,24 @@ fun CreaturePopup(creature: Creature, onDismiss: () -> Unit) {
                 )
                 Spacer(modifier = Modifier.height(8.dp))
 
-                Text(creature.name, fontSize = 22.sp, fontWeight = FontWeight.Bold, color = Color(0xFFD4AF37))
+                Text(creature.name, fontSize = 22.sp, fontWeight = FontWeight.Bold, color = HommGold)
                 Text("Уровень ${creature.level}", fontSize = 16.sp, color = Color.Gray)
 
-                HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp), color = Color.Gray)
+                HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp), color = HommGold)
+
                 val damage = if (creature.minDamage == creature.maxDamage) "${creature.minDamage}" else "${creature.minDamage}-${creature.maxDamage}"
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceAround) {
                     StatItem("Атака", "⚔️", creature.attack.toString())
                     StatItem("Защита", "🛡️", creature.defense.toString())
                     StatItem("Урон", "💥️", damage)
-                    StatItem("     ХП     ", "❤️", creature.health.toString())
-                    StatItem("Скор. ", "🦶", creature.speed.toString())
+                    StatItem("Здоровье", "❤️", creature.health.toString())
+                    StatItem("Скор.", "🦶", creature.speed.toString())
                 }
 
-                Spacer(modifier = Modifier.height(12.dp))
-
                 if (creature.abilities.isNotEmpty()) {
-                    Spacer(modifier = Modifier.height(12.dp))
-                    Text("Способности:", color = Color(0xFFD4AF37), fontWeight = FontWeight.Bold)
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Text("Способности:", color = HommGold, fontWeight = FontWeight.Bold)
+                    Spacer(modifier = Modifier.height(4.dp))
                     Text(
                         text = creature.abilities,
                         color = Color.White,
@@ -485,7 +520,7 @@ fun SkillPopup(skill: SecondarySkill, onDismiss: () -> Unit) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Black.copy(alpha = 0.6f))
+            .background(Color.Black.copy(alpha = 0.8f))
             .clickable { onDismiss() },
         contentAlignment = Alignment.Center
     ) {
@@ -493,10 +528,9 @@ fun SkillPopup(skill: SecondarySkill, onDismiss: () -> Unit) {
             modifier = Modifier
                 .fillMaxWidth(0.9f)
                 .clickable(enabled = false) {},
-            colors = CardDefaults.cardColors(
-                containerColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.95f)
-            ),
-            elevation = CardDefaults.cardElevation(8.dp)
+            colors = CardDefaults.cardColors(containerColor = HommGlassBackground),
+            //border = HommBorder,
+            shape = HommShape
         ) {
             Column(
                 modifier = Modifier
@@ -504,15 +538,13 @@ fun SkillPopup(skill: SecondarySkill, onDismiss: () -> Unit) {
                     .verticalScroll(rememberScrollState()),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-
-                Text(skill.name, fontSize = 24.sp, fontWeight = FontWeight.Bold, color = Color(0xFFD4AF37))
-
-                HorizontalDivider(modifier = Modifier.padding(vertical = 16.dp), color = Color.White)
+                Text(skill.name, fontSize = 24.sp, fontWeight = FontWeight.Bold, color = HommGold)
+                HorizontalDivider(modifier = Modifier.padding(vertical = 16.dp), color = HommGold)
 
                 SkillPopupRow("Основной", skill.basic, "basic_${skill.id}")
-                HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp), color = Color.White)
+                HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp), color = Color.White.copy(alpha=0.3f))
                 SkillPopupRow("Продвинутый", skill.advanced, "advanced_${skill.id}")
-                HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp), color = Color.White)
+                HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp), color = Color.White.copy(alpha=0.3f))
                 SkillPopupRow("Эксперт", skill.expert, "expert_${skill.id}")
             }
         }
@@ -524,7 +556,7 @@ fun SpellPopup(spell: Spell, onDismiss: () -> Unit) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Black.copy(alpha = 0.6f))
+            .background(Color.Black.copy(alpha = 0.8f))
             .clickable { onDismiss() },
         contentAlignment = Alignment.Center
     ) {
@@ -533,10 +565,9 @@ fun SpellPopup(spell: Spell, onDismiss: () -> Unit) {
                 .fillMaxWidth(0.9f)
                 .wrapContentHeight()
                 .clickable(enabled = false) {},
-            colors = CardDefaults.cardColors(
-                containerColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.95f)
-            ),
-            elevation = CardDefaults.cardElevation(8.dp)
+            colors = CardDefaults.cardColors(containerColor = HommGlassBackground),
+            border = HommBorder,
+            shape = HommShape
         ) {
             Column(
                 modifier = Modifier
@@ -550,7 +581,7 @@ fun SpellPopup(spell: Spell, onDismiss: () -> Unit) {
                     text = spell.name,
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold,
-                    color = Color(0xFFD4AF37),
+                    color = HommGold,
                     textAlign = TextAlign.Center
                 )
                 Text(
@@ -559,25 +590,25 @@ fun SpellPopup(spell: Spell, onDismiss: () -> Unit) {
                     color = Color.Gray
                 )
 
-                HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp), color = Color.White)
+                HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp), color = HommGold)
 
                 Row(
                     modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text("Уровень", modifier = Modifier.weight(1f), color = Color(0xFFD4AF37), fontWeight = FontWeight.Bold)
-                    Text("Мана", modifier = Modifier.weight(0.8f), color = Color(0xFFD4AF37), fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
-                    Text("Эффект", modifier = Modifier.weight(2.2f), color = Color(0xFFD4AF37), fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
+                    Text("Ур.", modifier = Modifier.weight(1f), color = HommGold, fontWeight = FontWeight.Bold)
+                    Text("Мана", modifier = Modifier.weight(0.8f), color = HommGold, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
+                    Text("Эффект", modifier = Modifier.weight(2.2f), color = HommGold, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
                 }
 
-                HorizontalDivider(color = Color.Gray, thickness = 1.dp)
+                HorizontalDivider(color = Color.White, thickness = 1.dp)
 
                 SpellPopupRow("Нет", spell.manaCostNone, spell.descriptionNone)
-                HorizontalDivider(color = Color.Gray, thickness = 0.5.dp)
+                HorizontalDivider(color = Color.White.copy(alpha = 0.3f))
                 SpellPopupRow("Базовый", spell.manaCostBasic, spell.descriptionBasic)
-                HorizontalDivider(color = Color.Gray, thickness = 0.5.dp)
+                HorizontalDivider(color = Color.White.copy(alpha = 0.3f))
                 SpellPopupRow("Продв.", spell.manaCostAdvanced, spell.descriptionAdvanced)
-                HorizontalDivider(color = Color.Gray, thickness = 0.5.dp)
+                HorizontalDivider(color = Color.White.copy(alpha = 0.3f))
                 SpellPopupRow("Эксперт", spell.manaCostExpert, spell.descriptionExpert)
             }
         }
@@ -592,44 +623,22 @@ fun SpellPopupRow(level: String, mana: Int, description: String) {
             .padding(vertical = 8.dp),
         verticalAlignment = Alignment.Top
     ) {
-        Text(
-            text = level,
-            modifier = Modifier.weight(1f),
-            color = Color.White,
-            fontWeight = FontWeight.Bold,
-            fontSize = 14.sp
-        )
-        Text(
-            text = mana.toString(),
-            modifier = Modifier.weight(0.8f),
-            color = Color(0xFF4FC3F7),
-            fontWeight = FontWeight.Bold,
-            textAlign = TextAlign.Center,
-            fontSize = 14.sp
-        )
-        Text(
-            text = description,
-            modifier = Modifier.weight(2.2f),
-            color = Color.White,
-            fontSize = 14.sp,
-            lineHeight = 18.sp
-        )
+        Text(text = level, modifier = Modifier.weight(1f), color = Color.White, fontWeight = FontWeight.Bold, fontSize = 13.sp)
+        Text(text = mana.toString(), modifier = Modifier.weight(0.8f), color = Color(0xFF4FC3F7), fontWeight = FontWeight.Bold, textAlign = TextAlign.Center, fontSize = 13.sp)
+        Text(text = description, modifier = Modifier.weight(2.2f), color = Color.White, fontSize = 13.sp, lineHeight = 16.sp)
     }
 }
 
 @Composable
 fun SkillPopupRow(level: String, description: String, imageRes: String) {
     Column(modifier = Modifier.padding(vertical = 8.dp)) {
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.Top
-        ) {
-            HeroImage(imageName = imageRes, width = 64.dp, height = 64.dp)
+        Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.Top) {
+            HeroImage(imageName = imageRes, width = 50.dp, height = 50.dp)
             Spacer(modifier = Modifier.width(16.dp))
             Column {
-                Text(text = level, color = Color(0xFFD4AF37), fontWeight = FontWeight.Bold, fontSize = 18.sp)
+                Text(text = level, color = HommGold, fontWeight = FontWeight.Bold, fontSize = 16.sp)
                 Spacer(modifier = Modifier.height(4.dp))
-                Text(text = description, color = Color.White, fontSize = 16.sp)
+                Text(text = description, color = Color.White, fontSize = 14.sp)
             }
         }
     }

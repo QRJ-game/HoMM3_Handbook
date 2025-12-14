@@ -177,7 +177,7 @@ fun ArtifactCard(artifact: Artifact, onClick: () -> Unit) {
             .clickable(onClick = onClick),
         elevation = CardDefaults.cardElevation(4.dp),
         colors = CardDefaults.cardColors(containerColor = HommGlassBackground),
-        border = HommBorder,
+        //border = HommBorder,
         shape = HommShape
     ) {
         Row(

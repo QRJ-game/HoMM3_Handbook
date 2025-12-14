@@ -42,7 +42,6 @@ enum class Screen {
     CreatureTowns, CreatureList, CreatureDetail,
     SkillsList, SkillDetail,
     MagicSchools, MagicList, MagicDetail,
-    // Артефакты
     ArtifactsMenu, ArtifactsCategory, ArtifactsList, ArtifactDetail
 }
 
@@ -74,6 +73,7 @@ fun AppRoot(
 
     // Состояния для Навыков
     var selectedSkill by remember { mutableStateOf<SecondarySkill?>(null) }
+    var skillsSearchQuery by remember { mutableStateOf("") } // <-- Добавлено состояние поиска навыков
 
     // Состояния для Магии
     var selectedSchool by remember { mutableStateOf<String?>(null) }
@@ -84,7 +84,6 @@ fun AppRoot(
     var selectedArtifactCategoryType by remember { mutableStateOf<String?>(null) }
     var selectedArtifactCategoryValue by remember { mutableStateOf<String?>(null) }
     var selectedArtifact by remember { mutableStateOf<Artifact?>(null) }
-    // --- Добавлен поиск для артефактов ---
     var artifactsSearchQuery by remember { mutableStateOf("") }
 
     // Загрузка данных
@@ -124,14 +123,17 @@ fun AppRoot(
                     selectedCreatureTown = null
                     currentScreen = Screen.CreatureTowns
                 },
-                onSkillsClick = { currentScreen = Screen.SkillsList },
+                onSkillsClick = {
+                    skillsSearchQuery = "" // Сброс поиска
+                    currentScreen = Screen.SkillsList
+                },
                 onMagicClick = {
                     magicSearchQuery = ""
                     selectedSchool = null
                     currentScreen = Screen.MagicSchools
                 },
                 onArtifactsClick = {
-                    artifactsSearchQuery = "" // Сброс поиска при входе
+                    artifactsSearchQuery = ""
                     currentScreen = Screen.ArtifactsMenu
                 },
                 isMuted = isMuted,
@@ -271,12 +273,21 @@ fun AppRoot(
         // --- НАВЫКИ ---
         Screen.SkillsList -> {
             BackHandler { currentScreen = Screen.MainMenu }
+
+            // Фильтрация навыков
+            val filteredSkills = remember(GameData.secondarySkills, skillsSearchQuery) {
+                if (skillsSearchQuery.isBlank()) GameData.secondarySkills
+                else GameData.secondarySkills.filter { it.name.contains(skillsSearchQuery, ignoreCase = true) }
+            }
+
             SecondarySkillsListScreen(
-                skills = GameData.secondarySkills,
-                onSkillSelected = { skill ->
+                skills = filteredSkills,
+                onSkillClick = { skill ->  // ИСПРАВЛЕНО: onSkillClick вместо onSkillSelected
                     selectedSkill = skill
                     currentScreen = Screen.SkillDetail
-                }
+                },
+                searchQuery = skillsSearchQuery, // ИСПРАВЛЕНО: передаем параметр поиска
+                onQueryChanged = { skillsSearchQuery = it } // ИСПРАВЛЕНО: передаем обработчик
             )
         }
         Screen.SkillDetail -> {
@@ -341,8 +352,6 @@ fun AppRoot(
         // --- АРТЕФАКТЫ ---
         Screen.ArtifactsMenu -> {
             BackHandler { currentScreen = Screen.MainMenu }
-
-            // Фильтрация для поиска в главном меню
             val searchResults = remember(GameData.artifacts, artifactsSearchQuery) {
                 if (artifactsSearchQuery.isBlank()) emptyList()
                 else GameData.artifacts.filter { it.name.contains(artifactsSearchQuery, ignoreCase = true) }
@@ -356,7 +365,6 @@ fun AppRoot(
                 searchQuery = artifactsSearchQuery,
                 onQueryChanged = { artifactsSearchQuery = it },
                 searchResultsContent = {
-                    // Здесь отображаем результаты поиска
                     LazyColumn(
                         verticalArrangement = Arrangement.spacedBy(8.dp),
                         contentPadding = PaddingValues(bottom = 16.dp)
@@ -364,8 +372,6 @@ fun AppRoot(
                         items(searchResults) { artifact ->
                             ArtifactCard(artifact = artifact) {
                                 selectedArtifact = artifact
-                                // Скрываем поиск при переходе, чтобы вернуться в меню
-                                // или оставляем как есть.
                                 currentScreen = Screen.ArtifactDetail
                             }
                         }
@@ -387,7 +393,6 @@ fun AppRoot(
         }
         Screen.ArtifactsList -> {
             BackHandler { currentScreen = Screen.ArtifactsCategory }
-
             val filteredArtifacts = remember(selectedArtifactCategoryType, selectedArtifactCategoryValue) {
                 GameData.artifacts.filter { artifact ->
                     when (selectedArtifactCategoryType) {
@@ -412,9 +417,6 @@ fun AppRoot(
                 if (artifactsSearchQuery.isNotBlank()) {
                     currentScreen = Screen.ArtifactsMenu
                 } else {
-                    // Если мы "провалились" глубоко (компонент -> сборный),
-                    // кнопка назад вернет нас в список.
-                    // Можно усложнить логику стека, но пока вернемся в список.
                     currentScreen = Screen.ArtifactsList
                 }
             }
@@ -422,7 +424,6 @@ fun AppRoot(
                 ArtifactDetailScreen(
                     artifact = artifact,
                     onArtifactClick = { newArtifact ->
-                        // Переход на новый артефакт (например, с компонента на сборный или наоборот)
                         selectedArtifact = newArtifact
                     }
                 )

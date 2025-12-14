@@ -1,5 +1,6 @@
 package com.example.homm3reference.ui.creatures
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -15,10 +16,10 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue // ВАЖНО: для работы 'by'
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue // ВАЖНО: для работы 'by'
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -32,6 +33,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.homm3reference.data.Creature
 import com.example.homm3reference.ui.common.*
+import com.example.homm3reference.ui.theme.HommGlassBackground
+import com.example.homm3reference.ui.theme.HommGold
+
+// Локальные константы
+private val HommShape = RoundedCornerShape(8.dp)
+private val HommBorder = BorderStroke(2.dp, HommGold)
 
 @Composable
 fun CreatureListScreen(
@@ -41,7 +48,6 @@ fun CreatureListScreen(
 ) {
     var searchQuery by remember { mutableStateOf("") }
 
-    // Фильтрация списка существ
     val filteredCreatures = remember(creatures, searchQuery) {
         if (searchQuery.isBlank()) creatures
         else creatures.filter { it.name.contains(searchQuery, ignoreCase = true) }
@@ -52,20 +58,22 @@ fun CreatureListScreen(
 
             Text(
                 text = townName,
-                modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 16.dp),
+                modifier = Modifier
+                    .padding(start = 16.dp, end = 16.dp, top = 16.dp)
+                    .align(Alignment.CenterHorizontally),
                 fontSize = 24.sp,
-                color = Color(0xFFD4AF37),
+                color = HommGold,
                 fontWeight = FontWeight.Bold
             )
 
-            // Поиск
             AppSearchBar(
                 query = searchQuery,
                 onQueryChanged = { searchQuery = it },
-                modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+                modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
                 placeholderText = "Поиск существа..."
             )
 
+            // Сетка для нейтралов/машин или Список для городов
             if (townName == "Нейтралы" || townName == "Боевые машины") {
                 LazyVerticalGrid(
                     columns = GridCells.Fixed(2),
@@ -78,15 +86,21 @@ fun CreatureListScreen(
                     }
                 }
             } else {
-                // Группируем отфильтрованный список по уровням
                 val levels = filteredCreatures.map { it.level }.distinct().sorted()
 
-                LazyColumn(contentPadding = PaddingValues(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                LazyColumn(
+                    contentPadding = PaddingValues(16.dp),
+                    verticalArrangement = Arrangement.spacedBy(12.dp)
+                ) {
                     items(levels) { level ->
+                        // Сортировка: сначала обычные, потом грейженные
                         val levelCreatures = filteredCreatures.filter { it.level == level }.sortedBy { it.isUpgraded }
 
                         levelCreatures.chunked(2).forEach { rowCreatures ->
-                            Row(modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp), horizontalArrangement = Arrangement.SpaceBetween) {
+                            Row(
+                                modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp),
+                                horizontalArrangement = Arrangement.SpaceBetween
+                            ) {
                                 if (rowCreatures.isNotEmpty()) {
                                     Box(modifier = Modifier.weight(1f).padding(end = 8.dp)) {
                                         CreatureCard(rowCreatures[0], onCreatureSelected)
@@ -106,7 +120,7 @@ fun CreatureListScreen(
                         }
 
                         if (level != levels.last()) {
-                            HorizontalDivider(color = Color.White, thickness = 1.dp, modifier = Modifier.padding(vertical = 2.dp))
+                            HorizontalDivider(color = HommGold.copy(alpha = 0.5f), thickness = 1.dp, modifier = Modifier.padding(vertical = 4.dp))
                         }
                     }
                 }
@@ -121,12 +135,15 @@ fun CreatureCard(creature: Creature, onClick: (Creature) -> Unit) {
     val resId = remember(creature.imageRes) {
         context.resources.getIdentifier(creature.imageRes, "drawable", context.packageName)
     }
+
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .height(170.dp)
+            .height(180.dp) // Немного увеличил высоту для комфорта
             .clickable { onClick(creature) },
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+        colors = CardDefaults.cardColors(containerColor = HommGlassBackground),
+        border = HommBorder,
+        shape = HommShape,
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
     ) {
         Column(
@@ -136,35 +153,32 @@ fun CreatureCard(creature: Creature, onClick: (Creature) -> Unit) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-
             Box(
                 modifier = Modifier
                     .width(100.dp)
-                    .height(130.dp)
-                    .clip(RoundedCornerShape(8.dp))
-                    .border(2.dp, Color(0xFFD4AF37), RoundedCornerShape(8.dp)),
-                contentAlignment = Alignment.BottomCenter
+                    .height(120.dp), // Контейнер под картинку
+                contentAlignment = Alignment.Center
             ) {
                 if (resId != 0) {
                     Image(
                         painter = painterResource(id = resId),
                         contentDescription = null,
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .offset(y = (-10).dp),
+                        modifier = Modifier.fillMaxSize(),
                         contentScale = ContentScale.Fit
                     )
                 }
             }
 
-            Spacer(modifier = Modifier.height(4.dp))
+            Spacer(modifier = Modifier.height(8.dp))
+
             Text(
                 text = creature.name,
                 fontSize = 14.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color.White,
+                color = HommGold,
                 textAlign = TextAlign.Center,
-                lineHeight = 16.sp
+                lineHeight = 16.sp,
+                maxLines = 2
             )
         }
     }
@@ -178,32 +192,36 @@ fun CreatureDetailScreen(creature: Creature) {
             .verticalScroll(rememberScrollState())
             .padding(16.dp)
         ) {
-            // Кнопка "Назад" удалена.
             Spacer(modifier = Modifier.height(16.dp))
 
+            // Шапка
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Card(
-                    shape = RoundedCornerShape(8.dp),
-                    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
-                    elevation = CardDefaults.cardElevation(4.dp)
+                // Картинка в рамке
+                Box(
+                    modifier = Modifier
+                        .background(HommGlassBackground, HommShape)
+                        .border(HommBorder, HommShape)
+                        .padding(8.dp)
                 ) {
                     HeroImage(
                         imageName = creature.imageRes,
-                        width = 150.dp,
-                        height = 195.dp,
+                        width = 120.dp,
+                        height = 150.dp,
                         contentScale = ContentScale.Fit,
-                        borderWidth = 2.dp
+                        borderWidth = -1.dp // Рамку рисуем выше
                     )
                 }
 
                 Spacer(modifier = Modifier.width(16.dp))
                 Column {
-                    Text(text = creature.name, fontSize = 24.sp, fontWeight = FontWeight.Bold, color = Color(0xFFD4AF37))
-                    Text(text = "${creature.town} • Уровень ${creature.level}", fontSize = 16.sp, color = Color.White.copy(alpha = 0.9f))
+                    Text(text = creature.name, fontSize = 24.sp, fontWeight = FontWeight.Bold, color = HommGold)
+                    Spacer(modifier = Modifier.height(4.dp))
+                    Text(text = "${creature.town}", fontSize = 18.sp, color = Color.White)
+                    Text(text = "Уровень ${creature.level}", fontSize = 16.sp, color = Color.White.copy(alpha = 0.8f))
                 }
             }
 
-            HorizontalDivider(modifier = Modifier.padding(vertical = 16.dp), color = Color.White)
+            HorizontalDivider(modifier = Modifier.padding(vertical = 16.dp), color = HommGold)
 
             val damageString = if (creature.minDamage == creature.maxDamage) {
                 "${creature.minDamage}"
@@ -211,22 +229,27 @@ fun CreatureDetailScreen(creature: Creature) {
                 "${creature.minDamage}-${creature.maxDamage}"
             }
 
+            // Статы
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
                 StatItem("Атака", "⚔️", creature.attack.toString())
                 StatItem("Защита", "🛡️", creature.defense.toString())
                 StatItem("Урон", "💥", damageString)
                 StatItem("ХП", "❤️", creature.health.toString())
-                StatItem("Скорость", "🦶", creature.speed.toString())
+                StatItem("Скор.", "🦶", creature.speed.toString())
             }
-            HorizontalDivider(modifier = Modifier.padding(vertical = 16.dp), color = Color.White)
+
+            HorizontalDivider(modifier = Modifier.padding(vertical = 16.dp), color = HommGold)
+
             InfoRow("Цена", "${creature.goldCost} золота" + (if (creature.resourceCost != null) " + ${creature.resourceCost}" else ""))
             InfoRow("Прирост", "${creature.growth}")
             InfoRow("AI Value", "${creature.aiValue}")
 
             Spacer(modifier = Modifier.height(16.dp))
-            Text("Способности:", color = Color(0xFFD4AF37), fontWeight = FontWeight.Bold)
-            Text(text = creature.abilities, color = Color.White)
+            Text("Способности:", color = HommGold, fontWeight = FontWeight.Bold, fontSize = 18.sp)
+            Spacer(modifier = Modifier.height(4.dp))
+            Text(text = creature.abilities, color = Color.White, fontSize = 16.sp, lineHeight = 22.sp)
+
+            Spacer(modifier = Modifier.height(32.dp))
         }
     }
 }
-
