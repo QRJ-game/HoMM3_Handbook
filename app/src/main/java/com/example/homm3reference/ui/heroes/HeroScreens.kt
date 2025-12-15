@@ -238,7 +238,7 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>) {
                     }
                 }
 
-                HorizontalDivider(modifier = Modifier.padding(vertical = 16.dp), color = HommGold)
+                HorizontalDivider(modifier = Modifier.padding(vertical = 4.dp), color = HommGold)
 
                 // Статы
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
@@ -248,7 +248,7 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>) {
                     StatItem("Знания", "📖", stats.knowledge.toString())
                 }
 
-                HorizontalDivider(modifier = Modifier.padding(vertical = 16.dp), color = HommGold)
+                HorizontalDivider(modifier = Modifier.padding(top = 0.dp), color = HommGold)
 
                 // Специализация
                 SpecialtyInfoRow(
@@ -258,7 +258,7 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>) {
                     description = hero.specialtyDescription
                 )
 
-                HorizontalDivider(color = HommGold, modifier = Modifier.padding(vertical = 16.dp))
+                HorizontalDivider(color = HommGold, modifier = Modifier.padding(vertical = 4.dp))
 
                 // Навыки и Заклинание
                 Row(
@@ -280,8 +280,8 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>) {
 
                                     HeroImage(
                                         imageName = iconName,
-                                        width = 50.dp,
-                                        height = 50.dp,
+                                        width = 60.dp,
+                                        height = 60.dp,
                                         modifier = Modifier
                                             .padding(end = 6.dp)
                                             .clickable(enabled = skill != null) {
@@ -319,8 +319,8 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>) {
                             Box(contentAlignment = Alignment.TopEnd, modifier = Modifier.fillMaxWidth()) {
                                 HeroImage(
                                     imageName = spellObj.imageRes,
-                                    width = 50.dp,
-                                    height = 50.dp,
+                                    width = 60.dp,
+                                    height = 60.dp,
                                     modifier = Modifier.clickable { selectedSpell = spellObj }
                                 )
                             }
@@ -344,16 +344,16 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>) {
                     }
                 }
 
-                HorizontalDivider(modifier = Modifier.padding(top = 16.dp, bottom = 8.dp), color = HommGold)
+                HorizontalDivider(modifier = Modifier.padding(top = 4.dp, bottom = 4.dp), color = HommGold)
 
                 Text("Стартовая армия", color = HommGold, fontWeight = FontWeight.Bold, fontSize = 18.sp)
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(0.dp))
 
                 ArmyVisuals(armyString = hero.army, onCreatureClick = { clickedImageRes ->
                     selectedCreature = creatures.find { it.imageRes == clickedImageRes }
                 })
 
-                Spacer(modifier = Modifier.height(32.dp))
+                //Spacer(modifier = Modifier.height(32.dp))
             }
 
             // POPUPS
@@ -417,7 +417,7 @@ fun SpecialtyInfoRow(
                                 contentDescription = null,
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .height(65.dp)
+                                    .height(60.dp)
                                     .offset(y = (-10).dp),
                                 contentScale = ContentScale.Fit
                             )

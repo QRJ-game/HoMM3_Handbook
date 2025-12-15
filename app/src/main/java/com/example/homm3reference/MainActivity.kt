@@ -10,9 +10,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.lifecycleScope
 import com.example.homm3reference.data.AppDatabase
 import com.example.homm3reference.data.DataLoader
-import com.example.homm3reference.data.MediaPlayer // <--- Добавлен импорт ViewModel
-import com.example.homm3reference.ui.navigation.AppRoot // <--- ИСПРАВЛЕН ИМПОРТ (добавлено .ui)
+import com.example.homm3reference.data.MediaPlayer
+import com.example.homm3reference.ui.navigation.AppRoot
 import kotlinx.coroutines.launch
+import androidx.activity.enableEdgeToEdge
 
 class MainActivity : ComponentActivity() {
 
@@ -20,6 +21,7 @@ class MainActivity : ComponentActivity() {
     private val viewModel: MediaPlayer by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
 
         val database = AppDatabase.getDatabase(this)
