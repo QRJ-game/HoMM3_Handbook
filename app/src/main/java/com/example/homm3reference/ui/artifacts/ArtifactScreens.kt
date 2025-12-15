@@ -215,14 +215,14 @@ fun ArtifactDetailScreen(
 ) {
     val parentSetArtifact = remember(artifact) {
         if (!artifact.set.isNullOrEmpty() && artifact.set != "-") {
-            GameData.artifacts.find { it.name.equals(artifact.set, ignoreCase = true) && it.classType == "set" }
+            GameData.artifacts.find { it.name.equals(artifact.set, ignoreCase = true) && it.classType == "Сборные артефакты" }
         } else {
             null
         }
     }
 
     val childComponents = remember(artifact) {
-        if (artifact.classType == "set") {
+        if (artifact.classType == "Сборные артефакты") {
             GameData.artifacts.filter { it.set.equals(artifact.name, ignoreCase = true) }
         } else {
             emptyList()
