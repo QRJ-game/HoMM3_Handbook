@@ -1,5 +1,6 @@
 package com.example.homm3reference.ui.magic
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -7,7 +8,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -16,6 +16,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -39,17 +40,17 @@ fun MagicSchoolSelectScreen(
     searchResultsContent: @Composable () -> Unit
 ) {
     AppBackground {
-        Column(modifier = Modifier.fillMaxSize()) {
+        Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
 
             Column(
-                modifier = Modifier.padding(16.dp),
+                modifier = Modifier.padding(top = 16.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Spacer(modifier = Modifier.height(16.dp))
 
                 Text(
                     text = "Школы Магии",
-                    fontSize = 28.sp,
+                    fontSize = 24.sp,
                     fontWeight = FontWeight.Bold,
                     color = HommGold,
                     modifier = Modifier.padding(bottom = 16.dp)
@@ -68,18 +69,55 @@ fun MagicSchoolSelectScreen(
                 }
             } else {
                 Column(
-                    modifier = Modifier.padding(16.dp),
+                    modifier = Modifier.fillMaxWidth(),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Spacer(modifier = Modifier.height(16.dp))
-                    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
-                        MagicSchoolCard("Земля", "expert_earth_magic", "Earth", onSchoolSelected)
-                        MagicSchoolCard("Вода", "expert_water_magic", "Water", onSchoolSelected)
+                    Spacer(modifier = Modifier.height(24.dp)) // Чуть больше отступ от поиска до карточек
+
+                    // Первая строка
+                    // ИСПРАВЛЕНИЕ: используем spacedBy(16.dp) для отступа МЕЖДУ элементами,
+                    // а не padding внутри элементов.
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(16.dp)
+                    ) {
+                        MagicSchoolCard(
+                            name = "Земля",
+                            icon = "expert_earth_magic",
+                            schoolId = "Earth",
+                            onClick = onSchoolSelected,
+                            modifier = Modifier.weight(1f) // Убрали padding(8.dp)
+                        )
+                        MagicSchoolCard(
+                            name = "Вода",
+                            icon = "expert_water_magic",
+                            schoolId = "Water",
+                            onClick = onSchoolSelected,
+                            modifier = Modifier.weight(1f) // Убрали padding(8.dp)
+                        )
                     }
-                    Spacer(modifier = Modifier.height(16.dp))
-                    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
-                        MagicSchoolCard("Огонь", "expert_fire_magic", "Fire", onSchoolSelected)
-                        MagicSchoolCard("Воздух", "expert_air_magic", "Air", onSchoolSelected)
+
+                    Spacer(modifier = Modifier.height(16.dp)) // Отступ между рядами
+
+                    // Вторая строка
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(16.dp)
+                    ) {
+                        MagicSchoolCard(
+                            name = "Огонь",
+                            icon = "expert_fire_magic",
+                            schoolId = "Fire",
+                            onClick = onSchoolSelected,
+                            modifier = Modifier.weight(1f)
+                        )
+                        MagicSchoolCard(
+                            name = "Воздух",
+                            icon = "expert_air_magic",
+                            schoolId = "Air",
+                            onClick = onSchoolSelected,
+                            modifier = Modifier.weight(1f)
+                        )
                     }
                 }
             }
@@ -88,33 +126,54 @@ fun MagicSchoolSelectScreen(
 }
 
 @Composable
-fun MagicSchoolCard(name: String, icon: String, schoolId: String, onClick: (String) -> Unit) {
+fun MagicSchoolCard(
+    name: String,
+    icon: String,
+    schoolId: String,
+    onClick: (String) -> Unit,
+    modifier: Modifier = Modifier
+) {
     Card(
-        modifier = Modifier
-            .size(160.dp)
-            .clickable { onClick(schoolId) },
+        modifier = modifier
+            .height(180.dp), // Высокие карточки
         colors = CardDefaults.cardColors(containerColor = HommGlassBackground),
-        //border = HommBorder,
+        border = HommBorder,
         shape = HommShape,
-        elevation = CardDefaults.cardElevation(8.dp)
+        elevation = CardDefaults.cardElevation(4.dp)
     ) {
-        Column(
-            modifier = Modifier.fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .clickable { onClick(schoolId) }, // clickable перенесен внутрь, чтобы кликалась вся область Box
+            contentAlignment = Alignment.Center
         ) {
-            HeroImage(imageName = icon, width = 90.dp, height = 90.dp, borderWidth = 2.dp) // Иконка школы уже красивая
-            Spacer(modifier = Modifier.height(12.dp))
-            Text(
-                text = name,
-                fontSize = 22.sp,
-                fontWeight = FontWeight.Bold,
-                color = HommGold
-            )
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                HeroImage(
+                    imageName = icon,
+                    width = 100.dp,
+                    height = 100.dp,
+                    contentScale = ContentScale.Fit,
+                    borderWidth = -1.dp
+                )
+
+                Spacer(modifier = Modifier.height(12.dp))
+
+                Text(
+                    text = name,
+                    fontSize = 24.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = HommGold
+                )
+            }
         }
     }
 }
 
+
+// ... Остальной код (SpellCard, SpellListScreen, SpellDetailScreen и т.д.) без изменений ...
 @Composable
 fun SpellCard(spell: Spell, onClick: () -> Unit) {
     Card(
@@ -135,7 +194,7 @@ fun SpellCard(spell: Spell, onClick: () -> Unit) {
             Column {
                 Text(
                     text = spell.name,
-                    fontSize = 18.sp,
+                    fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
                     color = HommGold
                 )
@@ -176,7 +235,7 @@ fun SpellListScreen(
 
     AppBackground {
         Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(24.dp))
             Text(
                 text = schoolName,
                 fontSize = 24.sp,
@@ -188,7 +247,7 @@ fun SpellListScreen(
             AppSearchBar(
                 query = searchQuery,
                 onQueryChanged = { searchQuery = it },
-                modifier = Modifier.padding(bottom = 16.dp),
+                modifier = Modifier.padding(bottom = 24.dp, top = 8.dp),
                 placeholderText = "Поиск заклинания..."
             )
 
@@ -215,9 +274,9 @@ fun SpellDetailScreen(spell: Spell) {
             modifier = Modifier
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
-                .padding(16.dp)
+                .padding(16.dp, top = 16.dp)
         ) {
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(32.dp))
 
             // --- ШАПКА ---
             Row(
@@ -229,13 +288,13 @@ fun SpellDetailScreen(spell: Spell) {
                 Column {
                     Text(
                         text = spell.name,
-                        fontSize = 26.sp,
+                        fontSize = 24.sp,
                         fontWeight = FontWeight.Bold,
                         color = HommGold
                     )
                     Text(
                         text = "${mapSchoolName(spell.school)}\n${spell.level} уровень",
-                        fontSize = 18.sp,
+                        fontSize = 16.sp,
                         color = Color.White.copy(alpha = 0.9f)
                     )
                 }
@@ -274,9 +333,9 @@ fun SpellEffectRow(levelName: String, mana: Int, description: String) {
             .padding(vertical = 12.dp),
         verticalAlignment = Alignment.Top
     ) {
-        Text(text = levelName, modifier = Modifier.weight(1f), color = Color.White, fontWeight = FontWeight.Bold, fontSize = 15.sp)
-        Text(text = mana.toString(), modifier = Modifier.weight(0.6f), color = Color(0xFF4FC3F7), fontWeight = FontWeight.Bold, textAlign = TextAlign.Center, fontSize = 15.sp)
-        Text(text = description, modifier = Modifier.weight(2.5f), color = Color.White, fontSize = 15.sp, lineHeight = 20.sp)
+        Text(text = levelName, modifier = Modifier.weight(1f), color = Color.White, fontWeight = FontWeight.Bold, fontSize = 16.sp)
+        Text(text = mana.toString(), modifier = Modifier.weight(0.6f), color = Color(0xFF4FC3F7), fontWeight = FontWeight.Bold, textAlign = TextAlign.Center, fontSize = 16.sp)
+        Text(text = description, modifier = Modifier.weight(2.5f), color = Color.White, fontSize = 16.sp, lineHeight = 20.sp)
     }
 }
 

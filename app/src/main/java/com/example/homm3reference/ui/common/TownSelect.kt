@@ -6,6 +6,7 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -16,7 +17,6 @@ import androidx.compose.ui.unit.sp
 fun TownSelectionScreen(
     title: String,
     towns: List<String>,
-    // onBack удален по запросу
     onTownSelected: (String) -> Unit,
     searchQuery: String,
     onQueryChanged: (String) -> Unit,
@@ -27,16 +27,18 @@ fun TownSelectionScreen(
 
             // Заголовок и поиск
             Column(modifier = Modifier.padding(16.dp)) {
-                Spacer(modifier = Modifier.height(16.dp))
+               // Spacer(modifier = Modifier.height(32.dp))
 
                 Text(
                     text = title,
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold,
-                    color = Color(0xFFD4AF37)
+                    color = Color(0xFFD4AF37),
+                    modifier = Modifier.padding( top = 32.dp, bottom = 16.dp)
+                    .align(Alignment.CenterHorizontally)
                 )
 
-                Spacer(modifier = Modifier.height(16.dp))
+                //Spacer(modifier = Modifier.height(16.dp))
 
                 AppSearchBar(
                     query = searchQuery,

@@ -43,7 +43,8 @@ fun SecondarySkillsListScreen(
     AppBackground {
         Column(modifier = Modifier.fillMaxSize()) {
             // Header
-            Column(modifier = Modifier.padding(16.dp)) {
+
+            Column(modifier = Modifier.padding(top = 32.dp, start = 16.dp, end = 16.dp)) {
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(
                     text = "Вторичные навыки",
@@ -125,7 +126,7 @@ fun SkillCard(skill: SecondarySkill, onClick: () -> Unit) {
             Text(
                 text = skill.name,
                 color = HommGold,
-                fontSize = 20.sp,
+                fontSize = 24.sp,
                 fontWeight = FontWeight.Bold
             )
         }
@@ -215,14 +216,14 @@ fun SkillLevelCard(levelName: String, imageName: String, description: String) {
                 Text(
                     text = levelName,
                     color = HommGold,
-                    fontSize = 18.sp,
+                    fontSize = 16.sp,
                     fontWeight = FontWeight.Bold
                 )
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
                     text = description,
                     color = Color.White,
-                    fontSize = 15.sp,
+                    fontSize = 16.sp,
                     lineHeight = 20.sp
                 )
             }

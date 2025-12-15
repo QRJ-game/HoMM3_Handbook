@@ -64,7 +64,7 @@ fun MainMenuScreen(
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(screenHeight * 0.25f)
+                        .height(screenHeight * 0.33f)
                 ) {
                     Image(
                         painter = painterResource(id = R.drawable.top_header),

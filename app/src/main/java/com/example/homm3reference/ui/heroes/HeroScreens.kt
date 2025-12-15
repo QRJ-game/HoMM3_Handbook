@@ -79,8 +79,8 @@ fun ClassSelectionScreen(
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
                             Text("⚔️", fontSize = 40.sp)
                             Spacer(modifier = Modifier.height(8.dp))
-                            Text(mightClassName, fontSize = 18.sp, fontWeight = FontWeight.Bold, color = HommGold)
-                            Text("Воин", fontSize = 14.sp, color = Color.White.copy(alpha = 0.8f))
+                            Text(mightClassName, fontSize = 16.sp, fontWeight = FontWeight.Bold, color = HommGold)
+                            Text("Воин", fontSize = 16.sp, color = Color.White.copy(alpha = 0.9f))
                         }
                     }
                 }
@@ -127,12 +127,12 @@ fun HeroListScreen(
         Column(modifier = Modifier.fillMaxSize()) {
 
             Text(
-                text = "$townName • $className",
+                text = "$townName: $className",
                 fontSize = 24.sp,
                 color = HommGold,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier
-                    .padding(start = 16.dp, end = 16.dp, top = 24.dp, bottom = 16.dp)
+                    .padding( top = 48.dp, bottom = 16.dp)
                     .align(Alignment.CenterHorizontally)
             )
 
@@ -209,7 +209,7 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>) {
             Column(modifier = Modifier
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
-                .padding(16.dp)
+                .padding(top = 32.dp, start = 16.dp, end = 16.dp)
             ) {
                 Spacer(modifier = Modifier.height(16.dp))
 

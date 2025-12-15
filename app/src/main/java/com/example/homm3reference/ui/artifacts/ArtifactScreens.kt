@@ -74,7 +74,7 @@ fun ArtifactsMenuScreen(
         Column(modifier = Modifier.fillMaxSize()) {
             // Заголовок и поиск
             Column(modifier = Modifier.padding(16.dp)) {
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(32.dp))
                 Text(
                     text = "Артефакты",
                     fontSize = 24.sp,
@@ -100,7 +100,7 @@ fun ArtifactsMenuScreen(
                         .fillMaxSize()
                         .padding(16.dp),
                     horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Center
+                    //verticalArrangement = Arrangement.Center
                 ) {
                     Text("Сортировка по", color = HommGold, fontSize = 24.sp, fontWeight = FontWeight.Bold)
                     Spacer(modifier = Modifier.height(24.dp))

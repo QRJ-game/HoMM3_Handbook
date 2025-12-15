@@ -59,19 +59,19 @@ fun CreatureListScreen(
             Text(
                 text = townName,
                 modifier = Modifier
-                    .padding(start = 16.dp, end = 16.dp, top = 16.dp)
+                    .padding(end = 16.dp, top = 48.dp)
                     .align(Alignment.CenterHorizontally),
                 fontSize = 24.sp,
                 color = HommGold,
                 fontWeight = FontWeight.Bold
             )
 
-            AppSearchBar(
-                query = searchQuery,
-                onQueryChanged = { searchQuery = it },
-                modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
-                placeholderText = "Поиск существа..."
-            )
+//            AppSearchBar(
+//                query = searchQuery,
+//                onQueryChanged = { searchQuery = it },
+//                modifier = Modifier.padding(horizontal = 16.dp, vertical = 16.dp),
+//                placeholderText = "Поиск существа..."
+//            )
 
             // Сетка для нейтралов/машин или Список для городов
             if (townName == "Нейтралы" || townName == "Боевые машины") {
@@ -173,7 +173,7 @@ fun CreatureCard(creature: Creature, onClick: (Creature) -> Unit) {
 
             Text(
                 text = creature.name,
-                fontSize = 14.sp,
+                fontSize = 16.sp,
                 fontWeight = FontWeight.Bold,
                 color = HommGold,
                 textAlign = TextAlign.Center,
@@ -190,7 +190,7 @@ fun CreatureDetailScreen(creature: Creature) {
         Column(modifier = Modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
-            .padding(16.dp)
+            .padding(top = 32.dp, start = 16.dp, end = 16.dp)
         ) {
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -216,8 +216,8 @@ fun CreatureDetailScreen(creature: Creature) {
                 Column {
                     Text(text = creature.name, fontSize = 24.sp, fontWeight = FontWeight.Bold, color = HommGold)
                     Spacer(modifier = Modifier.height(4.dp))
-                    Text(text = "${creature.town}", fontSize = 18.sp, color = Color.White)
-                    Text(text = "Уровень ${creature.level}", fontSize = 16.sp, color = Color.White.copy(alpha = 0.8f))
+                    Text(text = "${creature.town}", fontSize = 16.sp, color = Color.White)
+                    Text(text = "Уровень ${creature.level}", fontSize = 16.sp, color = Color.White.copy(alpha = 0.9f))
                 }
             }
 
@@ -245,7 +245,7 @@ fun CreatureDetailScreen(creature: Creature) {
             InfoRow("AI Value", "${creature.aiValue}")
 
             Spacer(modifier = Modifier.height(16.dp))
-            Text("Способности:", color = HommGold, fontWeight = FontWeight.Bold, fontSize = 18.sp)
+            Text("Способности:", color = HommGold, fontWeight = FontWeight.Bold, fontSize = 16.sp)
             Spacer(modifier = Modifier.height(4.dp))
             Text(text = creature.abilities, color = Color.White, fontSize = 16.sp, lineHeight = 22.sp)
 
