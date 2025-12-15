@@ -39,9 +39,9 @@ private val HommBorder = BorderStroke(2.dp, HommGold)
 
 object ArtifactConstants {
     val MENU_ITEMS = listOf(
-        "Класс" to "class",
-        "Слот" to "slot",
-        "Группа" to "group"
+        "Классу" to "class",
+        "Слоту" to "slot",
+        "Группе" to "group"
     )
 
     val CLASSES = listOf("treasure", "minor", "major", "relic", "set")
@@ -93,13 +93,17 @@ fun ArtifactsMenuScreen(
             if (searchQuery.isNotBlank()) {
                 Box(modifier = Modifier.padding(horizontal = 16.dp)) { searchResultsContent() }
             } else {
+
                 Column(
+
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(16.dp),
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.Center
                 ) {
+                    Text("Сортировка по", color = HommGold, fontSize = 24.sp, fontWeight = FontWeight.Bold)
+                    Spacer(modifier = Modifier.height(24.dp))
                     ArtifactConstants.MENU_ITEMS.forEach { (label, type) ->
                         MenuButton(text = label, onClick = { onCategoryClick(type) })
                         Spacer(modifier = Modifier.height(24.dp))
@@ -356,7 +360,7 @@ fun ArtifactImage(imageRes: String, modifier: Modifier = Modifier) {
 
     Box(
         modifier = modifier
-            .background(Color.Black.copy(alpha = 0.3f), HommShape)
+            .background(Color.Black.copy(alpha = 0.6f), HommShape)
             .border(2.dp, HommGold, HommShape) // Золотая рамка для всех картинок
             .padding(4.dp),
         contentAlignment = Alignment.Center

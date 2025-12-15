@@ -15,7 +15,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -30,7 +29,7 @@ import com.example.homm3reference.ui.common.AppSearchBar
 import com.example.homm3reference.ui.theme.HommGlassBackground
 import com.example.homm3reference.ui.theme.HommGold
 
-// Константы стиля для этого экрана
+// Константы стиля
 private val HommShape = RoundedCornerShape(8.dp)
 private val HommBorder = BorderStroke(2.dp, HommGold)
 
@@ -43,7 +42,7 @@ fun SecondarySkillsListScreen(
 ) {
     AppBackground {
         Column(modifier = Modifier.fillMaxSize()) {
-            // Заголовок и поиск
+            // Header
             Column(modifier = Modifier.padding(16.dp)) {
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(
@@ -61,7 +60,7 @@ fun SecondarySkillsListScreen(
                 )
             }
 
-            // Список навыков
+            // List
             LazyColumn(
                 modifier = Modifier.fillMaxSize(),
                 contentPadding = PaddingValues(16.dp),
@@ -78,10 +77,13 @@ fun SecondarySkillsListScreen(
 @SuppressLint("DiscouragedApi")
 @Composable
 fun SkillCard(skill: SecondarySkill, onClick: () -> Unit) {
-    // Получаем имя ресурса для экспертной иконки, чтобы показать её в списке (она самая красивая)
     val context = LocalContext.current
-    val iconName = "expert_${skill.imageRes}"
-    val iconId = remember(skill.imageRes) {
+
+    // Очищаем имя от префикса "secondary_", чтобы найти файл (например, expert_archery)
+    val cleanName = skill.imageRes.replace("secondary_", "")
+    val iconName = "expert_$cleanName"
+
+    val iconId = remember(iconName) {
         context.resources.getIdentifier(iconName, "drawable", context.packageName)
     }
 
@@ -95,12 +97,9 @@ fun SkillCard(skill: SecondarySkill, onClick: () -> Unit) {
         elevation = CardDefaults.cardElevation(4.dp)
     ) {
         Row(
-            modifier = Modifier
-                .padding(12.dp)
-                .fillMaxWidth(),
+            modifier = Modifier.padding(12.dp).fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // Иконка навыка
             Box(
                 modifier = Modifier
                     .size(64.dp)
@@ -117,13 +116,12 @@ fun SkillCard(skill: SecondarySkill, onClick: () -> Unit) {
                         contentScale = ContentScale.Fit
                     )
                 } else {
-                    Text("?", color = Color.White)
+                    Text("?", color = Color.Red)
                 }
             }
 
             Spacer(modifier = Modifier.width(16.dp))
 
-            // Название
             Text(
                 text = skill.name,
                 color = HommGold,
@@ -136,13 +134,15 @@ fun SkillCard(skill: SecondarySkill, onClick: () -> Unit) {
 
 @Composable
 fun SecondarySkillDetailScreen(skill: SecondarySkill) {
+    // ВАЖНО: Получаем "чистое" имя ресурса (например, "archery" из "secondary_archery")
+    val cleanName = remember(skill.imageRes) { skill.imageRes.replace("secondary_", "") }
+
     AppBackground {
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
             contentPadding = PaddingValues(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // Заголовок
             item {
                 Spacer(modifier = Modifier.height(32.dp))
                 Text(
@@ -155,14 +155,14 @@ fun SecondarySkillDetailScreen(skill: SecondarySkill) {
                 Spacer(modifier = Modifier.height(24.dp))
             }
 
-            // Уровни мастерства (Базовый, Продвинутый, Эксперт)
+            // ИСПОЛЬЗУЕМ cleanName ПРИ ФОРМИРОВАНИИ ИМЕНИ ФАЙЛА
             item {
-                SkillLevelCard(levelName = "Базовый", imageName = "basic_${skill.imageRes}", description = skill.basic)
+                SkillLevelCard("Базовый", "basic_$cleanName", skill.basic)
                 Spacer(modifier = Modifier.height(16.dp))
-                SkillLevelCard(levelName = "Продвинутый", imageName = "advanced_${skill.imageRes}", description = skill.advanced)
+                SkillLevelCard("Продвинутый", "advanced_$cleanName", skill.advanced)
                 Spacer(modifier = Modifier.height(16.dp))
-                SkillLevelCard(levelName = "Эксперт", imageName = "expert_${skill.imageRes}", description = skill.expert)
-                Spacer(modifier = Modifier.height(16.dp))
+                SkillLevelCard("Эксперт", "expert_$cleanName", skill.expert)
+                Spacer(modifier = Modifier.height(32.dp))
             }
         }
     }
@@ -183,12 +183,10 @@ fun SkillLevelCard(levelName: String, imageName: String, description: String) {
         shape = HommShape
     ) {
         Row(
-            modifier = Modifier
-                .padding(16.dp)
-                .fillMaxWidth(),
+            modifier = Modifier.padding(16.dp).fillMaxWidth(),
             verticalAlignment = Alignment.Top
         ) {
-            // Картинка уровня (слева)
+            // Картинка уровня
             Box(
                 modifier = Modifier
                     .size(70.dp)
@@ -205,25 +203,26 @@ fun SkillLevelCard(levelName: String, imageName: String, description: String) {
                         contentScale = ContentScale.Fit
                     )
                 } else {
-                    Text("?", color = Color.White)
+                    // Если картинка не найдена, покажем красный вопрос для диагностики
+                    Text("?", color = Color.Red, fontSize = 24.sp, fontWeight = FontWeight.Bold)
                 }
             }
 
             Spacer(modifier = Modifier.width(16.dp))
 
-            // Текст (справа)
+            // Текст описания
             Column {
                 Text(
                     text = levelName,
                     color = HommGold,
-                    fontSize = 16.sp,
+                    fontSize = 18.sp,
                     fontWeight = FontWeight.Bold
                 )
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
                     text = description,
                     color = Color.White,
-                    fontSize = 16.sp,
+                    fontSize = 15.sp,
                     lineHeight = 20.sp
                 )
             }

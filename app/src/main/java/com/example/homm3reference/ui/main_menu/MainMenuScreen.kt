@@ -15,8 +15,8 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -38,65 +38,77 @@ fun MainMenuScreen(
 ) {
     var showAboutPopup by remember { mutableStateOf(false) }
 
+    // Получаем конфигурацию экрана для вычисления высоты
+    val configuration = LocalConfiguration.current
+    val screenHeight = configuration.screenHeightDp.dp
+
     AppBackground {
         Box(modifier = Modifier.fillMaxSize()) {
 
-            // --- ОСНОВНОЙ КОНТЕНТ ---
+            // --- ОСНОВНОЙ КОНТЕНТ (Скролл) ---
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .verticalScroll(rememberScrollState())
-                    .padding(vertical = 16.dp),
+                    .verticalScroll(rememberScrollState()), // Убрали паддинг сверху, чтобы картинка касалась края (если нужно)
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
+                verticalArrangement = Arrangement.Top // Начинаем сверху
             ) {
-                // Логотип/Картинка сверху с рамкой
-                Image(
-                    painter = painterResource(id = R.drawable.main_top),
-                    contentDescription = null,
+                // --- КОНТЕЙНЕР ДЛЯ КАРТИНКИ И КНОПКИ ЗВУКА ---
+                Box(
                     modifier = Modifier
-                        .fillMaxWidth(0.9f)
-                        .heightIn(max = 250.dp)
-                        .clip(RoundedCornerShape(16.dp))
-                        .border(2.dp, HommGold, RoundedCornerShape(16.dp)),
-                    contentScale = ContentScale.Fit
-                )
+                        .fillMaxWidth()
+                        .padding(16.dp) // Внешний отступ
+                        .height(screenHeight * 0.2f) // Ровно 20% высоты экрана
+                        .clip(RoundedCornerShape(16.dp)) // Закругляем контейнер
+                        //.border(2.dp, HommGold, RoundedCornerShape(16.dp)) // Золотая рамка
+                ) {
+                    // Картинка (Фон хедера)
+                    Image(
+                        painter = painterResource(id = R.drawable.top_header),
+                        contentDescription = null,
+                        modifier = Modifier.fillMaxSize(),
+                        // ContentScale.Crop - ключевой момент:
+                        // Картинка заполнит контейнер, сохраняя пропорции.
+                        // Лишнее по бокам (если формат 21:9) обрежется автоматически.
+                        contentScale = ContentScale.Crop
+                    )
 
-                Spacer(modifier = Modifier.height(32.dp))
+                    // Кнопка музыки (Поверх картинки)
+                    IconButton(
+                        onClick = onMuteToggle,
+                        modifier = Modifier
+                            .align(Alignment.TopStart) // Левый верхний угол
+                            .padding(8.dp) // Отступ внутри картинки
+                            .size(40.dp)
+                            .background(HommGlassBackground, CircleShape)
+                            .border(1.dp, HommGold, CircleShape)
+                    ) {
+                        Text(
+                            text = if (isMuted) "🔇" else "🔊",
+                            fontSize = 20.sp
+                        )
+                    }
+                }
 
-                // Кнопки меню
-                MenuButton(text = "Герои", onClick = onHeroesClick)
                 Spacer(modifier = Modifier.height(16.dp))
-                MenuButton(text = "Существа", onClick = onCreaturesClick)
-                Spacer(modifier = Modifier.height(16.dp))
-                MenuButton(text = "Вторичные навыки", onClick = onSkillsClick)
-                Spacer(modifier = Modifier.height(16.dp))
-                MenuButton(text = "Магия", onClick = onMagicClick)
-                Spacer(modifier = Modifier.height(16.dp))
-                MenuButton(text = "Артефакты", onClick = onArtifactsClick)
 
-                Spacer(modifier = Modifier.height(48.dp))
-            }
-
-            // --- КНОПКА МУЗЫКИ ---
-            IconButton(
-                onClick = onMuteToggle,
-                modifier = Modifier
-                    .padding(16.dp)
-                    .align(Alignment.TopStart)
-                    .statusBarsPadding()
-                    .size(48.dp)
-                    .background(HommGlassBackground, CircleShape)
-                    .border(2.dp, HommGold, CircleShape)
-            ) {
-                // Используем emoji, так как нужных иконок нет в базовом наборе Compose
-                Text(
-                    text = if (isMuted) "🔇" else "🔊",
-                    fontSize = 24.sp
-                )
+                // --- КНОПКИ МЕНЮ ---
+                // Центрируем их в оставшемся пространстве, если нужно, или просто выводим списком
+                Column(
+                    modifier = Modifier.padding(bottom = 80.dp), // Отступ снизу, чтобы не наехать на кнопку "About"
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.spacedBy(16.dp)
+                ) {
+                    MenuButton(text = "Герои", onClick = onHeroesClick)
+                    MenuButton(text = "Существа", onClick = onCreaturesClick)
+                    MenuButton(text = "Вторичные навыки", onClick = onSkillsClick)
+                    MenuButton(text = "Магия", onClick = onMagicClick)
+                    MenuButton(text = "Артефакты", onClick = onArtifactsClick)
+                }
             }
 
             // --- КНОПКА "ОБ АВТОРЕ" ---
+            // Она остается фиксированной в правом нижнем углу экрана
             IconButton(
                 onClick = { showAboutPopup = true },
                 modifier = Modifier
@@ -108,7 +120,7 @@ fun MainMenuScreen(
                     .border(2.dp, HommGold, CircleShape)
             ) {
                 Icon(
-                    imageVector = Icons.Default.Info, // Эта иконка есть в стандарте
+                    imageVector = Icons.Default.Info,
                     contentDescription = "About",
                     tint = HommGold
                 )

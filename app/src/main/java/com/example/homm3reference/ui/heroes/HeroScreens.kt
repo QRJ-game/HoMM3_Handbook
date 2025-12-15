@@ -407,7 +407,7 @@ fun SpecialtyInfoRow(
                             .width(60.dp)
                             .height(80.dp)
                             .clip(RoundedCornerShape(8.dp))
-                            .background(Color.Black.copy(alpha = 0.3f))
+                            .background(Color.Black.copy(alpha = 0.6f))
                             .border(2.dp, HommGold, RoundedCornerShape(8.dp)),
                         contentAlignment = Alignment.BottomCenter
                     ) {
@@ -542,9 +542,9 @@ fun SkillPopup(skill: SecondarySkill, onDismiss: () -> Unit) {
                 HorizontalDivider(modifier = Modifier.padding(vertical = 16.dp), color = HommGold)
 
                 SkillPopupRow("Основной", skill.basic, "basic_${skill.id}")
-                HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp), color = Color.White.copy(alpha=0.3f))
+                HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp), color = Color.White.copy(alpha=0.6f))
                 SkillPopupRow("Продвинутый", skill.advanced, "advanced_${skill.id}")
-                HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp), color = Color.White.copy(alpha=0.3f))
+                HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp), color = Color.White.copy(alpha=0.6f))
                 SkillPopupRow("Эксперт", skill.expert, "expert_${skill.id}")
             }
         }
@@ -604,11 +604,11 @@ fun SpellPopup(spell: Spell, onDismiss: () -> Unit) {
                 HorizontalDivider(color = Color.White, thickness = 1.dp)
 
                 SpellPopupRow("Нет", spell.manaCostNone, spell.descriptionNone)
-                HorizontalDivider(color = Color.White.copy(alpha = 0.3f))
+                HorizontalDivider(color = Color.White.copy(alpha = 0.6f))
                 SpellPopupRow("Базовый", spell.manaCostBasic, spell.descriptionBasic)
-                HorizontalDivider(color = Color.White.copy(alpha = 0.3f))
+                HorizontalDivider(color = Color.White.copy(alpha = 0.6f))
                 SpellPopupRow("Продв.", spell.manaCostAdvanced, spell.descriptionAdvanced)
-                HorizontalDivider(color = Color.White.copy(alpha = 0.3f))
+                HorizontalDivider(color = Color.White.copy(alpha = 0.6f))
                 SpellPopupRow("Эксперт", spell.manaCostExpert, spell.descriptionExpert)
             }
         }
