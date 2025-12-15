@@ -44,8 +44,8 @@ object ArtifactConstants {
         "Группе" to "group"
     )
 
-    val CLASSES = listOf("treasure", "minor", "major", "relic", "set")
-    val SLOTS = listOf("Right Hand", "Left Hand", "Helmet", "Necklace", "Torso", "Feet", "Cape", "Ring", "Miscellaneous")
+    val CLASSES = listOf("Сокровище", "Малый артефакт", "Великий артефакт", "Реликт", "Сборные артефакты")
+    val SLOTS = listOf("Правая рука", "Левая рука", "Голова", "Шея", "Грудь", "Ноги", "Плечи", "Кольцо", "Разное")
     val GROUPS = listOf(
         "Оружие", "Щиты", "Головные уборы", "Доспехи",
         "Артефакты, влияющие на все характеристики героя",
