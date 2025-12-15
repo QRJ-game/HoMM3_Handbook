@@ -25,6 +25,15 @@ import com.example.homm3reference.ui.common.AppBackground
 import com.example.homm3reference.ui.common.MenuButton
 import com.example.homm3reference.ui.theme.HommGlassBackground
 import com.example.homm3reference.ui.theme.HommGold
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.BlendMode
+import androidx.compose.ui.graphics.CompositingStrategy
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.draw.drawWithContent
+
 
 @Composable
 fun MainMenuScreen(
@@ -38,49 +47,63 @@ fun MainMenuScreen(
 ) {
     var showAboutPopup by remember { mutableStateOf(false) }
 
-    // Получаем конфигурацию экрана для вычисления высоты
     val configuration = LocalConfiguration.current
     val screenHeight = configuration.screenHeightDp.dp
 
     AppBackground {
         Box(modifier = Modifier.fillMaxSize()) {
 
-            // --- ОСНОВНОЙ КОНТЕНТ (Скролл) ---
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .verticalScroll(rememberScrollState()), // Убрали паддинг сверху, чтобы картинка касалась края (если нужно)
+                    .verticalScroll(rememberScrollState()),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Top // Начинаем сверху
+                verticalArrangement = Arrangement.Top
             ) {
-                // --- КОНТЕЙНЕР ДЛЯ КАРТИНКИ И КНОПКИ ЗВУКА ---
+                // --- КОНТЕЙНЕР ДЛЯ КАРТИНКИ И КНОПКИ ---
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(16.dp) // Внешний отступ
-                        .height(screenHeight * 0.2f) // Ровно 20% высоты экрана
-                        .clip(RoundedCornerShape(16.dp)) // Закругляем контейнер
-                        //.border(2.dp, HommGold, RoundedCornerShape(16.dp)) // Золотая рамка
+                        .height(screenHeight * 0.25f)
                 ) {
-                    // Картинка (Фон хедера)
                     Image(
                         painter = painterResource(id = R.drawable.top_header),
                         contentDescription = null,
-                        modifier = Modifier.fillMaxSize(),
-                        // ContentScale.Crop - ключевой момент:
-                        // Картинка заполнит контейнер, сохраняя пропорции.
-                        // Лишнее по бокам (если формат 21:9) обрежется автоматически.
-                        contentScale = ContentScale.Crop
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier
+                            .fillMaxSize()
+                            // 1. Создаем отдельный слой для отрисовки, чтобы смешивание цветов
+                            // работало только для этой картинки, а не вырезало дыру до черного экрана.
+                            .graphicsLayer { compositingStrategy = CompositingStrategy.Offscreen }
+                            // 2. Используем drawWithContent для наложения маски
+                            .drawWithContent {
+                                // Сначала рисуем саму картинку
+                                drawContent()
+
+                                // Затем рисуем градиент поверх с режимом DstIn.
+                                // В этом режиме:
+                                // Color.Black (непрозрачный) = картинка ВИДНА
+                                // Color.Transparent = картинка НЕ ВИДНА
+                                drawRect(
+                                    brush = Brush.verticalGradient(
+                                        0f to Color.Black,        // Верх картинки полностью видим
+                                        0.7f to Color.Black,      // До 30% высоты полная видимость
+                                        1f to Color.Transparent   // К самому низу полностью исчезает
+                                    ),
+                                    blendMode = BlendMode.DstIn
+                                )
+                            }
                     )
 
-                    // Кнопка музыки (Поверх картинки)
+                    // Кнопка музыки (Поверх всего)
                     IconButton(
                         onClick = onMuteToggle,
                         modifier = Modifier
-                            .align(Alignment.TopStart) // Левый верхний угол
-                            .padding(8.dp) // Отступ внутри картинки
+                            .align(Alignment.TopStart)
+                            .statusBarsPadding()
+                            .padding(8.dp)
                             .size(40.dp)
-                            .background(HommGlassBackground, CircleShape)
+                            .background(HommGlassBackground.copy(alpha = 0.6f), CircleShape)
                             .border(1.dp, HommGold, CircleShape)
                     ) {
                         Text(
@@ -88,14 +111,25 @@ fun MainMenuScreen(
                             fontSize = 20.sp
                         )
                     }
+
+                    // Опционально: Можно оставить золотую линию внизу для стиля,
+                    // или убрать её, если хотите просто плавное растворение в фоне.
+                    /*
+                    Box(
+                        modifier = Modifier
+                            .align(Alignment.BottomCenter)
+                            .fillMaxWidth()
+                            .height(2.dp)
+                            .background(HommGold)
+                    )
+                    */
                 }
 
                 Spacer(modifier = Modifier.height(16.dp))
 
                 // --- КНОПКИ МЕНЮ ---
-                // Центрируем их в оставшемся пространстве, если нужно, или просто выводим списком
                 Column(
-                    modifier = Modifier.padding(bottom = 80.dp), // Отступ снизу, чтобы не наехать на кнопку "About"
+                    modifier = Modifier.padding(bottom = 80.dp),
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
@@ -107,8 +141,7 @@ fun MainMenuScreen(
                 }
             }
 
-            // --- КНОПКА "ОБ АВТОРЕ" ---
-            // Она остается фиксированной в правом нижнем углу экрана
+            // ... (Код кнопки "Об авторе" и попапа остается без изменений) ...
             IconButton(
                 onClick = { showAboutPopup = true },
                 modifier = Modifier
@@ -126,7 +159,6 @@ fun MainMenuScreen(
                 )
             }
 
-            // --- ВСПЛЫВАЮЩЕЕ ОКНО ---
             if (showAboutPopup) {
                 AboutPopup(onDismiss = { showAboutPopup = false })
             }
