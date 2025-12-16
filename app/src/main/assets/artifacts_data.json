@@ -1489,9 +1489,9 @@
     "group": "Артефакты, повышающие прирост существ"
   },
   {
-    "id": "Грудь_of_legion",
+    "id": "torso_of_legion",
     "name": "Туловище легиона",
-    "imageRes": "artifact_Грудь_of_legion",
+    "imageRes": "artifact_torso_of_legion",
     "class": "Малый артефакт",
     "slot": "Разное",
     "goldCost": 5000,

@@ -30,6 +30,7 @@ import com.example.homm3reference.data.GameData
 import com.example.homm3reference.ui.common.AppBackground
 import com.example.homm3reference.ui.common.AppSearchBar
 import com.example.homm3reference.ui.common.MenuButton
+import com.example.homm3reference.R
 
 // Константы цветов для удобства и единообразия внутри файла
 private val HommGold = Color(0xFFD4AF37)
@@ -39,9 +40,9 @@ private val HommBorder = BorderStroke(2.dp, HommGold)
 
 object ArtifactConstants {
     val MENU_ITEMS = listOf(
-        "Классу" to "class",
-        "Слоту" to "slot",
-        "Группе" to "group"
+        "Слот на кукле Героя" to "slot",
+        "Класс (редкость)" to "class",
+        "Группа (свойство)" to "group"
     )
 
     val CLASSES = listOf("Сокровище", "Малый артефакт", "Великий артефакт", "Реликт", "Сборные артефакты")
@@ -102,11 +103,11 @@ fun ArtifactsMenuScreen(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     //verticalArrangement = Arrangement.Center
                 ) {
-                    Text("Сортировка по", color = HommGold, fontSize = 24.sp, fontWeight = FontWeight.Bold)
+                    Text("Сортировка по:", color = HommGold, fontSize = 24.sp, fontWeight = FontWeight.Bold)
                     Spacer(modifier = Modifier.height(24.dp))
                     ArtifactConstants.MENU_ITEMS.forEach { (label, type) ->
                         MenuButton(text = label, onClick = { onCategoryClick(type) })
-                        Spacer(modifier = Modifier.height(24.dp))
+                        Spacer(modifier = Modifier.height(16.dp))
                     }
                 }
             }
@@ -129,10 +130,12 @@ fun ArtifactCategorySelectScreen(categoryType: String, onValueClick: (String) ->
         Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
             Text(
                 text = "Выберите категорию",
-                fontSize = 22.sp,
+                fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
                 color = HommGold,
-                modifier = Modifier.padding(bottom = 16.dp).align(Alignment.CenterHorizontally)
+                modifier = Modifier
+                    .padding(bottom = 16.dp, top = 32.dp)
+                    .align(Alignment.CenterHorizontally)
             )
             LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 items(items) { item ->
@@ -141,16 +144,42 @@ fun ArtifactCategorySelectScreen(categoryType: String, onValueClick: (String) ->
                             .fillMaxWidth()
                             .clickable { onValueClick(item) },
                         colors = CardDefaults.cardColors(containerColor = HommGlassBackground),
-                        border = HommBorder,
+                        // border = HommBorder, // Убрали внешнюю рамку у карточки
+                        elevation = CardDefaults.cardElevation(4.dp), // Добавили тень как у артефактов
                         shape = HommShape
                     ) {
-                        Text(
-                            text = item,
-                            modifier = Modifier.padding(16.dp),
-                            color = Color.White,
-                            fontSize = 18.sp,
-                            fontWeight = FontWeight.Medium
-                        )
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(12.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            // Иконка в стиле ArtifactImage
+                            Box(
+                                modifier = Modifier
+                                    .size(64.dp) // Размер как у артефактов (было 48)
+                                    .background(Color.Black.copy(alpha = 0.6f), HommShape)
+                                    .border(2.dp, HommGold, HommShape) // Внутренняя золотая рамка картинки
+                                    .padding(4.dp),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Image(
+                                    painter = painterResource(id = getCategoryIcon(item)),
+                                    contentDescription = null,
+                                    modifier = Modifier.fillMaxSize(),
+                                    contentScale = ContentScale.Fit
+                                )
+                            }
+
+                            Spacer(modifier = Modifier.width(16.dp))
+
+                            Text(
+                                text = item,
+                                color = Color.White,
+                                fontSize = 18.sp,
+                                fontWeight = FontWeight.Medium
+                            )
+                        }
                     }
                 }
             }
@@ -165,7 +194,11 @@ fun ArtifactListScreen(artifacts: List<Artifact>, onArtifactClick: (Artifact) ->
             modifier = Modifier.fillMaxSize(),
             contentPadding = PaddingValues(16.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
+        )
+        {
+            item {
+                Spacer(modifier = Modifier.height(32.dp))
+            }
             items(artifacts) { artifact ->
                 ArtifactCard(artifact = artifact, onClick = { onArtifactClick(artifact) })
             }
@@ -237,7 +270,7 @@ fun ArtifactDetailScreen(
         ) {
             // --- HEADER ---
             item {
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(32.dp))
                 ArtifactImage(imageRes = artifact.imageRes, modifier = Modifier.size(120.dp))
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(
@@ -375,5 +408,46 @@ fun ArtifactImage(imageRes: String, modifier: Modifier = Modifier) {
         } else {
             Text("?", color = Color.White, fontSize = 24.sp)
         }
+    }
+}
+
+private fun getCategoryIcon(categoryName: String): Int {
+    return when (categoryName) {
+        // --- CLASSES (Классы) ---
+        "Сокровище" -> R.drawable.artifact_stoic_watchman
+        "Малый артефакт" -> R.drawable.artifact_greater_gnolls_flail
+        "Великий артефакт" -> R.drawable.artifact_cape_of_velocity
+        "Реликт" -> R.drawable.artifact_helm_of_heavenly_enlightenment
+        "Сборные артефакты" -> R.drawable.artifact_angelic_alliance
+
+        // --- SLOTS (Слоты) ---
+        "Правая рука" -> R.drawable.artifact_sword_of_judgement
+        "Левая рука" -> R.drawable.artifact_lions_shield_of_courage
+        "Голова" -> R.drawable.artifact_skull_helmet
+        "Шея" -> R.drawable.artifact_necklace_of_dragonteeth
+        "Грудь" -> R.drawable.artifact_titans_cuirass
+        "Ноги" -> R.drawable.artifact_boots_of_speed
+        "Плечи" -> R.drawable.artifact_cape_of_velocity
+        "Кольцо" -> R.drawable.artifact_ring_of_vitality
+        "Разное" -> R.drawable.artifact_inexhaustible_cart_of_lumber
+
+        // --- GROUPS (Группы) ---
+        "Оружие" -> R.drawable.artifact_blackshard_of_the_dead_knight
+        "Щиты" -> R.drawable.artifact_shield_of_the_damned
+        "Головные уборы" -> R.drawable.artifact_crown_of_the_supreme_magi
+        "Доспехи" -> R.drawable.artifact_breastplate_of_petrified_wood
+        "Артефакты, влияющие на все характеристики героя" -> R.drawable.artifact_sandals_of_the_saint
+        "Артефакты, влияющие на 2 характеристики героя" -> R.drawable.artifact_red_dragon_flame_tongue
+        "Артефакты, влияющие на удачу и боевой дух" -> R.drawable.artifact_clover_of_fortune
+        "Артефакты, влияющие на вторичные навыки героя" -> R.drawable.artifact_dead_mans_boots
+        "Артефакты, влияющие на скорость и очки хода" -> R.drawable.artifact_boots_of_speed
+        "Артефакты, влияющие на магию героя" -> R.drawable.artifact_tome_of_earth_magic
+        "Артефакты, влияющие на здоровье существ" -> R.drawable.artifact_vial_of_lifeblood
+        "Кулоны, дающие защиту от определенных заклинаний" -> R.drawable.artifact_pendant_of_negativity
+        "Артефакты, приносящие ресурсы" -> R.drawable.artifact_everpouring_vial_of_mercury
+        "Артефакты, повышающие прирост существ" -> R.drawable.artifact_legs_of_legion
+        "Прочие артефакты" -> R.drawable.artifact_shackles_of_war
+
+        else -> R.drawable.artifact_grail // Заглушка
     }
 }

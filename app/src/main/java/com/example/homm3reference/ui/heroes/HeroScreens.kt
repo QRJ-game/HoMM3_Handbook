@@ -69,7 +69,7 @@ fun ClassSelectionScreen(
                     modifier = Modifier
                         .weight(1f)
                         .height(160.dp)
-                        .padding(8.dp)
+                        .padding(end = 8.dp)
                         .clickable { onClassSelected("Might") },
                     colors = CardDefaults.cardColors(containerColor = HommGlassBackground),
                     border = HommBorder,
@@ -90,7 +90,7 @@ fun ClassSelectionScreen(
                     modifier = Modifier
                         .weight(1f)
                         .height(160.dp)
-                        .padding(8.dp)
+                        .padding(start = 8.dp)
                         .clickable { onClassSelected("Magic") },
                     colors = CardDefaults.cardColors(containerColor = HommGlassBackground),
                     border = HommBorder,
