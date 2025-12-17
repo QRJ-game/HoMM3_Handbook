@@ -153,7 +153,7 @@ fun SecondarySkillDetailScreen(skill: SecondarySkill) {
                     fontWeight = FontWeight.Bold,
                     textAlign = TextAlign.Center
                 )
-                Spacer(modifier = Modifier.height(24.dp))
+                Spacer(modifier = Modifier.height(8.dp))
             }
 
             // ИСПОЛЬЗУЕМ cleanName ПРИ ФОРМИРОВАНИИ ИМЕНИ ФАЙЛА
@@ -163,7 +163,7 @@ fun SecondarySkillDetailScreen(skill: SecondarySkill) {
                 SkillLevelCard("Продвинутый", "advanced_$cleanName", skill.advanced)
                 Spacer(modifier = Modifier.height(16.dp))
                 SkillLevelCard("Эксперт", "expert_$cleanName", skill.expert)
-                Spacer(modifier = Modifier.height(32.dp))
+                Spacer(modifier = Modifier.height(16.dp))
             }
         }
     }

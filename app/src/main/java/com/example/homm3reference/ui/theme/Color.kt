@@ -14,4 +14,6 @@ val Pink40 = Color(0xFF7D5260)
 // Основной золотой цвет рамок и заголовков
 val HommGold = Color(0xFFD4AF37)
 // Полупрозрачный черный фон ("Стекло") для карточек и плашек
+val HommWhite = Color.White
+
 val HommGlassBackground = Color.Black.copy(alpha = 0.6f)

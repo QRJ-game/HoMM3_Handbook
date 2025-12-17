@@ -22,7 +22,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.homm3reference.R
 import com.example.homm3reference.ui.common.AppBackground
-import com.example.homm3reference.ui.common.MenuButton
 import com.example.homm3reference.ui.theme.HommGlassBackground
 import com.example.homm3reference.ui.theme.HommGold
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -43,6 +42,7 @@ fun MainMenuScreen(
     onSkillsClick: () -> Unit,
     onMagicClick: () -> Unit,
     onArtifactsClick: () -> Unit,
+    onUtilitiesClick: () -> Unit,
     isMuted: Boolean,
     onMuteToggle: () -> Unit
 ) {
@@ -167,6 +167,12 @@ fun MainMenuScreen(
                         text = "Артефакты",
                         imageRes = "artifact_centaurs_axe",
                         onClick = onArtifactsClick,
+                        modifier = menuPadding
+                    )
+                    HommListCard(
+                        text = "Утилиты",
+                        imageRes = "menu_utils", // Убедитесь, что файл menu_utils.png добавлен в drawable, иначе используйте заглушку
+                        onClick = onUtilitiesClick,
                         modifier = menuPadding
                     )
                 }

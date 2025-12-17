@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Homm3Reference</string>
+	<string name="menu_utilities">Утилиты</string>
+	<string name="utility_upgrade_check">Проверка на улучшенный отряд</string>
+	<string name="calc_coord_x">Координата X</string>
+	<string name="calc_coord_y">Координата Y</string>
+	<string name="calc_location">Расположение</string>
+	<string name="calc_surface">Поверхность</string>
+	<string name="calc_dungeon">Подземелье</string>
+	<string name="calc_button">Расчёт</string>
+	<string name="calc_result_yes">ЕСТЬ улучшенный стек</string>
+	<string name="calc_result_no">НЕТ улучшенного стека</string>
+	<string name="calc_enter_data">Введите координаты</string>
 </resources>
+

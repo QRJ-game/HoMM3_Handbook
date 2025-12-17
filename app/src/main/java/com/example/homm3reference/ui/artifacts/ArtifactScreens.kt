@@ -29,8 +29,8 @@ import com.example.homm3reference.data.Artifact
 import com.example.homm3reference.data.GameData
 import com.example.homm3reference.ui.common.AppBackground
 import com.example.homm3reference.ui.common.AppSearchBar
-import com.example.homm3reference.ui.common.MenuButton
 import com.example.homm3reference.R
+import com.example.homm3reference.ui.common.HommListCard
 
 // Константы цветов для удобства и единообразия внутри файла
 private val HommGold = Color(0xFFD4AF37)
@@ -40,7 +40,7 @@ private val HommBorder = BorderStroke(2.dp, HommGold)
 
 object ArtifactConstants {
     val MENU_ITEMS = listOf(
-        "Слот на кукле Героя" to "slot",
+        "Слот героя" to "slot",
         "Класс (редкость)" to "class",
         "Группа (свойство)" to "group"
     )
@@ -94,20 +94,40 @@ fun ArtifactsMenuScreen(
             if (searchQuery.isNotBlank()) {
                 Box(modifier = Modifier.padding(horizontal = 16.dp)) { searchResultsContent() }
             } else {
-
                 Column(
-
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(16.dp),
                     horizontalAlignment = Alignment.CenterHorizontally,
-                    //verticalArrangement = Arrangement.Center
                 ) {
-                    Text("Сортировка по:", color = HommGold, fontSize = 24.sp, fontWeight = FontWeight.Bold)
-                    Spacer(modifier = Modifier.height(24.dp))
-                    ArtifactConstants.MENU_ITEMS.forEach { (label, type) ->
-                        MenuButton(text = label, onClick = { onCategoryClick(type) })
-                        Spacer(modifier = Modifier.height(16.dp))
+                    Text(
+                        "Сортировка по:",
+                        color = HommGold,
+                        fontSize = 24.sp,
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier.padding(bottom = 24.dp)
+                    )
+
+                    // Используем LazyColumn для списка кнопок
+                    LazyColumn(
+                        verticalArrangement = Arrangement.spacedBy(16.dp),
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        items(ArtifactConstants.MENU_ITEMS) { (label, type) ->
+                            // Определяем иконку для каждой категории
+                            val iconRes = when(type) {
+                                "slot" -> "sort_slot"
+                                "class" -> "sort_class"
+                                "group" -> "sort_group"
+                                else -> "icon_def" // Заглушка
+                            }
+
+                            HommListCard(
+                                text = label,
+                                imageRes = iconRes,
+                                onClick = { onCategoryClick(type) }
+                            )
+                        }
                     }
                 }
             }

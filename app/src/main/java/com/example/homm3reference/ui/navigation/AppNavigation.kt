@@ -15,6 +15,7 @@ import com.example.homm3reference.ui.heroes.*
 import com.example.homm3reference.ui.magic.*
 import com.example.homm3reference.ui.main_menu.MainMenuScreen
 import com.example.homm3reference.ui.skills.*
+import com.example.homm3reference.ui.utils.*
 
 enum class Screen {
     MainMenu,
@@ -22,7 +23,9 @@ enum class Screen {
     CreatureTowns, CreatureList, CreatureDetail,
     SkillsList, SkillDetail,
     MagicSchools, MagicList, MagicDetail,
-    ArtifactsMenu, ArtifactsCategory, ArtifactsList, ArtifactDetail
+    ArtifactsMenu, ArtifactsCategory, ArtifactsList, ArtifactDetail,
+
+    UtilitiesMenu, UtilityUpgradeCheck
 }
 
 val TOWN_ORDER = listOf(
@@ -89,6 +92,7 @@ fun AppRoot(
                 onSkillsClick = { skillsSearchQuery = ""; currentScreen = Screen.SkillsList },
                 onMagicClick = { magicSearchQuery = ""; selectedSchool = null; currentScreen = Screen.MagicSchools },
                 onArtifactsClick = { artifactsSearchQuery = ""; currentScreen = Screen.ArtifactsMenu },
+                onUtilitiesClick = { currentScreen = Screen.UtilitiesMenu },
                 isMuted = isMuted,
                 onMuteToggle = onMuteToggle
             )
@@ -239,6 +243,18 @@ fun AppRoot(
         Screen.ArtifactDetail -> {
             BackHandler { currentScreen = if (artifactsSearchQuery.isNotBlank()) Screen.ArtifactsMenu else Screen.ArtifactsList }
             selectedArtifact?.let { ArtifactDetailScreen(it) { newA -> selectedArtifact = newA } }
+        }
+        Screen.UtilitiesMenu -> {
+            BackHandler { currentScreen = Screen.MainMenu }
+            // Не забудьте импортировать UtilitiesMenuScreen
+            com.example.homm3reference.ui.utils.UtilitiesMenuScreen(
+                onUpgradeCheckerClick = { currentScreen = Screen.UtilityUpgradeCheck }
+            )
+        }
+        Screen.UtilityUpgradeCheck -> {
+            BackHandler { currentScreen = Screen.UtilitiesMenu }
+            // Не забудьте импортировать CreatureUpgradeCheckerScreen
+            com.example.homm3reference.ui.utils.CreatureUpgradeCheckerScreen()
         }
     }
 }

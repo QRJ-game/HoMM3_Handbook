@@ -72,28 +72,6 @@ fun AppBackground(
     }
 }
 
-
-@Composable
-fun MenuButton(text: String, onClick: () -> Unit) {
-    Button(
-        onClick = onClick,
-        modifier = Modifier
-            .width(280.dp)
-            .height(60.dp),
-        colors = ButtonDefaults.buttonColors(containerColor = HommGlassBackground),
-        shape = HommShape,
-        border = HommBorder
-    ) {
-        Text(
-            text = text,
-            textAlign = TextAlign.Center,
-            fontSize = 20.sp,
-            color = HommGold,
-            fontWeight = FontWeight.Bold
-        )
-    }
-}
-
 @SuppressLint("DiscouragedApi")
 @Composable
 fun TownCard(townName: String, onClick: () -> Unit) {

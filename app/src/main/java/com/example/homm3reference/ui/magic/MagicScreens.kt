@@ -260,12 +260,12 @@ fun SpellListScreen(
                 modifier = Modifier.padding(vertical = 8.dp).align(Alignment.CenterHorizontally)
             )
 
-            AppSearchBar(
-                query = searchQuery,
-                onQueryChanged = { searchQuery = it },
-                modifier = Modifier.padding(bottom = 24.dp, top = 8.dp),
-                placeholderText = "Поиск заклинания..."
-            )
+//            AppSearchBar(
+//                query = searchQuery,
+//                onQueryChanged = { searchQuery = it },
+//                modifier = Modifier.padding(bottom = 24.dp, top = 8.dp),
+//                placeholderText = "Поиск заклинания..."
+//            )
 
             LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 groupedSpells.forEach { (_, levelSpells) ->
