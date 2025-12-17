@@ -72,12 +72,13 @@ fun AppBackground(
     }
 }
 
+
 @Composable
 fun MenuButton(text: String, onClick: () -> Unit) {
     Button(
         onClick = onClick,
         modifier = Modifier
-            .width(280.dp) // Чуть шире для длинных названий
+            .width(280.dp)
             .height(60.dp),
         colors = ButtonDefaults.buttonColors(containerColor = HommGlassBackground),
         shape = HommShape,
@@ -86,7 +87,7 @@ fun MenuButton(text: String, onClick: () -> Unit) {
         Text(
             text = text,
             textAlign = TextAlign.Center,
-            fontSize = 20.sp, // Чуть меньше шрифт, чтобы влезало "Вторичные навыки"
+            fontSize = 20.sp,
             color = HommGold,
             fontWeight = FontWeight.Bold
         )
@@ -321,4 +322,67 @@ fun AppSearchBar(
         singleLine = true,
         leadingIcon = { Text("🔍", fontSize = 18.sp, color = HommGold) }
     )
+}
+
+// Добавьте этот код в конец файла или в удобное место
+@SuppressLint("DiscouragedApi")
+@Composable
+fun HommListCard(
+    text: String,
+    imageRes: String,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    val context = LocalContext.current
+    val imageId = remember(imageRes) {
+        context.resources.getIdentifier(imageRes, "drawable", context.packageName)
+    }
+
+    Card(
+        modifier = modifier
+            .fillMaxWidth()
+            .clickable { onClick() },
+        colors = CardDefaults.cardColors(containerColor = HommGlassBackground),
+        border = HommBorder, // Используем золотую рамку для единообразия меню
+        shape = HommShape,
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+    ) {
+        Row(
+            modifier = Modifier
+                .padding(12.dp) // Отступы как в карточке героя
+                .fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            // Иконка в стиле портрета героя
+            if (imageId != 0) {
+                Image(
+                    painter = painterResource(id = imageId),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(48.dp)
+                        .clip(RoundedCornerShape(8.dp))
+                        .border(-1.dp, HommGold, RoundedCornerShape(8.dp)), // Золотая рамка вокруг иконки
+                    contentScale = ContentScale.Crop
+                )
+            } else {
+                // Заглушка
+                Box(
+                    modifier = Modifier
+                        .size(64.dp)
+                        .clip(RoundedCornerShape(8.dp))
+                        .background(Color.Gray.copy(alpha = 0.6f))
+                        .border(-1.dp, HommGold, RoundedCornerShape(8.dp))
+                )
+            }
+
+            Spacer(modifier = Modifier.width(16.dp))
+
+            Text(
+                text = text,
+                fontSize = 24.sp,
+                fontWeight = FontWeight.Bold,
+                color = HommGold
+            )
+        }
+    }
 }

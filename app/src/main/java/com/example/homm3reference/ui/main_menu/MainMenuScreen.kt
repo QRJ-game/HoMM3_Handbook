@@ -33,6 +33,7 @@ import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.CompositingStrategy
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.draw.drawWithContent
+import com.example.homm3reference.ui.common.HommListCard
 
 
 @Composable
@@ -125,19 +126,49 @@ fun MainMenuScreen(
                     */
                 }
 
-                Spacer(modifier = Modifier.height(16.dp))
+                //Spacer(modifier = Modifier.height(16.dp))
 
                 // --- КНОПКИ МЕНЮ ---
                 Column(
-                    modifier = Modifier.padding(bottom = 80.dp),
+                   // modifier = Modifier.padding(bottom = 0.dp),
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
-                    MenuButton(text = "Герои", onClick = onHeroesClick)
-                    MenuButton(text = "Существа", onClick = onCreaturesClick)
-                    MenuButton(text = "Вторичные навыки", onClick = onSkillsClick)
-                    MenuButton(text = "Магия", onClick = onMagicClick)
-                    MenuButton(text = "Артефакты", onClick = onArtifactsClick)
+                    val menuPadding = Modifier.padding(horizontal = 16.dp, vertical = 0.dp)
+                    HommListCard(
+                        text = "Герои",
+                        imageRes = "hero_catherine_menu",
+                        onClick = onHeroesClick,
+                        modifier = menuPadding
+                    )
+
+                    HommListCard(
+                        text = "Существа",
+                        imageRes = "creature_champion",
+                        onClick = onCreaturesClick,
+                        modifier = menuPadding
+                    )
+
+                    HommListCard(
+                        text = "Вторичные навыки",
+                        imageRes = "expert_tactics",
+                        onClick = onSkillsClick,
+                        modifier = menuPadding
+                    )
+
+                    HommListCard(
+                        text = "Магия",
+                        imageRes = "spell_lightning_bolt_menu",
+                        onClick = onMagicClick,
+                        modifier = menuPadding
+                    )
+
+                    HommListCard(
+                        text = "Артефакты",
+                        imageRes = "artifact_centaurs_axe",
+                        onClick = onArtifactsClick,
+                        modifier = menuPadding
+                    )
                 }
             }
 
