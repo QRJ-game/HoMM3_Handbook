@@ -27,6 +27,7 @@ import com.example.homm3reference.ui.common.AppSearchBar
 import com.example.homm3reference.ui.common.HeroImage
 import com.example.homm3reference.ui.theme.HommGlassBackground
 import com.example.homm3reference.ui.theme.HommGold
+import android.graphics.Color as AndroidColor
 
 // Локальные константы
 private val HommShape = RoundedCornerShape(8.dp)
@@ -173,15 +174,30 @@ fun MagicSchoolCard(
 }
 
 
-// ... Остальной код (SpellCard, SpellListScreen, SpellDetailScreen и т.д.) без изменений ...
 @Composable
 fun SpellCard(spell: Spell, onClick: () -> Unit) {
+    // Вычисляем цвет: если в JSON есть backgroundColor, используем его, иначе стандартный HommGlassBackground
+    val cardBackgroundColor = remember(spell.backgroundColor) {
+        if (!spell.backgroundColor.isNullOrBlank()) {
+            try {
+                // Парсим hex-строку (например, "#006400") в Compose Color
+                Color(AndroidColor.parseColor(spell.backgroundColor))
+            } catch (e: Exception) {
+                // Если цвет задан некорректно, используем стандартный
+                HommGlassBackground
+            }
+        } else {
+            HommGlassBackground
+        }
+    }
+
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .clickable { onClick() },
-        colors = CardDefaults.cardColors(containerColor = HommGlassBackground),
-        //border = HommBorder,
+        // Используем вычисленный цвет здесь
+        colors = CardDefaults.cardColors(containerColor = cardBackgroundColor),
+        // border = HommBorder, // Можно раскомментировать, если нужна рамка
         shape = HommShape,
         elevation = CardDefaults.cardElevation(4.dp)
     ) {
@@ -345,6 +361,6 @@ fun mapSchoolName(schoolId: String): String {
         "Air" -> "Магия Воздуха"
         "Fire" -> "Магия Огня"
         "Water" -> "Магия Воды"
-        else -> schoolId
+        else -> "Все стихии"
     }
 }

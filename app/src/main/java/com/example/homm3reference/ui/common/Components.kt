@@ -153,7 +153,7 @@ fun TownCard(townName: String, onClick: () -> Unit) {
                 text = townName,
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color.White,
+                color = HommGold,
                 modifier = Modifier
                     .align(Alignment.BottomCenter)
                     .padding(bottom = 12.dp),

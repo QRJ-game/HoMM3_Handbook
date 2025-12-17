@@ -79,7 +79,7 @@ fun ClassSelectionScreen(
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
                             Text("⚔️", fontSize = 40.sp)
                             Spacer(modifier = Modifier.height(8.dp))
-                            Text(mightClassName, fontSize = 16.sp, fontWeight = FontWeight.Bold, color = HommGold)
+                            Text(mightClassName, fontSize = 16.sp, fontWeight = FontWeight.Bold, color = HommGold, textAlign = TextAlign.Center, lineHeight = 20.sp)
                             Text("Воин", fontSize = 16.sp, color = Color.White.copy(alpha = 0.9f))
                         }
                     }
@@ -100,8 +100,8 @@ fun ClassSelectionScreen(
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
                             Text("⚡", fontSize = 40.sp)
                             Spacer(modifier = Modifier.height(8.dp))
-                            Text(magicClassName, fontSize = 18.sp, fontWeight = FontWeight.Bold, color = HommGold)
-                            Text("Маг", fontSize = 14.sp, color = Color.White.copy(alpha = 0.8f))
+                            Text(magicClassName, fontSize = 16.sp, fontWeight = FontWeight.Bold, color = HommGold, textAlign = TextAlign.Center, lineHeight = 20.sp)
+                            Text("Маг", fontSize = 16.sp, color = Color.White.copy(alpha = 0.9f))
                         }
                     }
                 }
@@ -164,11 +164,26 @@ fun HeroListScreen(
 
 @Composable
 fun HeroCard(hero: Hero, onHeroSelected: (Hero) -> Unit) {
+    // Логика определения цвета фона (аналогично заклинаниям)
+    val cardBackgroundColor = remember(hero.backgroundColor) {
+        if (!hero.backgroundColor.isNullOrBlank()) {
+            try {
+                // Парсим цвет из hex-строки (например, "#DC143C")
+                Color(android.graphics.Color.parseColor(hero.backgroundColor))
+            } catch (e: Exception) {
+                HommGlassBackground
+            }
+        } else {
+            HommGlassBackground
+        }
+    }
+
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .clickable { onHeroSelected(hero) },
-        colors = CardDefaults.cardColors(containerColor = HommGlassBackground),
+        // Используем динамический цвет
+        colors = CardDefaults.cardColors(containerColor = cardBackgroundColor),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         //border = HommBorder,
         shape = HommShape
