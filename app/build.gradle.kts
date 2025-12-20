@@ -9,7 +9,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.homm3.guidebook"
+        applicationId = "com.example.homm3reference"
         minSdk = 26
         targetSdk = 34
         versionCode = 2
