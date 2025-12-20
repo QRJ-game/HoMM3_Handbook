@@ -113,19 +113,16 @@ fun NecromancyCalculatorScreen() {
         val skeletonHealth = 6.0
 
         // ШАГ 1: Лимит по Очкам Некромантии (из здоровья)
-        // (Суммарное ХП * Процент) / 6
         val necromancyPoints = totalHealth * percentFactor
         val limitByHP = floor(necromancyPoints / skeletonHealth).toInt()
 
         // ШАГ 2: Лимит по Количеству Существ (Правило HotA)
-        // Кол-во трупов * Процент
         val limitByUnitCount = floor(creatureCount * percentFactor).toInt()
 
         // ШАГ 3: Выбираем минимум
         var calculatedSkeletons = min(limitByHP, limitByUnitCount)
 
-        // Минимальная гарантия 1 (если процент > 0 и враги были)
-        // В HoMM3 обычно если шанс > 0, то минимум 1, если математика не дает строго 0 из-за отсутствия трупов
+        // Минимальная гарантия 1
         if (calculatedSkeletons < 1 && totalPercent > 0 && creatureCount > 0) {
             calculatedSkeletons = 1
         }
@@ -199,10 +196,10 @@ fun NecromancyCalculatorScreen() {
                                     labelColor = HommWhite
                                 ),
                                 border = FilterChipDefaults.filterChipBorder(
-                                    borderColor = HommGold,
+                                    borderColor = Color.Gray, // СЕРАЯ ОБВОДКА
                                     selectedBorderColor = HommGold,
-                                    borderWidth = 2.dp,
-                                    selectedBorderWidth = 2.dp,
+                                    borderWidth = 1.dp, // 1.dp невыбранный
+                                    selectedBorderWidth = 2.dp, // 2.dp выбранный
                                     enabled = true,
                                     selected = necromancyLevel == index
                                 ),
@@ -213,21 +210,18 @@ fun NecromancyCalculatorScreen() {
 
                     Spacer(modifier = Modifier.height(16.dp))
 
-                    // 2. Артефакты и Специалист (в один ряд)
+                    // 2. Артефакты и Специалист
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
-                        // Кнопка специалиста
                         ArtifactToggle("util_vidomisra", isSpecialist) { isSpecialist = !isSpecialist }
-
-                        // Артефакты
                         ArtifactToggle("artifact_amulet_of_the_undertaker", hasAmulet) { hasAmulet = !hasAmulet }
                         ArtifactToggle("artifact_vampires_cowl", hasCowl) { hasCowl = !hasCowl }
                         ArtifactToggle("artifact_dead_mans_boots", hasBoots) { hasBoots = !hasBoots }
                     }
 
-                    // Анимация появления поля ввода уровня героя
+                    // Анимация появления поля уровня героя
                     AnimatedVisibility(
                         visible = isSpecialist,
                         enter = fadeIn() + expandVertically(),
@@ -235,7 +229,8 @@ fun NecromancyCalculatorScreen() {
                     ) {
                         Column {
                             Spacer(modifier = Modifier.height(12.dp))
-                            NecroTextField(
+                            // Используем HommTextField из пакета ui.utils
+                            HommTextField(
                                 value = heroLevelStr,
                                 onValueChange = { str ->
                                     if (str.all { it.isDigit() }) {
@@ -250,14 +245,14 @@ fun NecromancyCalculatorScreen() {
 
                     Spacer(modifier = Modifier.height(16.dp))
 
-                    // 4. Строения: Усилители и Грааль
+                    // 4. Строения
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
                         Box(modifier = Modifier.weight(1f)) {
-                            NecroTextField(
+                            HommTextField(
                                 value = amplifierCountStr,
                                 onValueChange = { str ->
                                     if (str.all { it.isDigit() }) {
@@ -265,13 +260,12 @@ fun NecromancyCalculatorScreen() {
                                         if (num <= 255) amplifierCountStr = str
                                     }
                                 },
-                                label = "УСИЛИТЕЛИ НЕКРОМАНТИИ"
+                                label = "УСИЛИТЕЛИ"
                             )
                         }
 
                         Spacer(modifier = Modifier.width(16.dp))
 
-                        // Грааль кнопка
                         FilterChip(
                             selected = hasGrail,
                             onClick = { hasGrail = !hasGrail },
@@ -287,14 +281,14 @@ fun NecromancyCalculatorScreen() {
                                 containerColor = Color.Transparent,
                             ),
                             border = FilterChipDefaults.filterChipBorder(
-                                borderColor = HommGold,
+                                borderColor = Color.Gray, // СЕРАЯ ОБВОДКА
                                 selectedBorderColor = HommGold,
-                                borderWidth = 2.dp,
+                                borderWidth = 1.dp,
                                 selectedBorderWidth = 2.dp,
                                 enabled = true,
                                 selected = hasGrail
                             ),
-                            modifier = Modifier.height(45.dp)
+                            modifier = Modifier.height(56.dp)
                         )
                     }
 
@@ -354,10 +348,10 @@ fun NecromancyCalculatorScreen() {
                             modifier = Modifier.weight(1f),
                             verticalArrangement = Arrangement.Center
                         ) {
-                            NecroTextField(
+                            HommTextField(
                                 value = creatureCountStr,
                                 onValueChange = { if (it.all { c -> c.isDigit() }) creatureCountStr = it },
-                                label = "КОЛИЧЕСТВО ЮНИТОВ"
+                                label = "КОЛ-ВО"
                             )
 
                             Spacer(modifier = Modifier.height(8.dp))
@@ -546,8 +540,8 @@ fun ArtifactToggle(resIdName: String, isSelected: Boolean, onClick: () -> Unit) 
             .clip(RoundedCornerShape(8.dp))
             .background(Color.Black.copy(alpha = 0.6f))
             .border(
-                width = if (isSelected) 2.dp else 1.dp,
-                color = if (isSelected) HommGold else HommWhite.copy(alpha = 0.3f), // Сделал чуть бледнее если не выбрано
+                width = if (isSelected) 2.dp else 1.dp, // 1.dp unselected like HommTextField
+                color = if (isSelected) HommGold else HommWhite.copy(alpha = 0.5f), // Matching HommTextField unfocused
                 shape = RoundedCornerShape(8.dp)
             )
             .clickable { onClick() }
@@ -563,25 +557,6 @@ fun ArtifactToggle(resIdName: String, isSelected: Boolean, onClick: () -> Unit) 
             )
         }
     }
-}
-
-// Единый стиль для всех полей ввода в этом экране
-@Composable
-fun NecroTextField(value: String, onValueChange: (String) -> Unit, label: String) {
-    OutlinedTextField(
-        value = value,
-        onValueChange = onValueChange,
-        label = { Text(label, fontSize = 12.sp, fontWeight = FontWeight.Bold, color = HommGold) },
-        singleLine = true,
-        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-        textStyle = TextStyle(fontSize = 18.sp, color = HommWhite),
-        colors = OutlinedTextFieldDefaults.colors(
-            focusedBorderColor = HommGold,
-            unfocusedBorderColor = HommWhite.copy(alpha = 0.5f),
-            cursorColor = HommGold
-        ),
-        modifier = Modifier.fillMaxWidth().height(60.dp)
-    )
 }
 
 @SuppressLint("DiscouragedApi")
