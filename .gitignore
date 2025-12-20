@@ -2,6 +2,8 @@
 /keystore
 *.jks
 *.keystore
+*.aab
+*.apk
 
 
 *.iml

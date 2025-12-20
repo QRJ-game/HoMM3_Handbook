@@ -104,7 +104,7 @@ fun SkillCard(skill: SecondarySkill, onClick: () -> Unit) {
             Box(
                 modifier = Modifier
                     .size(64.dp)
-                    .background(Color.Black.copy(alpha = 0.3f), HommShape)
+                    .background(Color.Black.copy(alpha = 0.6f), HommShape)
                     .border(2.dp, HommGold, HommShape)
                     .padding(4.dp),
                 contentAlignment = Alignment.Center
@@ -145,8 +145,9 @@ fun SecondarySkillDetailScreen(skill: SecondarySkill) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             item {
-                Spacer(modifier = Modifier.height(32.dp))
+                Spacer(modifier = Modifier.height(28.dp))
                 Text(
+                    fontSize = 24.sp,
                     text = skill.name,
                     style = MaterialTheme.typography.headlineMedium,
                     color = HommGold,
@@ -155,8 +156,6 @@ fun SecondarySkillDetailScreen(skill: SecondarySkill) {
                 )
                 Spacer(modifier = Modifier.height(8.dp))
             }
-
-            // ИСПОЛЬЗУЕМ cleanName ПРИ ФОРМИРОВАНИИ ИМЕНИ ФАЙЛА
             item {
                 SkillLevelCard("Базовый", "basic_$cleanName", skill.basic)
                 Spacer(modifier = Modifier.height(16.dp))
@@ -185,13 +184,13 @@ fun SkillLevelCard(levelName: String, imageName: String, description: String) {
     ) {
         Row(
             modifier = Modifier.padding(16.dp).fillMaxWidth(),
-            verticalAlignment = Alignment.Top
+            verticalAlignment = Alignment.CenterVertically
         ) {
             // Картинка уровня
             Box(
                 modifier = Modifier
                     .size(70.dp)
-                    .background(Color.Black.copy(alpha = 0.3f), HommShape)
+                    .background(Color.Black.copy(alpha = 0.6f), HommShape)
                     .border(2.dp, HommGold, HommShape)
                     .padding(4.dp),
                 contentAlignment = Alignment.Center

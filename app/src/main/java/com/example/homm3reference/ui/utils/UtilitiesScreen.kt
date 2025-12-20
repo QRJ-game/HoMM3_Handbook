@@ -23,7 +23,8 @@ import com.example.homm3reference.ui.theme.HommGold
 
 @Composable
 fun UtilitiesMenuScreen(
-    onUpgradeCheckerClick: () -> Unit
+    onUpgradeCheckerClick: () -> Unit,
+    onNecromancyClick: () -> Unit // Новый колбэк
 ) {
     AppBackground {
         Box(modifier = Modifier.fillMaxSize()) {
@@ -47,13 +48,23 @@ fun UtilitiesMenuScreen(
                             color = HommGold
                         )
                         Spacer(modifier = Modifier.height(16.dp))
+
+                        // Кнопка 1: Checker
                         HommListCard(
                             text = "Проверка на улучшенный отряд",
-                            imageRes = "unil_checker", // Используем существующую иконку как заглушку, либо замените на menu_utils если она есть
+                            imageRes = "util_checker",
                             onClick = onUpgradeCheckerClick
                         )
+
+                        Spacer(modifier = Modifier.height(16.dp))
+
+                        // Кнопка 2: Necromancy
+                        HommListCard(
+                            text = "Калькулятор некромантии",
+                            imageRes = "util_necro",
+                            onClick = onNecromancyClick
+                        )
                     }
-                    // Сюда можно добавлять другие утилиты в будущем
                 }
             }
         }

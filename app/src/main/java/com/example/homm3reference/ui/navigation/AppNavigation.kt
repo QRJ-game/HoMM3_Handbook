@@ -25,7 +25,7 @@ enum class Screen {
     MagicSchools, MagicList, MagicDetail,
     ArtifactsMenu, ArtifactsCategory, ArtifactsList, ArtifactDetail,
 
-    UtilitiesMenu, UtilityUpgradeCheck
+    UtilitiesMenu, UtilityUpgradeCheck, UtilityNecromancy // Добавлен UtilityNecromancy
 }
 
 val TOWN_ORDER = listOf(
@@ -54,7 +54,7 @@ fun AppRoot(
     var selectedCreature by remember { mutableStateOf<Creature?>(null) }
     var creaturesSearchQuery by remember { mutableStateOf("") }
 
-    // Навыки (Добавлено skillsSearchQuery)
+    // Навыки
     var selectedSkill by remember { mutableStateOf<SecondarySkill?>(null) }
     var skillsSearchQuery by remember { mutableStateOf("") }
 
@@ -168,7 +168,6 @@ fun AppRoot(
             BackHandler { currentScreen = Screen.MainMenu }
             val filtered = if (skillsSearchQuery.isBlank()) GameData.secondarySkills else GameData.secondarySkills.filter { it.name.contains(skillsSearchQuery, true) }
 
-            // ВОТ ЗДЕСЬ БЫЛА ОШИБКА, ТЕПЕРЬ ПАРАМЕТРЫ СОВПАДАЮТ
             SecondarySkillsListScreen(
                 skills = filtered,
                 onSkillClick = { selectedSkill = it; currentScreen = Screen.SkillDetail },
@@ -244,17 +243,22 @@ fun AppRoot(
             BackHandler { currentScreen = if (artifactsSearchQuery.isNotBlank()) Screen.ArtifactsMenu else Screen.ArtifactsList }
             selectedArtifact?.let { ArtifactDetailScreen(it) { newA -> selectedArtifact = newA } }
         }
+
+        // --- UTILITIES ---
         Screen.UtilitiesMenu -> {
             BackHandler { currentScreen = Screen.MainMenu }
-            // Не забудьте импортировать UtilitiesMenuScreen
-            com.example.homm3reference.ui.utils.UtilitiesMenuScreen(
-                onUpgradeCheckerClick = { currentScreen = Screen.UtilityUpgradeCheck }
+            UtilitiesMenuScreen(
+                onUpgradeCheckerClick = { currentScreen = Screen.UtilityUpgradeCheck },
+                onNecromancyClick = { currentScreen = Screen.UtilityNecromancy } // Добавлен обработчик
             )
         }
         Screen.UtilityUpgradeCheck -> {
             BackHandler { currentScreen = Screen.UtilitiesMenu }
-            // Не забудьте импортировать CreatureUpgradeCheckerScreen
-            com.example.homm3reference.ui.utils.CreatureUpgradeCheckerScreen()
+            CreatureUpgradeCheckerScreen()
+        }
+        Screen.UtilityNecromancy -> { // Добавлен новый экран
+            BackHandler { currentScreen = Screen.UtilitiesMenu }
+            NecromancyCalculatorScreen()
         }
     }
 }

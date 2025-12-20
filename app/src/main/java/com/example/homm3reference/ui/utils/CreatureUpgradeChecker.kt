@@ -193,7 +193,7 @@ fun HommTextField(value: String, onValueChange: (String) -> Unit, label: String)
             focusedTextColor = HommWhite,
             unfocusedTextColor = HommWhite,
             focusedBorderColor = HommGold,
-            unfocusedBorderColor = HommWhite.copy(alpha = 0.5f),
+            unfocusedBorderColor = HommWhite.copy(alpha = 0.6f),
             cursorColor = HommGold
         ),
         modifier = Modifier.fillMaxWidth()

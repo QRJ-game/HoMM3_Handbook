@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Homm3Reference</string>
+    <string name="app_name">Heroes3 Guidebook</string>
 	<string name="menu_utilities">Утилиты</string>
 	<string name="utility_upgrade_check">Проверка на улучшенный отряд</string>
 	<string name="calc_coord_x">Координата X</string>
