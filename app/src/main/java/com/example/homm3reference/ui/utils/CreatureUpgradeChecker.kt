@@ -13,6 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
@@ -186,17 +187,17 @@ fun HommTextField(value: String, onValueChange: (String) -> Unit, label: String)
     OutlinedTextField(
         value = value,
         onValueChange = onValueChange,
-        label = { Text(label, color = HommGold) },
+        label = { Text(label, fontSize = 12.sp, fontWeight = FontWeight.Bold, color = HommGold) },
         singleLine = true,
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+        textStyle = TextStyle(fontSize = 18.sp, color = HommWhite),
+        shape = RoundedCornerShape(8.dp), // Скругляем углы как у кнопок
         colors = OutlinedTextFieldDefaults.colors(
-            focusedTextColor = HommWhite,
-            unfocusedTextColor = HommWhite,
             focusedBorderColor = HommGold,
             unfocusedBorderColor = HommWhite.copy(alpha = 0.6f),
             cursorColor = HommGold
         ),
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier.fillMaxWidth().height(60.dp)
     )
 }
 

@@ -149,11 +149,10 @@ fun NecromancyCalculatorScreen() {
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.padding(top = 32.dp, bottom = 16.dp)
             ) {
-                Spacer(modifier = Modifier.width(32.dp))
                 Text(
                     text = "Калькулятор некромантии",
                     color = HommGold,
-                    fontSize = 22.sp,
+                    fontSize = 24.sp,
                     fontWeight = FontWeight.Bold,
                     textAlign = TextAlign.Center
                 )
@@ -180,7 +179,7 @@ fun NecromancyCalculatorScreen() {
                             FilterChip(
                                 selected = necromancyLevel == index,
                                 onClick = { necromancyLevel = index },
-                                label = { Text(label, fontSize = 14.sp) },
+                                label = { Text(label, fontSize = 16.sp) },
                                 colors = FilterChipDefaults.filterChipColors(
                                     selectedContainerColor = HommGold,
                                     selectedLabelColor = Color.Black,
@@ -240,7 +239,7 @@ fun NecromancyCalculatorScreen() {
                     // 4. Строения
                     Row(
                         modifier = Modifier.fillMaxWidth(),
-                        verticalAlignment = Alignment.CenterVertically,
+                        verticalAlignment = Alignment.CenterVertically, // Центрируем по вертикали
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
                         Box(modifier = Modifier.weight(1f)) {
@@ -273,14 +272,14 @@ fun NecromancyCalculatorScreen() {
                                 containerColor = Color.Transparent,
                             ),
                             border = FilterChipDefaults.filterChipBorder(
-                                borderColor = Color.Gray, // СЕРАЯ ОБВОДКА
+                                borderColor = Color.Gray,
                                 selectedBorderColor = HommGold,
                                 borderWidth = 1.dp,
                                 selectedBorderWidth = 2.dp,
                                 enabled = true,
                                 selected = hasGrail
                             ),
-                            modifier = Modifier.height(56.dp)
+                            modifier = Modifier.height(60.dp) // Увеличили до 60.dp чтобы сравнять с TextField
                         )
                     }
 
@@ -533,7 +532,7 @@ fun ArtifactToggle(resIdName: String, isSelected: Boolean, onClick: () -> Unit) 
             .background(Color.Black.copy(alpha = 0.6f))
             .border(
                 width = if (isSelected) 2.dp else 1.dp, // 1.dp unselected like HommTextField
-                color = if (isSelected) HommGold else HommWhite.copy(alpha = 0.5f), // Matching HommTextField unfocused
+                color = if (isSelected) HommGold else HommWhite.copy(alpha = 0.6f), // Matching HommTextField unfocused
                 shape = RoundedCornerShape(8.dp)
             )
             .clickable { onClick() }
