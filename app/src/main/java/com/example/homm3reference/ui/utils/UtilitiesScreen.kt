@@ -40,7 +40,7 @@ fun UtilitiesMenuScreen(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     item {
-                        Spacer(modifier = Modifier.height(32.dp))
+                        Spacer(modifier = Modifier.height(16.dp))
                         Text(
                             text = "Утилиты",
                             fontSize = 24.sp,

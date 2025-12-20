@@ -147,17 +147,9 @@ fun NecromancyCalculatorScreen() {
             // Заголовок с иконкой
             Row(
                 verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.padding(top = 8.dp, bottom = 16.dp)
+                modifier = Modifier.padding(top = 32.dp, bottom = 16.dp)
             ) {
-                val headerIconId = getDrawableId(LocalContext.current, "creature_skeleton")
-                if (headerIconId != 0) {
-                    Image(
-                        painter = painterResource(id = headerIconId),
-                        contentDescription = null,
-                        modifier = Modifier.size(40.dp)
-                    )
-                }
-                Spacer(modifier = Modifier.width(12.dp))
+                Spacer(modifier = Modifier.width(32.dp))
                 Text(
                     text = "Калькулятор некромантии",
                     color = HommGold,
