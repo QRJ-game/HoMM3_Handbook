@@ -372,17 +372,19 @@ fun NecromancyCalculatorScreen() {
             Spacer(modifier = Modifier.height(16.dp))
 
             // --- Результат ---
-            Text("Воскрешенная армия", color = HommGold, fontWeight = FontWeight.Bold, fontSize = 20.sp)
+            Text("Воскрешенная армия", color = HommGold, fontWeight = FontWeight.Bold, fontSize = 16.sp)
             Spacer(modifier = Modifier.height(12.dp))
 
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceEvenly
+                horizontalArrangement = Arrangement.SpaceEvenly,
+                verticalAlignment = Alignment.CenterVertically
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     ArmySlot(imageRes = "creature_skeleton", count = "$resultSkeletons", onClick = {})
                     Text("Скелеты", color = HommWhite, fontSize = 16.sp, modifier = Modifier.padding(top = 4.dp), fontWeight = FontWeight.Bold)
                 }
+                Text("ИЛИ", color = HommGold, fontSize = 20.sp, fontWeight = FontWeight.Bold)
 
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     ArmySlot(imageRes = "creature_skeleton_warrior", count = "$resultWarriors", onClick = {})
