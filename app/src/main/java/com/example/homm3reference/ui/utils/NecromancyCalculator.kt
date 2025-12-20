@@ -11,10 +11,10 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -72,7 +72,9 @@ fun NecromancyCalculatorScreen() {
     var creatureCountStr by remember { mutableStateOf("1") }
     var showSelectionDialog by remember { mutableStateOf(false) }
 
-    // ЛОГИКА РАСЧЕТА
+    // --- ЛОГИКА РАСЧЕТА (HotA / FizMiG) ---
+
+    // 1. Базовый процент навыка
     val necromancyBasePercent = when (necromancyLevel) {
         0 -> 5.0
         1 -> 10.0
@@ -81,12 +83,15 @@ fun NecromancyCalculatorScreen() {
     }
 
     val heroLevel = heroLevelStr.toIntOrNull() ?: 1
+
+    // 2. Бонус специалиста (5% за уровень к базе навыка)
     val skillPercent = if (isSpecialist) {
         necromancyBasePercent * (1.0 + 0.05 * heroLevel)
     } else {
         necromancyBasePercent
     }
 
+    // 3. Остальные бонусы
     val amplifiers = amplifierCountStr.toIntOrNull() ?: 0
     val amplifierBonus = amplifiers * 5.0
     val grailBonus = if (hasGrail) 20.0 else 0.0
@@ -96,19 +101,38 @@ fun NecromancyCalculatorScreen() {
             (if (hasBoots) 7.5 else 0.0)
 
     val totalPercent = min(100.0, skillPercent + amplifierBonus + grailBonus + artifactBonus)
+    val percentFactor = totalPercent / 100.0
 
+    // 4. Расчет количества
     val creatureCount = creatureCountStr.toIntOrNull() ?: 1
     val resultSkeletons: Int
     val resultWarriors: Int
 
     if (selectedCreature != null) {
-        val totalHealth = selectedCreature!!.health * creatureCount
+        val totalHealth = selectedCreature!!.health.toDouble() * creatureCount
         val skeletonHealth = 6.0
 
-        val skeletonsByHP = floor((totalHealth * (totalPercent / 100.0)) / skeletonHealth).toInt()
-        val rawResult = min(creatureCount, skeletonsByHP)
+        // ШАГ 1: Лимит по Очкам Некромантии (из здоровья)
+        // (Суммарное ХП * Процент) / 6
+        val necromancyPoints = totalHealth * percentFactor
+        val limitByHP = floor(necromancyPoints / skeletonHealth).toInt()
 
-        resultSkeletons = if (rawResult < 1 && totalPercent > 0 && creatureCount > 0) 1 else rawResult
+        // ШАГ 2: Лимит по Количеству Существ (Правило HotA)
+        // Кол-во трупов * Процент
+        val limitByUnitCount = floor(creatureCount * percentFactor).toInt()
+
+        // ШАГ 3: Выбираем минимум
+        var calculatedSkeletons = min(limitByHP, limitByUnitCount)
+
+        // Минимальная гарантия 1 (если процент > 0 и враги были)
+        // В HoMM3 обычно если шанс > 0, то минимум 1, если математика не дает строго 0 из-за отсутствия трупов
+        if (calculatedSkeletons < 1 && totalPercent > 0 && creatureCount > 0) {
+            calculatedSkeletons = 1
+        }
+
+        resultSkeletons = calculatedSkeletons
+
+        // Скелеты-воины: 2/3 от обычных, округление вверх
         resultWarriors = ceil(resultSkeletons * 2.0 / 3.0).toInt()
     } else {
         resultSkeletons = 0
@@ -190,8 +214,6 @@ fun NecromancyCalculatorScreen() {
                     Spacer(modifier = Modifier.height(16.dp))
 
                     // 2. Артефакты и Специалист (в один ряд)
-                    // Используем SpaceBetween, так как кнопок 4, они влезут на большинстве экранов.
-                    // Если экраны узкие, можно использовать Weight или уменьшить size в ArtifactToggle
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween
@@ -272,7 +294,7 @@ fun NecromancyCalculatorScreen() {
                                 enabled = true,
                                 selected = hasGrail
                             ),
-                            modifier = Modifier.height(45.dp) // Высота примерно как у TextField
+                            modifier = Modifier.height(45.dp)
                         )
                     }
 
