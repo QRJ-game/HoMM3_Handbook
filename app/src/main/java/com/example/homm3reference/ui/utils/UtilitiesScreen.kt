@@ -20,11 +20,11 @@ import com.example.homm3reference.ui.common.AppBackground
 import com.example.homm3reference.ui.common.HommListCard
 import com.example.homm3reference.ui.theme.HommGold
 
-
 @Composable
 fun UtilitiesMenuScreen(
     onUpgradeCheckerClick: () -> Unit,
-    onNecromancyClick: () -> Unit // Новый колбэк
+    onNecromancyClick: () -> Unit,
+    onDemonRaisingClick: () -> Unit // <--- ВОТ ЭТОГО ПАРАМЕТРА НЕ ХВАТАЛО
 ) {
     AppBackground {
         Box(modifier = Modifier.fillMaxSize()) {
@@ -40,7 +40,7 @@ fun UtilitiesMenuScreen(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     item {
-                        Spacer(modifier = Modifier.height(16.dp))
+                        Spacer(modifier = Modifier.height(24.dp))
                         Text(
                             text = "Утилиты",
                             fontSize = 24.sp,
@@ -55,14 +55,19 @@ fun UtilitiesMenuScreen(
                             imageRes = "util_checker",
                             onClick = onUpgradeCheckerClick
                         )
-
                         Spacer(modifier = Modifier.height(16.dp))
-
                         // Кнопка 2: Necromancy
                         HommListCard(
                             text = "Калькулятор некромантии",
                             imageRes = "util_necro",
                             onClick = onNecromancyClick
+                        )
+                        Spacer(modifier = Modifier.height(16.dp))
+                        // Кнопка 3: Demon Raising
+                        HommListCard(
+                            text = "Поднятие демонов",
+                            imageRes = "creature_pit_lord",
+                            onClick = onDemonRaisingClick
                         )
                     }
                 }

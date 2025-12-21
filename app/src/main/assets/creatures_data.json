@@ -586,6 +586,7 @@
     "resourceCost": null,
     "abilities": "Полёт, Горгулья",
     "aiValue": 165,
+    "isGolem": true,
     "imageRes": "creature_stone_gargoyle"
   },
   {
@@ -605,6 +606,7 @@
     "resourceCost": null,
     "abilities": "Полёт, Горгулья",
     "aiValue": 201,
+    "isGolem": true,
     "imageRes": "creature_obsidian_gargoyle"
   },
   {
@@ -624,6 +626,7 @@
     "resourceCost": null,
     "abilities": "Голем, -50% урона от магии",
     "aiValue": 250,
+    "isGolem": true,
     "imageRes": "creature_stone_golem"
   },
   {
@@ -643,6 +646,7 @@
     "resourceCost": null,
     "abilities": "Голем, -75% урона от магии",
     "aiValue": 412,
+    "isGolem": true,
     "imageRes": "creature_iron_golem"
   },
   {
@@ -1080,6 +1084,7 @@
     "resourceCost": null,
     "abilities": "Нежить",
     "aiValue": 60,
+    "isUndead": true,
     "imageRes": "creature_skeleton"
   },
   {
@@ -1099,6 +1104,7 @@
     "resourceCost": null,
     "abilities": "Нежить",
     "aiValue": 85,
+    "isUndead": true,
     "imageRes": "creature_skeleton_warrior"
   },
   {
@@ -1118,6 +1124,7 @@
     "resourceCost": null,
     "abilities": "Нежить",
     "aiValue": 98,
+    "isUndead": true,
     "imageRes": "creature_walking_dead"
   },
   {
@@ -1137,6 +1144,7 @@
     "resourceCost": null,
     "abilities": "Нежить, Болезнь(20%)",
     "aiValue": 128,
+    "isUndead": true,
     "imageRes": "creature_zombie"
   },
   {
@@ -1156,6 +1164,7 @@
     "resourceCost": null,
     "abilities": "Нежить, Полёт, Регенерация",
     "aiValue": 252,
+    "isUndead": true,
     "imageRes": "creature_wight"
   },
   {
@@ -1175,6 +1184,7 @@
     "resourceCost": null,
     "abilities": "Нежить, Полёт, Регенерация, Сжигание маны",
     "aiValue": 315,
+    "isUndead": true,
     "imageRes": "creature_wraith"
   },
   {
@@ -1194,6 +1204,7 @@
     "resourceCost": null,
     "abilities": "Нежить, Полёт, Безответная атака",
     "aiValue": 555,
+    "isUndead": true,
     "imageRes": "creature_vampire"
   },
   {
@@ -1213,6 +1224,7 @@
     "resourceCost": null,
     "abilities": "Нежить, Полёт, Безответная атака, Вампиризм",
     "aiValue": 783,
+    "isUndead": true,
     "imageRes": "creature_vampire_lord"
   },
   {
@@ -1232,6 +1244,7 @@
     "resourceCost": null,
     "abilities": "Нежить, Стрельба(12), Облако смерти",
     "aiValue": 848,
+    "isUndead": true,
     "imageRes": "creature_lich"
   },
   {
@@ -1251,6 +1264,7 @@
     "resourceCost": null,
     "abilities": "Нежить, Стрельба(24), Облако смерти",
     "aiValue": 1079,
+    "isUndead": true,
     "imageRes": "creature_power_lich"
   },
   {
@@ -1270,6 +1284,7 @@
     "resourceCost": null,
     "abilities": "Нежить, Проклятие(25%), Широкое существо",
     "aiValue": 2087,
+    "isUndead": true,
     "imageRes": "creature_black_knight"
   },
   {
@@ -1289,6 +1304,7 @@
     "resourceCost": null,
     "abilities": "Нежить, Проклятие(25%), Смертельный удар(20%), Широкое существо",
     "aiValue": 2382,
+    "isUndead": true,
     "imageRes": "creature_dread_knight"
   },
   {
@@ -1308,6 +1324,7 @@
     "resourceCost": null,
     "abilities": "Нежить, Полёт, -1 к боевому духу врага, Широкое существо",
     "aiValue": 3388,
+    "isUndead": true,
     "imageRes": "creature_bone_dragon"
   },
   {
@@ -1327,6 +1344,7 @@
     "resourceCost": "1 Ртуть",
     "abilities": "Нежить, Полёт, Старость(20%), -1 к боевому духу врага, Широкое существо",
     "aiValue": 4919,
+    "isUndead": true,
     "imageRes": "creature_ghost_dragon"
   },
   {
@@ -2182,6 +2200,7 @@
     "resourceCost": null,
     "abilities": "Элементаль, Иммунитет к Метеоритному дождю, Ненависть к земле, Уязвимость к молнии и Армагедону",
     "aiValue": 356,
+    "isElemental": true,
     "imageRes": "creature_air_elemental"
   },
   {
@@ -2201,6 +2220,7 @@
     "resourceCost": null,
     "abilities": "Элементаль, Стрельба(24), Иммунитет к Метеоритному дождю, Ненависть к земле, Уязвимость к Молнии и Армагеддону, Защита от воздуха(3)",
     "aiValue": 486,
+    "isElemental": true,
     "imageRes": "creature_storm_elemental"
   },
   {
@@ -2220,6 +2240,7 @@
     "resourceCost": null,
     "abilities": "Элементаль, Иммунитет к холоду, Ненависть к огню, Уязвимость к огню, Широкое существо",
     "aiValue": 315,
+    "isElemental": true,
     "imageRes": "creature_water_elemental"
   },
   {
@@ -2239,6 +2260,7 @@
     "resourceCost": null,
     "abilities": "Элементаль, Стрельба(24), Иммунитет к холоду, Ненависть к огню, Уязвимость к огню, Широкое существо, Защита от воды(3)",
     "aiValue": 380,
+    "isElemental": true,
     "imageRes": "creature_ice_elemental"
   },
   {
@@ -2258,6 +2280,7 @@
     "resourceCost": null,
     "abilities": "Элементаль, Иммунитет к огню, Ненависть к воде, Уязвимость к холоду",
     "aiValue": 345,
+    "isElemental": true,
     "imageRes": "creature_fire_elemental"
   },
   {
@@ -2277,6 +2300,7 @@
     "resourceCost": null,
     "abilities": "Элементаль, Полёт, Иммунитет к огню, Ненависть к воде, Уязвимость к холоду, Защита от огня(3)",
     "aiValue": 470,
+    "isElemental": true,
     "imageRes": "creature_energy_elemental"
   },
   {
@@ -2296,6 +2320,7 @@
     "resourceCost": null,
     "abilities": "Элементаль, Иммунитет к Молнии и Армагеддону, Ненависть к воздуху, Уязвимость к Метеоритному дождю",
     "aiValue": 330,
+    "isElemental": true,
     "imageRes": "creature_earth_elemental"
   },
   {
@@ -2315,6 +2340,7 @@
     "resourceCost": null,
       "abilities": "Элементаль, Иммунитет к Молнии и Армагеддону, Ненависть к воздуху, Уязвимость к Метеоритному дождю, Защита от земли(3)",
     "aiValue": 490,
+    "isElemental": true,
     "imageRes": "creature_magma_elemental"
   },
   {
@@ -2334,6 +2360,7 @@
     "resourceCost": null,
     "abilities": "Элементаль, Круговая атака, Безответная атака, -50% урона по существам с иммунитетом к магии Разума",
     "aiValue": 1669,
+    "isElemental": true,
     "imageRes": "creature_psychic_elemental"
   },
   {
@@ -2353,6 +2380,7 @@
     "resourceCost": null,
     "abilities": "Элементаль, Круговая атака, Безответная атака, Полный иммунитет к магии, -50% урона по существам с иммунитетом к магии",
     "aiValue": 2012,
+    "isElemental": true,
     "imageRes": "creature_magic_elemental"
   },
   {
@@ -2809,6 +2837,7 @@
     "resourceCost": null,
     "abilities": "Механизм, Взрыв при гибели, Широкое существо",
     "aiValue": 669,
+    "isMech": true,
     "imageRes": "creature_automaton"
   },
   {
@@ -2828,6 +2857,7 @@
     "resourceCost": null,
     "abilities": "Механизм, Взрыв при гибели, Безответная атака, Широкое существо",
     "aiValue": 947,
+    "isMech": true,
     "imageRes": "creature_sentinel_automaton"
   },
   {
@@ -2961,6 +2991,7 @@
     "resourceCost": "1 Кристалл",
     "abilities": "Механизм, Тепловой луч, Широкое существо",
     "aiValue": 3879,
+    "isMech": true,
     "imageRes": "creature_dreadnought"
   },
   {
@@ -2980,6 +3011,7 @@
     "resourceCost": "2 Кристалла",
     "abilities": "Механизм, Тепловой луч, Широкое существо",
     "aiValue": 6433,
+    "isMech": true,
     "imageRes": "creature_juggernaut"
   },
   {
@@ -3075,6 +3107,7 @@
     "resourceCost": null,
     "abilities": "Нежить, Проклятие(25%)",
     "aiValue": 270,
+    "isUndead": true,
     "imageRes": "creature_mummy"
   },
   {
@@ -3151,6 +3184,7 @@
     "resourceCost": null,
     "abilities": "Голем, -80% урона от магии, ",
     "aiValue": 597,
+    "isGolem": true,
     "imageRes": "creature_steel_golem"
   },
   {
@@ -3170,6 +3204,7 @@
     "resourceCost": null,
     "abilities": "Голем, -85% урона от магии",
     "aiValue": 600,
+    "isGolem": true,
     "imageRes": "creature_gold_golem"
   },
   {
@@ -3227,6 +3262,7 @@
     "resourceCost": null,
     "abilities": "Голем, -95% урона от магии",
     "aiValue": 775,
+    "isGolem": true,
     "imageRes": "creature_diamond_golem"
   },
   {
@@ -3341,6 +3377,7 @@
     "resourceCost": null,
     "abilities": "Боевая машина, Стрельба(24), Защита от перекрытия, Широкое существо",
     "aiValue": 600,
+    "isWarMachine": true,
     "imageRes": "creature_ballista"
   },
   {
@@ -3360,6 +3397,7 @@
     "resourceCost": null,
     "abilities": "Боевая машина, Атака стен(24), Широкое существо",
     "aiValue": 500,
+    "isWarMachine": true,
     "imageRes": "creature_catapult"
   },
   {
@@ -3379,6 +3417,7 @@
     "resourceCost": null,
     "abilities": "Боевая машина, Лечение, Широкое существо",
     "aiValue": 300,
+    "isWarMachine": true,
     "imageRes": "creature_first_aid_tent"
   },
   {
@@ -3417,6 +3456,7 @@
     "resourceCost": null,
     "abilities": "Боевая машина, Стрельба(8), Защита от перекрытия, Атака стен, Широкое существо",
     "aiValue": 875,
+    "isWarMachine": true,
     "imageRes": "creature_cannon"
   }
 ]

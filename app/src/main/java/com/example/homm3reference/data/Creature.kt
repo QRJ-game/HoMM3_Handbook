@@ -21,5 +21,11 @@ data class Creature(
     val resourceCost: String?,
     val abilities: String,
     val aiValue: Int,
-    val imageRes: String
+    val imageRes: String,
+    val isUndead: Boolean = false,
+    val isElemental: Boolean = false,
+    val isGolem: Boolean = false,
+    val isWarMachine: Boolean = false,
+    val isMech: Boolean = false
+
 )

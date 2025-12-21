@@ -251,7 +251,7 @@ fun NecromancyCalculatorScreen() {
                                         if (num <= 255) amplifierCountStr = str
                                     }
                                 },
-                                label = "УСИЛИТЕЛИ"
+                                label = "УСИЛИТЕЛИ НЕКРОМАНТИИ"
                             )
                         }
 
@@ -342,7 +342,7 @@ fun NecromancyCalculatorScreen() {
                             HommTextField(
                                 value = creatureCountStr,
                                 onValueChange = { if (it.all { c -> c.isDigit() }) creatureCountStr = it },
-                                label = "КОЛ-ВО"
+                                label = "КОЛИЧЕСТВО УБИТЫХ СУЩЕСТВ"
                             )
 
                             Spacer(modifier = Modifier.height(8.dp))

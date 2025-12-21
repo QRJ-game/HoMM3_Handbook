@@ -25,7 +25,7 @@ enum class Screen {
     MagicSchools, MagicList, MagicDetail,
     ArtifactsMenu, ArtifactsCategory, ArtifactsList, ArtifactDetail,
 
-    UtilitiesMenu, UtilityUpgradeCheck, UtilityNecromancy // Добавлен UtilityNecromancy
+    UtilitiesMenu, UtilityUpgradeCheck, UtilityNecromancy, UtilityDemonRaising // Добавлен UtilityNecromancy
 }
 
 val TOWN_ORDER = listOf(
@@ -249,16 +249,21 @@ fun AppRoot(
             BackHandler { currentScreen = Screen.MainMenu }
             UtilitiesMenuScreen(
                 onUpgradeCheckerClick = { currentScreen = Screen.UtilityUpgradeCheck },
-                onNecromancyClick = { currentScreen = Screen.UtilityNecromancy } // Добавлен обработчик
+                onNecromancyClick = { currentScreen = Screen.UtilityNecromancy },
+                onDemonRaisingClick = { currentScreen = Screen.UtilityDemonRaising } // <-- Обработка нажатия
             )
         }
         Screen.UtilityUpgradeCheck -> {
             BackHandler { currentScreen = Screen.UtilitiesMenu }
             CreatureUpgradeCheckerScreen()
         }
-        Screen.UtilityNecromancy -> { // Добавлен новый экран
+        Screen.UtilityNecromancy -> {
             BackHandler { currentScreen = Screen.UtilitiesMenu }
             NecromancyCalculatorScreen()
+        }
+        Screen.UtilityDemonRaising -> { // <-- Новый экран
+            BackHandler { currentScreen = Screen.UtilitiesMenu }
+            DemonRaisingCalculatorScreen()
         }
     }
 }
