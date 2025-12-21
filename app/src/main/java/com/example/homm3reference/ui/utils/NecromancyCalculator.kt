@@ -11,14 +11,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -29,20 +23,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.window.Dialog
-import androidx.compose.ui.window.DialogProperties
 import com.example.homm3reference.data.Creature
-import com.example.homm3reference.data.GameData
 import com.example.homm3reference.ui.common.AppBackground
 import com.example.homm3reference.ui.common.ArmySlot
-import com.example.homm3reference.ui.common.TownCard
-import com.example.homm3reference.ui.creatures.CreatureCard
 import com.example.homm3reference.ui.theme.HommGlassBackground
 import com.example.homm3reference.ui.theme.HommGold
 import com.example.homm3reference.ui.theme.HommWhite
@@ -137,377 +124,282 @@ fun NecromancyCalculatorScreen() {
     }
 
     AppBackground {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(16.dp)
-                .verticalScroll(rememberScrollState()),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            // Заголовок с иконкой
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.padding(top = 32.dp, bottom = 16.dp)
-            ) {
-                Text(
-                    text = "Калькулятор некромантии",
-                    color = HommGold,
-                    fontSize = 24.sp,
-                    fontWeight = FontWeight.Bold,
-                    textAlign = TextAlign.Center
-                )
-            }
+        Box(modifier = Modifier.fillMaxSize()) {
 
-            // --- ЕДИНАЯ КАРТОЧКА ВВОДА ДАННЫХ ---
-            HommCard {
-                Column {
-                    // 1. Уровень навыка
+            // Основной контент
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(16.dp)
+                    .verticalScroll(rememberScrollState()),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                // Заголовок с иконкой
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.padding(top = 32.dp, bottom = 16.dp)
+                ) {
                     Text(
-                        "Уровень Некромантии",
+                        text = "Калькулятор некромантии",
                         color = HommGold,
+                        fontSize = 24.sp,
                         fontWeight = FontWeight.Bold,
-                        fontSize = 16.sp,
-                        textAlign = TextAlign.Center,
-                        modifier = Modifier.fillMaxWidth()
+                        textAlign = TextAlign.Center
                     )
-                    Spacer(modifier = Modifier.height(8.dp))
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween
-                    ) {
-                        listOf("Базовый", "Продв.", "Эксперт").forEachIndexed { index, label ->
+                }
+
+                // --- ЕДИНАЯ КАРТОЧКА ВВОДА ДАННЫХ ---
+                HommCard {
+                    Column {
+                        // 1. Уровень навыка
+                        Text(
+                            "Уровень Некромантии",
+                            color = HommGold,
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 16.sp,
+                            textAlign = TextAlign.Center,
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                        Spacer(modifier = Modifier.height(8.dp))
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween
+                        ) {
+                            listOf("Базовый", "Продв.", "Эксперт").forEachIndexed { index, label ->
+                                FilterChip(
+                                    selected = necromancyLevel == index,
+                                    onClick = { necromancyLevel = index },
+                                    label = { Text(label, fontSize = 16.sp) },
+                                    colors = FilterChipDefaults.filterChipColors(
+                                        selectedContainerColor = HommGold,
+                                        selectedLabelColor = Color.Black,
+                                        containerColor = Color.Transparent,
+                                        labelColor = HommWhite
+                                    ),
+                                    border = FilterChipDefaults.filterChipBorder(
+                                        borderColor = Color.Gray, // СЕРАЯ ОБВОДКА
+                                        selectedBorderColor = HommGold,
+                                        borderWidth = 1.dp, // 1.dp невыбранный
+                                        selectedBorderWidth = 2.dp, // 2.dp выбранный
+                                        enabled = true,
+                                        selected = necromancyLevel == index
+                                    ),
+                                    modifier = Modifier.height(32.dp)
+                                )
+                            }
+                        }
+
+                        Spacer(modifier = Modifier.height(16.dp))
+
+                        // 2. Артефакты и Специалист
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween
+                        ) {
+                            ArtifactToggle("util_vidomisra", isSpecialist) { isSpecialist = !isSpecialist }
+                            ArtifactToggle("artifact_amulet_of_the_undertaker", hasAmulet) { hasAmulet = !hasAmulet }
+                            ArtifactToggle("artifact_vampires_cowl", hasCowl) { hasCowl = !hasCowl }
+                            ArtifactToggle("artifact_dead_mans_boots", hasBoots) { hasBoots = !hasBoots }
+                        }
+
+                        // Анимация появления поля уровня героя
+                        AnimatedVisibility(
+                            visible = isSpecialist,
+                            enter = fadeIn() + expandVertically(),
+                            exit = fadeOut() + shrinkVertically()
+                        ) {
+                            Column {
+                                Spacer(modifier = Modifier.height(12.dp))
+                                // Используем HommTextField из пакета ui.utils
+                                HommTextField(
+                                    value = heroLevelStr,
+                                    onValueChange = { str ->
+                                        if (str.all { it.isDigit() }) {
+                                            val num = str.toIntOrNull() ?: 0
+                                            if (num <= 74) heroLevelStr = str
+                                        }
+                                    },
+                                    label = "УРОВЕНЬ ГЕРОЯ"
+                                )
+                            }
+                        }
+
+                        Spacer(modifier = Modifier.height(16.dp))
+
+                        // 4. Строения
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            verticalAlignment = Alignment.CenterVertically, // Центрируем по вертикали
+                            horizontalArrangement = Arrangement.SpaceBetween
+                        ) {
+                            Box(modifier = Modifier.weight(1f)) {
+                                HommTextField(
+                                    value = amplifierCountStr,
+                                    onValueChange = { str ->
+                                        if (str.all { it.isDigit() }) {
+                                            val num = str.toIntOrNull() ?: 0
+                                            if (num <= 255) amplifierCountStr = str
+                                        }
+                                    },
+                                    label = "УСИЛИТЕЛИ НЕКРОМАНТИИ"
+                                )
+                            }
+
+                            Spacer(modifier = Modifier.width(16.dp))
+
                             FilterChip(
-                                selected = necromancyLevel == index,
-                                onClick = { necromancyLevel = index },
-                                label = { Text(label, fontSize = 16.sp) },
+                                selected = hasGrail,
+                                onClick = { hasGrail = !hasGrail },
+                                label = {
+                                    Text(
+                                        "Грааль",
+                                        fontSize = 16.sp,
+                                        color = if (hasGrail) Color.Black else HommWhite
+                                    )
+                                },
                                 colors = FilterChipDefaults.filterChipColors(
                                     selectedContainerColor = HommGold,
-                                    selectedLabelColor = Color.Black,
                                     containerColor = Color.Transparent,
-                                    labelColor = HommWhite
                                 ),
                                 border = FilterChipDefaults.filterChipBorder(
-                                    borderColor = Color.Gray, // СЕРАЯ ОБВОДКА
+                                    borderColor = Color.Gray,
                                     selectedBorderColor = HommGold,
-                                    borderWidth = 1.dp, // 1.dp невыбранный
-                                    selectedBorderWidth = 2.dp, // 2.dp выбранный
+                                    borderWidth = 1.dp,
+                                    selectedBorderWidth = 2.dp,
                                     enabled = true,
-                                    selected = necromancyLevel == index
+                                    selected = hasGrail
                                 ),
-                                modifier = Modifier.height(32.dp)
-                            )
-                        }
-                    }
-
-                    Spacer(modifier = Modifier.height(16.dp))
-
-                    // 2. Артефакты и Специалист
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween
-                    ) {
-                        ArtifactToggle("util_vidomisra", isSpecialist) { isSpecialist = !isSpecialist }
-                        ArtifactToggle("artifact_amulet_of_the_undertaker", hasAmulet) { hasAmulet = !hasAmulet }
-                        ArtifactToggle("artifact_vampires_cowl", hasCowl) { hasCowl = !hasCowl }
-                        ArtifactToggle("artifact_dead_mans_boots", hasBoots) { hasBoots = !hasBoots }
-                    }
-
-                    // Анимация появления поля уровня героя
-                    AnimatedVisibility(
-                        visible = isSpecialist,
-                        enter = fadeIn() + expandVertically(),
-                        exit = fadeOut() + shrinkVertically()
-                    ) {
-                        Column {
-                            Spacer(modifier = Modifier.height(12.dp))
-                            // Используем HommTextField из пакета ui.utils
-                            HommTextField(
-                                value = heroLevelStr,
-                                onValueChange = { str ->
-                                    if (str.all { it.isDigit() }) {
-                                        val num = str.toIntOrNull() ?: 0
-                                        if (num <= 74) heroLevelStr = str
-                                    }
-                                },
-                                label = "УРОВЕНЬ ГЕРОЯ"
-                            )
-                        }
-                    }
-
-                    Spacer(modifier = Modifier.height(16.dp))
-
-                    // 4. Строения
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        verticalAlignment = Alignment.CenterVertically, // Центрируем по вертикали
-                        horizontalArrangement = Arrangement.SpaceBetween
-                    ) {
-                        Box(modifier = Modifier.weight(1f)) {
-                            HommTextField(
-                                value = amplifierCountStr,
-                                onValueChange = { str ->
-                                    if (str.all { it.isDigit() }) {
-                                        val num = str.toIntOrNull() ?: 0
-                                        if (num <= 255) amplifierCountStr = str
-                                    }
-                                },
-                                label = "УСИЛИТЕЛИ НЕКРОМАНТИИ"
+                                modifier = Modifier.height(60.dp) // Увеличили до 60.dp чтобы сравнять с TextField
                             )
                         }
 
-                        Spacer(modifier = Modifier.width(16.dp))
+                        Spacer(modifier = Modifier.height(8.dp))
 
-                        FilterChip(
-                            selected = hasGrail,
-                            onClick = { hasGrail = !hasGrail },
-                            label = {
-                                Text(
-                                    "Грааль",
-                                    fontSize = 16.sp,
-                                    color = if (hasGrail) Color.Black else HommWhite
-                                )
-                            },
-                            colors = FilterChipDefaults.filterChipColors(
-                                selectedContainerColor = HommGold,
-                                containerColor = Color.Transparent,
-                            ),
-                            border = FilterChipDefaults.filterChipBorder(
-                                borderColor = Color.Gray,
-                                selectedBorderColor = HommGold,
-                                borderWidth = 1.dp,
-                                selectedBorderWidth = 2.dp,
-                                enabled = true,
-                                selected = hasGrail
-                            ),
-                            modifier = Modifier.height(60.dp) // Увеличили до 60.dp чтобы сравнять с TextField
+                        // Итого
+                        Text(
+                            text = "Итого: ${String.format("%.2f", totalPercent)}%",
+                            color = HommGold,
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.Bold,
+                            modifier = Modifier.align(Alignment.End)
                         )
-                    }
 
-                    Spacer(modifier = Modifier.height(8.dp))
+                        HorizontalDivider(
+                            modifier = Modifier.padding(vertical = 12.dp),
+                            color = HommGold,
+                            thickness = 2.dp
+                        )
 
-                    // Итого
-                    Text(
-                        text = "Итого: ${String.format("%.2f", totalPercent)}%",
-                        color = HommGold,
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Bold,
-                        modifier = Modifier.align(Alignment.End)
-                    )
-
-                    HorizontalDivider(
-                        modifier = Modifier.padding(vertical = 12.dp),
-                        color = HommGold,
-                        thickness = 2.dp
-                    )
-
-                    // 5. Вражеский отряд
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.Start,
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        // Кнопка выбора существа
-                        Box(
-                            modifier = Modifier
-                                .size(80.dp)
-                                .clip(RoundedCornerShape(8.dp))
-                                .background(HommGlassBackground)
-                                .border(2.dp, HommGold, RoundedCornerShape(8.dp))
-                                .clickable { showSelectionDialog = true },
-                            contentAlignment = Alignment.Center
+                        // 5. Вражеский отряд
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.Start,
+                            verticalAlignment = Alignment.CenterVertically
                         ) {
-                            if (selectedCreature != null) {
-                                val creatureResId = getDrawableId(LocalContext.current, selectedCreature!!.imageRes)
-                                if (creatureResId != 0) {
-                                    Image(
-                                        painter = painterResource(id = creatureResId),
-                                        contentDescription = null,
-                                        modifier = Modifier.fillMaxSize().padding(4.dp),
-                                        contentScale = ContentScale.Fit
+                            // Кнопка выбора существа
+                            Box(
+                                modifier = Modifier
+                                    .size(80.dp)
+                                    .clip(RoundedCornerShape(8.dp))
+                                    .background(HommGlassBackground)
+                                    .border(2.dp, HommGold, RoundedCornerShape(8.dp))
+                                    .clickable { showSelectionDialog = true },
+                                contentAlignment = Alignment.Center
+                            ) {
+                                if (selectedCreature != null) {
+                                    val creatureResId = getDrawableId(LocalContext.current, selectedCreature!!.imageRes)
+                                    if (creatureResId != 0) {
+                                        Image(
+                                            painter = painterResource(id = creatureResId),
+                                            contentDescription = null,
+                                            modifier = Modifier.fillMaxSize().padding(4.dp),
+                                            contentScale = ContentScale.Fit
+                                        )
+                                    } else {
+                                        Text("?", color = Color.Red, fontSize = 12.sp)
+                                    }
+                                } else {
+                                    Text("?", fontSize = 40.sp, color = HommGold, fontWeight = FontWeight.Bold)
+                                }
+                            }
+
+                            Spacer(modifier = Modifier.width(16.dp))
+
+                            Column(
+                                modifier = Modifier.weight(1f),
+                                verticalArrangement = Arrangement.Center
+                            ) {
+                                HommTextField(
+                                    value = creatureCountStr,
+                                    onValueChange = { if (it.all { c -> c.isDigit() }) creatureCountStr = it },
+                                    label = "КОЛИЧЕСТВО УБИТЫХ СУЩЕСТВ"
+                                )
+
+                                Spacer(modifier = Modifier.height(8.dp))
+
+                                if (selectedCreature != null) {
+                                    Text(
+                                        text = selectedCreature!!.name,
+                                        color = HommGold,
+                                        fontSize = 16.sp,
+                                        fontWeight = FontWeight.Bold,
+                                        maxLines = 1,
+                                        modifier = Modifier.padding(start = 4.dp)
                                     )
                                 } else {
-                                    Text("?", color = Color.Red, fontSize = 12.sp)
+                                    Text(
+                                        text = "ВЫБЕРИТЕ ВРАГА",
+                                        color = Color.Gray,
+                                        fontSize = 16.sp,
+                                        modifier = Modifier.padding(start = 4.dp)
+                                    )
                                 }
-                            } else {
-                                Text("?", fontSize = 40.sp, color = HommGold, fontWeight = FontWeight.Bold)
-                            }
-                        }
-
-                        Spacer(modifier = Modifier.width(16.dp))
-
-                        Column(
-                            modifier = Modifier.weight(1f),
-                            verticalArrangement = Arrangement.Center
-                        ) {
-                            HommTextField(
-                                value = creatureCountStr,
-                                onValueChange = { if (it.all { c -> c.isDigit() }) creatureCountStr = it },
-                                label = "КОЛИЧЕСТВО УБИТЫХ СУЩЕСТВ"
-                            )
-
-                            Spacer(modifier = Modifier.height(8.dp))
-
-                            if (selectedCreature != null) {
-                                Text(
-                                    text = selectedCreature!!.name,
-                                    color = HommGold,
-                                    fontSize = 16.sp,
-                                    fontWeight = FontWeight.Bold,
-                                    maxLines = 1,
-                                    modifier = Modifier.padding(start = 4.dp)
-                                )
-                            } else {
-                                Text(
-                                    text = "ВЫБЕРИТЕ ВРАГА",
-                                    color = Color.Gray,
-                                    fontSize = 16.sp,
-                                    modifier = Modifier.padding(start = 4.dp)
-                                )
                             }
                         }
                     }
                 }
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                // --- Результат ---
+                Text("Воскрешенная армия", color = HommGold, fontWeight = FontWeight.Bold, fontSize = 16.sp)
+                Spacer(modifier = Modifier.height(12.dp))
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceEvenly,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                        ArmySlot(imageRes = "creature_skeleton", count = "$resultSkeletons", onClick = {})
+                        Text("Скелеты", color = HommWhite, fontSize = 16.sp, modifier = Modifier.padding(top = 4.dp), fontWeight = FontWeight.Bold)
+                    }
+                    Text("ИЛИ", color = HommGold, fontSize = 20.sp, fontWeight = FontWeight.Bold)
+
+                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                        ArmySlot(imageRes = "creature_skeleton_warrior", count = "$resultWarriors", onClick = {})
+                        Text("Скелеты-воины", color = HommWhite, fontSize = 16.sp, modifier = Modifier.padding(top = 4.dp), fontWeight = FontWeight.Bold)
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(100.dp))
             }
 
-            Spacer(modifier = Modifier.height(16.dp))
-
-            // --- Результат ---
-            Text("Воскрешенная армия", color = HommGold, fontWeight = FontWeight.Bold, fontSize = 16.sp)
-            Spacer(modifier = Modifier.height(12.dp))
-
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceEvenly,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    ArmySlot(imageRes = "creature_skeleton", count = "$resultSkeletons", onClick = {})
-                    Text("Скелеты", color = HommWhite, fontSize = 16.sp, modifier = Modifier.padding(top = 4.dp), fontWeight = FontWeight.Bold)
-                }
-                Text("ИЛИ", color = HommGold, fontSize = 20.sp, fontWeight = FontWeight.Bold)
-
-                Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    ArmySlot(imageRes = "creature_skeleton_warrior", count = "$resultWarriors", onClick = {})
-                    Text("Скелеты-воины", color = HommWhite, fontSize = 16.sp, modifier = Modifier.padding(top = 4.dp), fontWeight = FontWeight.Bold)
-                }
+            // ПЕРЕИСПОЛЬЗУЕМ UnifiedCreaturePickerDialog из соседнего файла
+            if (showSelectionDialog) {
+                UnifiedCreaturePickerDialog(
+                    onDismiss = { showSelectionDialog = false },
+                    onCreatureSelected = { creature ->
+                        selectedCreature = creature
+                        showSelectionDialog = false
+                    }
+                )
             }
-
-            Spacer(modifier = Modifier.height(100.dp))
-        }
-
-        // Диалог
-        if (showSelectionDialog) {
-            CreaturePickerFlow(
-                onDismiss = { showSelectionDialog = false },
-                onCreatureSelected = { creature ->
-                    selectedCreature = creature
-                    showSelectionDialog = false
-                }
-            )
         }
     }
 }
 
 // --- Компоненты ---
-
-@Composable
-fun CreaturePickerFlow(
-    onDismiss: () -> Unit,
-    onCreatureSelected: (Creature) -> Unit
-) {
-    var selectedTown by remember { mutableStateOf<String?>(null) }
-    val allCreatures = remember { GameData.creatures }
-    val towns = remember(allCreatures) {
-        val townOrder = listOf(
-            "Замок", "Оплот", "Башня", "Инферно", "Некрополис", "Темница",
-            "Цитадель", "Крепость", "Сопряжение", "Причал", "Фабрика",
-            "Нейтралы", "Боевые машины"
-        )
-        allCreatures.map { it.town }.distinct().sortedBy { townOrder.indexOf(it) }
-    }
-
-    Dialog(
-        onDismissRequest = onDismiss,
-        properties = DialogProperties(usePlatformDefaultWidth = false)
-    ) {
-        Box(modifier = Modifier.fillMaxSize().background(Color.Black)) {
-            AppBackground {
-                Column(modifier = Modifier.fillMaxSize()) {
-                    Row(
-                        modifier = Modifier.fillMaxWidth().padding(16.dp),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Button(
-                            onClick = { if (selectedTown != null) selectedTown = null else onDismiss() },
-                            colors = ButtonDefaults.buttonColors(containerColor = HommGold),
-                            contentPadding = PaddingValues(horizontal = 16.dp)
-                        ) {
-                            Text(text = if (selectedTown != null) "Назад" else "Закрыть", color = Color.Black, fontWeight = FontWeight.Bold)
-                        }
-                        Spacer(modifier = Modifier.weight(1f))
-                        Text(text = selectedTown ?: "Выберите фракцию", color = HommGold, fontSize = 20.sp, fontWeight = FontWeight.Bold)
-                        Spacer(modifier = Modifier.weight(1f))
-                        Spacer(modifier = Modifier.width(80.dp))
-                    }
-                    HorizontalDivider(color = HommGold)
-
-                    if (selectedTown == null) {
-                        LazyVerticalGrid(
-                            columns = GridCells.Fixed(2),
-                            contentPadding = PaddingValues(16.dp),
-                            horizontalArrangement = Arrangement.spacedBy(16.dp),
-                            verticalArrangement = Arrangement.spacedBy(16.dp)
-                        ) {
-                            items(towns) { town -> TownCard(townName = town, onClick = { selectedTown = town }) }
-                        }
-                    } else {
-                        val townCreatures = remember(selectedTown) { allCreatures.filter { it.town == selectedTown } }
-                        if (selectedTown == "Нейтралы" || selectedTown == "Боевые машины") {
-                            LazyVerticalGrid(
-                                columns = GridCells.Fixed(2),
-                                contentPadding = PaddingValues(16.dp),
-                                verticalArrangement = Arrangement.spacedBy(16.dp),
-                                horizontalArrangement = Arrangement.spacedBy(16.dp)
-                            ) {
-                                items(townCreatures) { creature -> CreatureCard(creature) { onCreatureSelected(it) } }
-                            }
-                        } else {
-                            val levels = townCreatures.map { it.level }.distinct().sorted()
-                            LazyColumn(
-                                contentPadding = PaddingValues(16.dp),
-                                verticalArrangement = Arrangement.spacedBy(12.dp)
-                            ) {
-                                items(levels) { level ->
-                                    val levelCreatures = townCreatures.filter { it.level == level }.sortedBy { it.isUpgraded }
-                                    levelCreatures.chunked(2).forEach { rowCreatures ->
-                                        Row(
-                                            modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp),
-                                            horizontalArrangement = Arrangement.SpaceBetween
-                                        ) {
-                                            if (rowCreatures.isNotEmpty()) {
-                                                Box(modifier = Modifier.weight(1f).padding(end = 8.dp)) { CreatureCard(rowCreatures[0]) { onCreatureSelected(it) } }
-                                            } else {
-                                                Spacer(modifier = Modifier.weight(1f))
-                                            }
-                                            if (rowCreatures.size > 1) {
-                                                Box(modifier = Modifier.weight(1f).padding(start = 8.dp)) { CreatureCard(rowCreatures[1]) { onCreatureSelected(it) } }
-                                            } else {
-                                                Spacer(modifier = Modifier.weight(1f))
-                                            }
-                                        }
-                                    }
-                                    if (level != levels.last()) {
-                                        HorizontalDivider(color = HommGold.copy(alpha = 0.5f), thickness = 1.dp, modifier = Modifier.padding(vertical = 4.dp))
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
 
 @Composable
 fun HommCard(content: @Composable () -> Unit) {

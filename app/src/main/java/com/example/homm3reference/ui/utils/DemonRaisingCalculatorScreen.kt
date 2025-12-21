@@ -1,5 +1,6 @@
 package com.example.homm3reference.ui.utils
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.fadeIn
@@ -30,8 +31,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.window.Dialog
-import androidx.compose.ui.window.DialogProperties
 import com.example.homm3reference.data.Creature
 import com.example.homm3reference.data.GameData
 import com.example.homm3reference.ui.common.AppBackground
@@ -44,7 +43,6 @@ import com.example.homm3reference.ui.theme.HommGold
 import com.example.homm3reference.ui.theme.HommWhite
 import kotlin.math.floor
 import kotlin.math.min
-import androidx.activity.compose.BackHandler
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -166,10 +164,9 @@ fun DemonRaisingCalculatorScreen() {
 
     // --- UI ---
     AppBackground {
-        // ДОБАВИЛИ Box, чтобы слои накладывались (Основной контент + Оверлей выбора)
         Box(modifier = Modifier.fillMaxSize()) {
 
-            // Ваш основной контент (Скроллящаяся колонка)
+            // Ваш основной контент
             Column(
                 modifier = Modifier
                     .fillMaxSize()
@@ -194,19 +191,18 @@ fun DemonRaisingCalculatorScreen() {
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             val pitIcon = getDrawableId(LocalContext.current, "creature_pit_lord")
                             if(pitIcon != 0) {
-                                // --- Box с offset для поднятия картинки ---
                                 Box(
                                     modifier = Modifier
                                         .size(60.dp)
-                                        .border(1.dp, HommGold, RoundedCornerShape(4.dp))
-                                        .clip(RoundedCornerShape(4.dp))
+                                        .border(1.dp, HommGold, RoundedCornerShape(8.dp))
+                                        .clip(RoundedCornerShape(8.dp))
                                 ) {
                                     Image(
                                         painter = painterResource(id = pitIcon),
                                         contentDescription = null,
                                         modifier = Modifier
                                             .matchParentSize()
-                                            .offset(y = (-5).dp), // Поднимаем изображение
+                                            .offset(y = (-5).dp),
                                         contentScale = ContentScale.Crop
                                     )
                                 }
@@ -231,7 +227,13 @@ fun DemonRaisingCalculatorScreen() {
                             horizontalArrangement = Arrangement.SpaceBetween,
                             verticalAlignment = Alignment.CenterVertically
                         ) {
-                            SmallArtifactToggle("util_palatka", isSpecialist) { isSpecialist = !isSpecialist }
+                            // Логика: если специалист выбран, а навык "Нет", ставим "Базовый"
+                            SmallArtifactToggle("util_palatka", isSpecialist) {
+                                isSpecialist = !isSpecialist
+                                if (isSpecialist && firstAidLevel == 0) {
+                                    firstAidLevel = 1
+                                }
+                            }
 
                             SmallArtifactToggle("artifact_ring_of_vitality", hasRingVitality) {
                                 if(!hasElixir) hasRingVitality = !hasRingVitality
@@ -273,9 +275,19 @@ fun DemonRaisingCalculatorScreen() {
                             }
                         }
 
-                        HorizontalDivider(color = HommGold, modifier = Modifier.padding(vertical = 12.dp))
+                        // Убрали разделитель, добавили заголовок
+                        Text(
+                            text = "Навык Первой помощи",
+                            color = HommGold,
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.Bold,
+                            textAlign = TextAlign.Center,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(vertical = 12.dp)
+                        )
 
-                        // 3. Навык Первая Помощь
+                        // 3. Навык Первая Помощь (кнопки)
                         Row(
                             modifier = Modifier.fillMaxWidth(),
                             horizontalArrangement = Arrangement.SpaceBetween
@@ -413,8 +425,6 @@ fun DemonRaisingCalculatorScreen() {
                 Spacer(modifier = Modifier.height(100.dp))
             } // End of Column
 
-            // ПЕРЕНЕСЛИ ВЫЗОВ ДИАЛОГА СЮДА (вне Column, но внутри Box)
-            // Он будет отрисован поверх Column, так как идет позже в коде
             if (showSelectionDialog) {
                 UnifiedCreaturePickerDialog(
                     onDismiss = { showSelectionDialog = false },
@@ -460,14 +470,12 @@ private fun SmallArtifactToggle(resIdName: String, isSelected: Boolean, onClick:
 }
 
 // НОВАЯ ФУНКЦИЯ: Объединяет экраны выбора города и существа
+// БЕЗ КНОПОК НАВИГАЦИИ, ТОЛЬКО СИСТЕМНЫЙ BACK
 @Composable
 fun UnifiedCreaturePickerDialog(
     onDismiss: () -> Unit,
     onCreatureSelected: (Creature) -> Unit
 ) {
-    // 1. Перехватываем системную кнопку "Назад", чтобы закрыть экран выбора
-    BackHandler(onBack = onDismiss)
-
     // Состояние внутри
     var selectedTown by remember { mutableStateOf<String?>(null) }
     var searchQuery by remember { mutableStateOf("") }
@@ -482,13 +490,24 @@ fun UnifiedCreaturePickerDialog(
         allCreatures.map { it.town }.distinct().sortedBy { townOrder.indexOf(it) }
     }
 
-    // 2. УБРАЛИ Dialog() и zIndex (он не нужен, так как блок идет последним)
+    // Обработка кнопки НАЗАД
+    BackHandler {
+        if (selectedTown != null) {
+            // Если выбран город, сбрасываем его (возврат к списку городов)
+            selectedTown = null
+        } else {
+            // Если города нет (список городов), закрываем диалог
+            onDismiss()
+        }
+    }
+
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Black) // Подложка, чтобы не просвечивал старый экран
+            .background(Color.Black) // Подложка
     ) {
         if (selectedTown == null) {
+            // ЭКРАН ВЫБОРА ГОРОДА
             TownSelectionScreen(
                 title = "Выберите фракцию",
                 towns = towns,
@@ -511,16 +530,17 @@ fun UnifiedCreaturePickerDialog(
                     }
                 }
             )
-
+            // КНОПКА "ЗАКРЫТЬ" УБРАНА
 
         } else {
+            // ЭКРАН ВЫБОРА СУЩЕСТВА
             Box(modifier = Modifier.fillMaxSize()) {
                 CreatureListScreen(
                     townName = selectedTown!!,
                     creatures = allCreatures.filter { it.town == selectedTown },
                     onCreatureSelected = onCreatureSelected
                 )
-
+                // КНОПКА "НАЗАД" УБРАНА
             }
         }
     }

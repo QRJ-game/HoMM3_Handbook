@@ -66,7 +66,7 @@ fun UtilitiesMenuScreen(
                         // Кнопка 3: Demon Raising
                         HommListCard(
                             text = "Поднятие демонов",
-                            imageRes = "creature_pit_lord",
+                            imageRes = "util_demon",
                             onClick = onDemonRaisingClick
                         )
                     }
