@@ -484,7 +484,7 @@ fun UnifiedCreaturePickerDialog(
     val towns = remember(allCreatures) {
         val townOrder = listOf(
             "Замок", "Оплот", "Башня", "Инферно", "Некрополис", "Темница",
-            "Цитадель", "Крепость", "Сопряжение", "Причал", "Фабрика",
+            "Цитадель", "Крепость", "Сопряжение", "Причал", "Фабрика", "Кронверк",
             "Нейтралы", "Боевые машины"
         )
         allCreatures.map { it.town }.distinct().sortedBy { townOrder.indexOf(it) }
