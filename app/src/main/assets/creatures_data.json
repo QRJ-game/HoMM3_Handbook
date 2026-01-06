@@ -3181,7 +3181,7 @@
     "growth": 3,
     "goldCost": 450,
     "resourceCost": null,
-    "abilities": "Стрельба(12), Воздушный Щит(3)",
+    "abilities": "Стрельба(12), Воздушный Щит(3 раза за бой)",
     "aiValue": 685,
     "imageRes": "creature_shaman"
   },
@@ -3200,7 +3200,7 @@
     "growth": 3,
     "goldCost": 600,
     "resourceCost": null,
-    "abilities": "Стрельба(24), Воздушный Щит(3), Замораживающий выстрел(20%)",
+    "abilities": "Стрельба(24), Воздушный Щит(3 раза за бой), Замораживающий выстрел(20%)",
     "aiValue": 818,
     "imageRes": "creature_great_shaman"
   },
