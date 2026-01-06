@@ -292,7 +292,7 @@ fun DemonRaisingCalculatorScreen() {
                             modifier = Modifier.fillMaxWidth(),
                             horizontalArrangement = Arrangement.SpaceBetween
                         ) {
-                            val levels = listOf("Нет", "Базовый", "Продв.", "Эксперт")
+                            val levels = listOf("Нет", "Баз.", "Продв.", "Эксп.")
                             levels.forEachIndexed { index, label ->
                                 FilterChip(
                                     selected = firstAidLevel == index,
