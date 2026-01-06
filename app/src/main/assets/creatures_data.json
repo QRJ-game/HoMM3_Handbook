@@ -261,7 +261,7 @@
     "growth": 1,
     "goldCost": 5000,
     "resourceCost": "3 Самоцвета",
-    "abilities": "Полёт, Боевой дух +1, Ненависть к Дьяволам, Воскрешение(1), Широкое существо",
+    "abilities": "Полёт, Боевой дух +1, Ненависть к Дьяволам, Воскрешение(1 раз за бой), Широкое существо",
     "aiValue": 8776,
     "imageRes": "creature_archangel"
   },
@@ -721,7 +721,7 @@
     "growth": 3,
     "goldCost": 600,
     "resourceCost": null,
-    "abilities": "Полёт, Ненависть к ифритам, Случайная магия(3)",
+    "abilities": "Полёт, Ненависть к ифритам, Случайная магия(3 раза за бой)",
     "aiValue": 942,
     "imageRes": "creature_master_genie"
   },
@@ -987,7 +987,7 @@
     "growth": 3,
     "goldCost": 700,
     "resourceCost": null,
-    "abilities": "Поднятие демонов(1)",
+    "abilities": "Поднятие демонов(1 раз за бой)",
     "aiValue": 1224,
     "imageRes": "creature_pit_lord"
   },
@@ -1761,7 +1761,7 @@
     "growth": 4,
     "goldCost": 400,
     "resourceCost": null,
-    "abilities": "Жажда крови(3)",
+    "abilities": "Жажда крови(3 раза за бой)",
     "aiValue": 672,
     "imageRes": "creature_ogre_mage"
   },
@@ -2218,7 +2218,7 @@
     "growth": 6,
     "goldCost": 275,
     "resourceCost": null,
-    "abilities": "Элементаль, Стрельба(24), Иммунитет к Метеоритному дождю, Ненависть к земле, Уязвимость к Молнии и Армагеддону, Защита от воздуха(3)",
+    "abilities": "Элементаль, Стрельба(24), Иммунитет к Метеоритному дождю, Ненависть к земле, Уязвимость к Молнии и Армагеддону, Защита от воздуха(3 раза за бой)",
     "aiValue": 486,
     "isElemental": true,
     "imageRes": "creature_storm_elemental"
@@ -2258,7 +2258,7 @@
     "growth": 6,
     "goldCost": 375,
     "resourceCost": null,
-    "abilities": "Элементаль, Стрельба(24), Иммунитет к холоду, Ненависть к огню, Уязвимость к огню, Широкое существо, Защита от воды(3)",
+    "abilities": "Элементаль, Стрельба(24), Иммунитет к холоду, Ненависть к огню, Уязвимость к огню, Широкое существо, Защита от воды(3 раза за бой)",
     "aiValue": 380,
     "isElemental": true,
     "imageRes": "creature_ice_elemental"
@@ -2298,7 +2298,7 @@
     "growth": 5,
     "goldCost": 400,
     "resourceCost": null,
-    "abilities": "Элементаль, Полёт, Иммунитет к огню, Ненависть к воде, Уязвимость к холоду, Защита от огня(3)",
+    "abilities": "Элементаль, Полёт, Иммунитет к огню, Ненависть к воде, Уязвимость к холоду, Защита от огня(3 раза за бой)",
     "aiValue": 470,
     "isElemental": true,
     "imageRes": "creature_energy_elemental"
@@ -2338,7 +2338,7 @@
     "growth": 4,
     "goldCost": 500,
     "resourceCost": null,
-      "abilities": "Элементаль, Иммунитет к Молнии и Армагеддону, Ненависть к воздуху, Уязвимость к Метеоритному дождю, Защита от земли(3)",
+    "abilities": "Элементаль, Иммунитет к Молнии и Армагеддону, Ненависть к воздуху, Уязвимость к Метеоритному дождю, Защита от земли(3 раза за бой)",
     "aiValue": 490,
     "isElemental": true,
     "imageRes": "creature_magma_elemental"
@@ -2759,7 +2759,7 @@
     "growth": 8,
     "goldCost": 140,
     "resourceCost": null,
-    "abilities": "Чинит механизмы(1/10), Дыхание дракона",
+    "abilities": "Чинит механизмы(1 раз за бой/10 здоровья за Механика), Дыхание дракона",
     "aiValue": 186,
     "imageRes": "creature_mechanic"
   },
@@ -2778,7 +2778,7 @@
     "growth": 8,
     "goldCost": 170,
     "resourceCost": null,
-    "abilities": "Чинит механизмы(1/20), Дыхание дракона",
+    "abilities": "Чинит механизмы(1 раз за бой/20 здоровья за Инженера), Дыхание дракона",
     "aiValue": 278,
     "imageRes": "creature_engineer"
   },
@@ -2913,7 +2913,7 @@
     "growth": 2,
     "goldCost": 800,
     "resourceCost": null,
-    "abilities": "Стрельба(16), Упреждающий выстрел(1)",
+    "abilities": "Стрельба(16), Упреждающий выстрел(1 раз за раунд)",
     "aiValue": 1351,
     "imageRes": "creature_gunslinger"
   },
@@ -2932,7 +2932,7 @@
     "growth": 2,
     "goldCost": 1100,
     "resourceCost": null,
-    "abilities": "Стрельба(16), Упреждающий выстрел(все)",
+    "abilities": "Стрельба(16), Упреждающий выстрел(любое число раз за раунд)",
     "aiValue": 1454,
     "imageRes": "creature_bounty_hunter"
   },
@@ -2951,7 +2951,7 @@
     "growth": 1,
     "goldCost": 2000,
     "resourceCost": null,
-    "abilities": "Полёт, Неуязвимость(пропуск хода), Широкое существо",
+    "abilities": "Полёт, Неуязвимость(1 раз за бой с пропуском хода), Широкое существо",
     "aiValue": 3574,
     "imageRes": "creature_couatl"
   },
@@ -2970,7 +2970,7 @@
     "growth": 1,
     "goldCost": 3500,
     "resourceCost": "1 Кристалл",
-    "abilities": "Полёт, Неуязвимость(без пропуска хода), Широкое существо",
+    "abilities": "Полёт, Неуязвимость(1 раз за бой без пропуска хода), Широкое существо",
     "aiValue": 5341,
     "imageRes": "creature_crimson_couatl"
   },
@@ -3014,14 +3014,7 @@
     "isMech": true,
     "imageRes": "creature_juggernaut"
   },
-
-
-
-
-
-
-
-{
+  {
     "id": "kobold",
     "name": "Кобольд",
     "town": "Кронверк",
@@ -3207,7 +3200,7 @@
     "growth": 3,
     "goldCost": 600,
     "resourceCost": null,
-    "abilities": "Стрельба(12), Воздушный Щит(3), Замораживающий выстрел(20%)",
+    "abilities": "Стрельба(24), Воздушный Щит(3), Замораживающий выстрел(20%)",
     "aiValue": 818,
     "imageRes": "creature_great_shaman"
   },
@@ -3264,8 +3257,8 @@
     "growth": 1,
     "goldCost": 2000,
     "resourceCost": null,
-    "abilities": "Телепортирует союзников(1), -1 к скорости вражеских летающих существ, Широкое существо",
-    "aiValue": 3483,
+    "abilities": "Телепортирует союзников(1 раз за бой), -1 к скорости вражеских летающих существ, Широкое существо",
+    "aiValue": 4180,
     "imageRes": "creature_jotunn"
   },
   {
@@ -3283,31 +3276,10 @@
     "growth": 1,
     "goldCost": 3500,
     "resourceCost": "1 Самоцвет",
-    "abilities": "Телепортирует союзников(все), -2 к скорости вражеских летающих существ, Широкое существо",
+    "abilities": "Телепортирует союзников(неограниченное количество раз за бой), -2 к скорости вражеских летающих существ, Широкое существо",
     "aiValue": 6694,
     "imageRes": "creature_jotunn_warlord"
   },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
   {
     "id": "peasant",
     "name": "Крестьянин",
@@ -3380,7 +3352,7 @@
     "growth": 9,
     "goldCost": 100,
     "resourceCost": null,
-    "abilities": "Удваивает удачу, Удача(3)",
+    "abilities": "Удваивает удачу, Удача(3 раза за бой)",
     "aiValue": 190,
     "imageRes": "creature_leprechaun"
   },
@@ -3457,7 +3429,7 @@
     "growth": 4,
     "goldCost": 300,
     "resourceCost": null,
-    "abilities": "Радость(3)",
+    "abilities": "Радость(3 раза за бой)",
     "aiValue": 518,
     "imageRes": "creature_satyr"
   },
@@ -3593,7 +3565,7 @@
     "growth": 1,
     "goldCost": 10000,
     "resourceCost": "8 Самоцветов",
-    "abilities": "Полёт, Атака случайной магией(5), Волшебное зеркало(20%), Широкое существо",
+    "abilities": "Полёт, Атака случайной магией(5 раз за бой), Волшебное зеркало(20%), Широкое существо",
     "aiValue": 30501,
     "imageRes": "creature_faerie_dragon"
   },
