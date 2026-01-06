@@ -83,9 +83,9 @@ fun NecromancyCalculatorScreen() {
     val amplifierBonus = amplifiers * 5.0
     val grailBonus = if (hasGrail) 20.0 else 0.0
 
-    val artifactBonus = (if (hasAmulet) 2.5 else 0.0) +
-            (if (hasCowl) 5.0 else 0.0) +
-            (if (hasBoots) 7.5 else 0.0)
+    val artifactBonus = (if (hasAmulet) 5.0 else 0.0) +
+            (if (hasCowl) 10.0 else 0.0) +
+            (if (hasBoots) 15.0 else 0.0)
 
     val totalPercent = min(100.0, skillPercent + amplifierBonus + grailBonus + artifactBonus)
     val percentFactor = totalPercent / 100.0

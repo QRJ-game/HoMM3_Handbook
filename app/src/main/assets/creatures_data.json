@@ -1044,7 +1044,7 @@
     "growth": 1,
     "goldCost": 2700,
     "resourceCost": "1 Ртуть",
-    "abilities": "Полёт, Безответная атака, Ненависть к Ангелам, -1 удаче врага",
+    "abilities": "Телепортация, Безответная атака, Ненависть к Ангелам, -1 удаче врага",
     "aiValue": 5101,
     "imageRes": "creature_devil"
   },
@@ -1063,7 +1063,7 @@
     "growth": 1,
     "goldCost": 4500,
     "resourceCost": "2 Ртути",
-    "abilities": "Полёт, Безответная атака, Ненависть к Ангелам, -2 удаче врага",
+    "abilities": "Телепортация, Безответная атака, Ненависть к Ангелам, -2 удаче врага",
     "aiValue": 7115,
     "imageRes": "creature_arch_devil"
   },
@@ -3014,6 +3014,300 @@
     "isMech": true,
     "imageRes": "creature_juggernaut"
   },
+
+
+
+
+
+
+
+{
+    "id": "kobold",
+    "name": "Кобольд",
+    "town": "Кронверк",
+    "level": 1,
+    "isUpgraded": false,
+    "minDamage": 1,
+    "maxDamage": 2,
+    "attack": 3,
+    "defense": 4,
+    "health": 8,
+    "speed": 3,
+    "growth": 15,
+    "goldCost": 40,
+    "resourceCost": null,
+    "abilities": "Приносит 1 золото в день",
+    "aiValue": 54,
+    "imageRes": "creature_kobold"
+  },
+  {
+    "id": "kobold_foreman",
+    "name": "Кобольд-старшина",
+    "town": "Кронверк",
+    "level": 1,
+    "isUpgraded": true,
+    "minDamage": 1,
+    "maxDamage": 2,
+    "attack": 5,
+    "defense": 6,
+    "health": 8,
+    "speed": 5,
+    "growth": 15,
+    "goldCost": 60,
+    "resourceCost": null,
+    "abilities": "Приносит 1 золото в день",
+    "aiValue": 84,
+    "imageRes": "creature_kobold_foreman"
+  },
+  {
+    "id": "mountain_ram",
+    "name": "Горный баран",
+    "town": "Кронверк",
+    "level": 2,
+    "isUpgraded": false,
+    "minDamage": 3,
+    "maxDamage": 4,
+    "attack": 7,
+    "defense": 6,
+    "health": 18,
+    "speed": 7,
+    "growth": 9,
+    "goldCost": 135,
+    "resourceCost": null,
+    "abilities": "Широкое существо",
+    "aiValue": 228,
+    "imageRes": "creature_mountain_ram"
+  },
+  {
+    "id": "argali",
+    "name": "Архар",
+    "town": "Кронверк",
+    "level": 2,
+    "isUpgraded": true,
+    "minDamage": 3,
+    "maxDamage": 4,
+    "attack": 8,
+    "defense": 6,
+    "health": 18,
+    "speed": 8,
+    "growth": 9,
+    "goldCost": 170,
+    "resourceCost": null,
+    "abilities": "Иммунитет к холоду, Стоящие рядом враги получают +20% урона от заклинаний, Широкое существо",
+    "aiValue": 250,
+    "imageRes": "creature_argali"
+  },
+  {
+    "id": "snow_elf",
+    "name": "Снежный эльф",
+    "town": "Кронверк",
+    "level": 3,
+    "isUpgraded": false,
+    "minDamage": 4,
+    "maxDamage": 6,
+    "attack": 9,
+    "defense": 8,
+    "health": 21,
+    "speed": 6,
+    "growth": 7,
+    "goldCost": 230,
+    "resourceCost": null,
+    "abilities": "Стрельба (4), Нет штрафа в ближнем бою",
+    "aiValue": 370,
+    "imageRes": "creature_snow_elf"
+  },
+  {
+    "id": "steel_elf",
+    "name": "Стальной эльф",
+    "town": "Кронверк",
+    "level": 3,
+    "isUpgraded": true,
+    "minDamage": 4,
+    "maxDamage": 6,
+    "attack": 9,
+    "defense": 10,
+    "health": 24,
+    "speed": 7,
+    "growth": 7,
+    "goldCost": 260,
+    "resourceCost": null,
+    "abilities": "Стрельба (8), Нет штрафа в ближнем бою, Может стрелять, находясь рядом с вражеским существом",
+    "aiValue": 526,
+    "imageRes": "creature_steel_elf"
+  },
+  {
+    "id": "yeti",
+    "name": "Йети",
+    "town": "Кронверк",
+    "level": 4,
+    "isUpgraded": false,
+    "minDamage": 7,
+    "maxDamage": 9,
+    "attack": 10,
+    "defense": 8,
+    "health": 40,
+    "speed": 6,
+    "growth": 4,
+    "goldCost": 325,
+    "resourceCost": null,
+    "abilities": "Избавляется от негативных эффектов за один раунд, Широкое существо",
+    "aiValue": 504,
+    "imageRes": "creature_yeti"
+  },
+  {
+    "id": "yeti_runemaster",
+    "name": "Йети-рунотворец",
+    "town": "Кронверк",
+    "level": 4,
+    "isUpgraded": true,
+    "minDamage": 7,
+    "maxDamage": 9,
+    "attack": 11,
+    "defense": 9,
+    "health": 45,
+    "speed": 7,
+    "growth": 4,
+    "goldCost": 400,
+    "resourceCost": null,
+    "abilities": "Избавляется от негативных эффектов за один раунд, Владеет рунами, Широкое существо",
+    "aiValue": 751,
+    "imageRes": "creature_yeti_runemaster"
+  },
+  {
+    "id": "shaman",
+    "name": "Шаман",
+    "town": "Кронверк",
+    "level": 5,
+    "isUpgraded": false,
+    "minDamage": 11,
+    "maxDamage": 13,
+    "attack": 11,
+    "defense": 8,
+    "health": 35,
+    "speed": 5,
+    "growth": 3,
+    "goldCost": 450,
+    "resourceCost": null,
+    "abilities": "Стрельба(12), Воздушный Щит(3)",
+    "aiValue": 685,
+    "imageRes": "creature_shaman"
+  },
+  {
+    "id": "great_shaman",
+    "name": "Великий шаман",
+    "town": "Кронверк",
+    "level": 5,
+    "isUpgraded": true,
+    "minDamage": 11,
+    "maxDamage": 13,
+    "attack": 12,
+    "defense": 11,
+    "health": 35,
+    "speed": 6,
+    "growth": 3,
+    "goldCost": 600,
+    "resourceCost": null,
+    "abilities": "Стрельба(12), Воздушный Щит(3), Замораживающий выстрел(20%)",
+    "aiValue": 818,
+    "imageRes": "creature_great_shaman"
+  },
+  {
+    "id": "mammoth",
+    "name": "Мамонт",
+    "town": "Кронверк",
+    "level": 6,
+    "isUpgraded": false,
+    "minDamage": 14,
+    "maxDamage": 20,
+    "attack": 12,
+    "defense": 16,
+    "health": 120,
+    "speed": 5,
+    "growth": 2,
+    "goldCost": 850,
+    "resourceCost": null,
+    "abilities": "Широкое существо",
+    "aiValue": 1359,
+    "imageRes": "creature_mammoth"
+  },
+  {
+    "id": "war_mammoth",
+    "name": "Боевой мамонт",
+    "town": "Кронверк",
+    "level": 6,
+    "isUpgraded": true,
+    "minDamage": 14,
+    "maxDamage": 20,
+    "attack": 14,
+    "defense": 18,
+    "health": 135,
+    "speed": 6,
+    "growth": 2,
+    "goldCost": 1000,
+    "resourceCost": null,
+    "abilities": "Получает +100% защиты в защитной стойке, Широкое существо",
+    "aiValue": 1601,
+    "imageRes": "creature_war_mammoth"
+  },
+  {
+    "id": "jotunn",
+    "name": "Ётун",
+    "town": "Кронверк",
+    "level": 7,
+    "isUpgraded": false,
+    "minDamage": 40,
+    "maxDamage": 50,
+    "attack": 18,
+    "defense": 18,
+    "health": 165,
+    "speed": 8,
+    "growth": 1,
+    "goldCost": 2000,
+    "resourceCost": null,
+    "abilities": "Телепортирует союзников(1), -1 к скорости вражеских летающих существ, Широкое существо",
+    "aiValue": 3483,
+    "imageRes": "creature_jotunn"
+  },
+  {
+    "id": "jotunn_warlord",
+    "name": "Ётун-воевода",
+    "town": "Кронверк",
+    "level": 7,
+    "isUpgraded": true,
+    "minDamage": 40,
+    "maxDamage": 50,
+    "attack": 20,
+    "defense": 20,
+    "health": 300,
+    "speed": 10,
+    "growth": 1,
+    "goldCost": 3500,
+    "resourceCost": "1 Самоцвет",
+    "abilities": "Телепортирует союзников(все), -2 к скорости вражеских летающих существ, Широкое существо",
+    "aiValue": 6694,
+    "imageRes": "creature_jotunn_warlord"
+  },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
   {
     "id": "peasant",
     "name": "Крестьянин",

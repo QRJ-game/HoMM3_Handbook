@@ -88,6 +88,7 @@ fun TownCard(townName: String, onClick: () -> Unit) {
         "Сопряжение" -> "town_conflux"
         "Причал" -> "town_cove"
         "Фабрика" -> "town_factory"
+        "Кронверк" -> "town_kronverk"
         "Нейтралы" -> "town_neutral"
         "Боевые машины" -> "creature_ballista"
         else -> "icon_image"

@@ -113,6 +113,15 @@ object JSON_Mapper {
         "песчаных червей" to "creature_sandworm",  "песчаных червя" to "creature_sandworm",
         "стрелков" to "creature_gunslinger", "стрелка" to "creature_gunslinger",
 
+
+        //Кронверк
+        "кобольдов" to "creature_kobold", "кобольда" to "creature_kobold",
+        "горных баранов" to "creature_mountain_ram", "горных барана" to "creature_mountain_ram",
+        "снежных эльфов" to "creature_snow_elf", "Снежных Эльфа" to "creature_snow_elf",
+        "йети" to "creature_yeti",
+        "шаманов" to "creature_shaman", "шамана" to "creature_shaman",
+        "мамонтов" to "creature_mammoth", "мамонта" to "creature_mammoth",
+
         // Нейтралы
         "снайпер" to "creature_sharpshooter","снайперов" to "creature_sharpshooter", "снайпера" to "creature_sharpshooter",
         "чародей" to "creature_enchanter","чародеев" to "creature_enchanter", "чародея" to "creature_enchanter",
