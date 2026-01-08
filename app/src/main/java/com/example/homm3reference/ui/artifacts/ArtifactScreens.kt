@@ -31,6 +31,11 @@ import com.example.homm3reference.ui.common.AppBackground
 import com.example.homm3reference.ui.common.AppSearchBar
 import com.example.homm3reference.R
 import com.example.homm3reference.ui.common.HommListCard
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.navigationBars
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.rememberLazyListState
 
 // Константы цветов для удобства и единообразия внутри файла
 private val HommGold = Color(0xFFD4AF37)
@@ -144,7 +149,12 @@ fun ArtifactsMenuScreen(
 }
 
 @Composable
-fun ArtifactCategorySelectScreen(categoryType: String, onValueClick: (String) -> Unit) {
+fun ArtifactCategorySelectScreen(
+    categoryType: String,
+    // 1. Добавляем параметр состояния
+    listState: LazyListState = rememberLazyListState(),
+    onValueClick: (String) -> Unit
+) {
     val items = remember(categoryType) {
         when (categoryType) {
             "class" -> ArtifactConstants.CLASSES
@@ -166,6 +176,8 @@ fun ArtifactCategorySelectScreen(categoryType: String, onValueClick: (String) ->
                     .align(Alignment.CenterHorizontally)
             )
             LazyColumn(
+                // 2. Привязываем состояние
+                state = listState,
                 verticalArrangement = Arrangement.spacedBy(8.dp),
                 contentPadding = PaddingValues(bottom = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding() + 16.dp)
             ) {
@@ -219,10 +231,17 @@ fun ArtifactCategorySelectScreen(categoryType: String, onValueClick: (String) ->
 }
 
 @Composable
-fun ArtifactListScreen(artifacts: List<Artifact>, onArtifactClick: (Artifact) -> Unit) {
+fun ArtifactListScreen(
+    artifacts: List<Artifact>,
+    // 1. Добавляем параметр состояния
+    listState: LazyListState = rememberLazyListState(),
+    onArtifactClick: (Artifact) -> Unit
+) {
     AppBackground {
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
+            // 2. Привязываем состояние к списку
+            state = listState,
             contentPadding = PaddingValues(
                 top = 16.dp,
                 start = 16.dp,

@@ -31,6 +31,8 @@ import android.graphics.Color as AndroidColor
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.navigationBars
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.rememberLazyListState
 
 // Локальные константы
 private val HommShape = RoundedCornerShape(8.dp)
@@ -231,6 +233,7 @@ fun SpellCard(spell: Spell, onClick: () -> Unit) {
 fun SpellListScreen(
     school: String,
     spells: List<Spell>,
+    listState: LazyListState = rememberLazyListState(),
     onSpellSelected: (Spell) -> Unit
 ) {
 
@@ -264,18 +267,11 @@ fun SpellListScreen(
                 modifier = Modifier.padding(vertical = 8.dp).align(Alignment.CenterHorizontally)
             )
 
-//            AppSearchBar(
-//                query = searchQuery,
-//                onQueryChanged = { searchQuery = it },
-//                modifier = Modifier.padding(bottom = 24.dp, top = 8.dp),
-//                placeholderText = "Поиск заклинания..."
-//            )
-
             LazyColumn(
+                // 2. Привязываем состояние
+                state = listState,
                 verticalArrangement = Arrangement.spacedBy(8.dp),
-                // --- ИЗМЕНЕНИЕ: Добавлен contentPadding ---
                 contentPadding = PaddingValues(bottom = navBarPadding)
-                // ------------------------------------------
             ) {
                 groupedSpells.forEach { (_, levelSpells) ->
                     items(levelSpells) { spell ->

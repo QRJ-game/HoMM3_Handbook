@@ -25,6 +25,9 @@ import com.example.homm3reference.ui.theme.HommGlassBackground
 import com.example.homm3reference.ui.theme.HommGold
 import com.example.homm3reference.ui.theme.HommWhite
 import kotlin.math.floor
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.navigationBars
 
 @Composable
 fun CreatureUpgradeCheckerScreen() {
@@ -32,12 +35,15 @@ fun CreatureUpgradeCheckerScreen() {
     var yCoord by remember { mutableStateOf("") }
     var isDungeon by remember { mutableStateOf(false) } // false = Поверхность (z=0), true = Подземелье (z=1)
     var resultText by remember { mutableStateOf("") }
+    val navBarPadding = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
 
     AppBackground {
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(16.dp)
+                // Добавляем паддинг снизу для скролла
+                .padding(bottom = navBarPadding)
                 .verticalScroll(rememberScrollState()),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {

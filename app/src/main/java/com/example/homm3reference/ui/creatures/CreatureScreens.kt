@@ -38,6 +38,10 @@ import com.example.homm3reference.ui.theme.HommGold
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.navigationBars
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.lazy.grid.rememberLazyGridState
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 
 // Локальные константы
 private val HommShape = RoundedCornerShape(8.dp)
@@ -47,8 +51,10 @@ private val HommBorder = BorderStroke(2.dp, HommGold)
 fun CreatureListScreen(
     townName: String,
     creatures: List<Creature>,
+    listState: LazyListState = rememberLazyListState(),
     onCreatureSelected: (Creature) -> Unit
 ) {
+    val navBarPadding = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
     var searchQuery by remember { mutableStateOf("") }
 
     val filteredCreatures = remember(creatures, searchQuery) {
@@ -69,16 +75,12 @@ fun CreatureListScreen(
                 fontWeight = FontWeight.Bold
             )
 
-//            AppSearchBar(
-//                query = searchQuery,
-//                onQueryChanged = { searchQuery = it },
-//                modifier = Modifier.padding(horizontal = 16.dp, vertical = 16.dp),
-//                placeholderText = "Поиск существа..."
-//            )
 
             // Сетка для нейтралов/машин или Список для городов
             if (townName == "Нейтралы" || townName == "Боевые машины") {
                 LazyVerticalGrid(
+                    // Для сетки используем локальное состояние (или можно было прокинуть gridState)
+                    state = rememberLazyGridState(),
                     columns = GridCells.Fixed(2),
                     contentPadding = PaddingValues(
                         top = 16.dp,
@@ -97,6 +99,8 @@ fun CreatureListScreen(
                 val levels = filteredCreatures.map { it.level }.distinct().sorted()
 
                 LazyColumn(
+                    // 2. Привязываем переданное состояние
+                    state = listState,
                     contentPadding = PaddingValues(
                         top = 16.dp,
                         start = 16.dp,
@@ -199,6 +203,7 @@ fun CreatureCard(creature: Creature, onClick: (Creature) -> Unit) {
 
 @Composable
 fun CreatureDetailScreen(creature: Creature) {
+    val navBarPadding = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
     AppBackground {
         Column(modifier = Modifier
             .fillMaxSize()

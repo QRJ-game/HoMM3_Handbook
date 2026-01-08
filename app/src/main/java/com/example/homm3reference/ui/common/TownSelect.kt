@@ -2,8 +2,10 @@ package com.example.homm3reference.ui.common
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyGridState
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -12,6 +14,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+// Добавлены импорты для отступов навигационной панели
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.navigationBars
 
 @Composable
 fun TownSelectionScreen(
@@ -20,22 +26,28 @@ fun TownSelectionScreen(
     onTownSelected: (String) -> Unit,
     searchQuery: String,
     onQueryChanged: (String) -> Unit,
+    // Параметр уже добавлен вами в сигнатуру, отлично
+    gridState: LazyGridState = rememberLazyGridState(),
     searchResultsContent: @Composable () -> Unit
 ) {
+    // Вычисляем отступ снизу для навигационной панели
+    val navBarPadding = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
+
     AppBackground {
         Column(modifier = Modifier.fillMaxSize()) {
 
             // Заголовок и поиск
             Column(modifier = Modifier.padding(16.dp)) {
-               // Spacer(modifier = Modifier.height(32.dp))
+                // Spacer(modifier = Modifier.height(32.dp))
 
                 Text(
                     text = title,
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color(0xFFD4AF37),
-                    modifier = Modifier.padding( top = 32.dp, bottom = 16.dp)
-                    .align(Alignment.CenterHorizontally)
+                    modifier = Modifier
+                        .padding(top = 32.dp, bottom = 16.dp)
+                        .align(Alignment.CenterHorizontally)
                 )
 
                 //Spacer(modifier = Modifier.height(16.dp))
@@ -53,12 +65,17 @@ fun TownSelectionScreen(
                 }
             } else {
                 LazyVerticalGrid(
+                    // ВАЖНО: Привязываем состояние
+                    state = gridState,
                     columns = GridCells.Fixed(2),
                     verticalArrangement = Arrangement.spacedBy(16.dp),
                     horizontalArrangement = Arrangement.spacedBy(16.dp),
-                    contentPadding = PaddingValues(16.dp,
-                        bottom = navBarPadding + 8.dp)
-
+                    contentPadding = PaddingValues(
+                        start = 16.dp,
+                        top = 16.dp,
+                        end = 16.dp,
+                        bottom = navBarPadding + 8.dp
+                    )
                 ) {
                     items(towns) { town ->
                         TownCard(townName = town, onClick = { onTownSelected(town) })

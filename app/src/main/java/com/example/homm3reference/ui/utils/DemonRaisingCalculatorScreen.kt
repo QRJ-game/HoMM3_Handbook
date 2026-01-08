@@ -43,12 +43,15 @@ import com.example.homm3reference.ui.theme.HommGold
 import com.example.homm3reference.ui.theme.HommWhite
 import kotlin.math.floor
 import kotlin.math.min
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.navigationBars
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DemonRaisingCalculatorScreen() {
     // --- Состояние ---
-
+    val navBarPadding = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
     // Властители
     var pitLordCountStr by remember { mutableStateOf("1") }
 
@@ -165,12 +168,12 @@ fun DemonRaisingCalculatorScreen() {
     // --- UI ---
     AppBackground {
         Box(modifier = Modifier.fillMaxSize()) {
-
-            // Ваш основной контент
             Column(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(16.dp)
+                    // Учитываем паддинг навигации
+                    .padding(bottom = navBarPadding)
                     .verticalScroll(rememberScrollState()),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {

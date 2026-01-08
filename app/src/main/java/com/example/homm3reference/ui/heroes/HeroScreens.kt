@@ -35,6 +35,13 @@ import com.example.homm3reference.ui.common.*
 import com.example.homm3reference.ui.theme.HommGlassBackground
 import com.example.homm3reference.ui.theme.HommGold
 import android.annotation.SuppressLint
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.navigationBars
 
 // Локальные константы стиля
 private val HommShape = RoundedCornerShape(8.dp)
@@ -47,6 +54,7 @@ fun ClassSelectionScreen(
     magicClassName: String,
     onClassSelected: (String) -> Unit
 ) {
+    val navBarPadding = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
     AppBackground {
         Column(modifier = Modifier
             .fillMaxSize()
@@ -120,8 +128,10 @@ fun HeroListScreen(
     heroes: List<Hero>,
     townName: String,
     className: String,
+    listState: LazyListState = rememberLazyListState(),
     onHeroSelected: (Hero) -> Unit
 ) {
+    val navBarPadding = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
     val groupedHeroes = remember(heroes) {
         val standardHeroes = heroes.filter { it.backgroundColor.isNullOrEmpty() }
         val coloredHeroes = heroes.filter { !it.backgroundColor.isNullOrEmpty() }.groupBy { it.backgroundColor }
@@ -142,12 +152,13 @@ fun HeroListScreen(
             )
 
             LazyColumn(
+                // 4. Привязываем состояние
+                state = listState,
                 contentPadding = PaddingValues(
                     top = 16.dp,
                     start = 16.dp,
                     end = 16.dp,
-                    bottom = 16.dp + navBarPadding // Если bottomNavPadding глобальный
-                    // ИЛИ bottom = 16.dp + WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
+                    bottom = 16.dp + navBarPadding
                 ),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
@@ -218,7 +229,7 @@ fun HeroCard(hero: Hero, onHeroSelected: (Hero) -> Unit) {
 @Composable
 fun HeroDetailScreen(hero: Hero, creatures: List<Creature>) {
     val stats = remember(hero.heroClass) { GameData.getStatsForClass(hero.heroClass) }
-
+    val navBarPadding = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
     val spellObj = remember(hero.spell) {
         GameData.spells.find { it.name.equals(hero.spell, ignoreCase = true) }
     }
@@ -239,7 +250,7 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>) {
                     top = 32.dp,
                     start = 16.dp,
                     end = 16.dp,
-                    bottom = navBarPadding // Добавляем паддинг снизу
+                    bottom = navBarPadding
                 )
             ) {
                 Spacer(modifier = Modifier.height(16.dp))

@@ -19,13 +19,18 @@ import androidx.compose.ui.unit.sp
 import com.example.homm3reference.ui.common.AppBackground
 import com.example.homm3reference.ui.common.HommListCard
 import com.example.homm3reference.ui.theme.HommGold
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.navigationBars
 
 @Composable
 fun UtilitiesMenuScreen(
     onUpgradeCheckerClick: () -> Unit,
     onNecromancyClick: () -> Unit,
-    onDemonRaisingClick: () -> Unit // <--- ВОТ ЭТОГО ПАРАМЕТРА НЕ ХВАТАЛО
+    onDemonRaisingClick: () -> Unit
 ) {
+    val navBarPadding = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
+
     AppBackground {
         Box(modifier = Modifier.fillMaxSize()) {
             Column(
@@ -36,7 +41,12 @@ fun UtilitiesMenuScreen(
             ) {
                 LazyColumn(
                     verticalArrangement = Arrangement.spacedBy(16.dp),
-                    contentPadding = PaddingValues(16.dp),
+                    contentPadding = PaddingValues(
+                        start = 16.dp,
+                        top = 16.dp,
+                        end = 16.dp,
+                        bottom = 16.dp + navBarPadding // Добавлено
+                    ),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     item {

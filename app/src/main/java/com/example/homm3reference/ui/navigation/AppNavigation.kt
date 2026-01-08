@@ -3,6 +3,9 @@ package com.example.homm3reference.ui.navigation
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
+// Добавлены импорты для состояний
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.*
@@ -39,7 +42,6 @@ val TOWN_ORDER = listOf(
 
 @Composable
 fun AppRoot(
-
     heroDao: HeroDao,
     creatureDao: CreatureDao,
     isMuted: Boolean,
@@ -73,6 +75,28 @@ fun AppRoot(
     var selectedArtifactCategoryValue by remember { mutableStateOf<String?>(null) }
     var selectedArtifact by remember { mutableStateOf<Artifact?>(null) }
     var artifactsSearchQuery by remember { mutableStateOf("") }
+
+    // === СОСТОЯНИЯ ПРОКРУТКИ (HOISTED STATES) ===
+    // Для списков сущностей
+    val heroListState = rememberLazyListState()
+    val creatureListState = rememberLazyListState()
+    val skillsListState = rememberLazyListState()
+    val magicListState = rememberLazyListState()
+    val artifactsListState = rememberLazyListState()
+    val artifactClassState = rememberLazyListState()
+    val artifactSlotState = rememberLazyListState()
+    val artifactGroupState = rememberLazyListState()
+
+    // Для выбора городов (предполагаем Grid)
+    val heroTownsGridState = rememberLazyGridState()
+    val creatureTownsGridState = rememberLazyGridState()
+
+    // Для результатов поиска (LazyColumn внутри AppNavigation)
+    val heroSearchState = rememberLazyListState()
+    val creatureSearchState = rememberLazyListState()
+    val magicSearchState = rememberLazyListState()
+    val artifactSearchState = rememberLazyListState()
+    // ============================================
 
     // Данные
     val allHeroes by heroDao.getAllHeroes().collectAsState(initial = emptyList())
@@ -113,10 +137,12 @@ fun AppRoot(
                 onTownSelected = { selectedHeroTown = it; currentScreen = Screen.HeroClasses },
                 searchQuery = heroesSearchQuery,
                 onQueryChanged = { heroesSearchQuery = it },
+                // Передаем состояние сетки городов
+                gridState = heroTownsGridState,
                 searchResultsContent = {
                     LazyColumn(
+                        state = heroSearchState, // Передаем состояние списка поиска
                         verticalArrangement = Arrangement.spacedBy(8.dp),
-                        // --- ИСПРАВЛЕНО ---
                         contentPadding = PaddingValues(bottom = navBarPadding + 16.dp)
                     ) {
                         items(filtered) { hero -> HeroCard(hero) { selectedHero = it; selectedHeroTown = null; currentScreen = Screen.HeroDetail } }
@@ -136,7 +162,13 @@ fun AppRoot(
             BackHandler { currentScreen = Screen.HeroClasses }
             if (selectedHeroTown != null && selectedHeroClassType != null) {
                 val list = allHeroes.filter { it.town == selectedHeroTown && it.classType == selectedHeroClassType }
-                HeroListScreen(list, selectedHeroTown!!, list.firstOrNull()?.heroClass ?: "") { selectedHero = it; currentScreen = Screen.HeroDetail }
+                HeroListScreen(
+                    list,
+                    selectedHeroTown!!,
+                    list.firstOrNull()?.heroClass ?: "",
+                    // Передаем состояние списка героев
+                    listState = heroListState
+                ) { selectedHero = it; currentScreen = Screen.HeroDetail }
             }
         }
         Screen.HeroDetail -> {
@@ -154,10 +186,12 @@ fun AppRoot(
                 onTownSelected = { selectedCreatureTown = it; currentScreen = Screen.CreatureList },
                 searchQuery = creaturesSearchQuery,
                 onQueryChanged = { creaturesSearchQuery = it },
+                // Передаем состояние сетки городов
+                gridState = creatureTownsGridState,
                 searchResultsContent = {
                     LazyColumn(
+                        state = creatureSearchState, // Передаем состояние списка поиска
                         verticalArrangement = Arrangement.spacedBy(8.dp),
-                        // --- ИСПРАВЛЕНО ---
                         contentPadding = PaddingValues(bottom = navBarPadding + 16.dp)
                     ) {
                         items(filtered) { c -> CreatureCard(c) { selectedCreature = it; selectedCreatureTown = null; currentScreen = Screen.CreatureDetail } }
@@ -168,7 +202,12 @@ fun AppRoot(
         Screen.CreatureList -> {
             BackHandler { selectedCreatureTown = null; currentScreen = Screen.CreatureTowns }
             selectedCreatureTown?.let { town ->
-                CreatureListScreen(town, allCreatures.filter { it.town == town }) { selectedCreature = it; currentScreen = Screen.CreatureDetail }
+                CreatureListScreen(
+                    town,
+                    allCreatures.filter { it.town == town },
+                    // Передаем состояние списка существ
+                    listState = creatureListState
+                ) { selectedCreature = it; currentScreen = Screen.CreatureDetail }
             }
         }
         Screen.CreatureDetail -> {
@@ -185,7 +224,9 @@ fun AppRoot(
                 skills = filtered,
                 onSkillClick = { selectedSkill = it; currentScreen = Screen.SkillDetail },
                 searchQuery = skillsSearchQuery,
-                onQueryChanged = { skillsSearchQuery = it }
+                onQueryChanged = { skillsSearchQuery = it },
+                // Передаем состояние списка навыков
+                listState = skillsListState
             )
         }
         Screen.SkillDetail -> {
@@ -203,8 +244,8 @@ fun AppRoot(
                 onQueryChanged = { magicSearchQuery = it },
                 searchResultsContent = {
                     LazyColumn(
+                        state = magicSearchState, // Передаем состояние списка поиска
                         verticalArrangement = Arrangement.spacedBy(8.dp),
-                        // --- ИСПРАВЛЕНО ---
                         contentPadding = PaddingValues(bottom = navBarPadding + 16.dp)
                     ) {
                         items(filtered) { s -> SpellCard(s) { selectedSpell = s; selectedSchool = null; currentScreen = Screen.MagicDetail } }
@@ -215,7 +256,12 @@ fun AppRoot(
         Screen.MagicList -> {
             BackHandler { selectedSchool = null; currentScreen = Screen.MagicSchools }
             selectedSchool?.let { school ->
-                SpellListScreen(school, allSpells.filter { it.school.contains(school, true) }) { selectedSpell = it; currentScreen = Screen.MagicDetail }
+                SpellListScreen(
+                    school,
+                    allSpells.filter { it.school.contains(school, true) },
+                    // Передаем состояние списка магии
+                    listState = magicListState
+                ) { selectedSpell = it; currentScreen = Screen.MagicDetail }
             }
         }
         Screen.MagicDetail -> {
@@ -233,8 +279,8 @@ fun AppRoot(
                 onQueryChanged = { artifactsSearchQuery = it },
                 searchResultsContent = {
                     LazyColumn(
+                        state = artifactSearchState, // Передаем состояние списка поиска
                         verticalArrangement = Arrangement.spacedBy(8.dp),
-                        // --- ИСПРАВЛЕНО ---
                         contentPadding = PaddingValues(bottom = navBarPadding + 16.dp)
                     ) {
                         items(filtered) { a -> ArtifactCard(a) { selectedArtifact = a; currentScreen = Screen.ArtifactDetail } }
@@ -245,7 +291,19 @@ fun AppRoot(
         Screen.ArtifactsCategory -> {
             BackHandler { currentScreen = Screen.ArtifactsMenu }
             selectedArtifactCategoryType?.let { type ->
-                ArtifactCategorySelectScreen(type) { selectedArtifactCategoryValue = it; currentScreen = Screen.ArtifactsList }
+
+                // Выбираем правильное состояние в зависимости от типа меню
+                val state = when(type) {
+                    "class" -> artifactClassState
+                    "slot" -> artifactSlotState
+                    "group" -> artifactGroupState
+                    else -> rememberLazyListState()
+                }
+
+                ArtifactCategorySelectScreen(
+                    categoryType = type,
+                    listState = state // <-- Передаем состояние
+                ) { selectedArtifactCategoryValue = it; currentScreen = Screen.ArtifactsList }
             }
         }
         Screen.ArtifactsList -> {
@@ -258,8 +316,13 @@ fun AppRoot(
                     else -> true
                 }
             }
-            ArtifactListScreen(list) { selectedArtifact = it; currentScreen = Screen.ArtifactDetail }
+            ArtifactListScreen(
+                list,
+                // Передаем состояние списка артефактов
+                listState = artifactsListState
+            ) { selectedArtifact = it; currentScreen = Screen.ArtifactDetail }
         }
+        // ... остальной код (ArtifactDetail и Utilities) без изменений ...
         Screen.ArtifactDetail -> {
             BackHandler { currentScreen = if (artifactsSearchQuery.isNotBlank()) Screen.ArtifactsMenu else Screen.ArtifactsList }
             selectedArtifact?.let { ArtifactDetailScreen(it) { newA -> selectedArtifact = newA } }
@@ -271,7 +334,7 @@ fun AppRoot(
             UtilitiesMenuScreen(
                 onUpgradeCheckerClick = { currentScreen = Screen.UtilityUpgradeCheck },
                 onNecromancyClick = { currentScreen = Screen.UtilityNecromancy },
-                onDemonRaisingClick = { currentScreen = Screen.UtilityDemonRaising } // <-- Обработка нажатия
+                onDemonRaisingClick = { currentScreen = Screen.UtilityDemonRaising }
             )
         }
         Screen.UtilityUpgradeCheck -> {
@@ -282,7 +345,7 @@ fun AppRoot(
             BackHandler { currentScreen = Screen.UtilitiesMenu }
             NecromancyCalculatorScreen()
         }
-        Screen.UtilityDemonRaising -> { // <-- Новый экран
+        Screen.UtilityDemonRaising -> {
             BackHandler { currentScreen = Screen.UtilitiesMenu }
             DemonRaisingCalculatorScreen()
         }

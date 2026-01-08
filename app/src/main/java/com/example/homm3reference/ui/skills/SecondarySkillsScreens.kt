@@ -28,14 +28,22 @@ import com.example.homm3reference.ui.common.AppBackground
 import com.example.homm3reference.ui.common.AppSearchBar
 import com.example.homm3reference.ui.theme.HommGlassBackground
 import com.example.homm3reference.ui.theme.HommGold
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.navigationBars
 
 // Константы стиля
 private val HommShape = RoundedCornerShape(8.dp)
 private val HommBorder = BorderStroke(2.dp, HommGold)
 
+
 @Composable
 fun SecondarySkillsListScreen(
     skills: List<SecondarySkill>,
+    // 1. Добавляем параметр
+    listState: LazyListState = rememberLazyListState(),
     onSkillClick: (SecondarySkill) -> Unit,
     searchQuery: String,
     onQueryChanged: (String) -> Unit
@@ -44,8 +52,8 @@ fun SecondarySkillsListScreen(
     AppBackground {
         Column(modifier = Modifier.fillMaxSize()) {
             // Header
-
             Column(modifier = Modifier.padding(top = 32.dp, start = 16.dp, end = 16.dp)) {
+                // ... (текст и поиск без изменений) ...
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(
                     text = "Вторичные навыки",
@@ -64,15 +72,15 @@ fun SecondarySkillsListScreen(
 
             // List
             LazyColumn(
+                // 2. Привязываем состояние
+                state = listState,
                 modifier = Modifier.fillMaxSize(),
-                // --- CHANGE HERE: Add bottom padding ---
                 contentPadding = PaddingValues(
                     top = 16.dp,
                     start = 16.dp,
                     end = 16.dp,
                     bottom = 16.dp + navBarPadding
                 ),
-                // ---------------------------------------
                 verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
                 items(skills) { skill ->

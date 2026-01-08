@@ -36,10 +36,14 @@ import com.example.homm3reference.ui.theme.HommWhite
 import kotlin.math.ceil
 import kotlin.math.floor
 import kotlin.math.min
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.navigationBars
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NecromancyCalculatorScreen() {
+    val navBarPadding = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
     // Состояние ввода
     var necromancyLevel by remember { mutableIntStateOf(0) } // 0: Базовый, 1: Продвинутый, 2: Эксперт
     var isSpecialist by remember { mutableStateOf(false) }
@@ -125,12 +129,11 @@ fun NecromancyCalculatorScreen() {
 
     AppBackground {
         Box(modifier = Modifier.fillMaxSize()) {
-
-            // Основной контент
             Column(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(16.dp)
+                    .padding(bottom = navBarPadding)
                     .verticalScroll(rememberScrollState()),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
