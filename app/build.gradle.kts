@@ -12,7 +12,7 @@ android {
         applicationId = "com.example.homm3reference"
         minSdk = 26
         targetSdk = 34
-        versionCode = 4
+        versionCode = 5
         versionName = "1.3"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -28,7 +28,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            signingConfig = signingConfigs.getByName("debug")
+            //signingConfig = signingConfigs.getByName("debug")
         }
     }
     compileOptions {
