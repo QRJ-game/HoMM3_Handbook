@@ -16,6 +16,9 @@ import com.example.homm3reference.ui.magic.*
 import com.example.homm3reference.ui.main_menu.MainMenuScreen
 import com.example.homm3reference.ui.skills.*
 import com.example.homm3reference.ui.utils.*
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.navigationBars
 
 enum class Screen {
     MainMenu,
@@ -36,11 +39,13 @@ val TOWN_ORDER = listOf(
 
 @Composable
 fun AppRoot(
+
     heroDao: HeroDao,
     creatureDao: CreatureDao,
     isMuted: Boolean,
     onMuteToggle: () -> Unit
 ) {
+    val navBarPadding = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
     var currentScreen by remember { mutableStateOf(Screen.MainMenu) }
 
     // Герои
@@ -109,7 +114,11 @@ fun AppRoot(
                 searchQuery = heroesSearchQuery,
                 onQueryChanged = { heroesSearchQuery = it },
                 searchResultsContent = {
-                    LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp), contentPadding = PaddingValues(bottom = 16.dp)) {
+                    LazyColumn(
+                        verticalArrangement = Arrangement.spacedBy(8.dp),
+                        // --- ИСПРАВЛЕНО ---
+                        contentPadding = PaddingValues(bottom = navBarPadding + 16.dp)
+                    ) {
                         items(filtered) { hero -> HeroCard(hero) { selectedHero = it; selectedHeroTown = null; currentScreen = Screen.HeroDetail } }
                     }
                 }
@@ -146,7 +155,11 @@ fun AppRoot(
                 searchQuery = creaturesSearchQuery,
                 onQueryChanged = { creaturesSearchQuery = it },
                 searchResultsContent = {
-                    LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp), contentPadding = PaddingValues(bottom = 16.dp)) {
+                    LazyColumn(
+                        verticalArrangement = Arrangement.spacedBy(8.dp),
+                        // --- ИСПРАВЛЕНО ---
+                        contentPadding = PaddingValues(bottom = navBarPadding + 16.dp)
+                    ) {
                         items(filtered) { c -> CreatureCard(c) { selectedCreature = it; selectedCreatureTown = null; currentScreen = Screen.CreatureDetail } }
                     }
                 }
@@ -189,7 +202,11 @@ fun AppRoot(
                 searchQuery = magicSearchQuery,
                 onQueryChanged = { magicSearchQuery = it },
                 searchResultsContent = {
-                    LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp), contentPadding = PaddingValues(bottom = 16.dp)) {
+                    LazyColumn(
+                        verticalArrangement = Arrangement.spacedBy(8.dp),
+                        // --- ИСПРАВЛЕНО ---
+                        contentPadding = PaddingValues(bottom = navBarPadding + 16.dp)
+                    ) {
                         items(filtered) { s -> SpellCard(s) { selectedSpell = s; selectedSchool = null; currentScreen = Screen.MagicDetail } }
                     }
                 }
@@ -215,7 +232,11 @@ fun AppRoot(
                 searchQuery = artifactsSearchQuery,
                 onQueryChanged = { artifactsSearchQuery = it },
                 searchResultsContent = {
-                    LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp), contentPadding = PaddingValues(bottom = 16.dp)) {
+                    LazyColumn(
+                        verticalArrangement = Arrangement.spacedBy(8.dp),
+                        // --- ИСПРАВЛЕНО ---
+                        contentPadding = PaddingValues(bottom = navBarPadding + 16.dp)
+                    ) {
                         items(filtered) { a -> ArtifactCard(a) { selectedArtifact = a; currentScreen = Screen.ArtifactDetail } }
                     }
                 }

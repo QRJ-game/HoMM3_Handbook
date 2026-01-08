@@ -365,3 +365,7 @@ fun HommListCard(
         }
     }
 }
+
+val navBarPadding: Dp
+    @Composable
+    get() = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()

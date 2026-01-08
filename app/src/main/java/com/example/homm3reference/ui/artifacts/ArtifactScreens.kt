@@ -92,14 +92,21 @@ fun ArtifactsMenuScreen(
             }
 
             if (searchQuery.isNotBlank()) {
-                Box(modifier = Modifier.padding(horizontal = 16.dp)) { searchResultsContent() }
-            } else {
-                Column(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(16.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally,
+                // --- ИЗМЕНЕНИЕ ЗДЕСЬ: Добавлен .weight(1f) ---
+                Box(modifier = Modifier
+                    .weight(1f)
+                    .padding(horizontal = 16.dp)
                 ) {
+                    searchResultsContent()
+                }
+            } else {
+            Column(
+                modifier = Modifier
+                    .weight(1f) // Для меню тоже лучше добавить вес явно
+                    .fillMaxWidth() // вместо fillMaxSize, так как мы внутри Column
+                    .padding(16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
                     Text(
                         "Сортировка по:",
                         color = HommGold,
@@ -110,8 +117,9 @@ fun ArtifactsMenuScreen(
 
                     // Используем LazyColumn для списка кнопок
                     LazyColumn(
-                        verticalArrangement = Arrangement.spacedBy(16.dp),
-                        modifier = Modifier.fillMaxWidth()
+                        verticalArrangement = Arrangement.spacedBy(16.dp, ),
+                        modifier = Modifier.fillMaxWidth(),
+                        contentPadding = PaddingValues(bottom = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding() + 16.dp)
                     ) {
                         items(ArtifactConstants.MENU_ITEMS) { (label, type) ->
                             // Определяем иконку для каждой категории
@@ -157,7 +165,10 @@ fun ArtifactCategorySelectScreen(categoryType: String, onValueClick: (String) ->
                     .padding(bottom = 16.dp, top = 32.dp)
                     .align(Alignment.CenterHorizontally)
             )
-            LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            LazyColumn(
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+                contentPadding = PaddingValues(bottom = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding() + 16.dp)
+            ) {
                 items(items) { item ->
                     Card(
                         modifier = Modifier
@@ -212,7 +223,12 @@ fun ArtifactListScreen(artifacts: List<Artifact>, onArtifactClick: (Artifact) ->
     AppBackground {
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
-            contentPadding = PaddingValues(16.dp),
+            contentPadding = PaddingValues(
+                top = 16.dp,
+                start = 16.dp,
+                end = 16.dp,
+                bottom = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding() + 16.dp
+            ),
             verticalArrangement = Arrangement.spacedBy(8.dp)
         )
         {
@@ -285,10 +301,15 @@ fun ArtifactDetailScreen(
     AppBackground {
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
-            contentPadding = PaddingValues(16.dp),
+            // --- ИЗМЕНЕНИЕ ЗДЕСЬ ---
+            contentPadding = PaddingValues(
+                top = 16.dp,
+                start = 16.dp,
+                end = 16.dp,
+                bottom = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding() + 16.dp
+            ),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // --- HEADER ---
             item {
                 Spacer(modifier = Modifier.height(32.dp))
                 ArtifactImage(imageRes = artifact.imageRes, modifier = Modifier.size(120.dp))

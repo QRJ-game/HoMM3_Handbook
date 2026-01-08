@@ -56,7 +56,9 @@ fun TownSelectionScreen(
                     columns = GridCells.Fixed(2),
                     verticalArrangement = Arrangement.spacedBy(16.dp),
                     horizontalArrangement = Arrangement.spacedBy(16.dp),
-                    contentPadding = PaddingValues(16.dp)
+                    contentPadding = PaddingValues(16.dp,
+                        bottom = navBarPadding + 8.dp)
+
                 ) {
                     items(towns) { town ->
                         TownCard(townName = town, onClick = { onTownSelected(town) })

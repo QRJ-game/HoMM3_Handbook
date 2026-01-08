@@ -33,6 +33,9 @@ import androidx.compose.ui.graphics.CompositingStrategy
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.draw.drawWithContent
 import com.example.homm3reference.ui.common.HommListCard
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.navigationBars
 
 
 @Composable
@@ -46,6 +49,7 @@ fun MainMenuScreen(
     isMuted: Boolean,
     onMuteToggle: () -> Unit
 ) {
+    val navBarPadding = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
     var showAboutPopup by remember { mutableStateOf(false) }
 
     val configuration = LocalConfiguration.current
@@ -176,6 +180,7 @@ fun MainMenuScreen(
                         modifier = menuPadding
                     )
                 }
+                Spacer(modifier = Modifier.height(navBarPadding + 80.dp))
             }
 
             // ... (Код кнопки "Об авторе" и попапа остается без изменений) ...

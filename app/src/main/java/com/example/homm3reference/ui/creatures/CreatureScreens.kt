@@ -35,6 +35,9 @@ import com.example.homm3reference.data.Creature
 import com.example.homm3reference.ui.common.*
 import com.example.homm3reference.ui.theme.HommGlassBackground
 import com.example.homm3reference.ui.theme.HommGold
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.navigationBars
 
 // Локальные константы
 private val HommShape = RoundedCornerShape(8.dp)
@@ -77,7 +80,12 @@ fun CreatureListScreen(
             if (townName == "Нейтралы" || townName == "Боевые машины") {
                 LazyVerticalGrid(
                     columns = GridCells.Fixed(2),
-                    contentPadding = PaddingValues(16.dp),
+                    contentPadding = PaddingValues(
+                        top = 16.dp,
+                        start = 16.dp,
+                        end = 16.dp,
+                        bottom = 16.dp + navBarPadding
+                    ),
                     verticalArrangement = Arrangement.spacedBy(16.dp),
                     horizontalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
@@ -89,7 +97,12 @@ fun CreatureListScreen(
                 val levels = filteredCreatures.map { it.level }.distinct().sorted()
 
                 LazyColumn(
-                    contentPadding = PaddingValues(16.dp),
+                    contentPadding = PaddingValues(
+                        top = 16.dp,
+                        start = 16.dp,
+                        end = 16.dp,
+                        bottom = 16.dp + navBarPadding
+                    ),
                     verticalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
                     items(levels) { level ->
@@ -249,7 +262,7 @@ fun CreatureDetailScreen(creature: Creature) {
             Spacer(modifier = Modifier.height(4.dp))
             Text(text = creature.abilities, color = Color.White, fontSize = 16.sp, lineHeight = 22.sp)
 
-            Spacer(modifier = Modifier.height(32.dp))
+            Spacer(modifier = Modifier.height(16.dp + navBarPadding))
         }
     }
 }

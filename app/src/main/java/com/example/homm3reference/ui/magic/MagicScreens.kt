@@ -28,6 +28,9 @@ import com.example.homm3reference.ui.common.HeroImage
 import com.example.homm3reference.ui.theme.HommGlassBackground
 import com.example.homm3reference.ui.theme.HommGold
 import android.graphics.Color as AndroidColor
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.navigationBars
 
 // Локальные константы
 private val HommShape = RoundedCornerShape(8.dp)
@@ -230,6 +233,7 @@ fun SpellListScreen(
     spells: List<Spell>,
     onSpellSelected: (Spell) -> Unit
 ) {
+
     val schoolName = when(school) {
         "Earth" -> "Магия Земли"
         "Water" -> "Магия Воды"
@@ -237,7 +241,7 @@ fun SpellListScreen(
         "Air" -> "Магия Воздуха"
         else -> "Заклинания"
     }
-
+    val navBarPadding = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
     var searchQuery by remember { androidx.compose.runtime.mutableStateOf("") }
 
     val groupedSpells = remember(spells, searchQuery) {
@@ -267,7 +271,12 @@ fun SpellListScreen(
 //                placeholderText = "Поиск заклинания..."
 //            )
 
-            LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            LazyColumn(
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+                // --- ИЗМЕНЕНИЕ: Добавлен contentPadding ---
+                contentPadding = PaddingValues(bottom = navBarPadding)
+                // ------------------------------------------
+            ) {
                 groupedSpells.forEach { (_, levelSpells) ->
                     items(levelSpells) { spell ->
                         SpellCard(spell = spell, onClick = { onSpellSelected(spell) })
@@ -285,12 +294,19 @@ fun SpellListScreen(
 
 @Composable
 fun SpellDetailScreen(spell: Spell) {
+    val navBarPadding = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
     AppBackground {
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
-                .padding(16.dp, top = 16.dp)
+                // ВАРИАНТ А: Паддинг для колонки
+                .padding(
+                    start = 16.dp,
+                    end = 16.dp,
+                    top = 16.dp,
+                    bottom = 16.dp + navBarPadding // <-- Добавлен отступ снизу
+                )
         ) {
             Spacer(modifier = Modifier.height(32.dp))
 

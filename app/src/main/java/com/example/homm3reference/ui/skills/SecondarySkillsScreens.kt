@@ -40,6 +40,7 @@ fun SecondarySkillsListScreen(
     searchQuery: String,
     onQueryChanged: (String) -> Unit
 ) {
+    val navBarPadding = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
     AppBackground {
         Column(modifier = Modifier.fillMaxSize()) {
             // Header
@@ -64,7 +65,14 @@ fun SecondarySkillsListScreen(
             // List
             LazyColumn(
                 modifier = Modifier.fillMaxSize(),
-                contentPadding = PaddingValues(16.dp),
+                // --- CHANGE HERE: Add bottom padding ---
+                contentPadding = PaddingValues(
+                    top = 16.dp,
+                    start = 16.dp,
+                    end = 16.dp,
+                    bottom = 16.dp + navBarPadding
+                ),
+                // ---------------------------------------
                 verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
                 items(skills) { skill ->
@@ -137,11 +145,18 @@ fun SkillCard(skill: SecondarySkill, onClick: () -> Unit) {
 fun SecondarySkillDetailScreen(skill: SecondarySkill) {
     // ВАЖНО: Получаем "чистое" имя ресурса (например, "archery" из "secondary_archery")
     val cleanName = remember(skill.imageRes) { skill.imageRes.replace("secondary_", "") }
-
+    val navBarPadding = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
     AppBackground {
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
-            contentPadding = PaddingValues(16.dp),
+            // --- CHANGE HERE: Add bottom padding ---
+            contentPadding = PaddingValues(
+                top = 16.dp,
+                start = 16.dp,
+                end = 16.dp,
+                bottom = 16.dp + navBarPadding
+            ),
+            // ---------------------------------------
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             item {

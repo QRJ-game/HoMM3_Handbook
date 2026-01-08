@@ -48,7 +48,12 @@ fun ClassSelectionScreen(
     onClassSelected: (String) -> Unit
 ) {
     AppBackground {
-        Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
+        Column(modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp)
+            // --- ДОБАВИТЬ ---
+            .padding(bottom = navBarPadding) // Чтобы контент не прилипал к навигации
+        ) {
             Spacer(modifier = Modifier.height(16.dp))
 
             Text(
@@ -137,7 +142,13 @@ fun HeroListScreen(
             )
 
             LazyColumn(
-                contentPadding = PaddingValues(16.dp),
+                contentPadding = PaddingValues(
+                    top = 16.dp,
+                    start = 16.dp,
+                    end = 16.dp,
+                    bottom = 16.dp + navBarPadding // Если bottomNavPadding глобальный
+                    // ИЛИ bottom = 16.dp + WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
+                ),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 items(groupedHeroes.first) { hero ->
@@ -224,7 +235,12 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>) {
             Column(modifier = Modifier
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
-                .padding(top = 32.dp, start = 16.dp, end = 16.dp)
+                .padding(
+                    top = 32.dp,
+                    start = 16.dp,
+                    end = 16.dp,
+                    bottom = navBarPadding // Добавляем паддинг снизу
+                )
             ) {
                 Spacer(modifier = Modifier.height(16.dp))
 
@@ -368,7 +384,7 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>) {
                     selectedCreature = creatures.find { it.imageRes == clickedImageRes }
                 })
 
-                //Spacer(modifier = Modifier.height(32.dp))
+                Spacer(modifier = Modifier.height(32.dp + navBarPadding))
             }
 
             // POPUPS
