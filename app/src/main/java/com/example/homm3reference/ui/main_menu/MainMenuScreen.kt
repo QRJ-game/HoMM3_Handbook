@@ -36,6 +36,7 @@ import com.example.homm3reference.ui.common.HommListCard
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.navigationBars
+import com.example.homm3reference.BuildConfig
 
 
 @Composable
@@ -66,41 +67,34 @@ fun MainMenuScreen(
                 verticalArrangement = Arrangement.Top
             ) {
                 // --- КОНТЕЙНЕР ДЛЯ КАРТИНКИ И КНОПКИ ---
+                // --- КОНТЕЙНЕР ДЛЯ КАРТИНКИ И КНОПКИ ---
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(screenHeight * 0.33f)
                 ) {
+                    // 1. Картинка (Без изменений)
                     Image(
                         painter = painterResource(id = R.drawable.top_header),
                         contentDescription = null,
                         contentScale = ContentScale.Crop,
                         modifier = Modifier
                             .fillMaxSize()
-                            // 1. Создаем отдельный слой для отрисовки, чтобы смешивание цветов
-                            // работало только для этой картинки, а не вырезало дыру до черного экрана.
                             .graphicsLayer { compositingStrategy = CompositingStrategy.Offscreen }
-                            // 2. Используем drawWithContent для наложения маски
                             .drawWithContent {
-                                // Сначала рисуем саму картинку
                                 drawContent()
-
-                                // Затем рисуем градиент поверх с режимом DstIn.
-                                // В этом режиме:
-                                // Color.Black (непрозрачный) = картинка ВИДНА
-                                // Color.Transparent = картинка НЕ ВИДНА
                                 drawRect(
                                     brush = Brush.verticalGradient(
-                                        0f to Color.Black,        // Верх картинки полностью видим
-                                        0.7f to Color.Black,      // До 30% высоты полная видимость
-                                        1f to Color.Transparent   // К самому низу полностью исчезает
+                                        0f to Color.Black,
+                                        0.7f to Color.Black,
+                                        1f to Color.Transparent
                                     ),
                                     blendMode = BlendMode.DstIn
                                 )
                             }
                     )
 
-                    // Кнопка музыки (Поверх всего)
+                    // 2. Кнопка музыки (Закрываем скобку кнопки ПЕРЕД версиями)
                     IconButton(
                         onClick = onMuteToggle,
                         modifier = Modifier
@@ -115,20 +109,30 @@ fun MainMenuScreen(
                             text = if (isMuted) "🔇" else "🔊",
                             fontSize = 20.sp
                         )
-                    }
+                    } // <--- ВОТ ЗДЕСЬ заканчивается кнопка
 
-                    // Опционально: Можно оставить золотую линию внизу для стиля,
-                    // или убрать её, если хотите просто плавное растворение в фоне.
-                    /*
-                    Box(
+                    // 3. Теперь надписи (Они находятся внутри Box, но ПОСЛЕ кнопки)
+
+                    // Снизу слева: Версия приложения
+                    Text(
+                        text = "Версия справочника ${BuildConfig.VERSION_NAME}",
+                        color = HommGold,
+                        fontSize = 12.sp,
                         modifier = Modifier
-                            .align(Alignment.BottomCenter)
-                            .fillMaxWidth()
-                            .height(2.dp)
-                            .background(HommGold)
+                            .align(Alignment.BottomStart)
+                            .padding(start = 16.dp, bottom = 16.dp)
                     )
-                    */
-                }
+
+                    // Снизу справа: Версия HotA
+                    Text(
+                        text = "Версия HotA 1.8.0",
+                        color = HommGold,
+                        fontSize = 12.sp,
+                        modifier = Modifier
+                            .align(Alignment.BottomEnd)
+                            .padding(end = 16.dp, bottom = 16.dp)
+                    )
+                } // <--- ВОТ ЗДЕСЬ заканчивается контейнер заголовка (Box)
 
                 //Spacer(modifier = Modifier.height(16.dp))
 

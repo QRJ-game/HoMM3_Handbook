@@ -651,7 +651,7 @@
   {
     "id": "spyglass",
     "name": "Телескоп",
-    "imageRes": "artifact_spyglass",
+    "imageRes": "artifact_speculum",
     "class": "Сокровище",
     "slot": "Разное",
     "goldCost": 1000,
@@ -662,7 +662,7 @@
   {
     "id": "bird_of_perception",
     "name": "Подзорная труба",
-    "imageRes": "artifact_bird_of_perception",
+    "imageRes": "artifact_spyglass",
     "class": "Сокровище",
     "slot": "Разное",
     "goldCost": 1000,

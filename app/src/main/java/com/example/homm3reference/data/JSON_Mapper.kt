@@ -102,7 +102,7 @@ object JSON_Mapper {
         "морских волков" to "creature_sea_dog", "морских волка" to "creature_sea_dog",
         "духов океана" to "creature_stormbird", "духа океана" to "creature_stormbird",
         "жриц моря" to "creature_sea_witch", "жрицы моря" to "creature_sea_witch",
-        "никсов" to "creature_nix", "никса" to "creature_nix",
+        "никсов" to "creature_nix", "никса" to "creature_nix", "никс" to "creature_nix",
 
 
         // Фабрика
