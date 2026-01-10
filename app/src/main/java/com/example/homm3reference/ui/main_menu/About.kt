@@ -91,7 +91,7 @@ fun AboutPopup(onDismiss: () -> Unit) {
                     textAlign = TextAlign.Center
                 )
                 Text(
-                    text = "Разрабочикам HotA",
+                    text = "Разработчикам HotA",
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color.White,

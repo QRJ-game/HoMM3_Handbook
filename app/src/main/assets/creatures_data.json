@@ -14,7 +14,7 @@
     "growth": 14,
     "goldCost": 60,
     "resourceCost": null,
-    "abilities": "Иммунитет к ковалерийскому бонусу",
+    "abilities": "Иммунитет к кавалерийскому бонусу",
     "aiValue": 80,
     "imageRes": "creature_pikeman"
   },
@@ -33,7 +33,7 @@
     "growth": 14,
     "goldCost": 75,
     "resourceCost": null,
-    "abilities": "Иммунитет к ковалерийскому бонусу",
+    "abilities": "Иммунитет к кавалерийскому бонусу",
     "aiValue": 115,
     "imageRes": "creature_halberdier"
   },
@@ -702,7 +702,7 @@
     "growth": 3,
     "goldCost": 550,
     "resourceCost": null,
-    "abilities": "Полёт, Ненависть к ифритам",
+    "abilities": "Полёт, Ненависть к Ифритам",
     "aiValue": 884,
     "imageRes": "creature_genie"
   },
@@ -721,7 +721,7 @@
     "growth": 3,
     "goldCost": 600,
     "resourceCost": null,
-    "abilities": "Полёт, Ненависть к ифритам, Случайная магия(3 раза за бой)",
+    "abilities": "Полёт, Ненависть к Ифритам, Случайная магия(3 раза за бой)",
     "aiValue": 942,
     "imageRes": "creature_master_genie"
   },
@@ -1006,7 +1006,7 @@
     "growth": 2,
     "goldCost": 900,
     "resourceCost": null,
-    "abilities": "Полёт, Иммунинет к магии огня, Ненависть к джиннам",
+    "abilities": "Полёт, Иммунинет к магии огня, Ненависть к Джиннам",
     "aiValue": 1670,
     "imageRes": "creature_efreeti"
   },
@@ -1025,7 +1025,7 @@
     "growth": 2,
     "goldCost": 1100,
     "resourceCost": null,
-    "abilities": "Полёт, Иммунинет к магии огня, Ненависть к джиннам, Огненный щит",
+    "abilities": "Полёт, Иммунинет к магии огня, Ненависть к Джиннам, Огненный щит",
     "aiValue": 2343,
     "imageRes": "creature_efreet_sultan"
   },
@@ -1818,7 +1818,7 @@
     "growth": 2,
     "goldCost": 750,
     "resourceCost": null,
-    "abilities": "Стрельба(12), Атака стен(базовый уровень)",
+    "abilities": "Стрельба(12), Атака стен(аналогично базовому навыку Баллистики)",
     "aiValue": 1266,
     "imageRes": "creature_cyclops"
   },
@@ -1837,7 +1837,7 @@
     "growth": 2,
     "goldCost": 1100,
     "resourceCost": null,
-    "abilities": "Стрельба(24), Атака стен(продвинутый уровень)",
+    "abilities": "Стрельба(24), Атака стен(аналогично продвинутому навыку Баллистики)",
     "aiValue": 1544,
     "imageRes": "creature_cyclops_king"
   },
@@ -2607,7 +2607,7 @@
     "growth": 3,
     "goldCost": 515,
     "resourceCost": null,
-    "abilities": "Стрельба(12), Накладывает Слабость/Разрушающий луч",
+    "abilities": "Стрельба(12), При стрельбе накладывает Слабость на базовом уровне или Разрушающий луч на базовом уровне, если Слабость уже наложена",
     "aiValue": 790,
     "imageRes": "creature_sea_witch"
   },
@@ -2626,7 +2626,7 @@
     "growth": 3,
     "goldCost": 565,
     "resourceCost": null,
-    "abilities": "Стрельба(12), Накладывает Слабость/Разрушающий луч",
+    "abilities": "Стрельба(12), При стрельбе накладывает Слабость на продвинутом уровне или Разрушающий луч на продвинутом уровне, если Слабость уже наложена",
     "aiValue": 852,
     "imageRes": "creature_sorceress"
   },
@@ -2894,7 +2894,7 @@
     "growth": 3,
     "goldCost": 650,
     "resourceCost": null,
-    "abilities": "Перемещается под землей, Иммунитет к ослеплению и окаменению, Пожирает трупы, Широкое существо",
+    "abilities": "Перемещается под землёй, Иммунитет к ослеплению и окаменению, Пожирает трупы, Широкое существо",
     "aiValue": 1220,
     "imageRes": "creature_olgoi_khorkhoi"
   },
@@ -3105,7 +3105,7 @@
     "growth": 7,
     "goldCost": 230,
     "resourceCost": null,
-    "abilities": "Стрельба (4), Нет штрафа в ближнем бою",
+    "abilities": "Стрельба(4), Нет штрафа в ближнем бою",
     "aiValue": 370,
     "imageRes": "creature_snow_elf"
   },
@@ -3124,7 +3124,7 @@
     "growth": 7,
     "goldCost": 260,
     "resourceCost": null,
-    "abilities": "Стрельба (8), Нет штрафа в ближнем бою, Может стрелять, находясь рядом с вражеским существом",
+    "abilities": "Стрельба(8), Нет штрафа в ближнем бою, Может стрелять, находясь рядом с вражеским существом",
     "aiValue": 526,
     "imageRes": "creature_steel_elf"
   },
@@ -3672,8 +3672,8 @@
     "town": "Боевые машины",
     "level": 1,
     "isUpgraded": false,
-    "minDamage": null,
-    "maxDamage": null,
+    "minDamage": 20,
+    "maxDamage": 25,
     "attack": 0,
     "defense": 0,
     "health": 75,
