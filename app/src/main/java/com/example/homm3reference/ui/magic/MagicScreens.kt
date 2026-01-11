@@ -33,6 +33,10 @@ import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.rememberLazyListState
+import android.util.Log
+import androidx.compose.runtime.LaunchedEffect
+import com.example.homm3reference.data.GameData
+
 
 // Локальные константы
 private val HommShape = RoundedCornerShape(8.dp)
@@ -45,7 +49,33 @@ fun MagicSchoolSelectScreen(
     onQueryChanged: (String) -> Unit,
     searchResultsContent: @Composable () -> Unit
 ) {
+    // --- НАЧАЛО ИЗМЕНЕНИЙ: Глобальная статистика магии ---
+    LaunchedEffect(Unit) {
+        val allSpells = GameData.spells
+        val tag = "Homm3MagicGlobal"
+
+        Log.d(tag, "==========================================")
+        Log.d(tag, "ГЛОБАЛЬНАЯ СТАТИСТИКА (Все Заклинания)")
+        Log.d(tag, "Всего заклинаний в базе: ${allSpells.size}")
+        Log.d(tag, "==========================================")
+
+        Log.d(tag, "--- Разбивка по ШКОЛАМ (${allSpells.groupBy { it.school }.size}) ---")
+        allSpells.groupBy { it.school }.forEach { (school, list) ->
+            // Используем вашу функцию mapSchoolName для красивого названия
+            val name = mapSchoolName(school)
+            Log.d(tag, "$name ($school): ${list.size}")
+        }
+
+        Log.d(tag, "\n--- Разбивка по УРОВНЯМ ---")
+        allSpells.groupBy { it.level }.toSortedMap().forEach { (lvl, list) ->
+            Log.d(tag, "Уровень $lvl: ${list.size}")
+        }
+        Log.d(tag, "==========================================")
+    }
+    // --- КОНЕЦ ИЗМЕНЕНИЙ ---
+
     AppBackground {
+        // ... остальной код функции ...
         Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
 
             Column(
@@ -244,7 +274,24 @@ fun SpellListScreen(
         "Air" -> "Магия Воздуха"
         else -> "Заклинания"
     }
+
+    // --- НАЧАЛО ИЗМЕНЕНИЙ: Статистика конкретной школы ---
+    LaunchedEffect(school, spells) {
+        val tag = "Homm3SpellList"
+        Log.d(tag, "==========================================")
+        Log.d(tag, "Просмотр школы: $schoolName")
+        Log.d(tag, "Заклинаний в списке: ${spells.size}")
+        Log.d(tag, "------------------------------------------")
+
+        spells.groupBy { it.level }.toSortedMap().forEach { (lvl, list) ->
+            Log.d(tag, "Уровень $lvl: ${list.size} шт.")
+        }
+        Log.d(tag, "==========================================")
+    }
+    // --- КОНЕЦ ИЗМЕНЕНИЙ ---
+
     val navBarPadding = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
+    // ... остальной код функции ...
     var searchQuery by remember { androidx.compose.runtime.mutableStateOf("") }
 
     val groupedSpells = remember(spells, searchQuery) {

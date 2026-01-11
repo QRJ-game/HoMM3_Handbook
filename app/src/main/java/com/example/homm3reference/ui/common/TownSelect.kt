@@ -18,6 +18,9 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.navigationBars
+import android.util.Log
+import androidx.compose.runtime.LaunchedEffect
+import com.example.homm3reference.data.GameData
 
 @Composable
 fun TownSelectionScreen(
@@ -26,13 +29,62 @@ fun TownSelectionScreen(
     onTownSelected: (String) -> Unit,
     searchQuery: String,
     onQueryChanged: (String) -> Unit,
-    // Параметр уже добавлен вами в сигнатуру, отлично
     gridState: LazyGridState = rememberLazyGridState(),
     searchResultsContent: @Composable () -> Unit
 ) {
     // Вычисляем отступ снизу для навигационной панели
     val navBarPadding = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
 
+    LaunchedEffect(Unit) {
+        val allCreatures = GameData.creatures
+        val tag = "Homm3CreaturesGlobal"
+
+        Log.d(tag, "==========================================")
+        Log.d(tag, "ГЛОБАЛЬНАЯ СТАТИСТИКА (Все существа)")
+        Log.d(tag, "Всего существ в базе: ${allCreatures.size}")
+        Log.d(tag, "==========================================")
+
+        Log.d(tag, "--- Разбивка по ГОРОДАМ (${allCreatures.groupBy { it.town }.size} фракций) ---")
+        allCreatures.groupBy { it.town }.forEach { (town, list) ->
+            Log.d(tag, "Фракция '$town': ${list.size} существ")
+        }
+
+        Log.d(tag, "\n--- Разбивка по УРОВНЯМ ---")
+        allCreatures.groupBy { it.level }.toSortedMap().forEach { (lvl, list) ->
+            Log.d(tag, "Уровень $lvl: ${list.size} шт.")
+        }
+
+        val upgraded = allCreatures.count { it.isUpgraded }
+        val base = allCreatures.count { !it.isUpgraded }
+        Log.d(tag, "\n--- По улучшениям ---")
+        Log.d(tag, "Базовые: $base")
+        Log.d(tag, "Улучшенные: $upgraded")
+
+        Log.d(tag, "==========================================")
+
+        val allHeroes = GameData.heroes
+        val tagH = "Homm3HeroesGlobal"
+
+        Log.d(tagH, "==========================================")
+        Log.d(tagH, "ГЛОБАЛЬНАЯ СТАТИСТИКА (Все Герои)")
+        Log.d(tagH, "Всего героев в базе: ${allHeroes.size}")
+        Log.d(tagH, "==========================================")
+
+        Log.d(tagH, "--- Разбивка по ГОРОДАМ (${allHeroes.groupBy { it.town }.size}) ---")
+        allHeroes.groupBy { it.town }.forEach { (town, list) ->
+            Log.d(tagH, "$town: ${list.size}")
+        }
+
+        Log.d(tagH, "\n--- Разбивка по КЛАССАМ (${allHeroes.groupBy { it.heroClass }.size}) ---")
+        allHeroes.groupBy { it.heroClass }.forEach { (cls, list) ->
+            Log.d(tagH, "$cls: ${list.size}")
+        }
+
+        val special = allHeroes.count { !it.backgroundColor.isNullOrEmpty() }
+        Log.d(tagH, "\nСпециальные (цветные): $special")
+        Log.d(tagH, "Обычные: ${allHeroes.size - special}")
+        Log.d(tagH, "==========================================")
+    }
     AppBackground {
         Column(modifier = Modifier.fillMaxSize()) {
 

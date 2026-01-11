@@ -33,6 +33,8 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.navigationBars
+import android.util.Log
+import androidx.compose.runtime.LaunchedEffect
 
 // Константы стиля
 private val HommShape = RoundedCornerShape(8.dp)
@@ -42,18 +44,37 @@ private val HommBorder = BorderStroke(2.dp, HommGold)
 @Composable
 fun SecondarySkillsListScreen(
     skills: List<SecondarySkill>,
-    // 1. Добавляем параметр
     listState: LazyListState = rememberLazyListState(),
     onSkillClick: (SecondarySkill) -> Unit,
     searchQuery: String,
     onQueryChanged: (String) -> Unit
 ) {
     val navBarPadding = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
+
+    // --- ИЗМЕНЕНО: Добавлена сортировка по имени ---
+    val filteredSkills = remember(skills, searchQuery) {
+        val list = if (searchQuery.isBlank()) skills
+        else skills.filter { it.name.contains(searchQuery, ignoreCase = true) }
+
+        // Сортируем полученный список по алфавиту
+        list.sortedBy { it.name }
+    }
+    // -----------------------------------------------
+
+    // --- Логирование статистики (из предыдущего шага) ---
+    LaunchedEffect(filteredSkills) {
+        val tag = "Homm3SkillsList"
+        Log.d(tag, "==========================================")
+        Log.d(tag, "Список Вторичных навыков (сортировка А-Я)")
+        Log.d(tag, "Показано навыков: ${filteredSkills.size}")
+        Log.d(tag, "==========================================")
+    }
+
     AppBackground {
         Column(modifier = Modifier.fillMaxSize()) {
             // Header
             Column(modifier = Modifier.padding(top = 32.dp, start = 16.dp, end = 16.dp)) {
-                // ... (текст и поиск без изменений) ...
+                // ... код заголовка и поиска (без изменений) ...
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(
                     text = "Вторичные навыки",
@@ -72,7 +93,6 @@ fun SecondarySkillsListScreen(
 
             // List
             LazyColumn(
-                // 2. Привязываем состояние
                 state = listState,
                 modifier = Modifier.fillMaxSize(),
                 contentPadding = PaddingValues(
@@ -83,7 +103,8 @@ fun SecondarySkillsListScreen(
                 ),
                 verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
-                items(skills) { skill ->
+                // ВАЖНО: Используем filteredSkills вместо skills
+                items(filteredSkills) { skill ->
                     SkillCard(skill = skill, onClick = { onSkillClick(skill) })
                 }
             }

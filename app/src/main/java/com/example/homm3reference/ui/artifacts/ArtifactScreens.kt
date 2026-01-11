@@ -36,6 +36,8 @@ import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.rememberLazyListState
+import android.util.Log
+import androidx.compose.runtime.LaunchedEffect
 
 // Константы цветов для удобства и единообразия внутри файла
 private val HommGold = Color(0xFFD4AF37)
@@ -76,6 +78,33 @@ fun ArtifactsMenuScreen(
     onQueryChanged: (String) -> Unit,
     searchResultsContent: @Composable () -> Unit
 ) {
+    // --- НАЧАЛО ИЗМЕНЕНИЙ: Логирование статистики ---
+    LaunchedEffect(Unit) {
+        val allArtifacts = GameData.artifacts
+        val tag = "Homm3Artifacts"
+
+        Log.d(tag, "==========================================")
+        Log.d(tag, "Всего артефактов в базе: ${allArtifacts.size}")
+        Log.d(tag, "==========================================")
+
+        Log.d(tag, "--- Разбивка по СЛОТАМ (${allArtifacts.groupBy { it.slot }.size} групп) ---")
+        allArtifacts.groupBy { it.slot }.forEach { (slot, items) ->
+            Log.d(tag, "Слот '$slot': ${items.size}")
+        }
+
+        Log.d(tag, "\n--- Разбивка по КЛАССАМ (${allArtifacts.groupBy { it.classType }.size} групп) ---")
+        allArtifacts.groupBy { it.classType }.forEach { (cls, items) ->
+            Log.d(tag, "Класс '$cls': ${items.size}")
+        }
+
+        Log.d(tag, "\n--- Разбивка по ГРУППАМ (${allArtifacts.groupBy { it.group }.size} групп) ---")
+        allArtifacts.groupBy { it.group }.forEach { (group, items) ->
+            Log.d(tag, "Группа '$group': ${items.size}")
+        }
+        Log.d(tag, "==========================================")
+    }
+    // --- КОНЕЦ ИЗМЕНЕНИЙ ---
+
     AppBackground {
         Column(modifier = Modifier.fillMaxSize()) {
             // Заголовок и поиск

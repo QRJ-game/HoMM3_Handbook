@@ -42,6 +42,8 @@ import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import android.util.Log
+import androidx.compose.runtime.LaunchedEffect
 
 // Локальные константы
 private val HommShape = RoundedCornerShape(8.dp)
@@ -54,6 +56,28 @@ fun CreatureListScreen(
     listState: LazyListState = rememberLazyListState(),
     onCreatureSelected: (Creature) -> Unit
 ) {
+    // --- НАЧАЛО ИЗМЕНЕНИЙ: Логирование статистики ---
+    LaunchedEffect(townName, creatures) {
+        val tag = "Homm3Creatures"
+
+        Log.d(tag, "==========================================")
+        Log.d(tag, "Экран города/группы: $townName")
+        Log.d(tag, "Всего существ в списке: ${creatures.size}")
+        Log.d(tag, "==========================================")
+
+        Log.d(tag, "--- Разбивка по УРОВНЯМ (${creatures.groupBy { it.level }.size} групп) ---")
+        creatures.groupBy { it.level }.toSortedMap().forEach { (level, items) ->
+            Log.d(tag, "Уровень $level: ${items.size} шт.")
+        }
+
+        Log.d(tag, "\n--- Разбивка по УЛУЧШЕНИЯМ ---")
+        val upgradedCount = creatures.count { it.isUpgraded }
+        val baseCount = creatures.count { !it.isUpgraded }
+        Log.d(tag, "Базовые: $baseCount")
+        Log.d(tag, "Улучшенные: $upgradedCount")
+
+        Log.d(tag, "==========================================")
+    }
     val navBarPadding = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
     var searchQuery by remember { mutableStateOf("") }
 

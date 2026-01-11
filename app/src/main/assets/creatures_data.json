@@ -52,13 +52,13 @@
     "growth": 9,
     "goldCost": 100,
     "resourceCost": null,
-    "abilities": "Стрельба(12)",
+    "abilities": "Стрельба (12)",
     "aiValue": 126,
     "imageRes": "creature_archer"
   },
   {
     "id": "marksman",
-    "name": "Искусный арбалетчик",
+    "name": "Искусный Арбалетчик",
     "town": "Замок",
     "level": 2,
     "isUpgraded": true,
@@ -71,7 +71,7 @@
     "growth": 9,
     "goldCost": 150,
     "resourceCost": null,
-    "abilities": "Двойная стрельба(24)",
+    "abilities": "Двойная стрельба (24)",
     "aiValue": 184,
     "imageRes": "creature_marksman"
   },
@@ -96,7 +96,7 @@
   },
   {
     "id": "royal_griffin",
-    "name": "Королевский грифон",
+    "name": "Королевский Грифон",
     "town": "Замок",
     "level": 3,
     "isUpgraded": true,
@@ -166,7 +166,7 @@
     "growth": 3,
     "goldCost": 400,
     "resourceCost": null,
-    "abilities": "Стрельба(12)",
+    "abilities": "Стрельба (12)",
     "aiValue": 582,
     "imageRes": "creature_monk"
   },
@@ -185,7 +185,7 @@
     "growth": 3,
     "goldCost": 450,
     "resourceCost": null,
-    "abilities": "Стрельба(24), Нет штрафа в ближнем бою",
+    "abilities": "Стрельба (24), Нет штрафа в ближнем бою",
     "aiValue": 750,
     "imageRes": "creature_zealot"
   },
@@ -261,7 +261,7 @@
     "growth": 1,
     "goldCost": 5000,
     "resourceCost": "3 Самоцвета",
-    "abilities": "Полёт, Боевой дух +1, Ненависть к Дьяволам, Воскрешение(1 раз за бой), Широкое существо",
+    "abilities": "Полёт, Боевой дух +1, Ненависть к Дьяволам, Воскрешение (1 раз за бой/100 здоровья за Архангела), Широкое существо",
     "aiValue": 8776,
     "imageRes": "creature_archangel"
   },
@@ -286,7 +286,7 @@
   },
   {
     "id": "centaur_captain",
-    "name": "Капитан кентавров",
+    "name": "Капитан Кентавров",
     "town": "Оплот",
     "level": 1,
     "isUpgraded": true,
@@ -324,7 +324,7 @@
   },
   {
     "id": "battle_dwarf",
-    "name": "Боевой гном",
+    "name": "Боевой Гном",
     "town": "Оплот",
     "level": 2,
     "isUpgraded": true,
@@ -343,7 +343,7 @@
   },
   {
     "id": "wood_elf",
-    "name": "Эльф",
+    "name": "Лесной Эльф",
     "town": "Оплот",
     "level": 3,
     "isUpgraded": false,
@@ -356,13 +356,13 @@
     "growth": 7,
     "goldCost": 200,
     "resourceCost": null,
-    "abilities": "Стрельба(24)",
+    "abilities": "Стрельба (24)",
     "aiValue": 234,
     "imageRes": "creature_wood_elf"
   },
   {
     "id": "grand_elf",
-    "name": "Благородный эльф",
+    "name": "Благородный Эльф",
     "town": "Оплот",
     "level": 3,
     "isUpgraded": true,
@@ -375,7 +375,7 @@
     "growth": 7,
     "goldCost": 225,
     "resourceCost": null,
-    "abilities": "Двойная стрельба(24)",
+    "abilities": "Двойная стрельба (24)",
     "aiValue": 331,
     "imageRes": "creature_grand_elf"
   },
@@ -400,7 +400,7 @@
   },
   {
     "id": "silver_pegasus",
-    "name": "Серебряный пегас",
+    "name": "Серебряный Пегас",
     "town": "Оплот",
     "level": 4,
     "isUpgraded": true,
@@ -419,7 +419,7 @@
   },
   {
     "id": "dendroid_guard",
-    "name": "Дендроид-страж",
+    "name": "Дендроид-Страж",
     "town": "Оплот",
     "level": 5,
     "isUpgraded": false,
@@ -438,7 +438,7 @@
   },
   {
     "id": "dendroid_soldier",
-    "name": "Дендроид-солдат",
+    "name": "Дендроид-Солдат",
     "town": "Оплот",
     "level": 5,
     "isUpgraded": true,
@@ -470,13 +470,13 @@
     "growth": 2,
     "goldCost": 850,
     "resourceCost": null,
-    "abilities": "Ослепление(20%), Аура сопротивления магии, Широкое существо",
+    "abilities": "Ослепление (20%), Аура сопротивления магии (20%), Широкое существо",
     "aiValue": 1806,
     "imageRes": "creature_unicorn"
   },
   {
     "id": "war_unicorn",
-    "name": "Боевой единорог",
+    "name": "Боевой Единорог",
     "town": "Оплот",
     "level": 6,
     "isUpgraded": true,
@@ -489,13 +489,13 @@
     "growth": 2,
     "goldCost": 950,
     "resourceCost": null,
-    "abilities": "Ослепление(20%), Аура сопротивления магии, Широкое существо",
+    "abilities": "Ослепление (20%), Аура сопротивления магии (20%), Широкое существо",
     "aiValue": 2030,
     "imageRes": "creature_war_unicorn"
   },
   {
     "id": "green_dragon",
-    "name": "Зеленый дракон",
+    "name": "Зелёный Дракон",
     "town": "Оплот",
     "level": 7,
     "isUpgraded": false,
@@ -514,7 +514,7 @@
   },
   {
     "id": "gold_dragon",
-    "name": "Золотой дракон",
+    "name": "Золотой Дракон",
     "town": "Оплот",
     "level": 7,
     "isUpgraded": true,
@@ -552,7 +552,7 @@
   },
   {
     "id": "master_gremlin",
-    "name": "Мастер-гремлин",
+    "name": "Гремлин-Мастер",
     "town": "Башня",
     "level": 1,
     "isUpgraded": true,
@@ -565,13 +565,13 @@
     "growth": 16,
     "goldCost": 40,
     "resourceCost": null,
-    "abilities": "Стрельба(8)",
+    "abilities": "Стрельба (8)",
     "aiValue": 66,
     "imageRes": "creature_master_gremlin"
   },
   {
     "id": "stone_gargoyle",
-    "name": "Каменная горгулья",
+    "name": "Каменная Горгулья",
     "town": "Башня",
     "level": 2,
     "isUpgraded": false,
@@ -591,7 +591,7 @@
   },
   {
     "id": "obsidian_gargoyle",
-    "name": "Обсидиановая горгулья",
+    "name": "Обсидиановая Горгулья",
     "town": "Башня",
     "level": 2,
     "isUpgraded": true,
@@ -611,7 +611,7 @@
   },
   {
     "id": "stone_golem",
-    "name": "Каменный голем",
+    "name": "Каменный Голем",
     "town": "Башня",
     "level": 3,
     "isUpgraded": false,
@@ -631,7 +631,7 @@
   },
   {
     "id": "iron_golem",
-    "name": "Железный голем",
+    "name": "Железный Голем",
     "town": "Башня",
     "level": 3,
     "isUpgraded": true,
@@ -708,7 +708,7 @@
   },
   {
     "id": "master_genie",
-    "name": "Мастер-джинн",
+    "name": "Верховный Джинн",
     "town": "Башня",
     "level": 5,
     "isUpgraded": true,
@@ -721,7 +721,7 @@
     "growth": 3,
     "goldCost": 600,
     "resourceCost": null,
-    "abilities": "Полёт, Ненависть к Ифритам, Случайная магия(3 раза за бой)",
+    "abilities": "Полёт, Ненависть к Ифритам, Случайная магия (3 раза за бой)",
     "aiValue": 942,
     "imageRes": "creature_master_genie"
   },
@@ -746,7 +746,7 @@
   },
   {
     "id": "naga_queen",
-    "name": "Королева наг",
+    "name": "Нага-Королева",
     "town": "Башня",
     "level": 6,
     "isUpgraded": true,
@@ -797,7 +797,7 @@
     "growth": 1,
     "goldCost": 5000,
     "resourceCost": "2 Самоцвета",
-    "abilities": "Стрельба (24), Нет штрафа в ближнем бою, Иммунитет к магии Разума, Ненависть к Черным драконам",
+    "abilities": "Стрельба (24), Нет штрафа в ближнем бою, Иммунитет к магии Разума, Ненависть к Чёрным Драконам",
     "aiValue": 7500,
     "imageRes": "creature_titan"
   },
@@ -854,7 +854,7 @@
     "growth": 8,
     "goldCost": 125,
     "resourceCost": null,
-    "abilities": "Стрельба(12)",
+    "abilities": "Стрельба (12)",
     "aiValue": 159,
     "imageRes": "creature_gog"
   },
@@ -873,13 +873,13 @@
     "growth": 8,
     "goldCost": 175,
     "resourceCost": null,
-    "abilities": "Стрельба(24), Облако огня",
+    "abilities": "Стрельба (24), Облако огня, Прицельный выстрел (G)",
     "aiValue": 240,
     "imageRes": "creature_magog"
   },
   {
     "id": "hell_hound",
-    "name": "Адская гончая",
+    "name": "Адская Гончая",
     "town": "Инферно",
     "level": 3,
     "isUpgraded": false,
@@ -936,7 +936,7 @@
   },
   {
     "id": "horned_demon",
-    "name": "Рогатый демон",
+    "name": "Рогатый Демон",
     "town": "Инферно",
     "level": 4,
     "isUpgraded": true,
@@ -955,7 +955,7 @@
   },
   {
     "id": "pit_fiend",
-    "name": "Отродье пропасти",
+    "name": "Отродье Пропасти",
     "town": "Инферно",
     "level": 5,
     "isUpgraded": false,
@@ -974,7 +974,7 @@
   },
   {
     "id": "pit_lord",
-    "name": "Властитель пропасти",
+    "name": "Властитель Пропасти",
     "town": "Инферно",
     "level": 5,
     "isUpgraded": true,
@@ -987,7 +987,7 @@
     "growth": 3,
     "goldCost": 700,
     "resourceCost": null,
-    "abilities": "Поднятие демонов(1 раз за бой)",
+    "abilities": "Поднятие демонов (1 раз за бой)",
     "aiValue": 1224,
     "imageRes": "creature_pit_lord"
   },
@@ -1012,7 +1012,7 @@
   },
   {
     "id": "efreet_sultan",
-    "name": "Ифрит-султан",
+    "name": "Ифрит-Султан",
     "town": "Инферно",
     "level": 6,
     "isUpgraded": true,
@@ -1089,7 +1089,7 @@
   },
   {
     "id": "skeleton_warrior",
-    "name": "Скелет-воин",
+    "name": "Скелет-Воин",
     "town": "Некрополис",
     "level": 1,
     "isUpgraded": true,
@@ -1109,7 +1109,7 @@
   },
   {
     "id": "walking_dead",
-    "name": "Живой мертвец",
+    "name": "Ходячий Мертвец",
     "town": "Некрополис",
     "level": 2,
     "isUpgraded": false,
@@ -1209,7 +1209,7 @@
   },
   {
     "id": "vampire_lord",
-    "name": "Вампир-лорд",
+    "name": "Вампир-Лорд",
     "town": "Некрополис",
     "level": 4,
     "isUpgraded": true,
@@ -1242,14 +1242,14 @@
     "growth": 3,
     "goldCost": 550,
     "resourceCost": null,
-    "abilities": "Нежить, Стрельба(12), Облако смерти",
+    "abilities": "Нежить, Стрельба (12), Облако смерти, Прицельный выстрел (G)",
     "aiValue": 848,
     "isUndead": true,
     "imageRes": "creature_lich"
   },
   {
     "id": "power_lich",
-    "name": "Могущественный лич",
+    "name": "Могущественный Лич",
     "town": "Некрополис",
     "level": 5,
     "isUpgraded": true,
@@ -1262,14 +1262,14 @@
     "growth": 3,
     "goldCost": 600,
     "resourceCost": null,
-    "abilities": "Нежить, Стрельба(24), Облако смерти",
+    "abilities": "Нежить, Стрельба (24), Облако смерти, Прицельный выстрел (G)",
     "aiValue": 1079,
     "isUndead": true,
     "imageRes": "creature_power_lich"
   },
   {
     "id": "black_knight",
-    "name": "Чёрный рыцарь",
+    "name": "Чёрный Рыцарь",
     "town": "Некрополис",
     "level": 6,
     "isUpgraded": false,
@@ -1282,14 +1282,14 @@
     "growth": 2,
     "goldCost": 1200,
     "resourceCost": null,
-    "abilities": "Нежить, Проклятие(25%), Широкое существо",
+    "abilities": "Нежить, Проклятие (25%), Широкое существо",
     "aiValue": 2087,
     "isUndead": true,
     "imageRes": "creature_black_knight"
   },
   {
     "id": "dread_knight",
-    "name": "Рыцарь ужаса",
+    "name": "Рыцарь Ужаса",
     "town": "Некрополис",
     "level": 6,
     "isUpgraded": true,
@@ -1302,14 +1302,14 @@
     "growth": 2,
     "goldCost": 1500,
     "resourceCost": null,
-    "abilities": "Нежить, Проклятие(25%), Смертельный удар(20%), Широкое существо",
+    "abilities": "Нежить, Проклятие (25%), Смертельный удар (20%), Широкое существо",
     "aiValue": 2382,
     "isUndead": true,
     "imageRes": "creature_dread_knight"
   },
   {
     "id": "bone_dragon",
-    "name": "Костяной дракон",
+    "name": "Костяной Дракон",
     "town": "Некрополис",
     "level": 7,
     "isUpgraded": false,
@@ -1329,7 +1329,7 @@
   },
   {
     "id": "ghost_dragon",
-    "name": "Призрачный дракон",
+    "name": "Призрачный Дракон",
     "town": "Некрополис",
     "level": 7,
     "isUpgraded": true,
@@ -1342,7 +1342,7 @@
     "growth": 1,
     "goldCost": 3000,
     "resourceCost": "1 Ртуть",
-    "abilities": "Нежить, Полёт, Старость(20%), -1 к боевому духу врага, Широкое существо",
+    "abilities": "Нежить, Полёт, Старость (20%), -1 к боевому духу врага, Широкое существо",
     "aiValue": 4919,
     "isUndead": true,
     "imageRes": "creature_ghost_dragon"
@@ -1368,7 +1368,7 @@
   },
   {
     "id": "infernal_troglodyte",
-    "name": "Адский троглодит",
+    "name": "Троглодит-Охотник",
     "town": "Темница",
     "level": 1,
     "isUpgraded": true,
@@ -1406,7 +1406,7 @@
   },
   {
     "id": "harpy_hag",
-    "name": "Гарпия-ведьма",
+    "name": "Гарпия-Ведьма",
     "town": "Темница",
     "level": 2,
     "isUpgraded": true,
@@ -1444,7 +1444,7 @@
   },
   {
     "id": "evil_eye",
-    "name": "Созерцатель",
+    "name": "Зловещий Глаз",
     "town": "Темница",
     "level": 3,
     "isUpgraded": true,
@@ -1457,7 +1457,7 @@
     "growth": 7,
     "goldCost": 280,
     "resourceCost": null,
-    "abilities": "Стрельба(24), Нет штрафа в ближнем бою",
+    "abilities": "Стрельба (24), Нет штрафа в ближнем бою",
     "aiValue": 367,
     "imageRes": "creature_evil_eye"
   },
@@ -1476,13 +1476,13 @@
     "growth": 4,
     "goldCost": 300,
     "resourceCost": null,
-    "abilities": "Стрельба(4), Нет штрафа в ближнем бою, Окаменение(20%), Широкое существо",
+    "abilities": "Стрельба (4), Нет штрафа в ближнем бою, Окаменение (20%), Широкое существо",
     "aiValue": 517,
     "imageRes": "creature_medusa"
   },
   {
     "id": "medusa_queen",
-    "name": "Королева медуз",
+    "name": "Медуза-Королева",
     "town": "Темница",
     "level": 4,
     "isUpgraded": true,
@@ -1495,7 +1495,7 @@
     "growth": 4,
     "goldCost": 330,
     "resourceCost": null,
-    "abilities": "Стрельба(8), Нет штрафа в ближнем бою, Окаменение(20%), Широкое существо",
+    "abilities": "Стрельба (8), Нет штрафа в ближнем бою, Окаменение (20%), Широкое существо",
     "aiValue": 577,
     "imageRes": "creature_medusa_queen"
   },
@@ -1520,7 +1520,7 @@
   },
   {
     "id": "minotaur_king",
-    "name": "Король минотавров",
+    "name": "Минотавр-Король",
     "town": "Темница",
     "level": 5,
     "isUpgraded": true,
@@ -1571,13 +1571,13 @@
     "growth": 2,
     "goldCost": 1050,
     "resourceCost": null,
-    "abilities": "Полёт, Паралич(20%), Широкое существо",
+    "abilities": "Полёт, Паралич (20%), Широкое существо",
     "aiValue": 1685,
     "imageRes": "creature_scorpicore"
   },
   {
     "id": "red_dragon",
-    "name": "Красный дракон",
+    "name": "Красный Дракон",
     "town": "Темница",
     "level": 7,
     "isUpgraded": false,
@@ -1596,7 +1596,7 @@
   },
   {
     "id": "black_dragon",
-    "name": "Черный дракон",
+    "name": "Чёрный Дракон",
     "town": "Темница",
     "level": 7,
     "isUpgraded": true,
@@ -1653,7 +1653,7 @@
   },
   {
     "id": "wolf_rider",
-    "name": "Наездник на волке",
+    "name": "Наездник на Волке",
     "town": "Цитадель",
     "level": 2,
     "isUpgraded": false,
@@ -1672,7 +1672,7 @@
   },
   {
     "id": "wolf_raider",
-    "name": "Налетчик",
+    "name": "Налётчик",
     "town": "Цитадель",
     "level": 2,
     "isUpgraded": true,
@@ -1704,13 +1704,13 @@
     "growth": 7,
     "goldCost": 150,
     "resourceCost": null,
-    "abilities": "Стрельба(12)",
+    "abilities": "Стрельба (12)",
     "aiValue": 192,
     "imageRes": "creature_orc"
   },
   {
     "id": "orc_chieftain",
-    "name": "Орк-вождь",
+    "name": "Орк-Вождь",
     "town": "Цитадель",
     "level": 3,
     "isUpgraded": true,
@@ -1723,7 +1723,7 @@
     "growth": 7,
     "goldCost": 165,
     "resourceCost": null,
-    "abilities": "Стрельба(24)",
+    "abilities": "Стрельба (24)",
     "aiValue": 240,
     "imageRes": "creature_orc_chieftain"
   },
@@ -1748,7 +1748,7 @@
   },
   {
     "id": "ogre_mage",
-    "name": "Огр-маг",
+    "name": "Огр-Маг",
     "town": "Цитадель",
     "level": 4,
     "isUpgraded": true,
@@ -1761,7 +1761,7 @@
     "growth": 4,
     "goldCost": 400,
     "resourceCost": null,
-    "abilities": "Жажда крови(3 раза за бой)",
+    "abilities": "Жажда крови (Продвинутый/3 раза за бой)",
     "aiValue": 672,
     "imageRes": "creature_ogre_mage"
   },
@@ -1799,7 +1799,7 @@
     "growth": 3,
     "goldCost": 700,
     "resourceCost": null,
-    "abilities": "Полёт, Удар молнии(20%), Широкое существо",
+    "abilities": "Полёт, Удар молнии (20%), Широкое существо",
     "aiValue": 1106,
     "imageRes": "creature_thunderbird"
   },
@@ -1818,7 +1818,7 @@
     "growth": 2,
     "goldCost": 750,
     "resourceCost": null,
-    "abilities": "Стрельба(12), Атака стен(аналогично базовому навыку Баллистики)",
+    "abilities": "Стрельба (12), Атака стен",
     "aiValue": 1266,
     "imageRes": "creature_cyclops"
   },
@@ -1837,7 +1837,7 @@
     "growth": 2,
     "goldCost": 1100,
     "resourceCost": null,
-    "abilities": "Стрельба(24), Атака стен(аналогично продвинутому навыку Баллистики)",
+    "abilities": "Стрельба (24), Атака стен (2 раза за раунд)",
     "aiValue": 1544,
     "imageRes": "creature_cyclops_king"
   },
@@ -1862,7 +1862,7 @@
   },
   {
     "id": "ancient_behemoth",
-    "name": "Древнее чудище",
+    "name": "Древнее Чудище",
     "town": "Цитадель",
     "level": 7,
     "isUpgraded": true,
@@ -1900,7 +1900,7 @@
   },
   {
     "id": "gnoll_marauder",
-    "name": "Гнолл-мародер",
+    "name": "Гнолл-Мародёр",
     "town": "Крепость",
     "level": 1,
     "isUpgraded": true,
@@ -1932,13 +1932,13 @@
     "growth": 9,
     "goldCost": 110,
     "resourceCost": null,
-    "abilities": "Стрельба(12)",
+    "abilities": "Стрельба (12)",
     "aiValue": 151,
     "imageRes": "creature_lizardman"
   },
   {
     "id": "lizard_warrior",
-    "name": "Ящер-воин",
+    "name": "Ящер-Воин",
     "town": "Крепость",
     "level": 2,
     "isUpgraded": true,
@@ -1951,7 +1951,7 @@
     "growth": 9,
     "goldCost": 140,
     "resourceCost": null,
-    "abilities": "Стрельба(24)",
+    "abilities": "Стрельба (24)",
     "aiValue": 209,
     "imageRes": "creature_lizard_warrior"
   },
@@ -1976,7 +1976,7 @@
   },
   {
     "id": "dragon_fly",
-    "name": "Стрекоза",
+    "name": "Ядовитый Змий",
     "town": "Крепость",
     "level": 3,
     "isUpgraded": true,
@@ -2008,13 +2008,13 @@
     "growth": 4,
     "goldCost": 325,
     "resourceCost": null,
-    "abilities": "Окаменение(20%), Широкое существо",
+    "abilities": "Окаменение (20%), Широкое существо",
     "aiValue": 552,
     "imageRes": "creature_basilisk"
   },
   {
     "id": "greater_basilisk",
-    "name": "Великий василиск",
+    "name": "Великий Василиск",
     "town": "Крепость",
     "level": 4,
     "isUpgraded": true,
@@ -2027,7 +2027,7 @@
     "growth": 4,
     "goldCost": 400,
     "resourceCost": null,
-    "abilities": "Окаменение(20%), Широкое существо",
+    "abilities": "Окаменение (20%), Широкое существо",
     "aiValue": 714,
     "imageRes": "creature_greater_basilisk"
   },
@@ -2052,7 +2052,7 @@
   },
   {
     "id": "mighty_gorgon",
-    "name": "Могучая горгона",
+    "name": "Могучая Горгона",
     "town": "Крепость",
     "level": 5,
     "isUpgraded": true,
@@ -2065,7 +2065,7 @@
     "growth": 3,
     "goldCost": 600,
     "resourceCost": null,
-    "abilities": "Смертельный взгляд(10%), Широкое существо",
+    "abilities": "Смертельный взгляд (10%), Широкое существо",
     "aiValue": 1028,
     "imageRes": "creature_mighty_gorgon"
   },
@@ -2090,7 +2090,7 @@
   },
   {
     "id": "wyvern_monarch",
-    "name": "Виверна-монарх",
+    "name": "Виверна-Монарх",
     "town": "Крепость",
     "level": 6,
     "isUpgraded": true,
@@ -2103,7 +2103,7 @@
     "growth": 2,
     "goldCost": 1100,
     "resourceCost": null,
-    "abilities": "Полёт, Яд(30%), Широкое существо",
+    "abilities": "Полёт, Яд (30%), Широкое существо",
     "aiValue": 1518,
     "imageRes": "creature_wyvern_monarch"
   },
@@ -2128,7 +2128,7 @@
   },
   {
     "id": "chaos_hydra",
-    "name": "Гидра хаоса",
+    "name": "Гидра Хаоса",
     "town": "Крепость",
     "level": 7,
     "isUpgraded": true,
@@ -2185,7 +2185,7 @@
   },
   {
     "id": "air_elemental",
-    "name": "Воздушный элементаль",
+    "name": "Воздушный Элементаль",
     "town": "Сопряжение",
     "level": 2,
     "isUpgraded": false,
@@ -2205,7 +2205,7 @@
   },
   {
     "id": "storm_elemental",
-    "name": "Штормовой элементаль",
+    "name": "Элементаль Шторма",
     "town": "Сопряжение",
     "level": 2,
     "isUpgraded": true,
@@ -2218,14 +2218,14 @@
     "growth": 6,
     "goldCost": 275,
     "resourceCost": null,
-    "abilities": "Элементаль, Стрельба(24), Иммунитет к Метеоритному дождю, Ненависть к земле, Уязвимость к Молнии и Армагеддону, Защита от воздуха(3 раза за бой)",
+    "abilities": "Элементаль, Стрельба (24), Иммунитет к Метеоритному дождю, Ненависть к земле, Уязвимость к молнии и Армагеддону, Защита от воздуха (3 раза за бой)",
     "aiValue": 486,
     "isElemental": true,
     "imageRes": "creature_storm_elemental"
   },
   {
     "id": "water_elemental",
-    "name": "Водный элементаль",
+    "name": "Водный Элементаль",
     "town": "Сопряжение",
     "level": 3,
     "isUpgraded": false,
@@ -2245,7 +2245,7 @@
   },
   {
     "id": "ice_elemental",
-    "name": "Ледяной элементаль",
+    "name": "Элементаль Льда",
     "town": "Сопряжение",
     "level": 3,
     "isUpgraded": true,
@@ -2258,14 +2258,14 @@
     "growth": 6,
     "goldCost": 375,
     "resourceCost": null,
-    "abilities": "Элементаль, Стрельба(24), Иммунитет к холоду, Ненависть к огню, Уязвимость к огню, Широкое существо, Защита от воды(3 раза за бой)",
+    "abilities": "Элементаль, Стрельба (24), Иммунитет к холоду, Ненависть к огню, Уязвимость к огню, Широкое существо, Защита от воды (3 раза за бой)",
     "aiValue": 380,
     "isElemental": true,
     "imageRes": "creature_ice_elemental"
   },
   {
     "id": "fire_elemental",
-    "name": "Огненный элементаль",
+    "name": "Огненный Элементаль",
     "town": "Сопряжение",
     "level": 4,
     "isUpgraded": false,
@@ -2285,7 +2285,7 @@
   },
   {
     "id": "energy_elemental",
-    "name": "Энергетический элементаль",
+    "name": "Элементаль Энергии",
     "town": "Сопряжение",
     "level": 4,
     "isUpgraded": true,
@@ -2298,14 +2298,14 @@
     "growth": 5,
     "goldCost": 400,
     "resourceCost": null,
-    "abilities": "Элементаль, Полёт, Иммунитет к огню, Ненависть к воде, Уязвимость к холоду, Защита от огня(3 раза за бой)",
+    "abilities": "Элементаль, Полёт, Иммунитет к огню, Ненависть к воде, Уязвимость к холоду, Защита от огня (3 раза за бой)",
     "aiValue": 470,
     "isElemental": true,
     "imageRes": "creature_energy_elemental"
   },
   {
     "id": "earth_elemental",
-    "name": "Земляной элементаль",
+    "name": "Земляной Элементаль",
     "town": "Сопряжение",
     "level": 5,
     "isUpgraded": false,
@@ -2318,14 +2318,14 @@
     "growth": 4,
     "goldCost": 400,
     "resourceCost": null,
-    "abilities": "Элементаль, Иммунитет к Молнии и Армагеддону, Ненависть к воздуху, Уязвимость к Метеоритному дождю",
+    "abilities": "Элементаль, Иммунитет к молнии и Армагеддону, Ненависть к воздуху, Уязвимость к Метеоритному дождю",
     "aiValue": 330,
     "isElemental": true,
     "imageRes": "creature_earth_elemental"
   },
   {
     "id": "magma_elemental",
-    "name": "Магмовый элементаль",
+    "name": "Элементаль Магмы",
     "town": "Сопряжение",
     "level": 5,
     "isUpgraded": true,
@@ -2338,14 +2338,14 @@
     "growth": 4,
     "goldCost": 500,
     "resourceCost": null,
-    "abilities": "Элементаль, Иммунитет к Молнии и Армагеддону, Ненависть к воздуху, Уязвимость к Метеоритному дождю, Защита от земли(3 раза за бой)",
+    "abilities": "Элементаль, Иммунитет к молнии и Армагеддону, Ненависть к воздуху, Уязвимость к Метеоритному дождю, Защита от земли (3 раза за бой)",
     "aiValue": 490,
     "isElemental": true,
     "imageRes": "creature_magma_elemental"
   },
   {
     "id": "psychic_elemental",
-    "name": "Психический элементаль",
+    "name": "Психический Элементаль",
     "town": "Сопряжение",
     "level": 6,
     "isUpgraded": false,
@@ -2358,14 +2358,14 @@
     "growth": 2,
     "goldCost": 950,
     "resourceCost": null,
-    "abilities": "Элементаль, Круговая атака, Безответная атака, -50% урона по существам с иммунитетом к магии Разума",
+    "abilities": "Элементаль, Окружающий удар, Безответная атака, -50% урона по существам с иммунитетом к магии Разума",
     "aiValue": 1669,
     "isElemental": true,
     "imageRes": "creature_psychic_elemental"
   },
   {
     "id": "magic_elemental",
-    "name": "Магический элементаль",
+    "name": "Элементаль Магии",
     "town": "Сопряжение",
     "level": 6,
     "isUpgraded": true,
@@ -2378,14 +2378,14 @@
     "growth": 2,
     "goldCost": 1200,
     "resourceCost": null,
-    "abilities": "Элементаль, Круговая атака, Безответная атака, Полный иммунитет к магии, -50% урона по существам с иммунитетом к магии",
+    "abilities": "Элементаль, Окружающий удар, Безответная атака, Полный иммунитет к магии, -50% урона по существам с иммунитетом к магии",
     "aiValue": 2012,
     "isElemental": true,
     "imageRes": "creature_magic_elemental"
   },
   {
     "id": "firebird",
-    "name": "Огненная птица",
+    "name": "Огненная Птица",
     "town": "Сопряжение",
     "level": 7,
     "isUpgraded": false,
@@ -2398,7 +2398,7 @@
     "growth": 1,
     "goldCost": 2000,
     "resourceCost": null,
-    "abilities": "Полёт, Дыхание дракона, Защита от магии огня(-50%), Широкое существо",
+    "abilities": "Полёт, Дыхание дракона, Защита от магии Огня (-50%), Широкое существо",
     "aiValue": 4336,
     "imageRes": "creature_firebird"
   },
@@ -2417,7 +2417,7 @@
     "growth": 1,
     "goldCost": 3000,
     "resourceCost": "1 Ртуть",
-    "abilities": "Полёт, Дыхание дракона, Иммунитет к магии Огню, Восстание из пепла, Широкое существо",
+    "abilities": "Полёт, Дыхание дракона, Иммунитет к магии Огня, Восстание из пепла, Широкое существо",
     "aiValue": 6721,
     "imageRes": "creature_phoenix"
   },
@@ -2512,7 +2512,7 @@
     "growth": 7,
     "goldCost": 225,
     "resourceCost": null,
-    "abilities": "Стрельба(4), Нет штрафа в ближнем бою",
+    "abilities": "Стрельба (4), Нет штрафа в ближнем бою",
     "aiValue": 312,
     "imageRes": "creature_pirate"
   },
@@ -2531,13 +2531,13 @@
     "growth": 7,
     "goldCost": 275,
     "resourceCost": null,
-    "abilities": "Стрельба(4), Нет штрафа в ближнем бою, Безответная атака",
+    "abilities": "Стрельба (4), Нет штрафа в ближнем бою, Безответная атака",
     "aiValue": 407,
     "imageRes": "creature_corsair"
   },
   {
     "id": "sea_dog",
-    "name": "Морской волк",
+    "name": "Морской Волк",
     "town": "Причал",
     "level": 3,
     "isUpgraded": true,
@@ -2550,13 +2550,13 @@
     "growth": 7,
     "goldCost": 375,
     "resourceCost": null,
-    "abilities": "Стрельба(12), Нет штрафа в ближнем бою, Безответаная атака, Меткий выстрел",
+    "abilities": "Стрельба (12), Нет штрафа в ближнем бою, Безответаная атака, Меткий выстрел",
     "aiValue": 602,
     "imageRes": "creature_sea_dog"
   },
   {
     "id": "stormbird",
-    "name": "Дух океана",
+    "name": "Дух Океана",
     "town": "Причал",
     "level": 4,
     "isUpgraded": false,
@@ -2594,7 +2594,7 @@
   },
   {
     "id": "sea_witch",
-    "name": "Жрица моря",
+    "name": "Жрица Моря",
     "town": "Причал",
     "level": 5,
     "isUpgraded": false,
@@ -2607,7 +2607,7 @@
     "growth": 3,
     "goldCost": 515,
     "resourceCost": null,
-    "abilities": "Стрельба(12), При стрельбе накладывает Слабость на базовом уровне или Разрушающий луч на базовом уровне, если Слабость уже наложена",
+    "abilities": "Стрельба (12), После выстрела накладывает Слабость (Базовый) или Разрушающий луч (Базовый), если Слабость уже наложена",
     "aiValue": 790,
     "imageRes": "creature_sea_witch"
   },
@@ -2626,7 +2626,7 @@
     "growth": 3,
     "goldCost": 565,
     "resourceCost": null,
-    "abilities": "Стрельба(12), При стрельбе накладывает Слабость на продвинутом уровне или Разрушающий луч на продвинутом уровне, если Слабость уже наложена",
+    "abilities": "Стрельба (12), После выстрела накладывает Слабость (Продвинутый) или Разрушающий луч (Продвинутый), если Слабость уже наложена",
     "aiValue": 852,
     "imageRes": "creature_sorceress"
   },
@@ -2651,7 +2651,7 @@
   },
   {
     "id": "nix_warrior",
-    "name": "Никс-воин",
+    "name": "Никс-Воин",
     "town": "Причал",
     "level": 6,
     "isUpgraded": true,
@@ -2670,7 +2670,7 @@
   },
   {
     "id": "sea_serpent",
-    "name": "Морской змей",
+    "name": "Морской Змей",
     "town": "Причал",
     "level": 7,
     "isUpgraded": false,
@@ -2683,7 +2683,7 @@
     "growth": 1,
     "goldCost": 2200,
     "resourceCost": "1 Сера",
-    "abilities": "Яд(30%), Широкое существо",
+    "abilities": "Яд (30%), Широкое существо",
     "aiValue": 3953,
     "imageRes": "creature_sea_serpent"
   },
@@ -2702,7 +2702,7 @@
     "growth": 1,
     "goldCost": 4000,
     "resourceCost": "2 Серы",
-    "abilities": "Яд(30%), Месть, Широкое существо",
+    "abilities": "Яд (30%), Месть, Широкое существо",
     "aiValue": 7220,
     "imageRes": "creature_haspid"
   },
@@ -2721,13 +2721,13 @@
     "growth": 15,
     "goldCost": 40,
     "resourceCost": null,
-    "abilities": "Стрельба(24), Удача всегда положительна",
+    "abilities": "Стрельба (24), Удача всегда положительна",
     "aiValue": 75,
     "imageRes": "creature_halfling"
   },
   {
     "id": "halfling_grenadier",
-    "name": "Полурослик-гренадёр",
+    "name": "Полурослик-Гренадёр",
     "town": "Фабрика",
     "level": 1,
     "isUpgraded": true,
@@ -2740,7 +2740,7 @@
     "growth": 15,
     "goldCost": 60,
     "resourceCost": null,
-    "abilities": "Стрельба(24), Удача всегда положительна, Игнорирует 20 % защиты врага при стрельбе",
+    "abilities": "Стрельба (24), Удача всегда положительна, Игнорирует 20 % защиты врага при стрельбе",
     "aiValue": 95,
     "imageRes": "creature_halfling_grenadier"
   },
@@ -2759,7 +2759,7 @@
     "growth": 8,
     "goldCost": 140,
     "resourceCost": null,
-    "abilities": "Чинит механизмы(1 раз за бой/10 здоровья за Механика), Дыхание дракона",
+    "abilities": "Чинит механизмы (1 раз за бой/10 здоровья за Механика), Дыхание дракона",
     "aiValue": 186,
     "imageRes": "creature_mechanic"
   },
@@ -2778,7 +2778,7 @@
     "growth": 8,
     "goldCost": 170,
     "resourceCost": null,
-    "abilities": "Чинит механизмы(1 раз за бой/20 здоровья за Инженера), Дыхание дракона",
+    "abilities": "Чинит механизмы (1 раз за бой/20 здоровья за Инженера), Дыхание дракона",
     "aiValue": 278,
     "imageRes": "creature_engineer"
   },
@@ -2803,7 +2803,7 @@
   },
   {
     "id": "bellwether_armadillo",
-    "name": "Броненосец-вожак",
+    "name": "Броненосец-Вожак",
     "town": "Фабрика",
     "level": 3,
     "isUpgraded": true,
@@ -2842,7 +2842,7 @@
   },
   {
     "id": "sentinel_automaton",
-    "name": "Автоматон-часовой",
+    "name": "Автоматон-Часовой",
     "town": "Фабрика",
     "level": 4,
     "isUpgraded": true,
@@ -2862,7 +2862,7 @@
   },
   {
     "id": "sandworm",
-    "name": "Песчаный червь",
+    "name": "Песчаный Червь",
     "town": "Фабрика",
     "level": 5,
     "isUpgraded": false,
@@ -2881,7 +2881,7 @@
   },
   {
     "id": "olgoi_khorkhoi",
-    "name": "Олгой-хорхой",
+    "name": "Олгой-Хорхой",
     "town": "Фабрика",
     "level": 5,
     "isUpgraded": true,
@@ -2913,13 +2913,13 @@
     "growth": 2,
     "goldCost": 800,
     "resourceCost": null,
-    "abilities": "Стрельба(16), Упреждающий выстрел(1 раз за раунд)",
+    "abilities": "Стрельба (16), Упреждающий выстрел (1 раз за раунд)",
     "aiValue": 1351,
     "imageRes": "creature_gunslinger"
   },
   {
     "id": "bounty_hunter",
-    "name": "Охотник за головами",
+    "name": "Охотник за Головами",
     "town": "Фабрика",
     "level": 6,
     "isUpgraded": true,
@@ -2932,7 +2932,7 @@
     "growth": 2,
     "goldCost": 1100,
     "resourceCost": null,
-    "abilities": "Стрельба(16), Упреждающий выстрел(любое число раз за раунд)",
+    "abilities": "Стрельба (16), Упреждающий выстрел (любое число раз за раунд)",
     "aiValue": 1454,
     "imageRes": "creature_bounty_hunter"
   },
@@ -2951,13 +2951,13 @@
     "growth": 1,
     "goldCost": 2000,
     "resourceCost": null,
-    "abilities": "Полёт, Неуязвимость(1 раз за бой с пропуском хода), Широкое существо",
+    "abilities": "Полёт, Неуязвимость (1 раз за бой с пропуском хода), Широкое существо",
     "aiValue": 3574,
     "imageRes": "creature_couatl"
   },
   {
     "id": "crimson_couatl",
-    "name": "Багровый коатль",
+    "name": "Багровый Коатль",
     "town": "Фабрика",
     "level": 7,
     "isUpgraded": true,
@@ -2970,7 +2970,7 @@
     "growth": 1,
     "goldCost": 3500,
     "resourceCost": "1 Кристалл",
-    "abilities": "Полёт, Неуязвимость(1 раз за бой без пропуска хода), Широкое существо",
+    "abilities": "Полёт, Неуязвимость (1 раз за бой без пропуска хода), Широкое существо",
     "aiValue": 5341,
     "imageRes": "creature_crimson_couatl"
   },
@@ -3035,7 +3035,7 @@
   },
   {
     "id": "kobold_foreman",
-    "name": "Кобольд-старшина",
+    "name": "Кобольд-Старшина",
     "town": "Кронверк",
     "level": 1,
     "isUpgraded": true,
@@ -3054,7 +3054,7 @@
   },
   {
     "id": "mountain_ram",
-    "name": "Горный баран",
+    "name": "Горный Баран",
     "town": "Кронверк",
     "level": 2,
     "isUpgraded": false,
@@ -3092,7 +3092,7 @@
   },
   {
     "id": "snow_elf",
-    "name": "Снежный эльф",
+    "name": "Снежный Эльф",
     "town": "Кронверк",
     "level": 3,
     "isUpgraded": false,
@@ -3105,13 +3105,13 @@
     "growth": 7,
     "goldCost": 230,
     "resourceCost": null,
-    "abilities": "Стрельба(4), Нет штрафа в ближнем бою",
+    "abilities": "Стрельба (4), Нет штрафа в ближнем бою",
     "aiValue": 370,
     "imageRes": "creature_snow_elf"
   },
   {
     "id": "steel_elf",
-    "name": "Стальной эльф",
+    "name": "Стальной Эльф",
     "town": "Кронверк",
     "level": 3,
     "isUpgraded": true,
@@ -3124,7 +3124,7 @@
     "growth": 7,
     "goldCost": 260,
     "resourceCost": null,
-    "abilities": "Стрельба(8), Нет штрафа в ближнем бою, Может стрелять, находясь рядом с вражеским существом",
+    "abilities": "Стрельба (8), Нет штрафа в ближнем бою, Может стрелять, находясь рядом с вражеским существом",
     "aiValue": 526,
     "imageRes": "creature_steel_elf"
   },
@@ -3149,7 +3149,7 @@
   },
   {
     "id": "yeti_runemaster",
-    "name": "Йети-рунотворец",
+    "name": "Йети-Рунотворец",
     "town": "Кронверк",
     "level": 4,
     "isUpgraded": true,
@@ -3162,7 +3162,7 @@
     "growth": 4,
     "goldCost": 400,
     "resourceCost": null,
-    "abilities": "Избавляется от негативных эффектов за один раунд, Владеет рунами, Широкое существо",
+    "abilities": "Избавляется от негативных эффектов за один раунд, Владеет навыком Руны (Эксперт), Широкое существо",
     "aiValue": 751,
     "imageRes": "creature_yeti_runemaster"
   },
@@ -3181,13 +3181,13 @@
     "growth": 3,
     "goldCost": 450,
     "resourceCost": null,
-    "abilities": "Стрельба(12), Воздушный Щит(3 раза за бой)",
+    "abilities": "Стрельба (12), Воздушный щит (Продвинутый/3 раза за бой)",
     "aiValue": 685,
     "imageRes": "creature_shaman"
   },
   {
     "id": "great_shaman",
-    "name": "Великий шаман",
+    "name": "Великий Шаман",
     "town": "Кронверк",
     "level": 5,
     "isUpgraded": true,
@@ -3200,7 +3200,7 @@
     "growth": 3,
     "goldCost": 600,
     "resourceCost": null,
-    "abilities": "Стрельба(24), Воздушный Щит(3 раза за бой), Замораживающий выстрел(20%)",
+    "abilities": "Стрельба (24), Воздушный Щит (Продвинутый/3 раза за бой), Замораживающий выстрел (20%)",
     "aiValue": 818,
     "imageRes": "creature_great_shaman"
   },
@@ -3225,7 +3225,7 @@
   },
   {
     "id": "war_mammoth",
-    "name": "Боевой мамонт",
+    "name": "Боевой Мамонт",
     "town": "Кронверк",
     "level": 6,
     "isUpgraded": true,
@@ -3257,13 +3257,13 @@
     "growth": 1,
     "goldCost": 2000,
     "resourceCost": null,
-    "abilities": "Телепортирует союзников(1 раз за бой), -1 к скорости вражеских летающих существ, Широкое существо",
+    "abilities": "Телепортирует союзников (1 раз за бой), -1 к скорости вражеских летающих существ, Широкое существо",
     "aiValue": 4180,
     "imageRes": "creature_jotunn"
   },
   {
     "id": "jotunn_warlord",
-    "name": "Ётун-воевода",
+    "name": "Ётун-Воевода",
     "town": "Кронверк",
     "level": 7,
     "isUpgraded": true,
@@ -3301,7 +3301,7 @@
   },
   {
     "id": "boar",
-    "name": "Наездник на кабане",
+    "name": "Наездник на Кабане",
     "town": "Нейтралы",
     "level": 2,
     "isUpgraded": false,
@@ -3333,7 +3333,7 @@
     "growth": 8,
     "goldCost": 100,
     "resourceCost": null,
-    "abilities": "Видение",
+    "abilities": "Видение (Эксперт)",
     "aiValue": 135,
     "imageRes": "creature_rogue"
   },
@@ -3352,7 +3352,7 @@
     "growth": 9,
     "goldCost": 100,
     "resourceCost": null,
-    "abilities": "Удваивает удачу, Удача(3 раза за бой)",
+    "abilities": "Удваивает шанс удачи, Удача (Продвинутый/3 раза за бой)",
     "aiValue": 190,
     "imageRes": "creature_leprechaun"
   },
@@ -3371,7 +3371,7 @@
     "growth": 7,
     "goldCost": 300,
     "resourceCost": null,
-    "abilities": "Нежить, Проклятие(25%)",
+    "abilities": "Нежить, Проклятие (25%)",
     "aiValue": 270,
     "isUndead": true,
     "imageRes": "creature_mummy"
@@ -3391,7 +3391,7 @@
     "growth": 7,
     "goldCost": 200,
     "resourceCost": null,
-    "abilities": "Нет штрафа передвижения всего отряда по песку, Широкое существо",
+    "abilities": "Нет штрафа передвижения героя по песку, Широкое существо",
     "aiValue": 345,
     "imageRes": "creature_nomad"
   },
@@ -3410,7 +3410,7 @@
     "growth": 4,
     "goldCost": 400,
     "resourceCost": null,
-    "abilities": "Стрельба(32), Нет штрафа за расстояние, Нет штрафа при стрельбе через стены",
+    "abilities": "Стрельба (32), Нет штрафа за расстояние, Нет штрафа при стрельбе через стены",
     "aiValue": 585,
     "imageRes": "creature_sharpshooter"
   },
@@ -3429,13 +3429,13 @@
     "growth": 4,
     "goldCost": 300,
     "resourceCost": null,
-    "abilities": "Радость(3 раза за бой)",
+    "abilities": "Радость(Продвинутый/3 раза за бой)",
     "aiValue": 518,
     "imageRes": "creature_satyr"
   },
   {
     "id": "steel_golem",
-    "name": "Стальной голем",
+    "name": "Стальной Голем",
     "town": "Нейтралы",
     "level": 4,
     "isUpgraded": false,
@@ -3448,14 +3448,14 @@
     "growth": 4,
     "goldCost": 400,
     "resourceCost": null,
-    "abilities": "Голем, -80% урона от магии, ",
+    "abilities": "Голем, -80% урона от магии",
     "aiValue": 597,
     "isGolem": true,
     "imageRes": "creature_steel_golem"
   },
   {
     "id": "gold_golem",
-    "name": "Золотой голем",
+    "name": "Золотой Голем",
     "town": "Нейтралы",
     "level": 5,
     "isUpgraded": false,
@@ -3513,7 +3513,7 @@
   },
   {
     "id": "diamond_golem",
-    "name": "Алмазный голем",
+    "name": "Алмазный Голем",
     "town": "Нейтралы",
     "level": 6,
     "isUpgraded": false,
@@ -3546,13 +3546,13 @@
     "growth": 2,
     "goldCost": 750,
     "resourceCost": null,
-    "abilities": "Стрельба(32), Нет штрафа в ближнем бою, Нет штрафа при стрельбе через стены, Случайная магия",
+    "abilities": "Стрельба (32), Нет штрафа в ближнем бою, Нет штрафа при стрельбе через стены, Случайная массовая магия (Эксперт)",
     "aiValue": 1210,
     "imageRes": "creature_enchanter"
   },
   {
     "id": "faerie_dragon",
-    "name": "Сказочный дракон",
+    "name": "Сказочный Дракон",
     "town": "Нейтралы",
     "level": 7,
     "isUpgraded": false,
@@ -3565,13 +3565,13 @@
     "growth": 1,
     "goldCost": 10000,
     "resourceCost": "8 Самоцветов",
-    "abilities": "Полёт, Атака случайной магией(5 раз за бой), Волшебное зеркало(20%), Широкое существо",
+    "abilities": "Полёт, Атака случайной магией (5 раз за бой), Волшебное зеркало (20%), Широкое существо",
     "aiValue": 30501,
     "imageRes": "creature_faerie_dragon"
   },
   {
     "id": "rust_dragon",
-    "name": "Ржавый дракон",
+    "name": "Ржавый Дракон",
     "town": "Нейтралы",
     "level": 7,
     "isUpgraded": false,
@@ -3590,7 +3590,7 @@
   },
   {
     "id": "crystal_dragon",
-    "name": "Кристальный дракон",
+    "name": "Кристальный Дракон",
     "town": "Нейтралы",
     "level": 7,
     "isUpgraded": false,
@@ -3603,13 +3603,13 @@
     "growth": 1,
     "goldCost": 20000,
     "resourceCost": "10 Кристаллов",
-    "abilities": "Приносит кристаллы, Сопротивление магии 20%, Широкое существо",
+    "abilities": "Приносит 3 кристалла в неделю, Сопротивление магии 20%, Широкое существо",
     "aiValue": 39338,
     "imageRes": "creature_crystal_dragon"
   },
   {
     "id": "azure_dragon",
-    "name": "Лазурный дракон",
+    "name": "Лазурный Дракон",
     "town": "Нейтралы",
     "level": 7,
     "isUpgraded": false,
@@ -3622,7 +3622,7 @@
     "growth": 1,
     "goldCost": 30000,
     "resourceCost": "20 Ртути",
-    "abilities": "Полёт, Иммунитет к магии 1-3 ур, Страх(10%), Защита от Страха, Дыхание дракона, Широкое существо",
+    "abilities": "Полёт, Иммунитет к магии 1-3 ур, Страх (10%), Защита от Страха, Дыхание дракона, Широкое существо",
     "aiValue": 78845,
     "imageRes": "creature_azure_dragon"
   },
@@ -3641,7 +3641,7 @@
     "growth": null,
     "goldCost": 1500,
     "resourceCost": null,
-    "abilities": "Боевая машина, Стрельба(24), Защита от перекрытия, Широкое существо",
+    "abilities": "Боевая машина, Стрельба (24), Защита от перекрытия, Широкое существо",
     "aiValue": 600,
     "isWarMachine": true,
     "imageRes": "creature_ballista"
@@ -3661,14 +3661,14 @@
     "growth": null,
     "goldCost": 0,
     "resourceCost": null,
-    "abilities": "Боевая машина, Атака стен(24), Широкое существо",
+    "abilities": "Боевая машина, Атака стен (24), Широкое существо",
     "aiValue": 500,
     "isWarMachine": true,
     "imageRes": "creature_catapult"
   },
   {
     "id": "first_aid_tent",
-    "name": "Палатка первой помощи",
+    "name": "Палатка Первой Помощи",
     "town": "Боевые машины",
     "level": 1,
     "isUpgraded": false,
@@ -3688,7 +3688,7 @@
   },
   {
     "id": "ammo_cart",
-    "name": "Тележка с боеприпасами",
+    "name": "Подвода с Боеприпасами",
     "town": "Боевые машины",
     "level": 1,
     "isUpgraded": false,
@@ -3720,7 +3720,7 @@
     "growth": null,
     "goldCost": 3000,
     "resourceCost": null,
-    "abilities": "Боевая машина, Стрельба(8), Защита от перекрытия, Атака стен, Широкое существо",
+    "abilities": "Боевая машина, Стрельба (8), Защита от перекрытия, Атака стен, Широкое существо",
     "aiValue": 875,
     "isWarMachine": true,
     "imageRes": "creature_cannon"

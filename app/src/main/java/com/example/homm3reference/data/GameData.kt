@@ -8,6 +8,7 @@ object GameData {
     var spells: List<Spell> = emptyList()
     var creatures: List<Creature> = emptyList()
     var artifacts: List<Artifact> = emptyList()
+    var heroes: List<Hero> = emptyList()
 
     fun getStatsForClass(className: String): HeroClassStat {
         return heroClassStats.find { it.className == className }

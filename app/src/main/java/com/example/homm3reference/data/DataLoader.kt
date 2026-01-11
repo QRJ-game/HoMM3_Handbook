@@ -7,7 +7,6 @@ import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.IOException
-import com.example.homm3reference.data.Artifact
 
 object DataLoader {
     // Загрузка героев в БД
@@ -20,9 +19,15 @@ object DataLoader {
                 // Парсим
                 val listType = object : TypeToken<List<Hero>>() {}.type
                 val heroes: List<Hero> = Gson().fromJson(jsonString, listType)
+
                 dao.insertAll(heroes)
+
+                // --- ДОБАВЛЕНО: Сохраняем в GameData, чтобы TownSelect их видел ---
+                GameData.heroes = heroes
+                // -----------------------------------------------------------------
+
             } catch (e: Exception) {
-                Log.e("HOMM_DEBUG", "Ошибка загрузки: ${e.message}")
+                Log.e("HOMM_DEBUG", "Ошибка загрузки героев: ${e.message}")
                 e.printStackTrace()
             }
         }
@@ -36,7 +41,13 @@ object DataLoader {
                 val jsonString = context.assets.open("creatures_data.json").bufferedReader().use { it.readText() }
                 val listType = object : TypeToken<List<Creature>>() {}.type
                 val creatures: List<Creature> = Gson().fromJson(jsonString, listType)
+
                 dao.insertAll(creatures)
+
+                // --- ДОБАВЛЕНО: Сохраняем в GameData ---
+                GameData.creatures = creatures
+                // ---------------------------------------
+
             } catch (e: Exception) { e.printStackTrace() }
         }
     }

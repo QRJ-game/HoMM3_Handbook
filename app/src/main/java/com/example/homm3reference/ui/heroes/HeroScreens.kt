@@ -42,6 +42,8 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.navigationBars
+import android.util.Log
+import androidx.compose.runtime.LaunchedEffect
 
 // Локальные константы стиля
 private val HommShape = RoundedCornerShape(8.dp)
@@ -131,6 +133,20 @@ fun HeroListScreen(
     listState: LazyListState = rememberLazyListState(),
     onHeroSelected: (Hero) -> Unit
 ) {
+    // --- НАЧАЛО ИЗМЕНЕНИЙ: Логирование статистики списка героев ---
+    LaunchedEffect(heroes, townName, className) {
+        val tag = "Homm3HeroesList"
+        val standardCount = heroes.count { it.backgroundColor.isNullOrEmpty() }
+        val specialCount = heroes.count { !it.backgroundColor.isNullOrEmpty() }
+
+        Log.d(tag, "==========================================")
+        Log.d(tag, "Список героев: $townName -> $className")
+        Log.d(tag, "Всего в этом списке: ${heroes.size}")
+        Log.d(tag, "------------------------------------------")
+        Log.d(tag, "Обычные герои: $standardCount")
+        Log.d(tag, "Специальные/Кампании: $specialCount")
+        Log.d(tag, "==========================================")
+    }
     val navBarPadding = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
     val groupedHeroes = remember(heroes) {
         val standardHeroes = heroes.filter { it.backgroundColor.isNullOrEmpty() }
