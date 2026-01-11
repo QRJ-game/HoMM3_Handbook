@@ -2,7 +2,7 @@
   {
     "id": "magic_arrow",
     "imageRes": "spell_magic_arrow",
-    "name": "Волшебная стрела",
+    "name": "Волшебная Стрела",
     "level": 1,
     "school": "Air, Earth, Fire, Water",
     "manaCostNone": 5,
@@ -48,14 +48,14 @@
   {
     "id": "view_air",
     "imageRes": "spell_view_air",
-    "name": "Просмотр воздуха",
+    "name": "Просмотр Воздуха",
     "level": 1,
     "school": "Air",
     "manaCostNone": 2,
     "manaCostBasic": 2,
     "manaCostAdvanced": 2,
     "manaCostExpert": 2,
-    "descriptionNone": "Мгновенное.\nПоказывает расположение всех артефактов на уменьшенной карте «Просмотр мира». Свитки, Грааль и Ящики Пандоры не показываются.",
+    "descriptionNone": "Мгновенное.\nПоказывает расположение всех артефактов на уменьшенной карте «Просмотр мира» до конца хода. Свитки, Грааль и Ящики Пандоры не показываются.",
     "descriptionBasic": "Снижение стоимости заклинания.",
     "descriptionAdvanced": "То же + показывает всех героев на карте.",
     "descriptionExpert": "То же + показывает все города.",
@@ -80,7 +80,7 @@
   {
     "id": "disrupting_ray",
     "imageRes": "spell_disrupting_ray",
-    "name": "Разрушающий луч",
+    "name": "Разрушающий Луч",
     "level": 2,
     "school": "Air",
     "manaCostNone": 10,
@@ -140,7 +140,7 @@
   {
     "id": "protection_from_air",
     "imageRes": "spell_protection_from_air",
-    "name": "Защита от воздуха",
+    "name": "Защита от Воздуха",
     "level": 2,
     "school": "Air",
     "manaCostNone": 7,
@@ -155,7 +155,7 @@
   {
     "id": "air_shield",
     "imageRes": "spell_air_shield",
-    "name": "Воздушный щит",
+    "name": "Воздушный Щит",
     "level": 3,
     "school": "Air",
     "manaCostNone": 12,
@@ -185,7 +185,7 @@
   {
     "id": "destroy_undead",
     "imageRes": "spell_destroy_undead",
-    "name": "Упокоить нежить",
+    "name": "Упокоить Нежить",
     "level": 3,
     "school": "Air",
     "manaCostNone": 15,
@@ -200,7 +200,7 @@
   {
     "id": "chain_lightning",
     "imageRes": "spell_chain_lightning",
-    "name": "Цепная молния",
+    "name": "Цепная Молния",
     "level": 4,
     "school": "Air",
     "manaCostNone": 24,
@@ -230,17 +230,17 @@
   {
     "id": "dimension_door",
     "imageRes": "spell_dimension_door",
-    "name": "Дверь измерений",
+    "name": "Дверь Измерений",
     "level": 5,
     "school": "Air",
     "manaCostNone": 25,
     "manaCostBasic": 20,
     "manaCostAdvanced": 20,
     "manaCostExpert": 20,
-    "descriptionNone": "Выбор цели: свободная клетка карты в пределах 8 клеток вверх и 9 в остальные стороны.\nПеремещает героя на клетку карты. Отнимает у Героя 300 очков движения. Можно использовать 2 раза в день. ",
+    "descriptionNone": "Выбор цели: свободная клетка карты в пределах 8 клеток вверх и 9 в остальные стороны.\nПеремещает героя на клетку карты. Отнимает у Героя 300 очков передвижения. Можно использовать 2 раза в день. ",
     "descriptionBasic": "Снижение стоимости заклинания.",
     "descriptionAdvanced": "То же, но можно использовать 3 раза в день.",
-    "descriptionExpert": "То же, но можно использовать 4 раза в день. Отнимает у Героя 200 очков движения.",
+    "descriptionExpert": "То же, но можно использовать 4 раза в день. Отнимает у Героя 200 очков передвижения.",
     "backgroundColor": "#006400"
   },
   {
@@ -262,29 +262,29 @@
   {
     "id": "air_elemental",
     "imageRes": "spell_air_elemental",
-    "name": "Элементаль воздуха",
+    "name": "Элементаль Воздуха",
     "level": 5,
     "school": "Air",
     "manaCostNone": 25,
     "manaCostBasic": 20,
     "manaCostAdvanced": 20,
     "manaCostExpert": 20,
-    "descriptionNone": "Мгновенное.\nВызывает на случайный гекс в ряде начальной расстановки героя СМ*2 Воздушных элементалей.",
+    "descriptionNone": "Мгновенное.\nВызывает на случайный гекс в ряде начальной расстановки героя СМ*2 Воздушных Элементалей.",
     "descriptionBasic": "Снижение стоимости заклинания.",
-    "descriptionAdvanced": "То же, но вызывает СМ*3 Воздушных элементалей.",
-    "descriptionExpert": "То же, но вызывает СМ*4 Воздушных элементалей."
+    "descriptionAdvanced": "То же, но вызывает СМ*3 Воздушных Элементалей.",
+    "descriptionExpert": "То же, но вызывает СМ*4 Воздушных Элементалей."
   },
   {
     "id": "magic_mirror",
     "imageRes": "spell_magic_mirror",
-    "name": "Волшебное зеркало",
+    "name": "Волшебное Зеркало",
     "level": 5,
     "school": "Air",
     "manaCostNone": 25,
     "manaCostBasic": 20,
     "manaCostAdvanced": 20,
     "manaCostExpert": 20,
-    "descriptionNone": "Выбор цели: дружественное существо.\nДаёт 20% шанс отражения вражеского заклинания в случайное вражеское существо.",
+    "descriptionNone": "Выбор цели: дружественное существо.\nДаёт 20% шанс отражения вражеского заклинания в случайное вражеское существо. Защищает от Гипноза",
     "descriptionBasic": "Снижение стоимости заклинания.",
     "descriptionAdvanced": "То же, но даёт 30% шанс.",
     "descriptionExpert": "То же, но даёт 40% шанс."
@@ -292,7 +292,7 @@
   {
     "id": "titans_lightning",
     "imageRes": "spell_titans_lightning",
-    "name": "Гром титана",
+    "name": "Молния Титана",
     "level": 5,
     "school": "Air",
     "manaCostNone": 0,
@@ -337,7 +337,7 @@
   {
     "id": "stone_skin",
     "imageRes": "spell_stone_skin",
-    "name": "Каменная кожа",
+    "name": "Каменная Кожа",
     "level": 1,
     "school": "Earth",
     "manaCostNone": 5,
@@ -352,14 +352,14 @@
   {
     "id": "view_earth",
     "imageRes": "spell_view_earth",
-    "name": "Просмотр земли",
+    "name": "Просмотр Земли",
     "level": 1,
     "school": "Earth",
     "manaCostNone": 2,
     "manaCostBasic": 1,
     "manaCostAdvanced": 1,
     "manaCostExpert": 1,
-    "descriptionNone": "Мгновенное.\nПоказывает расположение всех ресурсов на уменьшенной карте «Просмотр мира».",
+    "descriptionNone": "Мгновенное.\nПоказывает расположение всех ресурсов на уменьшенной карте «Просмотр мира» до конца хода.",
     "descriptionBasic": "Снижение стоимости заклинания.",
     "descriptionAdvanced": "То же + показывает все шахты ресурсов.",
     "descriptionExpert": "То же + открывает терра инкогнита, показывая тип поверхности.",
@@ -368,7 +368,7 @@
   {
     "id": "death_ripple",
     "imageRes": "spell_death_ripple",
-    "name": "Волна смерти",
+    "name": "Волна Смерти",
     "level": 2,
     "school": "Earth",
     "manaCostNone": 10,
@@ -383,7 +383,7 @@
   {
     "id": "quicksand",
     "imageRes": "spell_quicksand",
-    "name": "Зыбучие пески",
+    "name": "Зыбучие Пески",
     "level": 2,
     "school": "Earth",
     "manaCostNone": 8,
@@ -398,22 +398,22 @@
   {
     "id": "protection_from_earth",
     "imageRes": "spell_protection_from_earth",
-    "name": "Защита от земли",
+    "name": "Защита от Земли",
     "level": 3,
     "school": "Earth",
     "manaCostNone": 12,
     "manaCostBasic": 9,
     "manaCostAdvanced": 9,
     "manaCostExpert": 9,
-    "descriptionNone": "Выбор цели: дружественное существо.\nПолучаемый урон от Магии земли -50%.",
+    "descriptionNone": "Выбор цели: дружественное существо.\nПолучаемый урон от магии Земли -50%.",
     "descriptionBasic": "Снижение стоимости заклинания.",
     "descriptionAdvanced": "То же, но -75%.",
-    "descriptionExpert": "Мгновенное. Получаемый урон от Магии земли всеми дружественными существами -75%."
+    "descriptionExpert": "Мгновенное. Получаемый урон от магии Земли всеми дружественными существами -75%."
   },
   {
     "id": "animate_dead",
     "imageRes": "spell_animate_dead",
-    "name": "Поднять мертвецов",
+    "name": "Поднять Мертвецов",
     "level": 3,
     "school": "Earth",
     "manaCostNone": 15,
@@ -435,7 +435,7 @@
     "manaCostBasic": 12,
     "manaCostAdvanced": 12,
     "manaCostExpert": 12,
-    "descriptionNone": "Выбор цели: дружественное существо.\nЗащита от заклинаний 1-3 уровня. Снимает все отрицательные эффекты 1-3 уровня.",
+    "descriptionNone": "Выбор цели: дружественное существо.\nЗащита от заклинаний 1-3 уровня, кроме Снятия Заклинаний. Снимает все отрицательные эффекты 1-3 уровня.",
     "descriptionBasic": "Снижение стоимости заклинания.",
     "descriptionAdvanced": "То же, но 1-4 уровня.",
     "descriptionExpert": "То же, но даёт защиту от любых заклинаний."
@@ -450,7 +450,7 @@
     "manaCostBasic": 17,
     "manaCostAdvanced": 17,
     "manaCostExpert": 17,
-    "descriptionNone": "Мгновенное.\nНаносит по 1 урону двум элементам фортификаций при осаде.",
+    "descriptionNone": "Мгновенное.\nНаносит по 1 урону двум случайным элементам фортификаций при осаде.",
     "descriptionBasic": "Снижение стоимости заклинания.",
     "descriptionAdvanced": "То же, но наносит 1 урон трём элементам.",
     "descriptionExpert": "То же, но наносит 1 урон четырём элементам."
@@ -458,14 +458,14 @@
   {
     "id": "force_field",
     "imageRes": "spell_force_field",
-    "name": "Силовое поле",
+    "name": "Силовое Поле",
     "level": 3,
     "school": "Earth",
     "manaCostNone": 12,
     "manaCostBasic": 9,
     "manaCostAdvanced": 9,
     "manaCostExpert": 9,
-    "descriptionNone": "Выбор цели: 2 смежных по вертикали гекса на поле боя.\nСоздает преграду шириной в 1 клетку, препятсвующее проходу.",
+    "descriptionNone": "Выбор цели: 2 смежных по вертикали гекса на поле боя.\nСоздает преграду на 2 раунда шириной в 1 клетку, препятствующее проходу.",
     "descriptionBasic": "Снижение стоимости заклинания.",
     "descriptionAdvanced": "То же, но 3 смежных по вертикали гекса на поле боя.",
     "descriptionExpert": "То же."
@@ -473,7 +473,7 @@
   {
     "id": "meteor_shower",
     "imageRes": "spell_meteor_shower",
-    "name": "Метеоритный дождь",
+    "name": "Метеоритный Дождь",
     "level": 4,
     "school": "Earth",
     "manaCostNone": 16,
@@ -495,7 +495,7 @@
     "manaCostBasic": 16,
     "manaCostAdvanced": 16,
     "manaCostExpert": 16,
-    "descriptionNone": "Выбор цели: труп дружественого существа или отряд, в котором умерло хотя бы 1 существо.\nВоскрешает и излечивает на СМ*50+40. Целью может быть только живые существа. После боя воскрешенные существа исчезают.",
+    "descriptionNone": "Выбор цели: труп дружественого существа или отряд, в котором умерло хотя бы 1 существо.\nВоскрешает и излечивает на СМ*50+40. Целью могут быть только живые существа. После боя воскрешенные существа исчезают.",
     "descriptionBasic": "Снижение стоимости заклинания.",
     "descriptionAdvanced": "То же, но СМ*50+80. После боя воскрешенные существа не исчезают.",
     "descriptionExpert": "То же, но СМ*50+160."
@@ -518,17 +518,17 @@
   {
     "id": "town_portal",
     "imageRes": "spell_town_portal",
-    "name": "Городской портал",
+    "name": "Городской Портал",
     "level": 4,
     "school": "Earth",
     "manaCostNone": 16,
     "manaCostBasic": 12,
     "manaCostAdvanced": 12,
     "manaCostExpert": 12,
-    "descriptionNone": "Мгновенное с подтверждением и показом названия города.\nПеремещает героя в ближайший дружественный город. Отнимает у Героя 300 очков движения.",
+    "descriptionNone": "Мгновенное с подтверждением и показом названия города.\nПеремещает героя в ближайший дружественный город. На воротах не должно быть другого героя. Отнимает у героя 300 очков передвижения.",
     "descriptionBasic": "Снижение стоимости заклинания.",
     "descriptionAdvanced": "То же, но даётся выбор города из списка дружественных городов.",
-    "descriptionExpert": "То же, но отнимает у Героя 200 очков движения.",
+    "descriptionExpert": "То же, но отнимает у героя 200 очков передвижения.",
     "backgroundColor": "#006400"
   },
   {
@@ -549,22 +549,22 @@
   {
     "id": "earth_elemental",
     "imageRes": "spell_earth_elemental",
-    "name": "Элементаль земли",
+    "name": "Элементаль Земли",
     "level": 5,
     "school": "Earth",
     "manaCostNone": 25,
     "manaCostBasic": 20,
     "manaCostAdvanced": 20,
     "manaCostExpert": 20,
-    "descriptionNone": "Мгновенное.\nВызывает на случайный гекс в ряде начальной расстановки героя СМ*2 Земляных элементалей.",
+    "descriptionNone": "Мгновенное.\nВызывает на случайный гекс в ряде начальной расстановки героя СМ*2 Земляных Элементалей.",
     "descriptionBasic": "Снижение стоимости заклинания.",
-    "descriptionAdvanced": "То же, но вызывает СМ*2.5 Земляных элементалей. Округление вниз.",
-    "descriptionExpert": "То же, но вызывает СМ*3 Земляных элементалей."
+    "descriptionAdvanced": "То же, но вызывает СМ*2.5 Земляных Элементалей. Округление вниз.",
+    "descriptionExpert": "То же, но вызывает СМ*3 Земляных Элементалей."
   },
   {
     "id": "bloodlust",
     "imageRes": "spell_bloodlust",
-    "name": "Жажда крови",
+    "name": "Жажда Крови",
     "level": 1,
     "school": "Fire",
     "manaCostNone": 5,
@@ -594,17 +594,17 @@
   {
     "id": "protection_from_fire",
     "imageRes": "spell_protection_from_fire",
-    "name": "Защита от огня",
+    "name": "Защита от Огня",
     "level": 1,
     "school": "Fire",
     "manaCostNone": 5,
     "manaCostBasic": 4,
     "manaCostAdvanced": 4,
     "manaCostExpert": 4,
-    "descriptionNone": "Выбор цели: дружественное существо.\nПолучаемый урон от Магии огня -50%.",
+    "descriptionNone": "Выбор цели: дружественное существо.\nПолучаемый урон от магии Огня -50%.",
     "descriptionBasic": "Снижение стоимости заклинания.",
     "descriptionAdvanced": "То же, но -75%.",
-    "descriptionExpert": "Мгновенное. Получаемый урон от Магии огня всеми дружественными существами -75%."
+    "descriptionExpert": "Мгновенное. Получаемый урон от магии Огня всеми дружественными существами -75%."
   },
   {
     "id": "blind",
@@ -624,7 +624,7 @@
   {
     "id": "wall_of_fire",
     "imageRes": "spell_wall_of_fire",
-    "name": "Стена огня",
+    "name": "Стена Огня",
     "level": 2,
     "school": "Fire",
     "manaCostNone": 8,
@@ -639,7 +639,7 @@
   {
     "id": "fireball",
     "imageRes": "spell_fireball",
-    "name": "Огненный шар",
+    "name": "Огненный Шар",
     "level": 3,
     "school": "Fire",
     "manaCostNone": 15,
@@ -654,7 +654,7 @@
   {
     "id": "land_mine",
     "imageRes": "spell_land_mine",
-    "name": "Минное поле",
+    "name": "Минное Поле",
     "level": 3,
     "school": "Fire",
     "manaCostNone": 18,
@@ -714,7 +714,7 @@
   {
     "id": "fire_shield",
     "imageRes": "spell_fire_shield",
-    "name": "Огненный щит",
+    "name": "Огненный Щит",
     "level": 4,
     "school": "Fire",
     "manaCostNone": 16,
@@ -766,7 +766,7 @@
     "manaCostBasic": 12,
     "manaCostAdvanced": 12,
     "manaCostExpert": 12,
-    "descriptionNone": "Выбор цели: дружественное существо.\nАтака против Чудищ, Огненных птиц, Гидр, Морских змеев, Коатлей и всех драконов, включая их улучшения +8.",
+    "descriptionNone": "Выбор цели: дружественное существо.\nАтака против Чудищ, Огненных Птиц, Гидр, Морских Змеев, Коатлей и всех драконов, включая их улучшения +8.",
     "descriptionBasic": "Снижение стоимости заклинания.",
     "descriptionAdvanced": "То же + против Ангелов и Дьяволов, включая их улучшения.",
     "descriptionExpert": "То же + против Дредноутов, Гигантов и Ётунов, включая их улучшения."
@@ -789,17 +789,17 @@
   {
     "id": "fire_elemental",
     "imageRes": "spell_fire_elemental",
-    "name": "Элементаль огня",
+    "name": "Элементаль Огня",
     "level": 5,
     "school": "Fire",
     "manaCostNone": 25,
     "manaCostBasic": 20,
     "manaCostAdvanced": 20,
     "manaCostExpert": 20,
-    "descriptionNone": "Мгновенное.\nВызывает на случайный гекс в ряде начальной расстановки героя СМ*2 Огненных элементалей.",
+    "descriptionNone": "Мгновенное.\nВызывает на случайный гекс в ряде начальной расстановки героя СМ*2 Огненных Элементалей.",
     "descriptionBasic": "Снижение стоимости заклинания.",
-    "descriptionAdvanced": "То же, но вызывает СМ*2.5 Огненных элементалей. Округление вниз.",
-    "descriptionExpert": "То же, но вызывает СМ*3 Огненных элементалей."
+    "descriptionAdvanced": "То же, но вызывает СМ*2.5 Огненных Элементалей. Округление вниз.",
+    "descriptionExpert": "То же, но вызывает СМ*3 Огненных Элементалей."
   },
   {
     "id": "bless",
@@ -814,7 +814,7 @@
     "descriptionNone": "Выбор цели: дружественное существо.\nУрон становится равным максимальному. Снимает Проклятие с цели.",
     "descriptionBasic": "Снижение стоимости заклинания.",
     "descriptionAdvanced": "То же, но урон становится равным максимальному+1.",
-    "descriptionExpert": "Мгновенное. Урон всех дружественных существ становится равным максимальному+1.Снимает Проклятие с целей."
+    "descriptionExpert": "Мгновенное. Урон всех дружественных существ становится равным максимальному+1. Снимает Проклятие с целей."
   },
   {
     "id": "cure",
@@ -834,53 +834,53 @@
   {
     "id": "dispel",
     "imageRes": "spell_dispel",
-    "name": "Снятие заклинаний",
+    "name": "Снятие Заклинаний",
     "level": 1,
     "school": "Water",
     "manaCostNone": 5,
     "manaCostBasic": 4,
     "manaCostAdvanced": 4,
     "manaCostExpert": 4,
-    "descriptionNone": "Выбор цели: дружественное существо.\nСнимает все эффекты заклинаний с дружественного существа.",
+    "descriptionNone": "Выбор цели: дружественное существо.\nСнимает все эффекты заклинаний с дружественного существа, кроме Разрушающего Луча и Яда.",
     "descriptionBasic": "Снижение стоимости заклинания.",
     "descriptionAdvanced": "То же, но можно применить на вражеское существо.",
-    "descriptionExpert": "Мгновенное. Снимает эффекты со всех существ. Удаляет все Стены огня, Зыбучие пески, Минные поля и Силовые поля."
+    "descriptionExpert": "Мгновенное. Снимает эффекты со всех существ, кроме Разрушающего Луча и Яда. Удаляет все Стены огня, Зыбучие пески, Силовые поля и Минные поля, включая мины Башни."
   },
   {
     "id": "protection_from_water",
     "imageRes": "spell_protection_from_water",
-    "name": "Защита от воды",
+    "name": "Защита от Воды",
     "level": 1,
     "school": "Water",
     "manaCostNone": 5,
     "manaCostBasic": 4,
     "manaCostAdvanced": 4,
     "manaCostExpert": 4,
-    "descriptionNone": "Выбор цели: дружественное существо.\nПолучаемый урон от Магии воды -50%.",
+    "descriptionNone": "Выбор цели: дружественное существо.\nПолучаемый урон от магии Воды -50%.",
     "descriptionBasic": "Снижение стоимости заклинания.",
     "descriptionAdvanced": "То же, но -75%.",
-    "descriptionExpert": "Мгновенное. Получаемый урон от Магии воды всеми дружественными существами -75%."
+    "descriptionExpert": "Мгновенное. Получаемый урон от магии Воды всеми дружественными существами -75%."
   },
   {
     "id": "summon_boat",
     "imageRes": "spell_summon_boat",
-    "name": "Вызвать корабль",
+    "name": "Вызвать Корабль",
     "level": 1,
     "school": "Water",
     "manaCostNone": 8,
     "manaCostBasic": 7,
     "manaCostAdvanced": 7,
     "manaCostExpert": 7,
-    "descriptionNone": "Мгновенное.\nС вероятностью 50% перемещает ближайший свободный дружественный корабль на случайную свободную соседнюю с Героем клетку с водой ",
+    "descriptionNone": "Мгновенное.\nС вероятностью 50% перемещает ближайший незанятый корабль на случайную свободную соседнюю с героем клетку с водой.",
     "descriptionBasic": "Снижение стоимости заклинания.",
-    "descriptionAdvanced": "То же, но 75% вероятность. Если дружественного коробля нет, то создает новый.",
+    "descriptionAdvanced": "То же, но 75% вероятность. Если незанятого коробля нет, то создает новый.",
     "descriptionExpert": "То же, но 100% вероятность.",
     "backgroundColor": "#006400"
   },
   {
     "id": "ice_bolt",
     "imageRes": "spell_ice_bolt",
-    "name": "Ледяная молния",
+    "name": "Ледяная Молния",
     "level": 2,
     "school": "Water",
     "manaCostNone": 8,
@@ -895,7 +895,7 @@
   {
     "id": "remove_obstacle",
     "imageRes": "spell_remove_obstacle",
-    "name": "Убрать преграду",
+    "name": "Убрать Преграду",
     "level": 2,
     "school": "Water",
     "manaCostNone": 7,
@@ -905,12 +905,12 @@
     "descriptionNone": "Выбор цели: 'накладное' препятствие на поле боя.\nУничтожает препятствие",
     "descriptionBasic": "Снижение стоимости заклинания.",
     "descriptionAdvanced": "То же, но может удалить один гекс Стены огня.",
-    "descriptionExpert": "То же, но может удалить одиночные Зыбучие пески, Силивые поля (целиком) и мины, включая мины при осаде Башни."
+    "descriptionExpert": "То же, но может удалить одиночные Зыбучие пески, Силовые поля (целиком) и мины, включая мины при осаде Башни."
   },
   {
     "id": "scuttle_boat",
     "imageRes": "spell_scuttle_boat",
-    "name": "Затопить корабль",
+    "name": "Затопить Корабль",
     "level": 2,
     "school": "Water",
     "manaCostNone": 8,
@@ -956,7 +956,7 @@
   {
     "id": "frost_ring",
     "imageRes": "spell_frost_ring",
-    "name": "Кольцо холода",
+    "name": "Кольцо Холода",
     "level": 3,
     "school": "Water",
     "manaCostNone": 12,
@@ -993,7 +993,7 @@
     "manaCostBasic": 12,
     "manaCostAdvanced": 6,
     "manaCostExpert": 3,
-    "descriptionNone": "Выбор цели: дружественное существо.\nПеремещает цель на выбранный гекс поля боя. Нельзя перемещать существо на гексы городского рва, через ров или стены.",
+    "descriptionNone": "Выбор цели: дружественное существо.\nПеремещает цель на выбранный гекс поля боя. Снимает эффект Оплетения корнями. Нельзя перемещать существо на гексы городского рва, через ров или стены.",
     "descriptionBasic": "Снижение стоимости заклинания.",
     "descriptionAdvanced": "То же, но можно перемещать цель через городской ров и на него. Снижение стоимости заклинания",
     "descriptionExpert": "То же, но можно перемещать цель на любой гекс. Снижение стоимости заклинания"
@@ -1031,7 +1031,7 @@
   {
     "id": "water_walk",
     "imageRes": "spell_water_walk",
-    "name": "Хождение по воде",
+    "name": "Хождение по Воде",
     "level": 4,
     "school": "Water",
     "manaCostNone": 12,
@@ -1047,16 +1047,16 @@
   {
     "id": "water_elemental",
     "imageRes": "spell_water_elemental",
-    "name": "Элементаль воды",
+    "name": "Элементаль Воды",
     "level": 5,
     "school": "Water",
     "manaCostNone": 25,
     "manaCostBasic": 20,
     "manaCostAdvanced": 20,
     "manaCostExpert": 20,
-    "descriptionNone": "Мгновенное.\nВызывает на случайный гекс в ряде начальной расстановки героя СМ*2 Водных элементалей.",
+    "descriptionNone": "Мгновенное.\nВызывает на случайный гекс в ряде начальной расстановки героя СМ*2 Водных Элементалей.",
     "descriptionBasic": "Снижение стоимости заклинания.",
-    "descriptionAdvanced": "То же, но вызывает СМ*3 Водных элементалей.",
-    "descriptionExpert": "То же, но вызывает СМ*4 Водных элементалей."
+    "descriptionAdvanced": "То же, но вызывает СМ*3 Водных Элементалей.",
+    "descriptionExpert": "То же, но вызывает СМ*4 Водных Элементалей."
   }
 ]
