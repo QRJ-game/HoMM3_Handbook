@@ -22,7 +22,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.homm3reference.data.Creature
@@ -35,8 +34,6 @@ import com.example.homm3reference.ui.common.*
 import com.example.homm3reference.ui.theme.HommGlassBackground
 import com.example.homm3reference.ui.theme.HommGold
 import android.annotation.SuppressLint
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.layout.WindowInsets
@@ -133,7 +130,7 @@ fun HeroListScreen(
     listState: LazyListState = rememberLazyListState(),
     onHeroSelected: (Hero) -> Unit
 ) {
-    // --- НАЧАЛО ИЗМЕНЕНИЙ: Логирование статистики списка героев ---
+    // --- Логирование статистики списка героев и ошибок маппинга ---
     LaunchedEffect(heroes, townName, className) {
         val tag = "Homm3HeroesList"
         val standardCount = heroes.count { it.backgroundColor.isNullOrEmpty() }
@@ -145,6 +142,44 @@ fun HeroListScreen(
         Log.d(tag, "------------------------------------------")
         Log.d(tag, "Обычные герои: $standardCount")
         Log.d(tag, "Специальные/Кампании: $specialCount")
+
+        // 1. Проверка армии (поиск Fallback значения "creature_peasant")
+        // Если маппер не находит существо, он подставляет "creature_peasant".
+        val heroesWithPeasantFallback = heroes.filter { hero ->
+            val army = JSON_Mapper.parseArmy(hero.army)
+            army.any { it.first == "creature_peasant" }
+        }
+
+        if (heroesWithPeasantFallback.isNotEmpty()) {
+            Log.e(tag, "⚠️ ВОЗМОЖНАЯ ОШИБКА АРМИИ (Fallback to Peasant):")
+            heroesWithPeasantFallback.forEach { hero ->
+                // Логируем имя героя и сырую строку армии для проверки
+                Log.e(tag, "   -> Hero: ${hero.name} [${hero.town}], Army Raw: '${hero.army.replace("\n", ", ")}'")
+            }
+        }
+
+        // 2. Проверка навыков (количество иконок < количества текстовых навыков)
+        val heroesWithMissingSkills = heroes.filter { hero ->
+            if (hero.skills.isBlank()) false else {
+                val rawSkills = hero.skills.split(",").map { it.trim() }.filter { it.isNotEmpty() }
+                val mappedIcons = JSON_Mapper.getSkillIcons(hero.skills)
+                // Если количество иконок не совпадает с количеством частей строки
+                rawSkills.size != mappedIcons.size
+            }
+        }
+
+        if (heroesWithMissingSkills.isNotEmpty()) {
+            Log.e(tag, "⚠️ ОШИБКА МАППИНГА НАВЫКОВ (Не найдены иконки):")
+            heroesWithMissingSkills.forEach { hero ->
+                val rawSkills = hero.skills.split(",").map { it.trim() }.filter { it.isNotEmpty() }
+                // Определяем, какой именно навык отвалился, вызывая маппер для каждого отдельно
+                val missingSkills = rawSkills.filter { skillName ->
+                    JSON_Mapper.getSkillIcons(skillName).isEmpty()
+                }
+                Log.e(tag, "   -> Hero: ${hero.name}, Missing: $missingSkills (Raw: '${hero.skills}')")
+            }
+        }
+
         Log.d(tag, "==========================================")
     }
     val navBarPadding = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()

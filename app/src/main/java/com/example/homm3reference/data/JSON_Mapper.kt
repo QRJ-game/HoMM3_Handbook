@@ -33,7 +33,7 @@ object JSON_Mapper {
         // Оплот
         "кентавров" to "creature_centaur", "кентавра" to "creature_centaur", "кентавр" to "creature_centaur",
         "гномов" to "creature_dwarf", "гнома" to "creature_dwarf", "гном" to "creature_dwarf",
-        "эльфов" to "creature_wood_elf", "эльфа" to "creature_wood_elf", "лесной Эльф" to "creature_wood_elf",
+        "эльфов" to "creature_wood_elf", "эльфа" to "creature_wood_elf", "лесной эльф" to "creature_wood_elf",
         "пегасов" to "creature_pegasus", "пегаса" to "creature_pegasus", "пегас" to "creature_pegasus",
         "дендроидов" to "creature_dendroid_guard", "дендроида" to "creature_dendroid_guard", "дендроид-страж" to "creature_dendroid_guard",
         "единорогов" to "creature_unicorn", "единорога" to "creature_unicorn", "единорог" to "creature_unicorn",

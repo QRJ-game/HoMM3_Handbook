@@ -140,8 +140,8 @@
     "imageRes": "hero_beatrice",
     "specialtyIcon": "expert_scouting",
     "specialtyDescription": "Увеличивает радиус обзора героя на 1 клетку каждые 6 уровней.",
-    "backgroundColor": "#006400" 
- },
+    "backgroundColor": "#006400"
+  },
   {
     "id": "catherine",
     "name": "Катерина",
@@ -382,7 +382,7 @@
     "imageRes": "hero_giselle",
     "specialtyIcon": "expert_interference",
     "specialtyDescription": "Увеличивает эффективность навыка Помехи на 5% за каждый уровень героя.",
-    "backgroundColor": "#006400"  
+    "backgroundColor": "#006400"
   },
   {
     "id": "ryland",
@@ -2033,7 +2033,7 @@
     "imageRes": "hero_kinkeria",
     "specialtyIcon": "expert_learning",
     "specialtyDescription": "Увеличивает эффективность навыка Обучаемость на 5% за каждый уровень героя.",
-    "backgroundColor": "#006400"  
+    "backgroundColor": "#006400"
   },
   {
     "id": "pasis",
@@ -2654,7 +2654,7 @@
     "imageRes": "hero_tavin",
     "specialtyIcon": "expert_offense",
     "specialtyDescription": "Увеличивает эффективность навыка Нападение на 5% за каждый уровень героя.",
-    "backgroundColor": "#DC143C"
+    "backgroundColor": "#AB00A2"
   },
   {
     "id": "murdoch",
@@ -2669,7 +2669,7 @@
     "imageRes": "hero_murdoch",
     "specialtyIcon": "expert_archery",
     "specialtyDescription": "Увеличивает эффективность навыка Стрельба на 5% за каждый уровень героя.",
-    "backgroundColor": "#DC143C"
+    "backgroundColor": "#AB00A2"
   },
   {
     "id": "bertram",
