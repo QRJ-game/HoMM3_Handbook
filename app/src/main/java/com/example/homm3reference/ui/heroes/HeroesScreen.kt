@@ -1,5 +1,7 @@
 package com.example.homm3reference.ui.heroes
 
+import android.annotation.SuppressLint
+import android.util.Log
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -7,7 +9,9 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -20,6 +24,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -33,14 +38,6 @@ import com.example.homm3reference.data.Spell
 import com.example.homm3reference.ui.common.*
 import com.example.homm3reference.ui.theme.HommGlassBackground
 import com.example.homm3reference.ui.theme.HommGold
-import android.annotation.SuppressLint
-import androidx.compose.foundation.lazy.LazyListState
-import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.asPaddingValues
-import androidx.compose.foundation.layout.navigationBars
-import android.util.Log
-import androidx.compose.runtime.LaunchedEffect
 
 // Локальные константы стиля
 private val HommShape = RoundedCornerShape(8.dp)
@@ -58,8 +55,7 @@ fun ClassSelectionScreen(
         Column(modifier = Modifier
             .fillMaxSize()
             .padding(16.dp)
-            // --- ДОБАВИТЬ ---
-            .padding(bottom = navBarPadding) // Чтобы контент не прилипал к навигации
+            .padding(bottom = navBarPadding)
         ) {
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -143,8 +139,7 @@ fun HeroListScreen(
         Log.d(tag, "Обычные герои: $standardCount")
         Log.d(tag, "Специальные/Кампании: $specialCount")
 
-        // 1. Проверка армии (поиск Fallback значения "creature_peasant")
-        // Если маппер не находит существо, он подставляет "creature_peasant".
+        // 1. Проверка армии
         val heroesWithPeasantFallback = heroes.filter { hero ->
             val army = JSON_Mapper.parseArmy(hero.army)
             army.any { it.first == "creature_peasant" }
@@ -153,17 +148,15 @@ fun HeroListScreen(
         if (heroesWithPeasantFallback.isNotEmpty()) {
             Log.e(tag, "⚠️ ВОЗМОЖНАЯ ОШИБКА АРМИИ (Fallback to Peasant):")
             heroesWithPeasantFallback.forEach { hero ->
-                // Логируем имя героя и сырую строку армии для проверки
                 Log.e(tag, "   -> Hero: ${hero.name} [${hero.town}], Army Raw: '${hero.army.replace("\n", ", ")}'")
             }
         }
 
-        // 2. Проверка навыков (количество иконок < количества текстовых навыков)
+        // 2. Проверка навыков
         val heroesWithMissingSkills = heroes.filter { hero ->
             if (hero.skills.isBlank()) false else {
                 val rawSkills = hero.skills.split(",").map { it.trim() }.filter { it.isNotEmpty() }
                 val mappedIcons = JSON_Mapper.getSkillIcons(hero.skills)
-                // Если количество иконок не совпадает с количеством частей строки
                 rawSkills.size != mappedIcons.size
             }
         }
@@ -172,11 +165,22 @@ fun HeroListScreen(
             Log.e(tag, "⚠️ ОШИБКА МАППИНГА НАВЫКОВ (Не найдены иконки):")
             heroesWithMissingSkills.forEach { hero ->
                 val rawSkills = hero.skills.split(",").map { it.trim() }.filter { it.isNotEmpty() }
-                // Определяем, какой именно навык отвалился, вызывая маппер для каждого отдельно
                 val missingSkills = rawSkills.filter { skillName ->
                     JSON_Mapper.getSkillIcons(skillName).isEmpty()
                 }
                 Log.e(tag, "   -> Hero: ${hero.name}, Missing: $missingSkills (Raw: '${hero.skills}')")
+            }
+        }
+
+        // 3. Проверка биографий (НОВОЕ)
+        val heroesWithMissingBio = heroes.filter { hero ->
+            hero.biography.isNullOrBlank()
+        }
+
+        if (heroesWithMissingBio.isNotEmpty()) {
+            Log.w(tag, "⚠️ ОТСУТСТВУЕТ БИОГРАФИЯ:")
+            heroesWithMissingBio.forEach { hero ->
+                Log.w(tag, "   -> Hero: ${hero.name} [${hero.town}]")
             }
         }
 
@@ -203,7 +207,6 @@ fun HeroListScreen(
             )
 
             LazyColumn(
-                // 4. Привязываем состояние
                 state = listState,
                 contentPadding = PaddingValues(
                     top = 16.dp,
@@ -217,7 +220,6 @@ fun HeroListScreen(
                     HeroCard(hero, onHeroSelected)
                 }
 
-                // Разделитель, если есть и обычные, и специальные герои
                 if (groupedHeroes.first.isNotEmpty() && groupedHeroes.second.isNotEmpty()) {
                     item { HorizontalDivider(color = HommGold, thickness = 1.dp, modifier = Modifier.padding(vertical = 8.dp)) }
                 }
@@ -237,11 +239,9 @@ fun HeroListScreen(
 
 @Composable
 fun HeroCard(hero: Hero, onHeroSelected: (Hero) -> Unit) {
-    // Логика определения цвета фона (аналогично заклинаниям)
     val cardBackgroundColor = remember(hero.backgroundColor) {
         if (!hero.backgroundColor.isNullOrBlank()) {
             try {
-                // Парсим цвет из hex-строки (например, "#DC143C")
                 Color(android.graphics.Color.parseColor(hero.backgroundColor))
             } catch (e: Exception) {
                 HommGlassBackground
@@ -255,10 +255,8 @@ fun HeroCard(hero: Hero, onHeroSelected: (Hero) -> Unit) {
         modifier = Modifier
             .fillMaxWidth()
             .clickable { onHeroSelected(hero) },
-        // Используем динамический цвет
         colors = CardDefaults.cardColors(containerColor = cardBackgroundColor),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
-        //border = HommBorder,
         shape = HommShape
     ) {
         Row(
@@ -288,6 +286,8 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>) {
     var selectedCreature by remember { mutableStateOf<Creature?>(null) }
     var selectedSkill by remember { mutableStateOf<SecondarySkill?>(null) }
     var selectedSpell by remember { mutableStateOf<Spell?>(null) }
+    // Состояние для всплывающего окна биографии
+    var showBiographyPopup by remember { mutableStateOf(false) }
 
     val allSkills = remember { GameData.secondarySkills }
 
@@ -308,17 +308,17 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>) {
 
                 // Шапка
                 Row(verticalAlignment = Alignment.CenterVertically) {
+                    // Добавлен клик по портрету для показа биографии
                     HeroImage(
                         imageName = hero.imageRes,
                         width = 116.dp,
                         height = 128.dp,
                         borderWidth = 2.dp,
-                        borderColor = HommGold
+                        borderColor = HommGold,
+                        modifier = Modifier.clickable { showBiographyPopup = true }
                     )
                     Spacer(modifier = Modifier.width(16.dp))
                     Column {
-                        // Используем обычный текст, так как OutlinedText в Components может быть сложным,
-                        // но для стиля используем золото
                         Text(
                             text = hero.name,
                             fontSize = 28.sp,
@@ -327,7 +327,7 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>) {
                         )
                         Spacer(modifier = Modifier.height(4.dp))
                         Text(text = hero.town, fontSize = 18.sp, color = Color.White)
-                        Text(text = hero.heroClass, fontSize = 16.sp, color = Color.White.copy(alpha = 0.8f))
+                        Text(text = hero.heroClass, fontSize = 18.sp, color = Color.White.copy(alpha = 0.8f))
                     }
                 }
 
@@ -459,10 +459,82 @@ fun HeroDetailScreen(hero: Hero, creatures: List<Creature>) {
             if (selectedSpell != null) {
                 SpellPopup(spell = selectedSpell!!, onDismiss = { selectedSpell = null })
             }
+            // Попап биографии
+            if (showBiographyPopup) {
+                HeroBiographyPopup(hero = hero, onDismiss = { showBiographyPopup = false })
+            }
         }
     }
 }
 
+// Новый Popup для биографии героя
+@Composable
+fun HeroBiographyPopup(hero: Hero, onDismiss: () -> Unit) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.Black.copy(alpha = 0.8f))
+            .clickable { onDismiss() },
+        contentAlignment = Alignment.Center
+    ) {
+        Card(
+            modifier = Modifier
+                .fillMaxWidth(0.9f)
+                .wrapContentHeight() // Высота под контент, но не больше экрана
+                .clickable(enabled = false) {},
+            colors = CardDefaults.cardColors(containerColor = HommGlassBackground),
+            border = HommBorder,
+            shape = HommShape,
+            elevation = CardDefaults.cardElevation(8.dp)
+        ) {
+            Column(
+                modifier = Modifier
+                    .padding(24.dp)
+                    // Добавляем скролл, если биография очень длинная
+                    .verticalScroll(rememberScrollState()),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                // Большой портрет
+                HeroImage(
+                    imageName = hero.imageRes,
+                    width = 112.dp,
+                    height = 128.dp,
+                    borderWidth = 2.dp,
+                    borderColor = HommGold
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+
+                Text(
+                    text = hero.name,
+                    fontSize = 26.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = HommGold
+                )
+
+                Spacer(modifier = Modifier.height(8.dp))
+
+                Text(
+                    text = "${hero.town} • ${hero.heroClass}",
+                    fontSize = 16.sp,
+                    color = Color.White,
+                )
+
+                HorizontalDivider(modifier = Modifier.padding(vertical = 16.dp), color = HommGold)
+
+                // Текст биографии
+                Text(
+                    text = hero.biography ?: "Биография отсутствует.",
+                    color = Color.White,
+                    fontSize = 14.sp,
+                    lineHeight = 22.sp,
+                    textAlign = TextAlign.Start
+                )
+            }
+        }
+    }
+}
+
+// ... Остальные функции (SpecialtyInfoRow, CreaturePopup, SkillPopup, SpellPopup, etc.) остаются без изменений
 @SuppressLint("DiscouragedApi")
 @Composable
 fun SpecialtyInfoRow(
@@ -538,7 +610,7 @@ fun SpecialtyInfoRow(
                     Spacer(modifier = Modifier.height(4.dp))
                     Text(
                         text = description,
-                        color = Color.White.copy(alpha = 0.9f),
+                        color = Color.White,
                         fontSize = 14.sp,
                         lineHeight = 20.sp
                     )

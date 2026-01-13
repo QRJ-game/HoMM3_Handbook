@@ -19,5 +19,7 @@ data class Hero(
     val backgroundColor: String? = null,
     val specialtyIcon: String? = null,
     @SerializedName("specialtyDescription")
-    val specialtyDescription: String? = null
+    val specialtyDescription: String? = null,
+    // Добавляем новое поле для биографии
+    val biography: String? = null
 )

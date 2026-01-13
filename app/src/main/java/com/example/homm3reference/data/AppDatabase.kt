@@ -37,7 +37,7 @@ interface CreatureDao {
     suspend fun getCount(): Int
 }
 
-@Database(entities = [Hero::class, Creature::class], version = 8) //НЕ ЗАБЫВАТЬ МЕНЯТЬ!!!
+@Database(entities = [Hero::class, Creature::class], version = 9) //НЕ ЗАБЫВАТЬ МЕНЯТЬ!!!
 abstract class AppDatabase : RoomDatabase() {
     abstract fun heroDao(): HeroDao
     abstract fun creatureDao(): CreatureDao
