@@ -41,6 +41,7 @@ object GameData {
             // Исправлено: теперь результат используется (хотя бы для проверки)
             if (getSpecialtyIcon(hero.specialty) == null) {
                 missingCount++
+                Log.e(tag, hero.name)
             }
         }
         Log.d(tag, "--- END CHECKING. Total missing: $missingCount ---")
